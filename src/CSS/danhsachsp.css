@@ -1,0 +1,145 @@
+.background1 {
+    background-color: #eb2b3f;
+}
+.background2 {
+    background-color: #e2e2e2;
+}
+.borderColor {
+    border-color: #eb2b3f!important;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+.headerText {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.path {
+    font-weight: bold;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.textColor {
+    color: #eb2b3f;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.list-item {
+    color: black !important;
+}
+.list-item:hover {
+    background-color: rgb(255, 155, 165);
+    color: #EB2B3F !important;
+}
+.textFooter {
+    font-size: 15px;
+}
+.header {
+    font-weight: bold;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+/* The radio */
+.radio {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+  /* Hide the browser's default radio button */
+.radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+  /* Create a custom radio button */
+.checkround {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border-color: #eb2b3f;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50%;
+}
+/* When the radio button is checked, add a blue background */
+.radio input:checked ~ .checkround {
+    background-color: #fff;
+}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkround:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+/* Show the indicator (dot/circle) when checked */
+.radio input:checked ~ .checkround:after {
+    display: block;
+}
+.radio .checkround:after {
+    left: 2px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #eb2b3f;
+}
+.fontPrice {
+    font-size: 14px;
+}
+.headersp {
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 2px;
+    margin-right: 10px;
+}
+.bookItem {
+    width: 150px;
+    margin-bottom: 0px;
+}
+.book {
+    float: left;
+    margin-bottom: 10px;
+}
+ul {
+    list-style-type: none;
+    margin: 5px;
+    padding: 0;
+    overflow: hidden;
+}
+.button {
+    color: #fff;
+    background-color:#eb2b3f;
+    border-color: #eb2b3f;
+    letter-spacing: 0.05em;
+    border-radius: 0;
+}
+.distance {
+    margin-right: 670px;
+}

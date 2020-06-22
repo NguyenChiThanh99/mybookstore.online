@@ -1,0 +1,92 @@
+.background1 {
+    background-color: #eb2b3f;
+}
+.background2 {
+    background-color: #e2e2e2;
+}
+.borderColor {
+    border-color: #eb2b3f!important;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+.headerText {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.path {
+    font-weight: bold;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.button {
+    color: #fff;
+    background-color:#eb2b3f;
+    border-color: #eb2b3f;
+    letter-spacing: 0.05em;
+    border-radius: 0;
+}
+.buttontable {
+    color: #fff;
+    background-color:#eb2b3f;
+    border-color: #eb2b3f;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+.book {
+    float: left;
+}
+ul {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    overflow: hidden;
+}
+.bookItem2 {
+    width: 200px;
+    margin-bottom: 0px;
+}
+.textFooter {
+    font-size: 15px;
+}
+.header {
+    font-weight: bold;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.error {
+    color: #eb2b3f;
+    margin-bottom: 0px;
+}
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.inputHeight {
+    height: 65px;
+}
+
+.btn-danger.active {
+    background-color:  #eb2b3f !important;
+}
+
+.btn-viewmore-cart:hover {
+    background-color:  #b21f2d !important;
+}
+

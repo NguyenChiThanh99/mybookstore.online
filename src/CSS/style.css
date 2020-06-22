@@ -1,0 +1,275 @@
+.background1 {
+  background-color: #eb2b3f;
+}
+
+.background2 {
+  background-color: #e2e2e2;
+}
+
+.borderColor {
+  border-color: #eb2b3f !important;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.headerText {
+  color: black;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.path {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  margin-bottom: 0;
+  color: black;
+}
+
+.textColor {
+  color: #eb2b3f;
+}
+
+.button {
+  color: #fff;
+  background-color: #eb2b3f;
+  border-color: #eb2b3f;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.bookName {
+  font-family: sans-serif;
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+.book {
+  float: left;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.bookItem2 {
+  width: 200px;
+  margin-bottom: 0px;
+}
+
+.textFooter {
+  font-size: 15px;
+}
+
+.colorFooter {
+  color: #000;
+}
+
+.header {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.title {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.error {
+  color: #eb2b3f;
+  margin-bottom: 0px;
+  font-size: 12px;
+}
+
+.form-control2:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.search_box {
+  box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
+}
+
+.inputHeight {
+  height: 65px;
+}
+
+/* The radio */
+.radio {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkround {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border-color: #eb2b3f;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50%;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio input:checked ~ .checkround {
+  background-color: #fff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkround:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio input:checked ~ .checkround:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio .checkround:after {
+  left: 2px;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #eb2b3f;
+}
+
+.deliveryPrice {
+  font-size: 15px;
+  margin-bottom: 0px;
+  color: rgb(182, 182, 182);
+}
+
+.deliveryMethod {
+  color: #eb2b3f;
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+
+.deliveryTime {
+  font-size: 16px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 5px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+a {
+  color: black;
+}
+
+/* Thêm drop right các loại sách và drop down tài khoản */     
+.mybtn-dropright:focus {
+    box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
+}
+
+.list-item:hover {
+    background-color: rgb(255, 155, 165);
+}
+
+.mydropdown-item:hover {
+    background-color: rgb(255, 124, 137) !important;
+}
+
+.mya-dropright:hover {
+    background-color: rgb(255, 124, 137) !important;
+}
+
+.mya-dropright:focus {
+    background-color: #eb2b3f !important;
+}
+
+/* end Thêm drop right các loại sách và drop down tài khoản */
+.facebook-button {
+  border: none;
+  background-color: #fff;
+  font-size: 0px;
+  margin-left: 95px;
+}
+
+.mt-05 {
+  margin-top: 2px;
+}
+
+.product_shadow:hover {
+  box-shadow: 0 0 7px rgba(33,33,33,.2);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.dropdowm-scroll {
+  max-height: 250px;
+  width: 275px;
+  overflow: auto;
+}
+
+.dropdown-add:focus {
+  border-color: #EB2B3F !important;
+  box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
+}
+
+.dropdown-add:hover {
+  border-color: #EB2B3F !important;
+  box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
+}
