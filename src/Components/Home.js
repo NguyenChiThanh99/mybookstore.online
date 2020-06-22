@@ -26,8 +26,6 @@ export class Home extends Component {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
   };
 
-  viewMoreLastest = () => {};
-
   get_lastest_prod = (page) => {
     const data = {
       page: page,
