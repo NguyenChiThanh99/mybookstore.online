@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
+import Global from "./Global";
+import axios from "axios";
+import qs from "qs";
 
 import "../CSS/danhsachsp.css";
 
-export default class DanhSachSanPham extends Component {
+export class DanhSachSanPham extends Component {
   constructor(props) {
     super(props);
     var { match } = this.props;
@@ -16,6 +19,26 @@ export default class DanhSachSanPham extends Component {
 
   goToCategory = (type) => {
     this.props.history.push("/category/" + type);
+  };
+
+  get_product = () => {
+    const data = {
+      page: page,
+    };
+    const url = Global.link + "product/spmoinhat";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      var nextPage = this.state.lastest_prod_page + 1;
+      this.setState({
+        lastest_prod_arr: this.state.lastest_prod_arr.concat(res.data.product),
+        lastest_prod_page: nextPage,
+      });
+    });
   };
 
   render() {
@@ -1088,3 +1111,5 @@ export default class DanhSachSanPham extends Component {
     );
   }
 }
+
+export default withRouter(DanhSachSanPham);
