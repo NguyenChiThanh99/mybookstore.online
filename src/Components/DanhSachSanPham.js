@@ -29,7 +29,7 @@ export class DanhSachSanPham extends Component {
     const data = {
       urlloaisp: category,
     };
-    const url = Global.link + "/product/showproductparent";
+    const url = Global.link + "product/showproductparent";
     const options = {
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
@@ -49,7 +49,7 @@ export class DanhSachSanPham extends Component {
     const data = {
       urlloaisp: category,
     };
-    const url = Global.link + "/product/showproductchild";
+    const url = Global.link + "product/showproductchild";
     const options = {
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
@@ -111,8 +111,8 @@ export class DanhSachSanPham extends Component {
               <p className="path textColor">{path[1]}</p>
             </div>
           ) : (
-            <p className="path float-left textColor">
-              {path[0]} /{"\u00A0"}
+            <p className="path textColor">
+              {path[0]}
             </p>
           )}
         </div>
