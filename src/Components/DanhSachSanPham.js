@@ -21,11 +21,11 @@ export class DanhSachSanPham extends Component {
     this.props.history.push("/category/" + type);
   };
 
-  get_product = () => {
+  get_danh_muc_lon = () => {
     const data = {
-      page: page,
+      urlloaisp: 'Văn học',
     };
-    const url = Global.link + "product/spmoinhat";
+    const url = Global.link + "/product/showproductparent";
     const options = {
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
@@ -33,10 +33,8 @@ export class DanhSachSanPham extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      var nextPage = this.state.lastest_prod_page + 1;
       this.setState({
-        lastest_prod_arr: this.state.lastest_prod_arr.concat(res.data.product),
-        lastest_prod_page: nextPage,
+        data: res.data.data
       });
     });
   };
