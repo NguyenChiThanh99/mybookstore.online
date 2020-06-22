@@ -66,13 +66,13 @@ export class DanhSachSanPham extends Component {
   };
 
   get_danh_muc = () => {
-    if (this.state.slug.indexOf('|') !== -1) {
+    if (this.state.slug.indexOf("|") !== -1) {
       var path = this.state.slug.split("|");
-      this.get_danh_muc_nho(path[0] + '/' + path[1]);
+      this.get_danh_muc_nho(path[0] + "/" + path[1]);
     } else {
       this.get_danh_muc_lon(this.state.slug);
     }
-  }
+  };
 
   show_5_prod = (arr_5prod, page) => {
     var start = (page - 1) * 5;
@@ -114,13 +114,15 @@ export class DanhSachSanPham extends Component {
   };
 
   show_15_prod = (arr_15prod) => {
-    return (
-      this.show_5_prod(arr_15prod, 1),
-      this.show_5_prod(arr_15prod, 2),
-      this.show_5_prod(arr_15prod, 3),
-      this.show_5_prod(arr_15prod, 4),
-      this.show_5_prod(arr_15prod, 5)
-    );
+    if (arr_15prod.length !== 0) {
+      return (
+        this.show_5_prod(arr_15prod, 1),
+        this.show_5_prod(arr_15prod, 2),
+        this.show_5_prod(arr_15prod, 3),
+        this.show_5_prod(arr_15prod, 4),
+        this.show_5_prod(arr_15prod, 5)
+      );
+    }
   };
 
   render() {
