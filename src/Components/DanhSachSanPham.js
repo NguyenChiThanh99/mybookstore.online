@@ -68,7 +68,7 @@ export class DanhSachSanPham extends Component {
   get_danh_muc = () => {
     if (this.state.slug.indexOf('|') !== -1) {
       var path = this.state.slug.split("|");
-      this.get_danh_muc_nho(path[0] + '/' + path[1]);
+      this.get_danh_muc_nho('Văn học/Tiểu thuyết');
     } else {
       this.get_danh_muc_lon(this.state.slug);
     }
