@@ -17,13 +17,17 @@ export class DanhSachSanPham extends Component {
     };
   }
 
+  componentDidMount() {
+    this.get_danh_muc();
+  }
+
   goToCategory = (type) => {
     this.props.history.push("/category/" + type);
   };
 
-  get_danh_muc_lon = () => {
+  get_danh_muc_lon = (category) => {
     const data = {
-      urlloaisp: 'Văn học',
+      urlloaisp: category,
     };
     const url = Global.link + "/product/showproductparent";
     const options = {
@@ -33,11 +37,42 @@ export class DanhSachSanPham extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      this.setState({
-        data: res.data.data
-      });
+      if (res.data.data !== "error") {
+        this.setState({
+          data: res.data.data,
+        });
+      }
     });
   };
+
+  get_danh_muc_nho = (category) => {
+    const data = {
+      urlloaisp: category,
+    };
+    const url = Global.link + "/product/showproductchild";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      if (res.data.data !== "error") {
+        this.setState({
+          data: res.data.data,
+        });
+      }
+    });
+  };
+
+  get_danh_muc = () => {
+    if (this.state.slug.indexOf('|') !== -1) {
+      var path = this.state.slug.split("|");
+      this.get_danh_muc_nho(path[0] + '/' + path[1]);
+    } else {
+      this.get_danh_muc_lon(this.state.slug);
+    }
+  }
 
   render() {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -59,13 +94,27 @@ export class DanhSachSanPham extends Component {
         />
       </a>
     ));
-
+    console.log(this.state.data);
+    var path = this.state.slug.split("|");
     return (
       <div>
         {/*Path*/}
         <div className="container py-2">
-          <p className="path float-left">Trang chủ / Văn học /&nbsp;</p>
-          <p className="path textColor">Tiểu thuyết</p>
+          <NavLink to="/">
+            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
+          </NavLink>
+          {this.state.slug.indexOf("|") !== -1 ? (
+            <div>
+              <p className="path float-left">
+                {path[0]} /{"\u00A0"}
+              </p>
+              <p className="path textColor">{path[1]}</p>
+            </div>
+          ) : (
+            <p className="path float-left textColor">
+              {path[0]} /{"\u00A0"}
+            </p>
+          )}
         </div>
         {/*Main*/}
         <div className="container">
@@ -1095,7 +1144,6 @@ export class DanhSachSanPham extends Component {
             </div>
             {/*Danh sach san pham*/}
             <div className="col-9 bg-white p-3">
-              
               <div className="row py-0 pl-4">
                 <a href="# " className="distance">
                   &lt; Quay lại

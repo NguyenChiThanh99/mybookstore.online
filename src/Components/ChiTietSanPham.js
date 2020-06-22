@@ -202,9 +202,9 @@ export class ChiTietSanPham extends Component {
 
           {/*Path*/}
           <div className="container py-2">
-            <a href="./home.html">
+            <NavLink to="/">
               <p className="path float-left">Trang chủ /{"\u00A0"}</p>
-            </a>
+            </NavLink>
             <p className="path float-left">
               {path[0]} /{"\u00A0"}
             </p>
