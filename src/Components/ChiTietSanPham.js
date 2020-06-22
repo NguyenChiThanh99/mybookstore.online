@@ -287,7 +287,8 @@ export class ChiTietSanPham extends Component {
                 </div>
                 <SocialShare
                   shareUrl={
-                    "https://mybookstore.online/product/" + this.state.slug
+                    "https://mybookstore-online.herokuapp.com/product/" +
+                    this.state.slug
                   }
                   title={data[0].tensp + " | mybookstore.online"}
                 />
