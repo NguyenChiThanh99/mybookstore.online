@@ -68,11 +68,60 @@ export class DanhSachSanPham extends Component {
   get_danh_muc = () => {
     if (this.state.slug.indexOf('|') !== -1) {
       var path = this.state.slug.split("|");
-      this.get_danh_muc_nho('Văn học/Tiểu thuyết');
+      this.get_danh_muc_nho(path[0] + '/' + path[1]);
     } else {
       this.get_danh_muc_lon(this.state.slug);
     }
   }
+
+  show_5_prod = (arr_5prod, page) => {
+    var start = (page - 1) * 5;
+    var result = null;
+    result = arr_5prod.map((product, index) => {
+      if (index >= start && index < start + 5) {
+        return (
+          <NavLink
+            to={"/product/" + product.tenurl}
+            key={index}
+            className="product_shadow"
+          >
+            <li className="book d-flex flex-column mx-2">
+              <img
+                src={product.hinhanhsanpham}
+                className="img-fluid align-self-center"
+                alt={product.tensp}
+                width="160px"
+              />
+              <div style={{ height: 75 }}>
+                <p className="bookItem2 mb-2 book_item_title">
+                  {product.tensp}
+                </p>
+              </div>
+              <p className="bookItem2" style={{ height: 21 }}>
+                <small>{product.tacgia === " " ? null : product.tacgia}</small>
+              </p>
+              <h6 className="bookItem2 textColor">
+                <b>{this.currencyFormat(product.gia.toString())} đ</b>
+              </h6>
+            </li>
+          </NavLink>
+        );
+      } else {
+        return null;
+      }
+    });
+    return result;
+  };
+
+  show_15_prod = (arr_15prod) => {
+    return (
+      this.show_5_prod(arr_15prod, 1),
+      this.show_5_prod(arr_15prod, 2),
+      this.show_5_prod(arr_15prod, 3),
+      this.show_5_prod(arr_15prod, 4),
+      this.show_5_prod(arr_15prod, 5)
+    );
+  };
 
   render() {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -94,8 +143,8 @@ export class DanhSachSanPham extends Component {
         />
       </a>
     ));
-    console.log(this.state.data);
     var path = this.state.slug.split("|");
+
     return (
       <div>
         {/*Path*/}
@@ -111,17 +160,15 @@ export class DanhSachSanPham extends Component {
               <p className="path textColor">{path[1]}</p>
             </div>
           ) : (
-            <p className="path textColor">
-              {path[0]}
-            </p>
+            <p className="path textColor">{path[0]}</p>
           )}
         </div>
+
         {/*Main*/}
         <div className="container">
           <div className="row">
             <div className="col-3 pl-0">
               {/*Danh muc*/}
-
               <div style={{ backgroundColor: "white" }}>
                 <div className="list">
                   <span>Danh mục sản phẩm</span>
@@ -1142,14 +1189,10 @@ export class DanhSachSanPham extends Component {
                 </div>
               </div>
             </div>
+
             {/*Danh sach san pham*/}
             <div className="col-9 bg-white p-3">
-              <div className="row py-0 pl-4">
-                <a href="# " className="distance">
-                  &lt; Quay lại
-                </a>
-                <a href="# ">Xem thêm &gt;</a>
-              </div>
+              {this.show_15_prod(this.state.data.slice(0, 15))}
             </div>
           </div>
         </div>
