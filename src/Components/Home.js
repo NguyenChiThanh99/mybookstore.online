@@ -1299,15 +1299,17 @@ export class Home extends Component {
         </div>
 
         {/* Lastest product */}
-        <div className="container bg-white p-3 mt-3">
-          <h5 className="p-2">
-            <b>Sản phẩm mới nhất</b>
-          </h5>
-          {this.show_lastest_prod()}
-          {this.state.lastest_prod_page < 5 ? viewMoreLastestJSX : null}
-        </div>
+        {this.state.lastest_prod_arr.length === 0 ? null : (
+          <div className="container bg-white p-3 mt-3">
+            <h5 className="p-2">
+              <b>Sản phẩm mới nhất</b>
+            </h5>
+            {this.show_lastest_prod()}
+            {this.state.lastest_prod_page < 5 ? viewMoreLastestJSX : null}
+          </div>
+        )}
 
-        {/* New product */}
+        {/* Hot product */}
         <div className="container bg-white p-3 mt-3">
           <h5 className="p-2">
             <b>Sản phẩm nổi bật</b>

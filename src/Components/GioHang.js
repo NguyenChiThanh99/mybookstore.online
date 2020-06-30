@@ -273,6 +273,15 @@ export default class GioHang extends Component {
           </ul>
         </div>
 
+        <div className="container bg-white p-3 mt-3">
+          <img
+            src={require("../images/loading.gif")}
+            className="img-fluid align-self-center"
+            alt="book1"
+            width="120px"
+          />
+        </div>
+
         <Modal show={this.state.showModal} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Xác nhận xóa sản phẩm</Modal.Title>
