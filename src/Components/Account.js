@@ -69,7 +69,7 @@ export default class Account extends Component {
           <div id="thongtintaikhoan">
             <h5 className="pt-3 pl-2">THÔNG TIN TÀI KHOẢN</h5>
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-md-3 text-center">
                 <img
                   src={
                     Global.isSignIn

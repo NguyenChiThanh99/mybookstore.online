@@ -19,6 +19,7 @@ export class DanhSachSanPham extends Component {
       childData: [],
       numOfPage: 0,
       page: 1,
+      loading: true,
     };
   }
 
@@ -202,6 +203,32 @@ export class DanhSachSanPham extends Component {
         >
           {this.showButtonPage()}
         </div>
+      </div>
+    );
+
+    const loadingJSX = (
+      <div className="p-3 mt-3 d-flex justify-content-center">
+        <img
+          src={require("../images/loading.gif")}
+          className="img-fluid align-self-center"
+          alt="loading"
+          width="150px"
+        />
+      </div>
+    );
+
+    const bodyJSX = (
+      <div>
+        <div className="row mx-0 px-2">
+          {this.show_4_prod(this.state.childData.slice(0, 4))}
+        </div>
+        <div className="row mx-0 px-2">
+          {this.show_4_prod(this.state.childData.slice(4, 8))}
+        </div>
+        <div className="row mx-0 px-2">
+          {this.show_4_prod(this.state.childData.slice(8, 12))}
+        </div>
+        {this.state.dataFull.length !== 0 ? PageJSX : null}
       </div>
     );
 
@@ -1318,16 +1345,7 @@ export class DanhSachSanPham extends Component {
             {/*Danh sach san pham*/}
             <div className="col-sm-9 px-0">
               <div className="bg-white">
-                <div className="row mx-0 px-2">
-                  {this.show_4_prod(this.state.childData.slice(0, 4))}
-                </div>
-                <div className="row mx-0 px-2">
-                  {this.show_4_prod(this.state.childData.slice(4, 8))}
-                </div>
-                <div className="row mx-0 px-2">
-                  {this.show_4_prod(this.state.childData.slice(8, 12))}
-                </div>
-                {this.state.dataFull.length !== 0 ? PageJSX : null}
+                {this.state.loading ? loadingJSX : bodyJSX}
               </div>
             </div>
           </div>

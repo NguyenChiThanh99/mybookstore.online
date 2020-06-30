@@ -488,7 +488,7 @@ export class ThanhToan extends Component {
               style={{ width: "inherit" }}
             >
               <span style={{ fontSize: "16px" }} onClick={this.datHang}>
-                Xác nhận đơn hàng
+                <b>Xác nhận đơn hàng</b>
               </span>
             </button>
           </div>
