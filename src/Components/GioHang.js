@@ -21,6 +21,8 @@ export default class GioHang extends Component {
       item: null,
       total: 0,
       stylePay: "btn btn-danger mybtn ml-4 btn-viewmore-cart",
+      loading: false,
+      emptyCart: false,
     };
   }
 
@@ -45,7 +47,14 @@ export default class GioHang extends Component {
       this.setState({
         cart: res.data.data,
       });
-      this.calTotal();
+      if (res.data.data.leng !== 0) {
+         this.calTotal();
+      } else {
+        this.setState({
+          loading: false,
+          emptyCart: true,
+        })
+      }
     });
   };
 
@@ -173,167 +182,181 @@ export default class GioHang extends Component {
     if (this.state.cart.length !== 0) {
       firstItemImg = this.state.cart[0].hinhanhsanpham;
     }
-    return (
-      <div>
-        <MetaTags>
-          <title>Giỏ hàng | mybookstore.online</title>
-          <meta property="og:url" content="https://mybookstore.online/cart" />
-          <meta property="og:type" content="website" />
-          <meta
-            name="description"
-            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
-          />
-          <meta property="og:title" content="Giỏ hàng | mybookstore.online" />
-          <meta property="og:image" content={firstItemImg} />
-        </MetaTags>
 
-        {/*Path*/}
-        <div className="container py-2 px-0">
-          <NavLink to="/">
-            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
-          </NavLink>
-          <p className="path textColor">Giỏ hàng</p>
-        </div>
-        {/*Cart*/}
-        {/*Cart*/}
-        <div className="container bg-white p-3">
-          <table className="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Tên</th>
-                <th style={{ whiteSpace: "nowrap" }}>Hình ảnh</th>
-                <th style={{ whiteSpace: "nowrap" }}>Đơn giá</th>
-                <th style={{ whiteSpace: "nowrap" }}>Số lượng</th>
-                <th style={{ whiteSpace: "nowrap" }}>Thành tiền</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>{this.show_cart()}</tbody>
-          </table>
-          <div className="d-flex justify-content-between">
-            <div className="d-flex justify-content-start">
-              <NavLink
-                to="/"
-                className="btn btn-danger mybtn mr-3 btn-viewmore-cart"
-              >
-                Tiếp tục mua sắm
-              </NavLink>
-              <button
-                type="button"
-                className="btn btn-danger mybtn"
-                onClick={this.handleShow2}
-              >
-                Xóa hết giỏ hàng
-              </button>
-            </div>
-            <div className="d-flex justify-content-end">
-              <div className="row">
-                <p className="ml-3">Tổng cộng: </p>
-                <p className="ml-3" style={{ color: "#EB2B3F" }}>
-                  {" "}
-                  <b>{this.currencyFormat(this.state.total.toString())} đ</b>
-                </p>
-              </div>
-
-              <NavLink
-                to="/pay"
-                type="button"
-                className={
-                  this.state.cart.length === 0
-                    ? "btn btn-secondary mybtn ml-4 btn-viewmore-cart disabled"
-                    : "btn btn-danger mybtn ml-4 btn-viewmore-cart"
-                }
-              >
-                Thanh toán
-              </NavLink>
-            </div>
-          </div>
-        </div>
-
-        {/*Suggest*/}
-        <div className="container bg-white p-3 mt-3">
-          <ul className="d-flex justify-content-center">
-            <li className="book d-flex flex-column mx-2">
-              <NavLink to="/chitietsanpham" className="product_shadow">
-                <img
-                  src={require("../images/book5.gif")}
-                  className="img-fluid align-self-center"
-                  alt="book1"
-                  width="120px"
-                />
-                <p className="bookItem2 mb-2">Tôi thấy hoa vàng trên cỏ xanh</p>
-                <p className="bookItem2" style={{ height: 21 }}>
-                  <small>Nguyễn Nhật Ánh</small>
-                </p>
-                <h6 className="bookItem textColor">
-                  <b>83.090 đ</b>
-                </h6>
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-
-        <div className="container bg-white p-3 mt-3 d-flex justify-content-center">
-          <img
-            src={require("../images/loading.gif")}
-            className="img-fluid align-self-center"
-            alt="loading"
-            width="250px"
-          />
-        </div>
-
-        <div className="container bg-white p-3 mt-3 d-flex justify-content-center">
-          <img
-            src={require("../images/empty-cart.png")}
-            className="img-fluid align-self-center"
-            alt="empty-cart"
-            width="300px"
-          />
-          <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
-          <NavLink
-            to="/"
-            className="btn btn-danger mybtn mr-3 btn-viewmore-cart"
-          >
-            Tiếp tục mua sắm
-          </NavLink>
-        </div>
-
-        <Modal show={this.state.showModal} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Xác nhận xóa sản phẩm</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Bạn có chắc muốn xóa cuốn{" "}
-            <b>{this.state.item === null ? "" : this.state.item.tensp}</b> khỏi
-            giỏ hàng?
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Đóng
-            </Button>
-            <Button variant="danger" onClick={this.deleteOneItem}>
-              Xóa
-            </Button>
-          </Modal.Footer>
-        </Modal>
-
-        <Modal show={this.state.showModal2} onHide={this.handleClose2}>
-          <Modal.Header closeButton>
-            <Modal.Title>Xác nhận xóa giỏ hàng</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Bạn có chắc muốn xóa toàn bộ sản phẩm khỏi giỏ hàng?
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose2}>
-              Đóng
-            </Button>
-            <Button variant="primary" onClick={this.deleteAllItem}>
-              Xóa
-            </Button>
-          </Modal.Footer>
-        </Modal>
+    const loadingJSX = (
+      <div className="container bg-white p-3 mt-3 d-flex justify-content-center">
+        <img
+          src={require("../images/loading.gif")}
+          className="img-fluid align-self-center"
+          alt="loading"
+          width="250px"
+        />
       </div>
     );
+
+    const emptyCartJSX = (
+      <div className="container bg-white p-3 mt-3 text-center">
+        <img
+          src={require("../images/empty-cart.png")}
+          className="img-fluid align-self-center"
+          alt="empty-cart"
+          width="300px"
+        />
+        <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+        <NavLink to="/" className="btn btn-danger mybtn mr-3 btn-viewmore-cart">
+          Tiếp tục mua sắm
+        </NavLink>
+      </div>
+    );
+
+    if (this.state.cart.length !== 0) {
+      return (
+        <div>
+          <MetaTags>
+            <title>Giỏ hàng | mybookstore.online</title>
+            <meta property="og:url" content="https://mybookstore.online/cart" />
+            <meta property="og:type" content="website" />
+            <meta
+              name="description"
+              content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+            />
+            <meta property="og:title" content="Giỏ hàng | mybookstore.online" />
+            <meta property="og:image" content={firstItemImg} />
+          </MetaTags>
+
+          {/*Path*/}
+          <div className="container py-2 px-0">
+            <NavLink to="/">
+              <p className="path float-left">Trang chủ /{"\u00A0"}</p>
+            </NavLink>
+            <p className="path textColor">Giỏ hàng</p>
+          </div>
+          {/*Cart*/}
+          {/*Cart*/}
+          <div className="container bg-white p-3">
+            <table className="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Tên</th>
+                  <th style={{ whiteSpace: "nowrap" }}>Hình ảnh</th>
+                  <th style={{ whiteSpace: "nowrap" }}>Đơn giá</th>
+                  <th style={{ whiteSpace: "nowrap" }}>Số lượng</th>
+                  <th style={{ whiteSpace: "nowrap" }}>Thành tiền</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>{this.show_cart()}</tbody>
+            </table>
+            <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-start">
+                <NavLink
+                  to="/"
+                  className="btn btn-danger mybtn mr-3 btn-viewmore-cart"
+                >
+                  Tiếp tục mua sắm
+                </NavLink>
+                <button
+                  type="button"
+                  className="btn btn-danger mybtn"
+                  onClick={this.handleShow2}
+                >
+                  Xóa hết giỏ hàng
+                </button>
+              </div>
+              <div className="d-flex justify-content-end">
+                <div className="row">
+                  <p className="ml-3">Tổng cộng: </p>
+                  <p className="ml-3" style={{ color: "#EB2B3F" }}>
+                    {" "}
+                    <b>{this.currencyFormat(this.state.total.toString())} đ</b>
+                  </p>
+                </div>
+
+                <NavLink
+                  to="/pay"
+                  type="button"
+                  className={
+                    this.state.cart.length === 0
+                      ? "btn btn-secondary mybtn ml-4 btn-viewmore-cart disabled"
+                      : "btn btn-danger mybtn ml-4 btn-viewmore-cart"
+                  }
+                >
+                  Thanh toán
+                </NavLink>
+              </div>
+            </div>
+          </div>
+
+          {/*Suggest*/}
+          <div className="container bg-white p-3 mt-3">
+            <ul className="d-flex justify-content-center">
+              <li className="book d-flex flex-column mx-2">
+                <NavLink to="/chitietsanpham" className="product_shadow">
+                  <img
+                    src={require("../images/book5.gif")}
+                    className="img-fluid align-self-center"
+                    alt="book1"
+                    width="120px"
+                  />
+                  <p className="bookItem2 mb-2">
+                    Tôi thấy hoa vàng trên cỏ xanh
+                  </p>
+                  <p className="bookItem2" style={{ height: 21 }}>
+                    <small>Nguyễn Nhật Ánh</small>
+                  </p>
+                  <h6 className="bookItem textColor">
+                    <b>83.090 đ</b>
+                  </h6>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          <Modal show={this.state.showModal} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Xác nhận xóa sản phẩm</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Bạn có chắc muốn xóa cuốn{" "}
+              <b>{this.state.item === null ? "" : this.state.item.tensp}</b>{" "}
+              khỏi giỏ hàng?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose}>
+                Đóng
+              </Button>
+              <Button variant="danger" onClick={this.deleteOneItem}>
+                Xóa
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
+          <Modal show={this.state.showModal2} onHide={this.handleClose2}>
+            <Modal.Header closeButton>
+              <Modal.Title>Xác nhận xóa giỏ hàng</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Bạn có chắc muốn xóa toàn bộ sản phẩm khỏi giỏ hàng?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose2}>
+                Đóng
+              </Button>
+              <Button variant="primary" onClick={this.deleteAllItem}>
+                Xóa
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      );
+    } else {
+      this.setState({
+        loading: true,
+      });
+      return (
+        this.state.loading ? loadingJSX : null,
+        this.state.emptyCart ? emptyCartJSX : null
+      );
+    }
   }
 }
