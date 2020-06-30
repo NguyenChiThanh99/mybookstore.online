@@ -234,28 +234,30 @@ export class GioHang extends Component {
 
         <div className="container bg-white p-3">
           {/* tiêu đề */}
-          <div className="row pb-2 an-thongtin">
-            <div className="col-sm-1">
-              <h6 style={{ fontWeight: "bold" }}>Tên sách</h6>
-            </div>
-            <div className="col-sm-10 px-0">
-              <div className="row">
-                <div className="col-sm-9"></div>
-                <div className="col-sm-3">
-                  <div className="row">
-                    <div className="col-sm-6 col-6 gia-sanpham">
-                      <h6 style={{ fontWeight: "bold" }}>Đơn giá</h6>
-                    </div>
-                    <div className="col-sm-6 col-6">
-                      <h6 style={{ fontWeight: "bold" }}>Số lượng</h6>
+          <div className="an-thongtin">
+            <div className="row pb-2">
+              <div className="col-sm-1">
+                <h6 style={{ fontWeight: "bold" }}>Tên sách</h6>
+              </div>
+              <div className="col-sm-10 px-0">
+                <div className="row">
+                  <div className="col-sm-9"></div>
+                  <div className="col-sm-3">
+                    <div className="row">
+                      <div className="col-sm-6 col-6 gia-sanpham">
+                        <h6 style={{ fontWeight: "bold" }}>Đơn giá</h6>
+                      </div>
+                      <div className="col-sm-6 col-6">
+                        <h6 style={{ fontWeight: "bold" }}>Số lượng</h6>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className="col-sm-1"></div>
             </div>
-            <div className="col-sm-1"></div>
+            <hr className="mt-0" />
           </div>
-          <hr className='mt-0' />
 
           {/* nội dung */}
           {this.show_cart()}
@@ -266,7 +268,9 @@ export class GioHang extends Component {
               <div className="row">
                 <div className="col-5 pr-0">
                   <button
-                    onClick={() => {this.props.history.push("/");}}
+                    onClick={() => {
+                      this.props.history.push("/");
+                    }}
                     type="button"
                     className="btn btn-outline-danger mybtn-outline text-nowrap"
                     style={{ width: "inherit" }}
