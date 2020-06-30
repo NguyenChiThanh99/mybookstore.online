@@ -4,8 +4,10 @@ import { Dropdown } from "react-bootstrap";
 import Global from "./Global";
 import axios from "axios";
 import qs from "qs";
+import MetaTags from "react-meta-tags";
 
 import "../CSS/danhsachsp.css";
+import "../CSS/style.css";
 
 export class DanhSachSanPham extends Component {
   constructor(props) {
@@ -13,16 +15,21 @@ export class DanhSachSanPham extends Component {
     var { match } = this.props;
     this.state = {
       slug: match.params.slug,
-      data: [],
+      dataFull: [],
+      childData: [],
+      numOfPage: 0,
+      page: 1,
     };
   }
 
   componentDidMount() {
-    this.get_danh_muc();
+    this.get_danh_muc(this.state.slug);
   }
 
   goToCategory = (type) => {
     this.props.history.push("/category/" + type);
+    this.setState({ slug: type, page: 1 });
+    this.get_danh_muc(type);
   };
 
   get_danh_muc_lon = (category) => {
@@ -39,8 +46,10 @@ export class DanhSachSanPham extends Component {
     axios(options).then((res) => {
       if (res.data.data !== "error") {
         this.setState({
-          data: res.data.data,
+          dataFull: res.data.data,
+          childData: res.data.data.slice(0, 12),
         });
+        this.numOfPage(res.data.data);
       }
     });
   };
@@ -59,70 +68,108 @@ export class DanhSachSanPham extends Component {
     axios(options).then((res) => {
       if (res.data.data !== "error") {
         this.setState({
-          data: res.data.data,
+          dataFull: res.data.data,
+          childData: res.data.data.slice(0, 12),
         });
+        this.numOfPage(res.data.data);
       }
     });
   };
 
-  get_danh_muc = () => {
-    if (this.state.slug.indexOf("|") !== -1) {
-      var path = this.state.slug.split("|");
+  get_danh_muc = (slug) => {
+    if (slug.indexOf("|") !== -1) {
+      var path = slug.split("|");
       this.get_danh_muc_nho(path[0] + "/" + path[1]);
     } else {
-      this.get_danh_muc_lon(this.state.slug);
+      this.get_danh_muc_lon(slug);
     }
   };
 
-  show_5_prod = (arr_5prod, page) => {
-    var start = (page - 1) * 5;
-    var result = null;
-    result = arr_5prod.map((product, index) => {
-      if (index >= start && index < start + 5) {
-        return (
-          <NavLink
-            to={"/product/" + product.tenurl}
-            key={index}
-            className="product_shadow"
-          >
-            <li className="book d-flex flex-column mx-2">
-              <img
-                src={product.hinhanhsanpham}
-                className="img-fluid align-self-center"
-                alt={product.tensp}
-                width="160px"
-              />
-              <div style={{ height: 75 }}>
-                <p className="bookItem2 mb-2 book_item_title">
-                  {product.tensp}
-                </p>
-              </div>
-              <p className="bookItem2" style={{ height: 21 }}>
-                <small>{product.tacgia === " " ? null : product.tacgia}</small>
-              </p>
-              <h6 className="bookItem2 textColor">
-                <b>{this.currencyFormat(product.gia.toString())} đ</b>
-              </h6>
-            </li>
-          </NavLink>
-        );
+  numOfPage = (dataFull) => {
+    var lengthData = dataFull.length;
+    if (lengthData !== 0) {
+      if (lengthData % 12 === 0) {
+        this.setState({
+          numOfPage: Math.floor(lengthData / 12),
+        });
       } else {
-        return null;
+        this.setState({
+          numOfPage: Math.floor(lengthData / 12) + 1,
+        });
       }
+    }
+  };
+
+  currencyFormat = (num) => {
+    return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+  };
+
+  show_4_prod = (arr_4_prod) => {
+    var result = null;
+    result = arr_4_prod.map((product, index) => {
+      return (
+        <div className="col-sm-3 col-6 product_shadow my-2">
+          <NavLink to={"/product/" + product.tenurl} key={index}>
+            <img
+              src={product.hinhanhsanpham}
+              className="img-fluid align-self-center"
+              alt={product.tensp}
+            />
+            <div style={{ height: 50 }}>
+              <p className="mb-2 book_item_title">{product.tensp}</p>
+            </div>
+            <div style={{ height: 18 }}>
+              <p className="mb-0">
+                <small className="book_item_title2">
+                  {product.tacgia === " " ? null : product.tacgia}
+                </small>
+              </p>
+            </div>
+            <h6 className="textColor">
+              <b>{this.currencyFormat(product.gia.toString())} đ</b>
+            </h6>
+          </NavLink>
+        </div>
+      );
     });
     return result;
   };
 
-  show_15_prod = (arr_15prod) => {
-    if (arr_15prod.length !== 0) {
-      return (
-        this.show_5_prod(arr_15prod, 1),
-        this.show_5_prod(arr_15prod, 2),
-        this.show_5_prod(arr_15prod, 3),
-        this.show_5_prod(arr_15prod, 4),
-        this.show_5_prod(arr_15prod, 5)
-      );
+  showButtonPage = () => {
+    var page_arr = [];
+    for (var i = 0; i < this.state.numOfPage; i++) {
+      page_arr.push(i);
     }
+    var result = null;
+    if (this.state.dataFull.length > 0) {
+      result = page_arr.map((page, index) => {
+        return (
+          <button
+            type="button"
+            class={
+              this.state.page === page + 1
+                ? "btn btn-danger"
+                : "btn btn-secondary"
+            }
+            onClick={() => {
+              this.changePage(page + 1);
+            }}
+          >
+            {page + 1}
+          </button>
+        );
+      });
+    }
+    return result;
+  };
+
+  changePage = (page) => {
+    var start = (page - 1) * 12;
+    this.setState({
+      page: page,
+      childData: this.state.dataFull.slice(start, start + 12),
+    });
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
   render() {
@@ -145,33 +192,109 @@ export class DanhSachSanPham extends Component {
         />
       </a>
     ));
+
+    const PageJSX = (
+      <div className="d-flex justify-content-center">
+        <div
+          class="btn-group mr-2 pb-2 mt-2"
+          role="group"
+          aria-label="First group"
+        >
+          {this.showButtonPage()}
+        </div>
+      </div>
+    );
+
     var path = this.state.slug.split("|");
+    var title = "";
+    if (this.state.slug.indexOf("|") !== -1) {
+      title = path[1];
+    } else {
+      title = path[0];
+    }
+
+    var firstItemImg = "https://uit-hotelbooking.000webhostapp.com/logo.png";
+    if (this.state.dataFull.length !== 0) {
+      firstItemImg = this.state.dataFull[0].hinhanhsanpham;
+    }
 
     return (
       <div>
+        <MetaTags>
+          <title>
+            {"Tổng hợp sách " + title + " hay và mới nhất | mybookstore.online"}
+          </title>
+          <meta
+            property="og:url"
+            content={"https://mybookstore.online/category/" + this.state.slug}
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content={
+              "Hàng ngàn mặt hàng sách " +
+              title +
+              " tại mybookstore.online, với ưu đãi hàng ngày lên đến 50%, giao hàng miễn phí trên toàn quốc chỉ từ 120k. Mua ngay!"
+            }
+          />
+          <meta
+            property="og:title"
+            content={
+              "Tổng hợp sách " + title + " hay và mới nhất | mybookstore.online"
+            }
+          />
+          <meta property="og:image" content={firstItemImg} />
+        </MetaTags>
+
         {/*Path*/}
-        <div className="container py-2">
+        <div className="container pt-2 pb-2">
           <NavLink to="/">
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>
           {this.state.slug.indexOf("|") !== -1 ? (
             <div>
-              <p className="path float-left">
-                {path[0]} /{"\u00A0"}
-              </p>
-              <p className="path textColor">{path[1]}</p>
+              <a href="# ">
+                <p
+                  className="path float-left"
+                  onClick={(e) => {
+                    this.goToCategory(path[0]);
+                  }}
+                >
+                  {path[0]} /{"\u00A0"}
+                </p>
+              </a>
+              <a href="# ">
+                <p
+                  className="path textColor"
+                  onClick={(e) => {
+                    this.goToCategory(this.state.slug);
+                  }}
+                >
+                  {path[1]}
+                </p>
+              </a>
             </div>
           ) : (
-            <p className="path textColor">{path[0]}</p>
+            <a href="# ">
+              <p
+                className="path textColor"
+                onClick={(e) => {
+                  this.goToCategory(path[0]);
+                }}
+              >
+                {path[0]}
+              </p>
+            </a>
           )}
         </div>
 
         {/*Main*/}
         <div className="container">
           <div className="row">
-            <div className="col-3 pl-0">
+            <div className="col-sm-3">
               {/*Danh muc*/}
-              <div style={{ backgroundColor: "white" }}>
+
+              <div className="bg-white">
                 <div className="list">
                   <span>Danh mục sản phẩm</span>
                 </div>
@@ -765,7 +888,7 @@ export class DanhSachSanPham extends Component {
 
                   <Dropdown drop="right">
                     <Dropdown.Toggle as={CustomToggle}>
-                      Tâm lý - kỹ năng sống
+                      Tâm lý - Kỹ năng sống
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item className="p-0 bg-white">
@@ -776,7 +899,7 @@ export class DanhSachSanPham extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Kỹ năng sống"
+                                      "Tâm lý - Kỹ năng sống|Kỹ năng sống"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -789,7 +912,7 @@ export class DanhSachSanPham extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Rèn luyện nhân cách"
+                                      "Tâm lý - Kỹ năng sống|Rèn luyện nhân cách"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -802,7 +925,7 @@ export class DanhSachSanPham extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Tâm lý"
+                                      "Tâm lý - Kỹ năng sống|Tâm lý"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -817,7 +940,7 @@ export class DanhSachSanPham extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Sách cho tuổi mới lớn"
+                                      "Tâm lý - Kỹ năng sống|Sách cho tuổi mới lớn"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -830,7 +953,7 @@ export class DanhSachSanPham extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Hạt giống tâm hồn"
+                                      "Tâm lý - Kỹ năng sống|Hạt giống tâm hồn"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -1163,7 +1286,7 @@ export class DanhSachSanPham extends Component {
               </div>
 
               {/*Price*/}
-              <div className="bg-white">
+              <div className="bg-white mb-3">
                 <div className="text-center text-light background1 p-0 mt-3">
                   <p className="header">Giá</p>
                 </div>
@@ -1193,8 +1316,19 @@ export class DanhSachSanPham extends Component {
             </div>
 
             {/*Danh sach san pham*/}
-            <div className="col-9 bg-white p-3">
-              {this.show_15_prod(this.state.data.slice(0, 15))}
+            <div className="col-sm-9 px-0">
+              <div className="bg-white">
+                <div className="row mx-0 px-2">
+                  {this.show_4_prod(this.state.childData.slice(0, 4))}
+                </div>
+                <div className="row mx-0 px-2">
+                  {this.show_4_prod(this.state.childData.slice(4, 8))}
+                </div>
+                <div className="row mx-0 px-2">
+                  {this.show_4_prod(this.state.childData.slice(8, 12))}
+                </div>
+                {this.state.dataFull.length !== 0 ? PageJSX : null}
+              </div>
             </div>
           </div>
         </div>

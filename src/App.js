@@ -21,7 +21,7 @@ export default class App extends Component {
     return (
       <Router>
         <ScrollToTop>
-          <div className="container-fluid background2">
+          <div className="container-fluid background2 px-0">
             <Header />
 
             {/* Main */}

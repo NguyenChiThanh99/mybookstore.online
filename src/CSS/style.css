@@ -70,10 +70,6 @@ ul {
   padding: 0;
   overflow: hidden;
 }
-.bookItem2 {
-  width: 200px;
-  margin-bottom: 0px;
-}
 
 .textFooter {
   font-size: 15px;
@@ -219,25 +215,25 @@ a {
   color: black;
 }
 
-/* Thêm drop right các loại sách và drop down tài khoản */     
+/* Thêm drop right các loại sách và drop down tài khoản */
 .mybtn-dropright:focus {
-    box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
+  box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
 }
 
 .list-item:hover {
-    background-color: rgb(255, 155, 165);
+  background-color: rgb(255, 155, 165);
 }
 
 .mydropdown-item:hover {
-    background-color: rgb(255, 124, 137) !important;
+  background-color: rgb(255, 124, 137) !important;
 }
 
 .mya-dropright:hover {
-    background-color: rgb(255, 124, 137) !important;
+  background-color: rgb(255, 124, 137) !important;
 }
 
 .mya-dropright:focus {
-    background-color: #eb2b3f !important;
+  background-color: #eb2b3f !important;
 }
 
 /* end Thêm drop right các loại sách và drop down tài khoản */
@@ -253,9 +249,7 @@ a {
 }
 
 .product_shadow:hover {
-  box-shadow: 0 0 7px rgba(33,33,33,.2);
-  margin-top: 5px;
-  margin-bottom: 5px;
+  box-shadow: 0 0 10px rgba(33, 33, 33, 0.2);
 }
 
 .dropdowm-scroll {
@@ -265,11 +259,85 @@ a {
 }
 
 .dropdown-add:focus {
-  border-color: #EB2B3F !important;
+  border-color: #eb2b3f !important;
   box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
 }
 
 .dropdown-add:hover {
-  border-color: #EB2B3F !important;
+  border-color: #eb2b3f !important;
   box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
+}
+
+.top-banner {
+  max-width: 100%;
+}
+
+@media all and (max-width: 576px) {
+  .an-thongtin {
+    display: none;
+  }
+  hr {
+    margin-top: 0px;
+  }
+  .gia-sanpham {
+    font-weight: bold;
+    color: #eb2b3f;
+  }
+}
+
+.myinput-outline {
+  border: 1px solid #eb2b3f;
+}
+
+/*rating*/
+.rating {
+  float: left;
+}
+.rating:not(:checked) > input {
+  position: fixed;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  /* padding:0 .1em; */
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 120%;
+  /* line-height:1.2; */
+  color: #ddd;
+}
+
+.rating:not(:checked) > label:before {
+  content: "★ ";
+}
+
+.rating > input:checked ~ label {
+  color: #eb2b3f;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #eb2b3f;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #eb2b3f;
+}
+
+.rating > label:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+.space-break {
+  white-space: pre-wrap;
 }

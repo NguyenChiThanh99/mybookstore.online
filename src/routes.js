@@ -6,6 +6,8 @@ import ChiTietSanPham from "./Components/ChiTietSanPham";
 import DanhSachSanPham from "./Components/DanhSachSanPham";
 import Home from "./Components/Home";
 import Account from "./Components/Account";
+import HoaDon from "./Components/HoaDon";
+import LichSuGiaoDich from "./Components/LichSuGiaoDich";
 
 const routes = [
   {
@@ -34,14 +36,24 @@ const routes = [
     main: ({ match }) => <DanhSachSanPham match={match} />,
   },
   {
-    path: "/product/:slug",
+    path: "/product/:slug/:idbill?/:iscomment?",
     exact: false,
     main: ({ match }) => <ChiTietSanPham match={match} />,
   },
   {
+    path: "/bill/:slug",
+    exact: false,
+    main: ({ match }) => <HoaDon match={match} />,
+  },
+  {
+    path: "/order-history",
+    exact: false,
+    main: () => <LichSuGiaoDich />,
+  },
+  {
     path: "",
     exact: false,
-    main: () => <NotFound />,
+    main: ({ match }) => <NotFound match={match} />,
   },
 ];
 

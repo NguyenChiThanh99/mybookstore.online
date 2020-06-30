@@ -4,6 +4,7 @@ import { Dropdown } from "react-bootstrap";
 import Global from "./Global";
 import axios from "axios";
 import qs from "qs";
+import MetaTags from "react-meta-tags";
 
 import "../CSS/mystyle.css";
 import "../fontawesome-free-5.13.0-web/css/all.css";
@@ -46,37 +47,34 @@ export class Home extends Component {
     });
   };
 
-  show_5_lastest_prod = (arr_5prod, page) => {
-    var start = (page - 1) * 5;
+  show_6_lastest_prod = (arr_6prod, page) => {
+    var start = (page - 1) * 6;
     var result = null;
-    result = arr_5prod.map((product, index) => {
-      if (index >= start && index < start + 5) {
+    result = arr_6prod.map((product, index) => {
+      if (index >= start && index < start + 6) {
         return (
-          <NavLink
-            to={"/product/" + product.tenurl}
-            key={index}
-            className="product_shadow"
-          >
-            <li className="book d-flex flex-column mx-2">
+          <div className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2">
+            <NavLink to={"/product/" + product.tenurl} key={index}>
               <img
                 src={product.hinhanhsanpham}
                 className="img-fluid align-self-center"
                 alt={product.tensp}
-                width="160px"
               />
-              <div style={{ height: 75 }}>
-                <p className="bookItem2 mb-2 book_item_title">
-                  {product.tensp}
+              <div style={{ height: 50 }}>
+                <p className="mb-2 book_item_title">{product.tensp}</p>
+              </div>
+              <div style={{ height: 18 }}>
+                <p className="mb-0">
+                  <small className="book_item_title2">
+                    {product.tacgia === " " ? null : product.tacgia}
+                  </small>
                 </p>
               </div>
-              <p className="bookItem2" style={{ height: 21 }}>
-                <small>{product.tacgia === " " ? null : product.tacgia}</small>
-              </p>
-              <h6 className="bookItem2 textColor">
+              <h6 className="textColor">
                 <b>{this.currencyFormat(product.gia.toString())} đ</b>
               </h6>
-            </li>
-          </NavLink>
+            </NavLink>
+          </div>
         );
       } else {
         return null;
@@ -94,9 +92,9 @@ export class Home extends Component {
     if (this.state.lastest_prod_arr.length > 0) {
       result = page_arr.map((page, index) => {
         return (
-          <ul className="d-flex justify-content-center" key={index}>
-            {this.show_5_lastest_prod(this.state.lastest_prod_arr, index + 1)}
-          </ul>
+          <div className="d-flex justify-content-center row px-2" key={index}>
+            {this.show_6_lastest_prod(this.state.lastest_prod_arr, index + 1)}
+          </div>
         );
       });
     }
@@ -141,9 +139,35 @@ export class Home extends Component {
 
     return (
       <div>
-        <div className="container mt-4 p-0">
+        <MetaTags>
+          <title>Nhà sách trực tuyến mybookstore.online</title>
+          <meta property="og:url" content="https://mybookstore.online" />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+          />
+          <meta
+            property="og:title"
+            content="Nhà sách trực tuyến mybookstore.online"
+          />
+          <meta
+            property="og:image"
+            content="https://uit-hotelbooking.000webhostapp.com/logo.png"
+          />
+        </MetaTags>
+
+        <div className="container px-3 py-2">
           <div className="row">
-            <div className="col-md-4">
+            <NavLink to="/">
+              <p className="path float-left textColor">Trang chủ</p>
+            </NavLink>
+          </div>
+        </div>
+
+        <div className="container p-0">
+          <div className="row">
+            <div className="col-md-4 pr-0">
               <div style={{ backgroundColor: "white" }}>
                 <div className="list">
                   <span>Danh mục sản phẩm</span>
@@ -738,7 +762,7 @@ export class Home extends Component {
 
                   <Dropdown drop="right">
                     <Dropdown.Toggle as={CustomToggle}>
-                      Tâm lý - kỹ năng sống
+                      Tâm lý - Kỹ năng sống
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item className="p-0 bg-white">
@@ -749,7 +773,7 @@ export class Home extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Kỹ năng sống"
+                                      "Tâm lý - Kỹ năng sống|Kỹ năng sống"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -762,7 +786,7 @@ export class Home extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Rèn luyện nhân cách"
+                                      "Tâm lý - Kỹ năng sống|Rèn luyện nhân cách"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -775,7 +799,7 @@ export class Home extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Tâm lý"
+                                      "Tâm lý - Kỹ năng sống|Tâm lý"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -790,7 +814,7 @@ export class Home extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Sách cho tuổi mới lớn"
+                                      "Tâm lý - Kỹ năng sống|Sách cho tuổi mới lớn"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -803,7 +827,7 @@ export class Home extends Component {
                                 <a
                                   onClick={() => {
                                     this.goToCategory(
-                                      "Tâm lý - kỹ năng sống|Hạt giống tâm hồn"
+                                      "Tâm lý - Kỹ năng sống|Hạt giống tâm hồn"
                                     );
                                   }}
                                   className="nav-link text-dark text-nowrap mya-dropright"
@@ -1164,30 +1188,38 @@ export class Home extends Component {
                 <div className="carousel-inner">
                   <div className="carousel-item active">
                     <img
-                      src={require("../images/carousel0.jpg")}
+                      src={
+                        "https://res.cloudinary.com/chefood/image/upload/v1593150605/mybookstore_banner/carousel0_f5rxbe.jpg"
+                      }
                       className="d-block w-100 img-fluid"
-                      alt="..."
+                      alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/carousel1.jpg")}
+                      src={
+                        "https://res.cloudinary.com/chefood/image/upload/v1593150609/mybookstore_banner/carousel1_yuesxn.jpg"
+                      }
                       className="d-block w-100 img-fluid"
-                      alt="..."
+                      alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/carousel2.jpg")}
+                      src={
+                        "https://res.cloudinary.com/chefood/image/upload/v1593150605/mybookstore_banner/carousel2_hjflza.jpg"
+                      }
                       className="d-block w-100 img-fluid"
-                      alt="..."
+                      alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/carousel3.jpg")}
+                      src={
+                        "https://res.cloudinary.com/chefood/image/upload/v1593150606/mybookstore_banner/carousel3_pwqj62.jpg"
+                      }
                       className="d-block w-100 img-fluid"
-                      alt="..."
+                      alt="Quảng cáo sản phẩm"
                     />
                   </div>
                 </div>
@@ -1219,35 +1251,46 @@ export class Home extends Component {
               {/* end slide  */}
             </div>
           </div>
-          <div className="row mt-3">
-            <div className="col-md-3">
+        </div>
+
+        <div className="container px-3 bg-white mt-3 pb-3">
+          <div className="row px-1">
+            <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ads.jpg")}
-                alt=""
+                src={
+                  "https://res.cloudinary.com/chefood/image/upload/v1593220993/mybookstore_banner/ad1_cmmttd.jpg"
+                }
+                alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="col-md-3">
+            <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ads.jpg")}
-                alt=""
+                src={
+                  "https://res.cloudinary.com/chefood/image/upload/v1593220994/mybookstore_banner/ad2_hseykv.jpg"
+                }
+                alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="col-md-3">
+            <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ads.jpg")}
-                alt=""
+                src={
+                  "https://res.cloudinary.com/chefood/image/upload/v1593150931/mybookstore_banner/ad3_v1lqcm.jpg"
+                }
+                alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
               />
             </div>
-            <div className="col-md-3">
+            <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ads.jpg")}
-                alt=""
+                src={
+                  "https://res.cloudinary.com/chefood/image/upload/v1593150930/mybookstore_banner/ad4_rcwdk4.png"
+                }
+                alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
               />

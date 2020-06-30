@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import '../CSS/account.css';
 import "../CSS/mystyle.css";
 import Global from "./Global";
+import MetaTags from "react-meta-tags";
 
 export default class Account extends Component {
   constructor(props) {
@@ -29,7 +30,40 @@ export default class Account extends Component {
   render() {
     return (
       <div>
-        <div className="container mt-4" style={{ backgroundColor: "white" }}>
+        <MetaTags>
+          <title>Thông tin tài khoản | mybookstore.online</title>
+          <meta
+            property="og:url"
+            content="https://mybookstore.online/account"
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+          />
+          <meta
+            property="og:title"
+            content="Thông tin tài khoản | mybookstore.online"
+          />
+          <meta
+            property="og:image"
+            content={
+              Global.isSignIn
+                ? require("../images/avatar_default.png")
+                : Global.user[0].picture
+            }
+          />
+        </MetaTags>
+
+        {/*Path*/}
+        <div className="container py-2 px-0">
+          <NavLink to="/">
+            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
+          </NavLink>
+          <p className="path textColor">Thông tin tài khoản</p>
+        </div>
+
+        <div className="container" style={{ backgroundColor: "white" }}>
           {/* Thông tin tài khoản */}
           <div id="thongtintaikhoan">
             <h5 className="pt-3 pl-2">THÔNG TIN TÀI KHOẢN</h5>

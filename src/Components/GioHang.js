@@ -4,6 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 import qs from "qs";
 import Global from "./Global";
+import MetaTags from "react-meta-tags";
 
 import "../CSS/giohang.css";
 import ItemCart from "./ItemCart";
@@ -79,20 +80,20 @@ export default class GioHang extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      if (res.data.data === 'success') {
+      if (res.data.data === "success") {
         var newCart = this.state.cart;
         for (var i = 0; i < newCart.length; i++) {
           if (newCart[i].idsanpham === item.id) {
-            newCart[i].soluongsanpham = item.soluong
+            newCart[i].soluongsanpham = item.soluong;
           }
         }
         var total = this.state.total;
         if (item.action) {
-          total = total + item.gia; 
+          total = total + item.gia;
         } else {
-          total = total - item.gia; 
+          total = total - item.gia;
         }
-        this.setState({cart: newCart, total: total});
+        this.setState({ cart: newCart, total: total });
       }
     });
   };
@@ -102,13 +103,21 @@ export default class GioHang extends Component {
     for (var i = 0; i < this.state.cart.length; i++) {
       t += this.state.cart[i].soluongsanpham * this.state.cart[i].gia;
     }
-    this.setState({total: t});
+    this.setState({ total: t });
   }
 
-  handleClose = () => {this.setState({showModal: false})};
-  handleShow = () => {this.setState({showModal: true})};
-  handleClose2 = () => {this.setState({showModal2: false})};
-  handleShow2 = () => {this.setState({showModal2: true})};
+  handleClose = () => {
+    this.setState({ showModal: false });
+  };
+  handleShow = () => {
+    this.setState({ showModal: true });
+  };
+  handleClose2 = () => {
+    this.setState({ showModal2: false });
+  };
+  handleShow2 = () => {
+    this.setState({ showModal2: true });
+  };
 
   deleteOneItem = () => {
     this.handleClose();
@@ -125,11 +134,11 @@ export default class GioHang extends Component {
     };
     axios(options).then((res) => {
       if (res.data.data === "success") {
-        this.setState({cart: []});
+        this.setState({ cart: [] });
         this.getCart();
       }
     });
-  }
+  };
 
   deleteAllItem = () => {
     this.handleClose2();
@@ -145,26 +154,45 @@ export default class GioHang extends Component {
     };
     axios(options).then((res) => {
       if (res.data.data === "success") {
-        this.setState({cart: [], total: 0});
+        this.setState({ cart: [], total: 0 });
       }
     });
-  }
+  };
 
   getItem = (item) => {
     this.setState({ item: item });
     this.handleShow();
   };
 
-  currencyFormat = num => {
-    return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  currencyFormat = (num) => {
+    return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
   };
 
   render() {
+    var firstItemImg = "https://uit-hotelbooking.000webhostapp.com/logo.png";
+    if (this.state.cart.length !== 0) {
+      firstItemImg = this.state.cart[0].hinhanhsanpham;
+    }
     return (
       <div>
+        <MetaTags>
+          <title>Giỏ hàng | mybookstore.online</title>
+          <meta property="og:url" content="https://mybookstore.online/cart" />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+          />
+          <meta property="og:title" content="Giỏ hàng | mybookstore.online" />
+          <meta property="og:image" content={firstItemImg} />
+        </MetaTags>
+
         {/*Path*/}
-        <div className="container py-2 px-3">
-          <p className="header">Giỏ hàng</p>
+        <div className="container py-2 px-0">
+          <NavLink to="/">
+            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
+          </NavLink>
+          <p className="path textColor">Giỏ hàng</p>
         </div>
         {/*Cart*/}
         {/*Cart*/}

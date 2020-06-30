@@ -81,17 +81,6 @@ body {
   border: 1px solid red;
 }
 
-/* .nav-pills .nav-link#price.active,
-.nav-pills .show > .nav-link {
-  color: #eb2b3f !important;
-  background-color: white;
-} */
-
-/* .active {
-    font-weight: bold !important;
-    color: #eb2b3f !important;
-} */
-
 .mynav-item {
     color: black !important;
 }
@@ -109,7 +98,15 @@ body {
    overflow: hidden;
    text-overflow: ellipsis;
    display: -webkit-box;
-   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.book_item_title2 {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
 

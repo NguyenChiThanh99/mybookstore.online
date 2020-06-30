@@ -28,7 +28,7 @@ class SocialShare extends Component {
     const title = this.props.title;
 
     return (
-      <div className="Demo__container mb-4 mt-2">
+      <div className="Demo__container mb-4 mt-2 text-nowrap">
         <div className="Demo__some-network">
           <FacebookShareButton
             url={shareUrl}

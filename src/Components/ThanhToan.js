@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
 import Global from "./Global";
+import MetaTags from "react-meta-tags";
+
 import "../CSS/style.css";
 
 var timer3 = null;
@@ -115,9 +117,9 @@ export class ThanhToan extends Component {
         data: qs.stringify(data),
       };
       axios(options).then((res) => {
-        if (res.data.data === 'success') {
+        if (res.data.data !== 'error') {
           console.log('Thanh toan thanh cong');
-          this.props.history.push("/");
+          this.props.history.push("/bill/" + res.data.data);
         }
       });
     }
@@ -416,11 +418,37 @@ export class ThanhToan extends Component {
       </div>
     );
 
+    var title = "https://uit-hotelbooking.000webhostapp.com/logo.png";
+    if (this.state.cart.length !== 0) {
+      title = this.state.cart[0].hinhanhsanpham;
+    }
+
     return (
       <div className="container-fluid background2">
+        <MetaTags>
+          <title>Thông tin thanh toán | mybookstore.online</title>
+          <meta property="og:url" content="https://mybookstore.online/pay" />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+          />
+          <meta
+            property="og:title"
+            content="Thông tin thanh toán | mybookstore.online"
+          />
+          <meta property="og:image" content={title} />
+        </MetaTags>
+
         {/*Path*/}
-        <div className="container py-2 px-3">
-          <p className="header">Thanh toán</p>
+        <div className="container py-2 px-0">
+          <NavLink to="/">
+            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
+          </NavLink>
+          <NavLink to="/cart">
+            <p className="path float-left">Giỏ hàng /{"\u00A0"}</p>
+          </NavLink>
+          <p className="path textColor">Thanh toán</p>
         </div>
         {/*Main*/}
         <div className="container">

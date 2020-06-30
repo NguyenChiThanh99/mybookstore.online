@@ -29,10 +29,8 @@ export default class Header extends Component {
     }
 
     this.state = {
-      styleSearch:
-        "col-5 d-flex align-items-center border borderColor h-25 form-control",
-      styleSearchBtn:
-        "border borderColor ml-2 justify-content-center align-items-center d-flex",
+      styleSearch: "form-control myinput-outline border borderColor w-75",
+      styleSearchBtn: "btn btn-outline-danger my-2 my-sm-0 mybtn-outline ml-2",
       nameU: "",
       emailU: "",
       pass1U: "",
@@ -181,8 +179,6 @@ export default class Header extends Component {
   };
 
   logout = () => {
-    console.log("call");
-
     localStorage.clear();
     this.setState({
       chooseSignIn: true,
@@ -457,26 +453,12 @@ export default class Header extends Component {
     if (bool) {
       this.setState({
         styleSearch:
-          "col-5 d-flex align-items-center border borderColor h-25 form-control search_box",
+          "border borderColor form-control search_box w-75",
       });
     } else {
       this.setState({
         styleSearch:
-          "col-5 d-flex align-items-center border borderColor h-25 form-control",
-      });
-    }
-  }
-
-  hoverSearchBtn(bool) {
-    if (bool) {
-      this.setState({
-        styleSearchBtn:
-          "border borderColor ml-2 justify-content-center align-items-center d-flex search_box",
-      });
-    } else {
-      this.setState({
-        styleSearchBtn:
-          "border borderColor ml-2 justify-content-center align-items-center d-flex",
+          "border borderColor form-control w-75",
       });
     }
   }
@@ -488,7 +470,7 @@ export default class Header extends Component {
         autoLoad={false}
         fields="name,email,picture"
         callback={this.responseFacebook}
-        cssClass="facebook-button"
+        cssClass="facebook-button m-0 p-0"
         icon={<FBicon />}
       />
     );
@@ -617,9 +599,13 @@ export default class Header extends Component {
               Đăng nhập bằng
             </label>
           </div>
-          <div className="row">
-            <div className="col">{fbContent}</div>
-            <div className="col mt-3">{ggContent}</div>
+          <div className="row text-nowrap">
+            <div className="col d-flex justify-content-center p-0 pl-5">
+              {fbContent}
+            </div>
+            <div className="col mt-3 p-0 d-flex justify-content-center pr-5">
+              {ggContent}
+            </div>
           </div>
         </div>
       </form>
@@ -713,9 +699,13 @@ export default class Header extends Component {
               Đăng nhập bằng
             </label>
           </div>
-          <div className="row">
-            <div className="col">{fbContent}</div>
-            <div className="col mt-3">{ggContent}</div>
+          <div className="row text-nowrap">
+            <div className="col d-flex justify-content-center p-0 pl-5">
+              {fbContent}
+            </div>
+            <div className="col mt-3 p-0 d-flex justify-content-center pr-5">
+              {ggContent}
+            </div>
           </div>
         </div>
       </form>
@@ -731,12 +721,12 @@ export default class Header extends Component {
         >
           <i className="fas fa-id-badge"></i> Thông tin tài khoản
         </NavLink>
-        <a
+        <NavLink
           className="dropdown-item mydropdown-item account_active_dropdown"
-          href="# "
+          to="/order-history"
         >
           <i className="fas fa-file-invoice"></i> Lịch sử giao dịch
-        </a>
+        </NavLink>
         <a
           className="dropdown-item mydropdown-item account_active_dropdown"
           href="# "
@@ -749,110 +739,126 @@ export default class Header extends Component {
 
     return (
       <div>
-        {/*Header*/}
-        <div className="container text-center text-dark background1 p-1">
-          <h4>
-            <b>Chạy quảng cáo</b>
-          </h4>
+        {/* Banner */}
+        <div style={{ backgroundColor: "#3c056d" }}>
+          <div>
+            {/* thêm class top-banner */}
+            <img
+              src={
+                "https://res.cloudinary.com/chefood/image/upload/v1593150801/mybookstore_banner/Banner1_vojrkv.jpg"
+              }
+              className="top-banner mx-auto d-block"
+              alt="mybookstore.online banner"
+            />
+          </div>
         </div>
         {/*Menu*/}
-        <div className="container bg-white">
-          <div className="row d-flex align-items-center">
-            <NavLink
-              to="/"
-              className="col-3 d-flex justify-content-center align-items-center my-3 mr-4 ml-3"
-            >
+        <nav className="navbar navbar-expand-md navbar-line bg-white">
+          <div className="container">
+            {/* <div className="row d-flex align-items-center"> */}
+            <NavLink to="/" className="navbar-branch">
               <img
-                src={require("../images/giaodien-02.jpg")}
-                className="img-fluid"
+                src={require("../images/logo.png")}
                 alt="mybookstore.online Logo"
+                height="50px"
               />
             </NavLink>
-            <input
-              onMouseEnter={() => {
-                this.hoverSearch(true);
-              }}
-              onMouseLeave={() => {
-                this.hoverSearch(false);
-              }}
-              type="text"
-              className={this.state.styleSearch}
-              id="search"
-              placeholder="Tìm kiếm sản phẩm mong muốn..."
-            />
-            <a
-              href="# "
-              onMouseEnter={() => {
-                this.hoverSearchBtn(true);
-              }}
-              onMouseLeave={() => {
-                this.hoverSearchBtn(false);
-              }}
-              style={{ width: 34, height: 34 }}
-              className={this.state.styleSearchBtn}
-            >
-              <img
-                src={require("../images/search.png")}
-                className="img-fluid"
-                alt="search"
-                width="20px"
-              />
-            </a>
 
-            <div className="col-3 d-flex justify-content-center align-items-center">
-              <NavLink
-                to="/cart"
-                className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
-              >
-                <img
-                  src={require("../images/cart.png")}
-                  className="img-fluid"
-                  alt="cartImg"
-                  width="30px"
-                />
-                <p className="headerText">Giỏ hàng</p>
-              </NavLink>
-              <div
-                className={
-                  this.state.userName === "Đăng nhập" ? "" : "dropdown"
-                }
-              >
-                <a
-                  href="# "
-                  className="d-flex justify-content-center align-items-center flex-column ml-4"
-                  data-toggle={
-                    this.state.userName === "Đăng nhập" ? "" : "dropdown"
-                  }
-                  data-target={
-                    this.state.userName === "Đăng nhập" ? "" : "dropdown"
-                  }
-                  onClick={
-                    this.state.userName === "Đăng nhập" ? this.openModal : null
-                  }
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <div className="w-100">
+                <form className="form-inline d-flex justify-content-center">
+                  <input
+                    onMouseEnter={() => {
+                      this.hoverSearch(true);
+                    }}
+                    onMouseLeave={() => {
+                      this.hoverSearch(false);
+                    }}
+                    type="text"
+                    className={this.state.styleSearch}
+                    id="search"
+                    placeholder="Tìm kiếm sản phẩm mong muốn..."
+                  />
+                  <a href="# " className={this.state.styleSearchBtn}>
+                    <i class="fas fa-search"></i>
+                  </a>
+                </form>
+              </div>
+
+              <div className="d-flex justify-content-center align-items-center">
+                <NavLink
+                  to="/cart"
+                  className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
                 >
                   <img
-                    src={
-                      this.state.userName === "Đăng nhập"
-                        ? require("../images/user-solid-s.png")
-                        : Global.isLoggedInS
-                        ? Global.user[0].picture
-                        : require("../images/avatar_default.png")
-                    }
-                    className={
-                      this.state.userName === "Đăng nhập"
-                        ? "img-fluid"
-                        : "img-fluid rounded-circle"
-                    }
-                    alt="userImg"
+                    src={require("../images/cart.png")}
+                    className="img-fluid"
+                    alt="cartImg"
                     width="30px"
                   />
-                  <p className="headerText">{this.state.userName}</p>
-                </a>
-                {this.state.userName === "Đăng nhập" ? null : userDropdown}
+                  <p className="headerText text-nowrap">Giỏ hàng</p>
+                </NavLink>
+                <div
+                  className={
+                    this.state.userName === "Đăng nhập" ? "" : "dropdown"
+                  }
+                >
+                  <a
+                    href="# "
+                    className="d-flex justify-content-center align-items-center flex-column ml-4"
+                    data-toggle={
+                      this.state.userName === "Đăng nhập" ? "" : "dropdown"
+                    }
+                    data-target={
+                      this.state.userName === "Đăng nhập" ? "" : "dropdown"
+                    }
+                    onClick={
+                      this.state.userName === "Đăng nhập"
+                        ? this.openModal
+                        : null
+                    }
+                  >
+                    <img
+                      src={
+                        this.state.userName === "Đăng nhập"
+                          ? require("../images/user-solid-s.png")
+                          : Global.isLoggedInS
+                          ? Global.user[0].picture
+                          : require("../images/avatar_default.png")
+                      }
+                      className={
+                        this.state.userName === "Đăng nhập"
+                          ? "img-fluid"
+                          : "img-fluid rounded-circle"
+                      }
+                      alt="userImg"
+                      width="30px"
+                    />
+                    <p className="headerText text-nowrap">
+                      {this.state.userName}
+                    </p>
+                  </a>
+                  {this.state.userName === "Đăng nhập" ? null : userDropdown}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </nav>
 
         {/* Modal Đăng nhập*/}
         <Modal show={this.state.showModal} onHide={this.closeModal}>

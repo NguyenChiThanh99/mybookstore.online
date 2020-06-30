@@ -10,7 +10,9 @@ export default class FBicon extends Component {
               className="btn btn-primary btn-facebook"
               style={{ float: "right" }}
             >
-              <i className="fab fa-facebook-f"></i> Facebook
+              <div className="text-nowrap">
+                <i className="fab fa-facebook-f"></i> Facebook
+              </div>
             </a>
           </div>
         );
