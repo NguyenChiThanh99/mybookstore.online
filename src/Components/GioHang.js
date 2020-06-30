@@ -144,7 +144,7 @@ export default class GioHang extends Component {
     };
     axios(options).then((res) => {
       if (res.data.data === "success") {
-        this.setState({ cart: [] });
+        this.setState({ cart: [], loading: true });
         this.getCart();
       }
     });
@@ -164,7 +164,7 @@ export default class GioHang extends Component {
     };
     axios(options).then((res) => {
       if (res.data.data === "success") {
-        this.setState({ cart: [], total: 0 });
+        this.setState({ cart: [], total: 0, emptyCart: true });
       }
     });
   };
@@ -190,7 +190,7 @@ export default class GioHang extends Component {
           src={require("../images/loading.gif")}
           className="img-fluid align-self-center"
           alt="loading"
-          width="250px"
+          width="200px"
         />
       </div>
     );
