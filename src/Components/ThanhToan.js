@@ -450,10 +450,11 @@ export class ThanhToan extends Component {
           </NavLink>
           <p className="path textColor">Thanh toán</p>
         </div>
+
         {/*Main*/}
         <div className="container">
           <div className="row">
-            <div className="col-5 pl-0">
+            <div className="col-sm-5 pl-0">
               {/*Thong tin dia chi*/}
               <div className="bg-white">
                 <div className="text-center text-light background1 p-1">
@@ -584,7 +585,7 @@ export class ThanhToan extends Component {
                 </form>
               </div>
               {/*Phuong thuc thanh toan*/}
-              <div className="bg-white pb-2">
+              <div className="bg-white mb-3">
                 <div className="text-center text-light background1 p-1 mt-3">
                   <p className="header">PHƯƠNG THỨC THANH TOÁN</p>
                 </div>
@@ -619,14 +620,14 @@ export class ThanhToan extends Component {
               </div>
             </div>
             {/*Kiem tra don hang*/}
-            <div className="col-7 bg-white p-0">
+            <div className="col-sm-7 mb-3 bg-white p-0">
               {/*Header Kiem tra don hang*/}
               <div className="text-center text-light background1 p-1">
                 <p className="header">KIỂM TRA ĐƠN HÀNG</p>
               </div>
               {/*Table Kiem tra don hang*/}
               <div className="m-3">
-                <table className="table">
+                <table className="table mb-0">
                   <thead className="thead-light">
                     <tr>
                       <th>Tên</th>
@@ -676,22 +677,23 @@ export class ThanhToan extends Component {
                     </tr>
                   </tbody>
                 </table>
-                <hr />
-                <div className>
-                  <button
-                    type="submit"
-                    className="btn btn-danger mybtn px-3"
-                    id="submitForm"
-                  >
-                    <span style={{ fontSize: "18px" }} onClick={this.datHang}>
-                      Xác nhận đơn hàng
-                    </span>
-                  </button>
-                  <br />
-                  <span style={{ color: "red" }} className="mt-2">
-                    Quý khách vui lòng kiểm tra kỹ hàng hóa khi nhận.
-                  </span>
+                <hr className="mt-0" />
+                <div className="row">
+                  <div className="col">
+                    <button
+                      type="submit"
+                      className="btn btn-outline-danger mybtn-outline "
+                      id="submitForm"
+                    >
+                      <span style={{ fontSize: "20px" }} onClick={this.datHang}>
+                        Xác nhận đơn hàng
+                      </span>
+                    </button>
+                  </div>
                 </div>
+                <span style={{ color: "gray" }} className="mt-2">
+                  Quý khách vui lòng kiểm tra kỹ hàng hóa khi nhận.
+                </span>
               </div>
             </div>
           </div>
