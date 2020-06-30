@@ -216,7 +216,7 @@ export default class GioHang extends Component {
                 to="/"
                 className="btn btn-danger mybtn mr-3 btn-viewmore-cart"
               >
-                Xem thêm
+                Tiếp tục mua sắm
               </NavLink>
               <button
                 type="button"
@@ -273,13 +273,29 @@ export default class GioHang extends Component {
           </ul>
         </div>
 
-        <div className="container bg-white p-3 mt-3">
+        <div className="container bg-white p-3 mt-3 d-flex justify-content-center">
           <img
             src={require("../images/loading.gif")}
             className="img-fluid align-self-center"
-            alt="book1"
-            width="120px"
+            alt="loading"
+            width="250px"
           />
+        </div>
+
+        <div className="container bg-white p-3 mt-3 d-flex justify-content-center">
+          <img
+            src={require("../images/empty-cart.png")}
+            className="img-fluid align-self-center"
+            alt="empty-cart"
+            width="300px"
+          />
+          <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+          <NavLink
+            to="/"
+            className="btn btn-danger mybtn mr-3 btn-viewmore-cart"
+          >
+            Tiếp tục mua sắm
+          </NavLink>
         </div>
 
         <Modal show={this.state.showModal} onHide={this.handleClose}>
@@ -295,7 +311,7 @@ export default class GioHang extends Component {
             <Button variant="secondary" onClick={this.handleClose}>
               Đóng
             </Button>
-            <Button variant="primary" onClick={this.deleteOneItem}>
+            <Button variant="danger" onClick={this.deleteOneItem}>
               Xóa
             </Button>
           </Modal.Footer>
