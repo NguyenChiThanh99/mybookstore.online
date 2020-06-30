@@ -57,8 +57,6 @@ export class Home extends Component {
       url,
     };
     axios(options).then((res) => {
-      console.log(res.data);
-      
       this.setState({
         hot_prod_arr: res.data.product,
       });
@@ -71,8 +69,8 @@ export class Home extends Component {
     result = arr_6prod.map((product, index) => {
       if (index >= start && index < start + 6) {
         return (
-          <div className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2">
-            <NavLink to={"/product/" + product.tenurl} key={index}>
+          <div className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2" key={index}>
+            <NavLink to={"/product/" + product.tenurl}>
               <img
                 src={product.hinhanhsanpham}
                 className="img-fluid align-self-center"
@@ -119,6 +117,42 @@ export class Home extends Component {
     return result;
   };
 
+  show_hot_prod = () => {
+    var result = null;
+    if (this.state.hot_prod_arr.length > 0) {
+      result = this.state.hot_prod_arr.map((product, index) => {
+        return (
+          <div
+            className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
+            key={index}
+          >
+            <NavLink to={"/product/" + product.tenurl}>
+              <img
+                src={product.hinhanhsanpham}
+                className="img-fluid align-self-center"
+                alt={product.tensp}
+              />
+              <div style={{ height: 50 }}>
+                <p className="mb-2 book_item_title">{product.tensp}</p>
+              </div>
+              <div style={{ height: 18 }}>
+                <p className="mb-0">
+                  <small className="book_item_title2">
+                    {product.tacgia === " " ? null : product.tacgia}
+                  </small>
+                </p>
+              </div>
+              <h6 className="textColor">
+                <b>{this.currencyFormat(product.gia.toString())} đ</b>
+              </h6>
+            </NavLink>
+          </div>
+        );
+      });
+    }
+    return result;
+  };
+
   goToCategory = (type) => {
     this.props.history.push("/category/" + type);
   };
@@ -154,8 +188,6 @@ export class Home extends Component {
         />
       </a>
     ));
-    console.log(this.state.hot_prod_arr);
-    
 
     return (
       <div>
@@ -1335,7 +1367,9 @@ export class Home extends Component {
             <h5 className="p-2">
               <b>Sản phẩm nổi bật</b>
             </h5>
+            <div className="d-flex justify-content-center row px-2">
             {this.show_hot_prod()}
+            </div>
           </div>
         )}
       </div>

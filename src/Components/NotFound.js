@@ -47,9 +47,8 @@ export class NotFound extends Component {
             }}
             type="button"
             className="btn btn-outline-danger mybtn-outline text-nowrap mt-2"
-            style={{ width: "inherit" }}
           >
-            Xem thêm
+            Đi đến trang chủ
           </button>
         </div>
       </div>
