@@ -12,22 +12,24 @@ export class HoaDon extends Component {
     this.state = {
       id: match.params.slug,
       info: {
-        createdAt: "1-1-1T1:1:1.0Z",
+        createdAt: "0001-01-01T01:01:01.000Z",
         diachi: "",
-        dienthoai: "",
+        dienthoai: "0000000000",
         ghichu: "",
         ten: "",
         thanhtoan: "",
         tongtien: 0,
       },
-      products: [{
-        hinhanhsanpham: "https://uit-hotelbooking.000webhostapp.com/logo.png",
-        tensp: "",
-        tenurl: "",
-        gia: 0,
-        soluongsanpham: 0,
-        iscomment: false,
-      }],
+      products: [
+        {
+          hinhanhsanpham: "https://uit-hotelbooking.000webhostapp.com/logo.png",
+          tensp: "",
+          tenurl: "",
+          gia: 0,
+          soluongsanpham: 0,
+          iscomment: false,
+        },
+      ],
       loading: true,
     };
   }
