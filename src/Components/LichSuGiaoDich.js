@@ -11,12 +11,13 @@ export default class LichSuGiaoDich extends Component {
 
     this.state = {
       data: [],
+      loading: true,
     };
   }
 
   componentDidMount = () => {
     this.getHistory();
-  }
+  };
 
   getHistory = () => {
     const data = {
@@ -32,6 +33,7 @@ export default class LichSuGiaoDich extends Component {
     axios(options).then((res) => {
       this.setState({
         data: res.data.data,
+        loading: false,
       });
     });
   };
@@ -49,11 +51,11 @@ export default class LichSuGiaoDich extends Component {
         return (
           <tr>
             <td>
-              <NavLink class="textColor" to={"/bill/" + item._id}>{item._id}</NavLink>
+              <NavLink class="textColor" to={"/bill/" + item._id}>
+                {item._id}
+              </NavLink>
             </td>
-            <td>
-              {day}
-            </td>
+            <td>{day}</td>
             <td>{item.tensp}</td>
             <td>{this.currencyFormat(item.tongtien.toString())} đ</td>
             <td>Giao hàng thành công</td>
@@ -65,56 +67,69 @@ export default class LichSuGiaoDich extends Component {
   };
 
   render() {
-    if (this.state.data.length !== 0) {
-      return (
-        <div className="container pb-0">
-          <MetaTags>
-            <title>Lịch sử giao dịch | mybookstore.online</title>
-            <meta
-              property="og:url"
-              content="https://mybookstore.online/order-history"
-            />
-            <meta property="og:type" content="website" />
-            <meta
-              name="description"
-              content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
-            />
-            <meta
-              property="og:title"
-              content="Lịch sử giao dịch | mybookstore.online"
-            />
-            <meta
-              property="og:image"
-              content="https://uit-hotelbooking.000webhostapp.com/logo.png"
-            />
-          </MetaTags>
+    const bodyJSX = (
+      <table className="table table-striped">
+        <thead>
+          <tr className="text-nowrap">
+            <th>Mã đơn hàng</th>
+            <th>Ngày mua</th>
+            <th>Sản phẩm</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>{this.showHistory()}</tbody>
+      </table>
+    );
 
-          {/*Path*/}
-          <div className="container py-2 px-0">
-            <NavLink to="/">
-              <p className="path float-left">Trang chủ /{"\u00A0"}</p>
-            </NavLink>
-            <p className="path textColor">Lịch sử giao dịch</p>
-          </div>
+    const loadingJSX = (
+      <div className="p-3 mt-3 d-flex justify-content-center">
+        <img
+          src={require("../images/loading.gif")}
+          className="img-fluid align-self-center"
+          alt="loading"
+          width="200px"
+        />
+      </div>
+    );
 
-          {/* Lịch sử giao dịch */}
-          <div id="lichsugiaodich" className="bg-white">
-            <h5 className="pt-3 pl-2">LỊCH SỬ GIAO DỊCH</h5>
-            <table className="table table-striped">
-              <thead>
-                <tr className="text-nowrap">
-                  <th>Mã đơn hàng</th>
-                  <th>Ngày mua</th>
-                  <th>Sản phẩm</th>
-                  <th>Tổng tiền</th>
-                  <th>Trạng thái</th>
-                </tr>
-              </thead>
-              <tbody>{this.showHistory()}</tbody>
-            </table>
-          </div>
+    return (
+      <div className="container pb-0">
+        <MetaTags>
+          <title>Lịch sử giao dịch | mybookstore.online</title>
+          <meta
+            property="og:url"
+            content="https://mybookstore.online/order-history"
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+          />
+          <meta
+            property="og:title"
+            content="Lịch sử giao dịch | mybookstore.online"
+          />
+          <meta
+            property="og:image"
+            content="https://uit-hotelbooking.000webhostapp.com/logo.png"
+          />
+        </MetaTags>
+
+        {/*Path*/}
+        <div className="container py-2 px-0">
+          <NavLink to="/">
+            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
+          </NavLink>
+          <p className="path textColor">Lịch sử giao dịch</p>
         </div>
-      );
-    } else {return null}
+
+        {/* Lịch sử giao dịch */}
+        <div id="lichsugiaodich" className="bg-white">
+          <h5 className="pt-3 pl-2">LỊCH SỬ GIAO DỊCH</h5>
+          {this.state.loading ? loadingJSX : bodyJSX}
+        </div>
+      </div>
+    );
   }
 }

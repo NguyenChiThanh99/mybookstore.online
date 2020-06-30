@@ -20,7 +20,14 @@ export class HoaDon extends Component {
         thanhtoan: "",
         tongtien: 0,
       },
-      products: [],
+      products: {
+        hinhanhsanpham: "https://uit-hotelbooking.000webhostapp.com/logo.png",
+        tensp: "",
+        tenurl: "",
+        gia: 0,
+        soluongsanpham: 0,
+        iscomment: false,
+      },
       loading: true,
     };
   }
@@ -291,6 +298,7 @@ export class HoaDon extends Component {
           {/* table sản phẩm */}
           <h4 className="pt-3 pl-2">Sản phẩm</h4>
           {this.state.loading ? loadingJSX : bodyProductJSX}
+
           <NavLink
             to="/"
             className="btn btn-danger mybtn mr-3 btn-viewmore-cart"
