@@ -16,11 +16,13 @@ export class Home extends Component {
     this.state = {
       lastest_prod_arr: [],
       lastest_prod_page: 0,
+      hot_prod_arr: [],
     };
   }
 
   componentDidMount() {
     this.get_lastest_prod(this.state.lastest_prod_page);
+    this.get_hot_prod();
   }
 
   currencyFormat = (num) => {
@@ -43,6 +45,22 @@ export class Home extends Component {
       this.setState({
         lastest_prod_arr: this.state.lastest_prod_arr.concat(res.data.product),
         lastest_prod_page: nextPage,
+      });
+    });
+  };
+
+  get_hot_prod = () => {
+    const url = Global.link + "product/sphot";
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+    };
+    axios(options).then((res) => {
+      console.log(res.data);
+      
+      this.setState({
+        hot_prod_arr: res.data.product,
       });
     });
   };
@@ -136,6 +154,8 @@ export class Home extends Component {
         />
       </a>
     ));
+    console.log(this.state.hot_prod_arr);
+    
 
     return (
       <div>
@@ -1310,33 +1330,14 @@ export class Home extends Component {
         )}
 
         {/* Hot product */}
-        <div className="container bg-white p-3 mt-3">
-          <h5 className="p-2">
-            <b>Sản phẩm nổi bật</b>
-          </h5>
-          <ul className="d-flex justify-content-center">
-            <NavLink to={"/chitietsanpham/toi-thay-hoa-vang-tren-co-xanh"}>
-              <li className="book d-flex flex-column mx-2">
-                <img
-                  src={require("../images/book5.gif")}
-                  className="img-fluid align-self-center"
-                  alt="Tôi thấy hoa vàng trên cỏ xanh"
-                  width="160px"
-                />
-                <p className="bookItem2 mb-2">Tôi thấy hoa vàng trên cỏ xanh</p>
-                <p className="bookItem2" style={{ height: 21 }}>
-                  <small>Nguyễn Nhật Ánh</small>
-                </p>
-                <h6 className="bookItem2 textColor">
-                  <b>83.090 đ</b>
-                </h6>
-              </li>
-            </NavLink>
-          </ul>
-          <div className="viewmore pb-2 mt-2">
-            <button className="btn btn-danger mybtn">Xem thêm</button>
+        {this.state.hot_prod_arr.length === 0 ? null : (
+          <div className="container bg-white p-3 mt-3">
+            <h5 className="p-2">
+              <b>Sản phẩm nổi bật</b>
+            </h5>
+            {this.show_hot_prod()}
           </div>
-        </div>
+        )}
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "../CSS/style.css";
 import MetaTags from "react-meta-tags";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
-export default class NotFound extends Component {
+export class NotFound extends Component {
   render() {
     return (
       <div>
@@ -41,15 +41,20 @@ export default class NotFound extends Component {
 
           <h3>404</h3>
           <h4>Xin lỗi, trang bạn đang tìm kiếm không tồn tại!</h4>
-          <NavLink
-            to="/"
+          <button
+            onClick={() => {
+              this.props.history.push("/");
+            }}
             type="button"
-            className="btn btn-danger mybtn text-nowrap"
+            className="btn btn-outline-danger mybtn-outline text-nowrap mt-2"
+            style={{ width: "inherit" }}
           >
-            Đi đến trang chủ
-          </NavLink>
+            Xem thêm
+          </button>
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(NotFound);
