@@ -20,14 +20,14 @@ export class HoaDon extends Component {
         thanhtoan: "",
         tongtien: 0,
       },
-      products: {
+      products: [{
         hinhanhsanpham: "https://uit-hotelbooking.000webhostapp.com/logo.png",
         tensp: "",
         tenurl: "",
         gia: 0,
         soluongsanpham: 0,
         iscomment: false,
-      },
+      }],
       loading: true,
     };
   }
