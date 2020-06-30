@@ -36,6 +36,7 @@ export class ChiTietSanPham extends Component {
       page: 0,
       btnViewmore: true,
       dataRate: [],
+      lengthComment: 0,
       suggest: [],
       soluong: 1,
       err: "",
@@ -126,6 +127,9 @@ export class ChiTietSanPham extends Component {
       review: "",
       percentRating: [0, 0, 0, 0, 0],
       AVGRating: 0,
+      dataComment: [],
+      page: 0,
+      lengthComment: 0,
     });
   };
 
@@ -221,6 +225,7 @@ export class ChiTietSanPham extends Component {
   calRating = (dataRate) => {
     var length =
       dataRate[0] + dataRate[1] + dataRate[2] + dataRate[3] + dataRate[4];
+    this.setState({ lengthComment: length });
     if (dataRate.length !== 0 && length !== 0) {
       this.setState({
         percentRating: [
@@ -519,7 +524,7 @@ export class ChiTietSanPham extends Component {
                 <i className="fas fa-star" style={{ color: "#eb2b3f" }} />
                 <i className="fas fa-star" style={{ color: "#eb2b3f" }} />
               </p>
-              <p>({this.state.dataComment.length} đánh giá)</p>
+              <p>({this.state.lengthComment} đánh giá)</p>
             </div>
           </div>
         </div>
@@ -614,14 +619,16 @@ export class ChiTietSanPham extends Component {
     );
     const { data } = this.state;
     var path = data.urlloaisp.split("/");
+
+    var AVGRating = Math.round(this.state.AVGRating);
     var starImage = require("../images/1star.png");
-    if (this.state.AVGRating === 2) {
+    if (AVGRating === 2) {
       starImage = require("../images/2stars.png");
-    } else if (this.state.AVGRating === 3) {
+    } else if (AVGRating === 3) {
       starImage = require("../images/3stars.png");
-    } else if (this.state.AVGRating === 4) {
+    } else if (AVGRating === 4) {
       starImage = require("../images/4stars.png");
-    } else if (this.state.AVGRating === 5) {
+    } else if (AVGRating === 5) {
       starImage = require("../images/5stars.png");
     }
     return (
@@ -875,9 +882,7 @@ export class ChiTietSanPham extends Component {
               >
                 {this.state.AVGRating}/5
               </p>
-              <p className="text-center">
-                {this.state.dataComment.length} nhận xét
-              </p>
+              <p className="text-center">{this.state.lengthComment} nhận xét</p>
             </div>
             <div className="col-sm-4 col-8">
               <div className="row">
