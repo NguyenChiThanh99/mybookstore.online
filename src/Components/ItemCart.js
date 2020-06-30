@@ -67,7 +67,7 @@ export default class ItemCart extends Component {
           <div className="col-sm-10 col-7 align-self-center px-0">
             <div className="row">
               <div className="col-sm-9 align-self-center">
-                <NavLink to={"/product/" + item.slug} className="textColor">
+                <NavLink to={"/product/" + item.slug}>
                   <span>{item.tensp}</span>
                 </NavLink>
               </div>

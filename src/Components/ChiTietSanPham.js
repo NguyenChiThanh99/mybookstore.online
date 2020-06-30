@@ -33,6 +33,8 @@ export class ChiTietSanPham extends Component {
         urlloaisp: "_/_",
       },
       dataComment: [],
+      page: 0,
+      btnViewmore: true,
       dataRate: [],
       suggest: [],
       soluong: 1,
@@ -42,7 +44,7 @@ export class ChiTietSanPham extends Component {
       review: "",
       errCmt: "",
       cmtSuccess: "",
-      percentRating: [0,0,0,0,0],
+      percentRating: [0, 0, 0, 0, 0],
       AVGRating: 0,
     };
   }
@@ -78,10 +80,36 @@ export class ChiTietSanPham extends Component {
       this.setState({
         data: res.data.data,
         suggest: res.data.datalienquan,
-        dataComment: res.data.datacomment,
         dataRate: res.data.datarate,
       });
-      this.calRating(res.data.datarate, res.data.datacomment);
+      this.calRating(res.data.datarate);
+      this.getDataComment(slug);
+    });
+  };
+
+  getDataComment = (slug) => {
+    const data = {
+      tenurl: slug,
+      page: this.state.page,
+    };
+    const url = Global.link + "product/showcomment";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      if (res.data.datacomment.length !== 0) {
+        this.setState({
+          dataComment: this.state.dataComment.concat(res.data.datacomment),
+          page: this.state.page + 1,
+        });
+      } else {
+        this.setState({
+          btnViewmore: false
+        });
+      }
     });
   };
 
@@ -190,12 +218,10 @@ export class ChiTietSanPham extends Component {
     return result;
   };
 
-  calRating = (dataRate, dataComment) => {
-    var length = dataComment.length;
-    if (
-      dataRate.length !== 0 &&
-      length !== 0
-    ) {
+  calRating = (dataRate) => {
+    var length =
+      dataRate[0] + dataRate[1] + dataRate[2] + dataRate[3] + dataRate[4];
+    if (dataRate.length !== 0 && length !== 0) {
       this.setState({
         percentRating: [
           Math.round((dataRate[0] / length) * 1000) / 10,
@@ -204,14 +230,16 @@ export class ChiTietSanPham extends Component {
           Math.round((dataRate[3] / length) * 1000) / 10,
           Math.round((dataRate[4] / length) * 1000) / 10,
         ],
-        AVGRating: Math.round(
-          (dataRate[0] * 1 +
-            dataRate[1] * 2 +
-            dataRate[2] * 3 +
-            dataRate[3] * 4 +
-            dataRate[4] * 5) /
-            length
-        ),
+        AVGRating:
+          Math.round(
+            ((dataRate[0] * 1 +
+              dataRate[1] * 2 +
+              dataRate[2] * 3 +
+              dataRate[3] * 4 +
+              dataRate[4] * 5) /
+              length) *
+              10
+          ) / 10,
       });
     }
   };
@@ -325,7 +353,13 @@ export class ChiTietSanPham extends Component {
 
           var newRate = this.state.dataRate;
           if (parseInt(rating) === 1) {
-            newRate = [newRate[0] + 1, newRate[1], newRate[2], newRate[3], newRate[4]]
+            newRate = [
+              newRate[0] + 1,
+              newRate[1],
+              newRate[2],
+              newRate[3],
+              newRate[4],
+            ];
           } else if (parseInt(rating) === 2) {
             newRate = [
               newRate[0],
@@ -374,6 +408,17 @@ export class ChiTietSanPham extends Component {
   };
 
   render() {
+    const viewMoreJSX = (
+      <div className="viewmore pb-2 mt-2">
+        <button
+          className="btn btn-danger mybtn"
+          onClick={() => this.getDataComment(this.state.slug)}
+        >
+          Xem thêm
+        </button>
+      </div>
+    );
+
     const errJSX = (
       <div className="alert alert-danger alert-dismissible fade show mt-3 mb-0">
         {this.state.err}
@@ -930,6 +975,7 @@ export class ChiTietSanPham extends Component {
           {this.state.isComment === undefined ? null : comment}
           {/* list nhận xét */}
           <div className="pt-3">{this.showComment(this.state.dataComment)}</div>
+          {this.state.btnViewmore ? viewMoreJSX : null}
         </div>
       </div>
     );
