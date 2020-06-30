@@ -426,8 +426,76 @@ export class ThanhToan extends Component {
           src={require("../images/loading.gif")}
           className="img-fluid align-self-center"
           alt="loading"
-          width="200px"
+          width="150px"
         />
+      </div>
+    );
+
+    const bodyJSX = (
+      <div className="m-3">
+        <table className="table mb-0">
+          <thead className="thead-light">
+            <tr>
+              <th>Tên</th>
+              <th style={{ whiteSpace: "nowrap" }}>Hình ảnh</th>
+              <th style={{ whiteSpace: "nowrap" }}>Số lượng</th>
+              <th style={{ whiteSpace: "nowrap" }}>Thành tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.show_cart()}
+            {/*Tinh tien*/}
+            <tr>
+              <td
+                colSpan={3}
+                className="font-weight-bold"
+                style={{
+                  whiteSpace: "nowrap",
+                  textAlign: "right",
+                }}
+              >
+                <p className="pt-3">Thành tiền</p>
+                <p>Phí vận chuyển</p>
+                <p>Tổng cộng</p>
+              </td>
+              <td
+                style={{
+                  whiteSpace: "nowrap",
+                  textAlign: "right",
+                }}
+              >
+                <p className="pt-3">
+                  {this.currencyFormat(this.state.total.toString())} đ
+                </p>
+                <p>{this.currencyFormat(this.state.ship.toString())} đ</p>
+                <p className="font-weight-bold" style={{ color: "#eb2b3f" }}>
+                  {this.currencyFormat(
+                    (this.state.ship + this.state.total).toString()
+                  )}{" "}
+                  đ
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr className="mt-0" />
+        <div className="row">
+          <div className="col">
+            <button
+              type="submit"
+              className="btn btn-outline-danger mybtn-outline "
+              id="submitForm"
+              style={{ width: "inherit" }}
+            >
+              <span style={{ fontSize: "16px" }} onClick={this.datHang}>
+                Xác nhận đơn hàng
+              </span>
+            </button>
+          </div>
+        </div>
+        <span style={{ color: "gray" }} className="mt-2">
+          Quý khách vui lòng kiểm tra kỹ hàng hóa khi nhận.
+        </span>
       </div>
     );
 
@@ -639,77 +707,7 @@ export class ThanhToan extends Component {
                 <p className="header">KIỂM TRA ĐƠN HÀNG</p>
               </div>
               {/*Table Kiem tra don hang*/}
-              {this.state.loading ? loadingJSX : null}
-              <div className="m-3">
-                <table className="table mb-0">
-                  <thead className="thead-light">
-                    <tr>
-                      <th>Tên</th>
-                      <th style={{ whiteSpace: "nowrap" }}>Hình ảnh</th>
-                      <th style={{ whiteSpace: "nowrap" }}>Số lượng</th>
-                      <th style={{ whiteSpace: "nowrap" }}>Thành tiền</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.show_cart()}
-                    {/*Tinh tien*/}
-                    <tr>
-                      <td
-                        colSpan={3}
-                        className="font-weight-bold"
-                        style={{
-                          whiteSpace: "nowrap",
-                          textAlign: "right",
-                        }}
-                      >
-                        <p className="pt-3">Thành tiền</p>
-                        <p>Phí vận chuyển</p>
-                        <p>Tổng cộng</p>
-                      </td>
-                      <td
-                        style={{
-                          whiteSpace: "nowrap",
-                          textAlign: "right",
-                        }}
-                      >
-                        <p className="pt-3">
-                          {this.currencyFormat(this.state.total.toString())} đ
-                        </p>
-                        <p>
-                          {this.currencyFormat(this.state.ship.toString())} đ
-                        </p>
-                        <p
-                          className="font-weight-bold"
-                          style={{ color: "#eb2b3f" }}
-                        >
-                          {this.currencyFormat(
-                            (this.state.ship + this.state.total).toString()
-                          )}{" "}
-                          đ
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <hr className="mt-0" />
-                <div className="row">
-                  <div className="col">
-                    <button
-                      type="submit"
-                      className="btn btn-outline-danger mybtn-outline "
-                      id="submitForm"
-                      style={{width: 'inherit'}}
-                    >
-                      <span style={{ fontSize: "20px" }} onClick={this.datHang}>
-                        Xác nhận đơn hàng
-                      </span>
-                    </button>
-                  </div>
-                </div>
-                <span style={{ color: "gray" }} className="mt-2">
-                  Quý khách vui lòng kiểm tra kỹ hàng hóa khi nhận.
-                </span>
-              </div>
+              {this.state.loading ? loadingJSX : bodyJSX}
             </div>
           </div>
         </div>
