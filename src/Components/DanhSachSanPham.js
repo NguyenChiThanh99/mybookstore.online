@@ -29,7 +29,7 @@ export class DanhSachSanPham extends Component {
 
   goToCategory = (type) => {
     this.props.history.push("/category/" + type);
-    this.setState({ slug: type, page: 1 });
+    this.setState({ slug: type, page: 1, loading: true });
     this.get_danh_muc(type);
   };
 
@@ -47,6 +47,7 @@ export class DanhSachSanPham extends Component {
     axios(options).then((res) => {
       if (res.data.data !== "error") {
         this.setState({
+          loading: false,
           dataFull: res.data.data,
           childData: res.data.data.slice(0, 12),
         });
@@ -69,6 +70,7 @@ export class DanhSachSanPham extends Component {
     axios(options).then((res) => {
       if (res.data.data !== "error") {
         this.setState({
+          loading: false,
           dataFull: res.data.data,
           childData: res.data.data.slice(0, 12),
         });
@@ -207,7 +209,7 @@ export class DanhSachSanPham extends Component {
     );
 
     const loadingJSX = (
-      <div className="p-3 mt-3 d-flex justify-content-center">
+      <div className="p-3 d-flex justify-content-center">
         <img
           src={require("../images/loading.gif")}
           className="img-fluid align-self-center"

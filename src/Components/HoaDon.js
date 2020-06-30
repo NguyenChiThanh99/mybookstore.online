@@ -207,7 +207,7 @@ export class HoaDon extends Component {
           {/* end thông tin hóa đơn */}
           {/* sản phẩm */}
           <div
-            className="container pb-4 mt-4"
+            className="container pb-4 mt-3"
             style={{ backgroundColor: "white" }}
           >
             {/* table sản phẩm */}
