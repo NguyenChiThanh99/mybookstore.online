@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 import qs from "qs";
@@ -9,7 +9,7 @@ import MetaTags from "react-meta-tags";
 import "../CSS/giohang.css";
 import ItemCart from "./ItemCart";
 
-export default class GioHang extends Component {
+export class GioHang extends Component {
   constructor(props) {
     super(props);
 
@@ -265,14 +265,14 @@ export default class GioHang extends Component {
             <div className="col-sm-4 pt-2">
               <div className="row">
                 <div className="col-5 pr-0">
-                  <NavLink
-                    to="/"
+                  <button
+                    onClick={() => {this.props.history.push("/");}}
                     type="button"
                     className="btn btn-outline-danger mybtn-outline text-nowrap"
                     style={{ width: "inherit" }}
                   >
                     Xem thêm
-                  </NavLink>
+                  </button>
                 </div>
                 <div className="col-7">
                   <button
@@ -386,3 +386,5 @@ export default class GioHang extends Component {
     );
   }
 }
+
+export default withRouter(GioHang);
