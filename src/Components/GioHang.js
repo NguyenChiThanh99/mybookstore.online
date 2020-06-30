@@ -47,7 +47,7 @@ export default class GioHang extends Component {
       this.setState({
         cart: res.data.data,
       });
-      if (res.data.data.leng !== 0) {
+      if (res.data.data.length !== 0) {
          this.calTotal();
       } else {
         this.setState({
