@@ -41,6 +41,13 @@ export default class NotFound extends Component {
 
           <h3>404</h3>
           <h4>Xin lỗi, trang bạn đang tìm kiếm không tồn tại!</h4>
+          <NavLink
+            to="/"
+            type="button"
+            className="btn btn-danger mybtn text-nowrap"
+          >
+            Đi đến trang chủ
+          </NavLink>
         </div>
       </div>
     );
