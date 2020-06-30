@@ -210,7 +210,7 @@ export default class GioHang extends Component {
       </div>
     );
 
-    return (
+    const bodyJSX = (
       <div>
         <MetaTags>
           <title>Giỏ hàng | mybookstore.online</title>
@@ -231,9 +231,6 @@ export default class GioHang extends Component {
           </NavLink>
           <p className="path textColor">Giỏ hàng</p>
         </div>
-
-        {this.state.loading && this.state.cart.length === 0 ? loadingJSX : null}
-        {this.state.emptyCart ? emptyCartJSX : null}
 
         {/*Cart*/}
         <div className="container bg-white p-3">
@@ -348,6 +345,14 @@ export default class GioHang extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
+      </div>
+    );
+
+    return (
+      <div>
+        {this.state.loading ? loadingJSX : null}
+        {this.state.emptyCart ? emptyCartJSX : null}
+        {this.state.cart.length !== 0 ? bodyJSX : null}
       </div>
     );
   }
