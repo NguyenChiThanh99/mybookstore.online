@@ -12,7 +12,7 @@ export class HoaDon extends Component {
     this.state = {
       id: match.params.slug,
       info: {
-        createdAt: "0-0-0T0:0:0.0Z",
+        createdAt: "1-1-1T1:1:1.0Z",
         diachi: "",
         dienthoai: "",
         ghichu: "",
