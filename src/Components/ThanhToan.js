@@ -34,6 +34,7 @@ export class ThanhToan extends Component {
       wardArr: [],
       err: "",
       radio: "Thanh toán tiền mặt khi nhận hàng",
+      loading: true,
     };
   }
 
@@ -154,6 +155,7 @@ export class ThanhToan extends Component {
     axios(options).then((res) => {
       this.setState({
         cart: res.data.data,
+        loading: false,
       });
       this.calTotal();
     });
@@ -418,6 +420,17 @@ export class ThanhToan extends Component {
       </div>
     );
 
+    const loadingJSX = (
+      <div className="container p-3 mt-3 d-flex justify-content-center">
+        <img
+          src={require("../images/loading.gif")}
+          className="img-fluid align-self-center"
+          alt="loading"
+          width="200px"
+        />
+      </div>
+    );
+
     var title = "https://uit-hotelbooking.000webhostapp.com/logo.png";
     if (this.state.cart.length !== 0) {
       title = this.state.cart[0].hinhanhsanpham;
@@ -585,7 +598,7 @@ export class ThanhToan extends Component {
                 </form>
               </div>
               {/*Phuong thuc thanh toan*/}
-              <div className="bg-white mb-3">
+              <div className="bg-white mb-3 pb-2">
                 <div className="text-center text-light background1 p-1 mt-3">
                   <p className="header">PHƯƠNG THỨC THANH TOÁN</p>
                 </div>
@@ -626,6 +639,7 @@ export class ThanhToan extends Component {
                 <p className="header">KIỂM TRA ĐƠN HÀNG</p>
               </div>
               {/*Table Kiem tra don hang*/}
+              {this.state.loading ? loadingJSX : null}
               <div className="m-3">
                 <table className="table mb-0">
                   <thead className="thead-light">
@@ -684,6 +698,7 @@ export class ThanhToan extends Component {
                       type="submit"
                       className="btn btn-outline-danger mybtn-outline "
                       id="submitForm"
+                      style={{width: 'inherit'}}
                     >
                       <span style={{ fontSize: "20px" }} onClick={this.datHang}>
                         Xác nhận đơn hàng

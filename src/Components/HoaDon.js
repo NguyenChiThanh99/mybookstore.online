@@ -68,13 +68,13 @@ export class HoaDon extends Component {
               <div className="row">
                 <NavLink
                   to={"/product/" + product.tenurl}
-                  className="col-sm-7 textColor"
+                  className="col-sm-7"
                 >
                   <span>{product.tensp}</span>
                 </NavLink>
                 <div className="col-sm-5">
                   <div className="row">
-                    <div className="col-sm-4 col-6 gia-sanpham">
+                    <div className="col-sm-4 col-6">
                       <span>
                         {this.currencyFormat(product.gia.toString())} đ
                       </span>
