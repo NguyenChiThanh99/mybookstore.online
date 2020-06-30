@@ -21,7 +21,7 @@ export default class GioHang extends Component {
       item: null,
       total: 0,
       stylePay: "btn btn-danger mybtn ml-4 btn-viewmore-cart",
-      loading: false,
+      loading: true,
       emptyCart: false,
     };
   }
@@ -350,9 +350,6 @@ export default class GioHang extends Component {
         </div>
       );
     } else {
-      this.setState({
-        loading: true,
-      });
       return (
         this.state.loading ? loadingJSX : null,
         this.state.emptyCart ? emptyCartJSX : null
