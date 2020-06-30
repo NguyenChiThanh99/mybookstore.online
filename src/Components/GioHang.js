@@ -210,7 +210,7 @@ export default class GioHang extends Component {
       </div>
     );
 
-    const bodyJSX = (
+    const bodyJSX2 = (
       <div>
         <MetaTags>
           <title>Giỏ hàng | mybookstore.online</title>
@@ -280,6 +280,172 @@ export default class GioHang extends Component {
                     ? "btn btn-secondary mybtn ml-4 btn-viewmore-cart disabled"
                     : "btn btn-danger mybtn ml-4 btn-viewmore-cart"
                 }
+              >
+                Thanh toán
+              </NavLink>
+            </div>
+          </div>
+        </div>
+
+        {/*Suggest*/}
+        <div className="container bg-white p-3 mt-3">
+          <ul className="d-flex justify-content-center">
+            <li className="book d-flex flex-column mx-2">
+              <NavLink to="/chitietsanpham" className="product_shadow">
+                <img
+                  src={require("../images/book5.gif")}
+                  className="img-fluid align-self-center"
+                  alt="book1"
+                  width="120px"
+                />
+                <p className="bookItem2 mb-2">Tôi thấy hoa vàng trên cỏ xanh</p>
+                <p className="bookItem2" style={{ height: 21 }}>
+                  <small>Nguyễn Nhật Ánh</small>
+                </p>
+                <h6 className="bookItem textColor">
+                  <b>83.090 đ</b>
+                </h6>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
+        <Modal show={this.state.showModal} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Xác nhận xóa sản phẩm</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Bạn có chắc muốn xóa cuốn{" "}
+            <b>{this.state.item === null ? "" : this.state.item.tensp}</b> khỏi
+            giỏ hàng?
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Đóng
+            </Button>
+            <Button variant="danger" onClick={this.deleteOneItem}>
+              Xóa
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <Modal show={this.state.showModal2} onHide={this.handleClose2}>
+          <Modal.Header closeButton>
+            <Modal.Title>Xác nhận xóa giỏ hàng</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Bạn có chắc muốn xóa toàn bộ sản phẩm khỏi giỏ hàng?
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose2}>
+              Đóng
+            </Button>
+            <Button variant="danger" onClick={this.deleteAllItem}>
+              Xóa
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+
+    const bodyJSX = (
+      <div>
+        <MetaTags>
+          <title>Giỏ hàng | mybookstore.online</title>
+          <meta property="og:url" content="https://mybookstore.online/cart" />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+          />
+          <meta property="og:title" content="Giỏ hàng | mybookstore.online" />
+          <meta property="og:image" content={firstItemImg} />
+        </MetaTags>
+
+        {/*Path*/}
+        <div className="container py-2 px-0">
+          <NavLink to="/">
+            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
+          </NavLink>
+          <p className="path textColor">Giỏ hàng</p>
+        </div>
+
+        <div className="container bg-white p-3">
+          {/* tiêu đề */}
+          <div className="row pb-3 an-thongtin">
+            <div className="col-sm-1">
+              <h6 style={{ fontWeight: "bold" }}>Tên sách</h6>
+            </div>
+            <div className="col-sm-10 px-0">
+              <div className="row">
+                <div className="col-sm-9"></div>
+                <div className="col-sm-3">
+                  <div className="row">
+                    <div className="col-sm-6 col-6 gia-sanpham">
+                      <h6 style={{ fontWeight: "bold" }}>Đơn giá</h6>
+                    </div>
+                    <div className="col-sm-6 col-6">
+                      <h6 style={{ fontWeight: "bold" }}>Số lượng</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-1"></div>
+          </div>
+
+          {/* nội dung */}
+          {this.show_cart()}
+
+          {/* buttons */}
+          <div className="row pb-3">
+            <div className="col-sm-4 pt-2">
+              <div className="row">
+                <div className="col-5 pr-0">
+                  <NavLink
+                    to="/"
+                    type="button"
+                    className="btn btn-outline-danger mybtn-outline text-nowrap"
+                    style={{ width: "inherit" }}
+                  >
+                    Xem thêm
+                  </NavLink>
+                </div>
+                <div className="col-7">
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger mybtn-outline text-nowrap"
+                    style={{ width: "inherit" }}
+                    onClick={this.handleShow2}
+                  >
+                    Xóa hết giỏ hàng
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-4 pt-2" />
+            <div className="col-sm-2 align-self-center pt-2">
+              <div className="row">
+                <div className="col-6">
+                  <p className="mb-0 text-nowrap">Tổng cộng: </p>
+                </div>
+                <div className="col-6">
+                  <p
+                    className="mb-0 text-right text-nowrap"
+                    style={{ color: "#EB2B3F" }}
+                  >
+                    {" "}
+                    <b>{this.currencyFormat(this.state.total.toString())} đ</b>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-2 pt-2">
+              <NavLink
+                to="/pay"
+                type="button"
+                className="btn btn-danger mybtn"
+                style={{ width: "inherit" }}
               >
                 Thanh toán
               </NavLink>

@@ -281,7 +281,7 @@ a {
   }
   .gia-sanpham {
     font-weight: bold;
-    color: #eb2b3f;
+    /* color: #eb2b3f; */
   }
 }
 
@@ -340,4 +340,17 @@ a {
 
 .space-break {
   white-space: pre-wrap;
+}
+
+.mybtn-link {
+  color: #eb2b3f !important;
+}
+
+.mybtn-link:hover {
+  color: #eb2b3f !important;
+  border: 0.5px solid #eb2b3f !important;
+}
+
+.mybtn-link:focus {
+  box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
 }

@@ -27,6 +27,7 @@ export default class Account extends Component {
       });
     }
   }
+  
   render() {
     return (
       <div>
@@ -72,7 +73,7 @@ export default class Account extends Component {
                 <img
                   src={
                     Global.isSignIn
-                      ? require("../images/avatar_default.png")
+                      ? require("../images/avatar_default_2.png")
                       : Global.user[0].picture
                   }
                   className="p-3"

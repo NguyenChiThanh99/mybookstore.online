@@ -53,58 +53,64 @@ export default class ItemCart extends Component {
 
   render() {
     const {item} = this.state;
-    var thanhtien = this.state.soluong * item.gia;
     return (
-      <tr>
-        <td>
-          <NavLink to={"/product/" + item.slug} className="textColor">{item.tensp}</NavLink>
-        </td>
-        <td>
+      <div className="row pb-3">
+        <div className="col-sm-1 col-3">
           <img
             src={item.hinhanhsanpham}
-            className="img-fluid align-self-center"
-            alt="book1"
-            width="80px"
+            className="img-fluid"
+            style={{ width: "70px" }}
+            alt={item.tensp}
           />
-        </td>
-        <td style={{ whiteSpace: "nowrap" }}>
-          {this.currencyFormat(item.gia.toString())} đ
-        </td>
-        <td>
-          <div className="btn-group" role="group" aria-label="First group">
-            <button
-              type="button"
-              className="btn btn-outline-secondary"
-              onClick={this.giamsl}
-            >
-              -
-            </button>
-            <button type="button" className="btn btn-outline-secondary">
-              {this.state.soluong}
-            </button>
-            <button
-              type="button"
-              className="btn btn-outline-secondary"
-              onClick={this.tangsl}
-            >
-              +
-            </button>
+        </div>
+        <div className="col-sm-10 col-7 px-0">
+          <div className="row">
+            <div className="col-sm-9">
+              <NavLink to={"/product/" + item.slug} className="textColor">
+                <span>{item.tensp}</span>
+              </NavLink>
+            </div>
+            <div className="col-sm-3">
+              <div className="row">
+                <div className="col-sm-6 gia-sanpham">
+                  <span>{this.currencyFormat(item.gia.toString())} đ</span>
+                </div>
+                <div className="col-sm-6">
+                  <div
+                    className="btn-group btn-group-sm"
+                    role="group"
+                    aria-label="First group"
+                    onClick={this.giamsl}
+                  >
+                    <button type="button" className="btn btn-outline-secondary">
+                      -
+                    </button>
+                    <button type="button" className="btn btn-outline-secondary">
+                      {this.state.soluong}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-outline-secondary"
+                      onClick={this.tangsl}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </td>
-        <td style={{ whiteSpace: "nowrap" }}>
-          {this.currencyFormat(thanhtien.toString())} đ
-        </td>
-        <td>
+        </div>
+        <div className="col-sm-1 col-1">
           <button
             type="button"
-            className="btn btn-danger mybtn mr-3"
-            style={{ whiteSpace: "nowrap" }}
+            className="btn btn-link mybtn-link"
             onClick={() => this.getItem(item)}
           >
-            Xóa bỏ
+            <i className="fas fa-times" />
           </button>
-        </td>
-      </tr>
+        </div>
+      </div>
     );
   }
 }
