@@ -47,6 +47,7 @@ export class ChiTietSanPham extends Component {
       cmtSuccess: "",
       percentRating: [0, 0, 0, 0, 0],
       AVGRating: 0,
+      like: false,
     };
   }
 
@@ -108,7 +109,7 @@ export class ChiTietSanPham extends Component {
         });
       } else {
         this.setState({
-          btnViewmore: false
+          btnViewmore: false,
         });
       }
     });
@@ -409,6 +410,31 @@ export class ChiTietSanPham extends Component {
           timer2 = setTimeout(() => this.setState({ cmtSuccess: "" }), 4000);
         }
       });
+    }
+  };
+
+  like = () => {
+    if (!this.state.like) {
+      const data = {
+        tenurl: this.state.slug,
+        email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+      };
+      const url = Global.link + "product/productlike";
+      const options = {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        url,
+        data: qs.stringify(data),
+      };
+      axios(options).then((res) => {
+        console.log(res.data.data);
+        
+        if (res.data.data === "success")
+          this.setState({
+            like: true,
+          });
+      });
+    } else {
     }
   };
 
@@ -737,12 +763,23 @@ export class ChiTietSanPham extends Component {
                   </h4>
                 </div>
                 <div className="col-4">
-                  <img
-                    src={require("../images/heart.png")}
-                    className="img-fluid align-self-center"
-                    alt="heart"
-                    width="30px"
-                  />
+                  <div
+                    className="btn"
+                    onClick={() => {
+                      this.like();
+                    }}
+                  >
+                    <img
+                      src={
+                        this.state.like
+                          ? require("../images/heart-active.png")
+                          : require("../images/heart.png")
+                      }
+                      className="img-fluid align-self-center"
+                      alt="heart"
+                      width="30px"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="row pl-3">
