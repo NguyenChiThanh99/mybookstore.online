@@ -29,41 +29,39 @@ export class GioHang extends Component {
   componentDidMount() {
     if (Global.isSignIn || Global.isLoggedInS) {
       this.getCart();
-    }
-  }
-
-  getCart = () => {
-    if (Global.isSignIn || Global.isLoggedInS) {
-      const data = {
-        email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
-      };
-      const url = Global.link + "cart/showcart";
-      const options = {
-        method: "POST",
-        headers: { "content-type": "application/x-www-form-urlencoded" },
-        url,
-        data: qs.stringify(data),
-      };
-      axios(options).then((res) => {
-        this.setState({
-          cart: res.data.data,
-          loading: false,
-        });
-        if (res.data.data.length !== 0) {
-          this.calTotal();
-        } else {
-          this.setState({
-            loading: false,
-            emptyCart: true,
-          });
-        }
-      });
     } else {
       this.setState({
         loading: false,
         emptyCart: true,
       });
     }
+  }
+
+  getCart = () => {
+    const data = {
+      email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+    };
+    const url = Global.link + "cart/showcart";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      this.setState({
+        cart: res.data.data,
+        loading: false,
+      });
+      if (res.data.data.length !== 0) {
+        this.calTotal();
+      } else {
+        this.setState({
+          loading: false,
+          emptyCart: true,
+        });
+      }
+    });
   };
 
   show_cart = () => {
@@ -184,6 +182,8 @@ export class GioHang extends Component {
   currencyFormat = (num) => {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
   };
+
+  getSuggest = () => {};
 
   render() {
     var firstItemImg = "https://uit-hotelbooking.000webhostapp.com/logo.png";
@@ -329,25 +329,12 @@ export class GioHang extends Component {
 
         {/*Suggest*/}
         <div className="container bg-white p-3 mt-3">
-          <ul className="d-flex justify-content-center">
-            <li className="book d-flex flex-column mx-2">
-              <NavLink to="/chitietsanpham" className="product_shadow">
-                <img
-                  src={require("../images/book5.gif")}
-                  className="img-fluid align-self-center"
-                  alt="book1"
-                  width="120px"
-                />
-                <p className="bookItem2 mb-2">Tôi thấy hoa vàng trên cỏ xanh</p>
-                <p className="bookItem2" style={{ height: 21 }}>
-                  <small>Nguyễn Nhật Ánh</small>
-                </p>
-                <h6 className="bookItem textColor">
-                  <b>83.090 đ</b>
-                </h6>
-              </NavLink>
-            </li>
-          </ul>
+          <h5 className="p-2">
+            <b>Sản phẩm liên quan</b>
+          </h5>
+          <div className="d-flex justify-content-center row px-2">
+            {this.getSuggest(this.state.suggest)}
+          </div>
         </div>
 
         <Modal show={this.state.showModal} onHide={this.handleClose}>

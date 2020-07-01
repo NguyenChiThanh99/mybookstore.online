@@ -292,7 +292,7 @@ export class ChiTietSanPham extends Component {
           this.setState({
             noti: "Đã thêm " + this.state.soluong + " sản phẩm vào giỏ hàng",
           });
-          timer2 = setTimeout(() => this.setState({ noti: "" }), 3000);
+          timer2 = setTimeout(() => this.setState({ noti: "" }), 4000);
         }
       });
       return true;
@@ -300,7 +300,7 @@ export class ChiTietSanPham extends Component {
       this.setState({
         err: "Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng",
       });
-      timer2 = setTimeout(() => this.setState({ err: "" }), 3000);
+      timer2 = setTimeout(() => this.setState({ err: "" }), 4000);
       return false;
     }
   };
@@ -776,7 +776,7 @@ export class ChiTietSanPham extends Component {
                         });
                         timer2 = setTimeout(
                           () => this.setState({ err: "" }),
-                          3000
+                          4000
                         );
                       }
                     }}
