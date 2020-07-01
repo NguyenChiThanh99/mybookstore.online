@@ -17,7 +17,8 @@ export default class Account extends Component {
       likeArr: [],
       name: Global.isSignIn ? Global.user[1] : Global.user[0].name,
       phone: Global.isSignIn ? Global.user[2] : "",
-      showModal: false,
+      showModal1: false,
+      showModal2: false,
       loading: true,
       empty: false,
     };
@@ -75,11 +76,17 @@ export default class Account extends Component {
     });
   };
 
-  handleShow = () => {
-    this.setState({ showModal: true });
+  handleShow1 = () => {
+    this.setState({ showModal1: true });
   };
-  handleClose = () => {
-    this.setState({ showModal: false });
+  handleClose1 = () => {
+    this.setState({ showModal1: false });
+  };
+  handleShow2 = () => {
+    this.setState({ showModal2: true });
+  };
+  handleClose2 = () => {
+    this.setState({ showModal2: false });
   };
 
   getRandom = (min, max) => {
@@ -201,7 +208,7 @@ export default class Account extends Component {
           src={require("../images/loading.gif")}
           className="img-fluid align-self-center"
           alt="loading"
-          width="150px"
+          width="200px"
         />
       </div>
     );
@@ -322,17 +329,17 @@ export default class Account extends Component {
           </div>
         </div>
 
-        <div className="container bg-white pt-2">
+        <div className="container bg-white mt-3">
           {/* Yêu thích */}
           <div id="yeuthich">
             <h5 className="pt-3 pl-2">YÊU THÍCH</h5>
             {this.state.loading ? loadingJSX : null}
             {this.state.empty ? emptyLikeJSX : null}
-            {this.state.likeArr.length === 0 ? bodyLikeJSX : null}
+            {this.state.likeArr.length !== 0 ? bodyLikeJSX : null}
           </div>
         </div>
 
-        <Modal show={this.state.showModal2} onHide={this.handleClose}>
+        <Modal show={this.state.showModal1} onHide={this.handleClose1}>
           <Modal.Header closeButton>
             <Modal.Title>Xác nhận mật khẩu</Modal.Title>
           </Modal.Header>
@@ -340,7 +347,7 @@ export default class Account extends Component {
             <form>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">
-                  Nhập mật khẩu cũ để đổi mật khẩu
+                  Vui lòng nhập mật khẩu cũ để đổi mật khẩu
                 </label>
                 <input
                   type="email"
