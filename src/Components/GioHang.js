@@ -274,26 +274,6 @@ export class GioHang extends Component {
 
     const bodyJSX = (
       <div>
-        <MetaTags>
-          <title>Giỏ hàng | mybookstore.online</title>
-          <meta property="og:url" content="https://mybookstore.online/cart" />
-          <meta property="og:type" content="website" />
-          <meta
-            name="description"
-            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
-          />
-          <meta property="og:title" content="Giỏ hàng | mybookstore.online" />
-          <meta property="og:image" content={firstItemImg} />
-        </MetaTags>
-
-        {/*Path*/}
-        <div className="container py-2 px-0">
-          <NavLink to="/">
-            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
-          </NavLink>
-          <p className="path textColor">Giỏ hàng</p>
-        </div>
-
         <div className="container bg-white p-3">
           {/* tiêu đề */}
           <div className="an-thongtin">
@@ -434,6 +414,25 @@ export class GioHang extends Component {
 
     return (
       <div>
+        <MetaTags>
+          <title>Giỏ hàng | mybookstore.online</title>
+          <meta property="og:url" content="https://mybookstore.online/cart" />
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+          />
+          <meta property="og:title" content="Giỏ hàng | mybookstore.online" />
+          <meta property="og:image" content={firstItemImg} />
+        </MetaTags>
+
+        {/*Path*/}
+        <div className="container py-2 px-0">
+          <NavLink to="/">
+            <p className="path float-left">Trang chủ /{"\u00A0"}</p>
+          </NavLink>
+          <p className="path textColor">Giỏ hàng</p>
+        </div>
         {this.state.loading ? loadingJSX : null}
         {this.state.emptyCart ? emptyCartJSX : null}
         {this.state.cart.length !== 0 ? bodyJSX : null}

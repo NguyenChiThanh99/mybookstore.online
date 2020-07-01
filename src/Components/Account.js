@@ -210,7 +210,7 @@ export default class Account extends Component {
         </MetaTags>
 
         {/*Path*/}
-        <div className="container py-2 px-0">
+        <div className="container py-2 pl-2">
           <NavLink to="/">
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>

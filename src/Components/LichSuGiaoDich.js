@@ -34,10 +34,17 @@ export default class LichSuGiaoDich extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      this.setState({
-        data: res.data.data,
-        loading: false,
-      });
+      if (res.data.data.length !== 0) {
+        this.setState({
+          data: res.data.data,
+          loading: false,
+        });
+      } else {
+        this.setState({
+          empty: true,
+          loading: false,
+        });
+      }
     });
   };
 
@@ -161,7 +168,9 @@ export default class LichSuGiaoDich extends Component {
         {/* Lịch sử giao dịch */}
         <div className="bg-white container">
           <h5 className="pt-3">LỊCH SỬ GIAO DỊCH</h5>
-          {this.state.loading ? loadingJSX : bodyJSX}
+          {this.state.loading ? loadingJSX : null}
+          {this.state.empty ? emptyJSX : null}
+          {this.state.data.length !== 0 ? bodyJSX : null}
         </div>
       </div>
     );

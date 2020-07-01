@@ -242,7 +242,7 @@ export class Home extends Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-md-4 pt-3 pl-0 mobile-pl3">
+            <div className="col-md-4 py-2 pl-0 mobile-pl3">
               <div style={{ backgroundColor: "white" }}>
                 <div className="list">
                   <span>Danh mục sản phẩm</span>
@@ -1173,7 +1173,7 @@ export class Home extends Component {
                 </nav>
               </div>
             </div>
-            <div className="col-md-8 pt-3 px-0">
+            <div className="col-md-8 pt-2 px-0">
               {/* slide */}
               <div
                 id="carouselExampleIndicators"
