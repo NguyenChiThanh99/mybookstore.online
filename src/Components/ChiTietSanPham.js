@@ -88,7 +88,7 @@ export class ChiTietSanPham extends Component {
         data: res.data.data,
         suggest: res.data.datalienquan,
         dataRate: res.data.datarate,
-        like: false,
+        like: res.data.islike,
       });
       this.calRating(res.data.datarate);
       this.getDataComment(slug);
@@ -422,28 +422,28 @@ export class ChiTietSanPham extends Component {
   };
 
   like = () => {
-    if (!this.state.like) {
-      const data = {
-        tenurl: this.state.slug,
-        email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
-      };
-      const url = Global.link + "product/productlike";
-      const options = {
-        method: "POST",
-        headers: { "content-type": "application/x-www-form-urlencoded" },
-        url,
-        data: qs.stringify(data),
-      };
-      axios(options).then((res) => {
-        console.log(res.data.data);
-
-        if (res.data.data === "success")
-          this.setState({
-            like: true,
-          });
-      });
-    } else {
-    }
+    const data = {
+      tenurl: this.state.slug,
+      email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+    };
+    const url = Global.link + "product/productlike";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      if (res.data.data === "success") {
+        this.setState({
+          like: true,
+        });
+      } else {
+        this.setState({
+          like: false,
+        });
+      }
+    });
   };
 
   render() {
