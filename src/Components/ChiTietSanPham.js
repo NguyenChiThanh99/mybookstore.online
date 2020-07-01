@@ -68,8 +68,13 @@ export class ChiTietSanPham extends Component {
   };
 
   getData = (slug) => {
+    var email = null;
+    if (Global.isSignIn || Global.isLoggedInS) {
+      email = Global.isSignIn ? Global.user[0] : Global.user[0].email;
+    }
     const data = {
       tenurl: slug,
+      email: email,
     };
     const url = Global.link + "product/chitietsp";
     const options = {
@@ -83,6 +88,7 @@ export class ChiTietSanPham extends Component {
         data: res.data.data,
         suggest: res.data.datalienquan,
         dataRate: res.data.datarate,
+        like: 
       });
       this.calRating(res.data.datarate);
       this.getDataComment(slug);

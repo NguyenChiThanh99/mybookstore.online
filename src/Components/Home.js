@@ -227,208 +227,176 @@ export class Home extends Component {
                 <nav className="nav flex-column">
                   <Dropdown drop="right">
                     <Dropdown.Toggle as={CustomToggle}>Văn học</Dropdown.Toggle>
-                    <Dropdown.Menu>
+                    <Dropdown.Menu style={{ marginRight: "9%" }}>
                       <Dropdown.Item className="p-0 bg-white">
-                        <table className="table-sm table-borderless">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Tiểu thuyết");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Tiểu thuyết
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Truyện ngắn");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Truyện ngắn
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Light Novel");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Light Novel
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Văn học|Truyện trinh thám"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Truyện trinh thám
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Ngôn tình");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Ngôn tình
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Văn học|Tác phẩm kinh điển"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Tác phẩm kinh điển
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Văn học|Huyền bí - Giả tưởng"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Huyền bí - Giả tưởng
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Văn học|Thơ ca, tục ngữ"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Thơ ca, tục ngữ
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Văn học|Phóng sự, ký sự"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Phóng sự, ký sự
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Truyện tranh");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Truyện tranh
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Văn học|12 cung hoàng đạo"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  12 cung hoàng đạo
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Tuổi teen");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Tuổi teen
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Truyện cười");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Truyện cười
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Sách ảnh");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Sách ảnh
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Du ký");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Du ký
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Văn học|Kinh dị");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Kinh dị
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <div className="row dropright-mobile">
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fix-content" }}
+                          >
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Tiểu thuyết");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tiểu thuyết
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Truyện ngắn");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Truyện ngắn
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Light Novel");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Light Novel
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Truyện trinh thám");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Truyện trinh thám
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fix-content" }}
+                          >
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Ngôn tình");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Ngôn tình
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Tác phẩm kinh điển");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tác phẩm kinh điển
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Văn học|Huyền bí - Giả tưởng"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Huyền bí - Giả tưởng
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Thơ ca, tục ngữ");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Thơ ca, tục ngữ
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fix-content" }}
+                          >
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Phóng sự, ký sự");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Phóng sự, ký sự
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Truyện tranh");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Truyện tranh
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|12 cung hoàng đạo");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              12 cung hoàng đạo
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Tuổi teen");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tuổi teen
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fix-content" }}
+                          >
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Truyện cười");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Truyện cười
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Sách ảnh");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Sách ảnh
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Du ký");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Du ký
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Văn học|Kinh dị");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Kinh dị
+                            </a>
+                          </div>
+                        </div>
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -1368,7 +1336,7 @@ export class Home extends Component {
               <b>Sản phẩm nổi bật</b>
             </h5>
             <div className="d-flex justify-content-center row px-2">
-            {this.show_hot_prod()}
+              {this.show_hot_prod()}
             </div>
           </div>
         )}
