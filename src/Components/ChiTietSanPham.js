@@ -768,11 +768,11 @@ export class ChiTietSanPham extends Component {
                   <div
                     className="btn"
                     onClick={() => {
-                      if (Global.user.length !== 0)
-                      {this.like();} else {
+                      if (Global.isSignIn || Global.isLoggedInS) {
+                        this.like();
+                      } else {
                         this.setState({
-                          err:
-                            "Bạn cần đăng nhập để thực hiện chức năng này",
+                          err: "Bạn cần đăng nhập để thực hiện chức năng này",
                         });
                         timer2 = setTimeout(
                           () => this.setState({ err: "" }),

@@ -33,7 +33,7 @@ export class GioHang extends Component {
   }
 
   getCart = () => {
-    if (Global.user.length !== 0) {
+    if (Global.isSignIn || Global.isLoggedInS) {
       const data = {
         email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
       };
