@@ -18,6 +18,8 @@ export default class Account extends Component {
       name: Global.isSignIn ? Global.user[1] : Global.user[0].name,
       phone: Global.isSignIn ? Global.user[2] : "",
       showModal: false,
+      loading: true,
+      empty: false,
     };
   }
 
@@ -50,9 +52,17 @@ export default class Account extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      this.setState({
-        likeArr: res.data.datalike,
-      });
+      if (res.data.datalike.length !== 0) {
+        this.setState({
+          likeArr: res.data.datalike,
+          loading: false,
+        });
+      } else {
+        this.setState({
+          loading: false,
+          empty: true,
+        });
+      }
     });
   };
 
@@ -183,9 +193,16 @@ export default class Account extends Component {
       </div>
     );
 
-    const bodyLikeJSX = (
-      <div className="container bg-white p-3 mt-3">
-        {this.show_like()}
+    const bodyLikeJSX = <div>{this.show_like()}</div>;
+
+    const loadingJSX = (
+      <div className="p-3 mt-3 d-flex justify-content-center">
+        <img
+          src={require("../images/loading.gif")}
+          className="img-fluid align-self-center"
+          alt="loading"
+          width="150px"
+        />
       </div>
     );
 
@@ -303,11 +320,15 @@ export default class Account extends Component {
               </div>
             </div>
           </div>
+        </div>
 
+        <div className="container bg-white pt-2">
           {/* Yêu thích */}
           <div id="yeuthich">
             <h5 className="pt-3 pl-2">YÊU THÍCH</h5>
-            {this.state.likeArr.length === 0 ? emptyLikeJSX : bodyLikeJSX}
+            {this.state.loading ? loadingJSX : null}
+            {this.state.empty ? emptyLikeJSX : null}
+            {this.state.likeArr.length === 0 ? bodyLikeJSX : null}
           </div>
         </div>
 
