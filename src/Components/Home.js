@@ -64,11 +64,17 @@ export class Home extends Component {
     });
   };
 
+  getRandom = (min, max) => {
+  return Math.random() * (max - min) + min;
+}
+
   show_6_lastest_prod = (arr_6prod, page) => {
     var start = (page - 1) * 6;
     var result = null;
     result = arr_6prod.map((product, index) => {
       if (index >= start && index < start + 6) {
+        var discount = this.getRandom(5, 15);
+        var newPrice = product.gia * discount / 100;
         return (
           <div
             className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
@@ -90,9 +96,25 @@ export class Home extends Component {
                   </small>
                 </p>
               </div>
-              <h6 className="textColor">
-                <b>{this.currencyFormat(product.gia.toString())} đ</b>
-              </h6>
+              <div className="row">
+                <div className="col-6">
+                  <h6 className="textColor text-nowrap">
+                    <b>{this.currencyFormat(newPrice.toString())} đ</b>
+                  </h6>
+                </div>
+                <div className="col-6">
+                  <p className="mb-0">
+                    <small style={{ color: "#616161" }}>
+                      {"-" + discount + "%"}
+                    </small>
+                  </p>
+                </div>
+              </div>
+              <p className="mb-0">
+                <small style={{ color: "#616161", textDecoration: 'line-through' }}>
+                  {this.currencyFormat(product.gia.toString())} đ
+                </small>
+              </p>
             </NavLink>
           </div>
         );
@@ -182,23 +204,6 @@ export class Home extends Component {
           onClick(e);
         }}
       />
-      // <a className="row m-0" href="# " ref={ref}>
-      //   <div
-      //     className="nav-link list-item flex-fill"
-      //     onClick={(e) => {
-      //       this.goToCategory(children);
-      //     }}
-      //   >
-      //     {children}
-      //   </div>
-      //   <button
-      //     className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright list-item"
-      //     onClick={(e) => {
-      //       e.preventDefault();
-      //       onClick(e);
-      //     }}
-      //   />
-      // </a>
     ));
 
     return (
@@ -251,7 +256,7 @@ export class Home extends Component {
                     >
                       Văn học
                     </a>
-                    <Dropdown.Menu style={{ maxWidth: 'max-content'}}>
+                    <Dropdown.Menu style={{ maxWidth: "fit-content" }}>
                       <div className="row dropright-mobile">
                         <div
                           className="col-sm-3 col-6"
@@ -593,7 +598,7 @@ export class Home extends Component {
                                 "Kinh tế|Nhân vật - bài học kinh doanh"
                               );
                             }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
+                            className="nav-link text-dark mya-dropright"
                             href="# "
                           >
                             Nhân vật - bài học kinh doanh
@@ -638,7 +643,7 @@ export class Home extends Component {
                                 "Kinh tế|Chứng khoáng - bất động sản"
                               );
                             }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
+                            className="nav-link text-dark mya-dropright"
                             href="# "
                           >
                             Chứng khoáng - bất động sản
@@ -681,7 +686,6 @@ export class Home extends Component {
                       </div>
                     </Dropdown.Menu>
                   </Dropdown>
-
 
                   <Dropdown drop="right">
                     <Dropdown.Toggle as={CustomToggle}>
