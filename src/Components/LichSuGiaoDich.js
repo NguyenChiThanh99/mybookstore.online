@@ -5,6 +5,8 @@ import axios from "axios";
 import qs from "qs";
 import MetaTags from "react-meta-tags";
 
+import "../CSS/history.css";
+
 export default class LichSuGiaoDich extends Component {
   constructor(props) {
     super(props);
@@ -49,17 +51,28 @@ export default class LichSuGiaoDich extends Component {
         var d = new Date(item.createdAt).toString().split(" ");
         var day = d[0] + " " + d[1] + " " + d[2] + " " + d[3] + " " + d[4];
         return (
-          <tr>
-            <td>
-              <NavLink class="textColor" to={"/bill/" + item._id}>
-                {item._id}
-              </NavLink>
-            </td>
-            <td>{day}</td>
-            <td>{item.tensp}</td>
-            <td>{this.currencyFormat(item.tongtien.toString())} đ</td>
-            <td>Giao hàng thành công</td>
-          </tr>
+          <div>
+            <div className="row">
+              <div className="col-sm-3 pr-0 text-nowrap">
+                <p className="mb-0 madonhang">{item._id}</p>
+              </div>
+              <div className="col-sm-2 pr-0">
+                <p className="mb-0 ngay">{day}</p>
+              </div>
+              <div className="col-sm-4 pr-0">
+                <p className="mb-0 sanpham">{item.tensp}</p>
+              </div>
+              <div className="col-sm-1 text-nowrap pr-0">
+                <p className="mb-0 an-thongtin">
+                  {this.currencyFormat(item.tongtien.toString())} đ
+                </p>
+              </div>
+              <div className="col-sm-2">
+                <p className="mb-3 trangthai">Giao hàng thành công</p>
+              </div>
+            </div>
+            <hr />
+          </div>
         );
       });
     }
@@ -68,18 +81,29 @@ export default class LichSuGiaoDich extends Component {
 
   render() {
     const bodyJSX = (
-      <table className="table table-striped">
-        <thead>
-          <tr className="text-nowrap">
-            <th>Mã đơn hàng</th>
-            <th>Ngày mua</th>
-            <th>Sản phẩm</th>
-            <th>Tổng tiền</th>
-            <th>Trạng thái</th>
-          </tr>
-        </thead>
-        <tbody>{this.showHistory()}</tbody>
-      </table>
+      <div>
+        <div className="an-thongtin">
+          <div className="row pt-2">
+            <div className="col-sm-3 text-nowrap">
+              <h6 style={{ fontWeight: "bold" }}>Mã đơn hàng </h6>
+            </div>
+            <div className="col-sm-2 text-nowrap">
+              <h6 style={{ fontWeight: "bold" }}>Ngày mua</h6>
+            </div>
+            <div className="col-sm-4 text-nowrap">
+              <h6 style={{ fontWeight: "bold" }}>Sản phẩm</h6>
+            </div>
+            <div className="col-sm-1 text-nowrap">
+              <h6 style={{ fontWeight: "bold" }}>Tổng tiền</h6>
+            </div>
+            <div className="col-sm-2 text-nowrap">
+              <h6 style={{ fontWeight: "bold" }}>Trạng thái</h6>
+            </div>
+          </div>
+          <hr className="mt-0" />
+        </div>
+        {this.showHistory()}
+      </div>
     );
 
     const loadingJSX = (

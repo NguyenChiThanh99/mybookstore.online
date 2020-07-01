@@ -1,0 +1,38 @@
+@media all and (max-width: 576px) {
+  .an-thongtin {
+    display: none;
+  }
+  hr {
+    margin-top: 0px;
+  }
+  .gia-sanpham {
+    font-weight: bold;
+    color: #eb2b3f;
+  }
+  .madonhang::before {
+    content: "Mã đơn hàng: ";
+    color: black;
+  }
+  .madonhang {
+    font-weight: bold;
+    color: #eb2b3f;
+  }
+  .ngay::before {
+    content: "Ngày đặt hàng: ";
+  }
+  .ngay {
+    color: rgb(97, 97, 97);
+  }
+  .sanpham::before {
+    content: "Sản phẩm: ";
+  }
+  .sanpham {
+    color: rgb(97, 97, 97);
+  }
+  .trangthai::before {
+    content: "Trạng thái: ";
+  }
+  .trangthai {
+    color: rgb(97, 97, 97);
+  }
+}
