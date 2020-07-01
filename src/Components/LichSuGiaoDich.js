@@ -51,7 +51,7 @@ export default class LichSuGiaoDich extends Component {
         var d = new Date(item.createdAt).toString().split(" ");
         var day = d[0] + " " + d[1] + " " + d[2] + " " + d[3] + " " + d[4];
         return (
-          <div>
+          <NavLink to={"/bill/" + item._id}>
             <div className="row">
               <div className="col-sm-3 pr-0 text-nowrap">
                 <p className="mb-0 madonhang">{item._id}</p>
@@ -72,7 +72,7 @@ export default class LichSuGiaoDich extends Component {
               </div>
             </div>
             <hr />
-          </div>
+          </NavLink>
         );
       });
     }
@@ -118,7 +118,7 @@ export default class LichSuGiaoDich extends Component {
     );
 
     return (
-      <div className="container pb-0">
+      <div className="container pb-0 px-0">
         <MetaTags>
           <title>Lịch sử giao dịch | mybookstore.online</title>
           <meta
@@ -141,7 +141,7 @@ export default class LichSuGiaoDich extends Component {
         </MetaTags>
 
         {/*Path*/}
-        <div className="container py-2 px-0">
+        <div className="container py-2 px-2">
           <NavLink to="/">
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>
@@ -149,8 +149,8 @@ export default class LichSuGiaoDich extends Component {
         </div>
 
         {/* Lịch sử giao dịch */}
-        <div id="lichsugiaodich" className="bg-white">
-          <h5 className="pt-3 pl-2">LỊCH SỬ GIAO DỊCH</h5>
+        <div className="bg-white container">
+          <h5 className="pt-3">LỊCH SỬ GIAO DỊCH</h5>
           {this.state.loading ? loadingJSX : bodyJSX}
         </div>
       </div>
