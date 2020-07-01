@@ -715,7 +715,7 @@ export class ChiTietSanPham extends Component {
         </MetaTags>
 
         {/*Path*/}
-        <div className="container py-2 mb-1 px-0">
+        <div className="container py-2 mb-1 px-2">
           <NavLink to="/">
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>

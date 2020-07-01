@@ -6,7 +6,7 @@ import Global from "./Global";
 import MetaTags from "react-meta-tags";
 import axios from "axios";
 import qs from "qs";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 export default class Account extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class Account extends Component {
 
   componentDidMount = () => {
     this.getSuggest();
-  }
+  };
 
   hoverInput(bool) {
     if (bool) {
@@ -72,6 +72,107 @@ export default class Account extends Component {
     this.setState({ showModal: false });
   };
 
+  getRandom = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+
+  currencyFormat = (num) => {
+    return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+  };
+
+  numOfPage = (data) => {
+    var lengthData = data.length;
+    if (lengthData !== 0) {
+      if (lengthData % 6 === 0) {
+        return Math.floor(lengthData / 6);
+      } else {
+        return Math.floor(lengthData / 6) + 1;
+      }
+    }
+  };
+
+  show_6_like_prod = (arr_6prod) => {
+    var result = null;
+    result = arr_6prod.map((product, index) => {
+      var discount = this.getRandom(5, 15);
+      var newPrice = product.gia + (product.gia * discount) / 100;
+      return (
+        <div
+          className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
+          key={index}
+        >
+          <NavLink to={"/product/" + product.tenurl}>
+            <img
+              src={product.hinhanhsanpham}
+              className="img-fluid align-self-center"
+              alt={product.tensp}
+            />
+            <div style={{ height: 50 }}>
+              <p className="mb-2 book_item_title">{product.tensp}</p>
+            </div>
+            <div style={{ height: 18 }}>
+              <p className="mb-0" style={{ color: "#616161" }}>
+                <small className="book_item_title2">
+                  {product.tacgia === " " ? null : product.tacgia}
+                </small>
+              </p>
+            </div>
+
+            <div className="row mt-2">
+              <div className="col-6 d-flex align-items-center">
+                <p className="mb-0">
+                  <small
+                    style={{
+                      color: "#616161",
+                      textDecoration: "line-through",
+                    }}
+                  >
+                    {this.currencyFormat(newPrice.toString())} đ
+                  </small>
+                </p>
+              </div>
+              <div className="col-6 d-flex align-items-center">
+                <p className="mb-0">
+                  <small style={{ color: "#616161" }}>
+                    {"-" + discount + "%"}
+                  </small>
+                </p>
+              </div>
+            </div>
+            <h5
+              className="textColor text-nowrap mb-0 pb-2"
+              style={{ marginTop: -3 }}
+            >
+              <b>{this.currencyFormat(product.gia.toString())} đ</b>
+            </h5>
+          </NavLink>
+        </div>
+      );
+    });
+    return result;
+  };
+
+  show_like = () => {
+    const { likeArr } = this.state;
+    if (likeArr.length !== 0) {
+      var numPage = this.numOfPage(likeArr);
+      var page_arr = [];
+      for (var i = 0; i < numPage; i++) {
+        page_arr.push(i);
+      }
+      var result = null;
+      result = page_arr.map((page, index) => {
+        var start = index * 6;
+        return (
+          <div className="d-flex justify-content-center row px-2" key={index}>
+            {this.show_6_like_prod(likeArr.slice(start, start + 6))}
+          </div>
+        );
+      });
+      return result;
+    }
+  };
+
   render() {
     const emptyLikeJSX = (
       <div className="pl-5 pb-3">
@@ -83,105 +184,11 @@ export default class Account extends Component {
     );
 
     const bodyLikeJSX = (
-      <table className="table table-striped table-borderless">
-        <tbody>
-          <tr>
-            <td>
-              <img
-                src="./images/item.jpg"
-                className="img-fluid"
-                style={{ width: "130px" }}
-                alt=""
-              />
-            </td>
-            <td>
-              Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại
-              thật vui
-            </td>
-            <td className="text-nowrap">
-              <span className="new-price">25.000 vnd</span>
-              <span className="del-price">30.000 vnd</span>
-              <div className="viewmore pb-2 mt-2">
-                <button className="btn btn-danger mybtn">
-                  Thêm vào giỏ hàng
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="./images/item.jpg"
-                className="img-fluid"
-                style={{ width: "130px" }}
-                alt=""
-              />
-            </td>
-            <td>
-              Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại
-              thật vui
-            </td>
-            <td className="text-nowrap">
-              <span className="new-price">25.000 vnd</span>
-              <span className="del-price">30.000 vnd</span>
-              <div className="viewmore pb-2 mt-2">
-                <button className="btn btn-danger mybtn">
-                  Thêm vào giỏ hàng
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="./images/item.jpg"
-                className="img-fluid"
-                style={{ width: "130px" }}
-                alt=""
-              />
-            </td>
-            <td>
-              Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại
-              thật vui
-            </td>
-            <td className="text-nowrap">
-              <span className="new-price">25.000 vnd</span>
-              <span className="del-price">30.000 vnd</span>
-              <div className="viewmore pb-2 mt-2">
-                <button className="btn btn-danger mybtn">
-                  Thêm vào giỏ hàng
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="./images/item.jpg"
-                className="img-fluid"
-                style={{ width: "130px" }}
-                alt=""
-              />
-            </td>
-            <td>
-              Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại
-              thật vui
-            </td>
-            <td className="text-nowrap">
-              <span className="new-price">25.000 vnd</span>
-              <span className="del-price">30.000 vnd</span>
-              <div className="viewmore pb-2 mt-2">
-                <button className="btn btn-danger mybtn">
-                  Thêm vào giỏ hàng
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="container bg-white p-3 mt-3">
+        {this.show_like()}
+      </div>
     );
-    console.log(this.state.likeArr);
-    
+
     return (
       <div>
         <MetaTags>
@@ -312,7 +319,7 @@ export default class Account extends Component {
             <form>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">
-                  Nhập mật khẩu cũ để đổi mật khẩu 
+                  Nhập mật khẩu cũ để đổi mật khẩu
                 </label>
                 <input
                   type="email"
@@ -333,7 +340,6 @@ export default class Account extends Component {
               </div>
             </form>
           </Modal.Body>
-          
         </Modal>
       </div>
     );

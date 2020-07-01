@@ -274,8 +274,6 @@ export class GioHang extends Component {
     if (this.state.cart.length !== 0) {
       firstItemImg = this.state.cart[0].hinhanhsanpham;
     }
-    console.log(this.state.suggest);
-    
 
     const loadingJSX = (
       <div className="container bg-white p-3 mt-3 d-flex justify-content-center">
@@ -463,7 +461,7 @@ export class GioHang extends Component {
         </MetaTags>
 
         {/*Path*/}
-        <div className="container py-2 px-0">
+        <div className="container py-2 px-2">
           <NavLink to="/">
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>
