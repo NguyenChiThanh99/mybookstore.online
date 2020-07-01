@@ -174,13 +174,6 @@ export class Home extends Component {
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <div ref={ref}>
-        <button
-          className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
-          onClick={(e) => {
-            e.preventDefault();
-            onClick(e);
-          }}
-        />
         <a
           href="# "
           className="nav-link list-item flex-fill"
@@ -190,6 +183,13 @@ export class Home extends Component {
         >
           {children}
         </a>
+        <button
+          className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
+          onClick={(e) => {
+            e.preventDefault();
+            onClick(e);
+          }}
+        />
       </div>
       /* <a className="row m-0" href="# " ref={ref}>
         <div
