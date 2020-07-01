@@ -225,10 +225,10 @@ export class Home extends Component {
                   <span>Danh mục sản phẩm</span>
                 </div>
                 <nav className="nav flex-column">
-                  <Dropdown drop="down">
+                  <Dropdown drop="right">
                     <Dropdown.Toggle as={CustomToggle}>Văn học</Dropdown.Toggle>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
-                      <Dropdown.Item className="p-0 bg-white">
+               
                         <div className="row dropright-mobile">
                           <div
                             className="col-sm-3 col-6"
@@ -397,7 +397,7 @@ export class Home extends Component {
                             </a>
                           </div>
                         </div>
-                      </Dropdown.Item>
+           
                     </Dropdown.Menu>
                   </Dropdown>
 
