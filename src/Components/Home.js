@@ -17,7 +17,7 @@ export class Home extends Component {
       lastest_prod_arr: [],
       lastest_prod_page: 0,
       hot_prod_arr: [],
-      dropdown: window.innerWidth <= 576 ? 'down' : 'right',
+      dropdown: window.innerWidth <= 576 ? "down" : "right",
     };
   }
 
@@ -174,16 +174,14 @@ export class Home extends Component {
     );
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  
-        <button
+      <button
         ref={ref}
-          className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
-          onClick={(e) => {
-            e.preventDefault();
-            onClick(e);
-          }}
-        />
-    
+        className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
+        onClick={(e) => {
+          e.preventDefault();
+          onClick(e);
+        }}
+      />
       // <a className="row m-0" href="# " ref={ref}>
       //   <div
       //     className="nav-link list-item flex-fill"
@@ -239,7 +237,10 @@ export class Home extends Component {
                   <span>Danh mục sản phẩm</span>
                 </div>
                 <nav className="nav flex-column">
-                  <Dropdown drop={this.state.dropdown} className="d-flex flex-row-reverse">
+                  <Dropdown
+                    drop={this.state.dropdown}
+                    className="d-flex flex-row-reverse"
+                  >
                     <Dropdown.Toggle as={CustomToggle}></Dropdown.Toggle>
                     <a
                       href="# "
@@ -420,140 +421,131 @@ export class Home extends Component {
                     </Dropdown.Menu>
                   </Dropdown>
 
-                  <Dropdown drop="right">
-                    <Dropdown.Toggle as={CustomToggle}>
+                  <Dropdown
+                    drop={this.state.dropdown}
+                    className="d-flex flex-row-reverse"
+                  >
+                    <Dropdown.Toggle as={CustomToggle}></Dropdown.Toggle>
+                    <a
+                      href="# "
+                      className="nav-link list-item flex-fill"
+                      onClick={(e) => {
+                        this.goToCategory("Sách thiếu nhi");
+                      }}
+                    >
                       Sách thiếu nhi
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item className="p-0 bg-white">
-                        <table className="table-sm table-borderless">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Truyện thiếu nhi"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Truyện thiếu nhi
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Manga - Comic"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Manga - Comic
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Kiến thức bách khoa"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Kiến thức bách khoa
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Kỹ năng sống cho trẻ"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Kỹ năng sống cho trẻ
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Từ điển thiếu nhi"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Từ điển thiếu nhi
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Flashcard"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Flashcard
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Tạp chí thiếu nhi"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Tạp chí thiếu nhi
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Sách nói"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Sách nói
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Sách thiếu nhi|Tô màu, luyện chữ"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Tô màu, luyện chữ
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </Dropdown.Item>
+                    </a>
+                    <Dropdown.Menu style={{ marginRight: "9%" }}>
+                      <div className="row dropright-mobile">
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fix-content" }}
+                        >
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Sách thiếu nhi|Truyện thiếu nhi"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Truyện thiếu nhi
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Sách thiếu nhi|Manga - Comic");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Manga - Comic
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Sách thiếu nhi|Kiến thức bách khoa"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Kiến thức bách khoa
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Sách thiếu nhi|Kỹ năng sống cho trẻ"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Kỹ năng sống cho trẻ
+                          </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fix-content" }}
+                        >
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Sách thiếu nhi|Từ điển thiếu nhi"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Từ điển thiếu nhi
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Sách thiếu nhi|Flashcard");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Flashcard
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Sách thiếu nhi|Tạp chí thiếu nhi"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Tạp chí thiếu nhi
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Sách thiếu nhi|Sách nói");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Sách nói
+                          </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fix-content" }}
+                        >
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Sách thiếu nhi|Tô màu, luyện chữ"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Tô màu, luyện chữ
+                          </a>
+                        </div>
+                      </div>
                     </Dropdown.Menu>
                   </Dropdown>
 
