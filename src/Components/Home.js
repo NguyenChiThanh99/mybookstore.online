@@ -65,7 +65,7 @@ export class Home extends Component {
   };
 
   getRandom = (min, max) => {
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
   show_6_lastest_prod = (arr_6prod, page) => {
