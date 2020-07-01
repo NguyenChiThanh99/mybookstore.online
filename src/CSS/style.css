@@ -271,7 +271,9 @@ a {
 .top-banner {
   max-width: 100%;
 }
-
+.dropright-mobile {
+  width: max-content;
+}
 @media all and (max-width: 576px) {
   .dropright-mobile {
     width: auto;
@@ -359,6 +361,4 @@ a {
   box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
 }
 
-.dropright-mobile {
-  width: max-content;
-}
+
