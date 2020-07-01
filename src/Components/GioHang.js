@@ -206,12 +206,14 @@ export class GioHang extends Component {
     var result = null;
     if (this.state.suggest.length > 0) {
       result = this.state.suggest.map((product, index) => {
+        var discount = this.getRandom(5, 15);
+        var newPrice = product.gia + (product.gia * discount) / 100;
         return (
           <div
             className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
-            onClick={() => this.reloadPage(product.tenurl)}
+            key={index}
           >
-            <NavLink to={"/product/" + product.tenurl} key={index}>
+            <NavLink to={"/product/" + product.tenurl}>
               <img
                 src={product.hinhanhsanpham}
                 className="img-fluid align-self-center"
@@ -221,21 +223,50 @@ export class GioHang extends Component {
                 <p className="mb-2 book_item_title">{product.tensp}</p>
               </div>
               <div style={{ height: 18 }}>
-                <p className="mb-0">
+                <p className="mb-0" style={{ color: "#616161" }}>
                   <small className="book_item_title2">
                     {product.tacgia === " " ? null : product.tacgia}
                   </small>
                 </p>
               </div>
-              <h6 className="textColor">
+
+              <div className="row mt-2">
+                <div className="col-6 d-flex align-items-center">
+                  <p className="mb-0">
+                    <small
+                      style={{
+                        color: "#616161",
+                        textDecoration: "line-through",
+                      }}
+                    >
+                      {this.currencyFormat(newPrice.toString())} đ
+                    </small>
+                  </p>
+                </div>
+                <div className="col-6 d-flex align-items-center">
+                  <p className="mb-0">
+                    <small style={{ color: "#616161" }}>
+                      {"-" + discount + "%"}
+                    </small>
+                  </p>
+                </div>
+              </div>
+              <h5
+                className="textColor text-nowrap mb-0 pb-2"
+                style={{ marginTop: -3 }}
+              >
                 <b>{this.currencyFormat(product.gia.toString())} đ</b>
-              </h6>
+              </h5>
             </NavLink>
           </div>
         );
       });
     }
     return result;
+  };
+
+  getRandom = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
   };
 
   render() {

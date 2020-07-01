@@ -108,6 +108,10 @@ export class DanhSachSanPham extends Component {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
   };
 
+  getRandom = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+
   show_4_prod = (arr_4_prod) => {
     var result = null;
     result = arr_4_prod.map((product, index) => {
