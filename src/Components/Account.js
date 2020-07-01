@@ -6,6 +6,7 @@ import Global from "./Global";
 import MetaTags from "react-meta-tags";
 import axios from "axios";
 import qs from "qs";
+import { Modal, Button } from "react-bootstrap";
 
 export default class Account extends Component {
   constructor(props) {
@@ -14,6 +15,9 @@ export default class Account extends Component {
     this.state = {
       styleInput: "col-6 d-flex align-items-center border borderColor h-25",
       likeArr: [],
+      name: Global.isSignIn ? Global.user[1] : Global.user[0].name,
+      phone: Global.isSignIn ? Global.user[2] : "",
+      showModal: false,
     };
   }
 
@@ -50,6 +54,22 @@ export default class Account extends Component {
         likeArr: res.data.datalike,
       });
     });
+  };
+
+  onChange = (event) => {
+    var target = event.target;
+    var value = target.value;
+    var name = target.name;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleShow = () => {
+    this.setState({ showModal: true });
+  };
+  handleClose = () => {
+    this.setState({ showModal: false });
   };
 
   render() {
@@ -225,9 +245,9 @@ export default class Account extends Component {
                         type="text"
                         className="form-control"
                         id="name"
-                        defaultValue={
-                          Global.isSignIn ? Global.user[1] : Global.user[0].name
-                        }
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.onChange}
                       />
                     </div>
                   </div>
@@ -250,22 +270,6 @@ export default class Account extends Component {
                     </div>
                   </div>
                   <div className="form-group row pl-3 pr-3">
-                    <label
-                      htmlFor="password"
-                      className="col-sm-2 col-form-label"
-                    >
-                      Password
-                    </label>
-                    <div className="col-sm-10">
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        defaultValue={1234567}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group row pl-3 pr-3">
                     <label htmlFor="phone" className="col-sm-2 col-form-label">
                       Số điện thoại
                     </label>
@@ -274,11 +278,16 @@ export default class Account extends Component {
                         type="text"
                         className="form-control"
                         id="phone"
-                        defaultValue={Global.isSignIn ? Global.user[2] : ""}
+                        name="phone"
+                        value={this.state.phone}
+                        onChange={this.onChange}
                       />
                     </div>
                   </div>
                   <div className="viewmore pb-2 mt-2">
+                    <button type="submit" className="btn btn-danger mybtn">
+                      Đổi mật khẩu
+                    </button>
                     <button type="submit" className="btn btn-danger mybtn">
                       Lưu thay đổi
                     </button>
@@ -294,6 +303,38 @@ export default class Account extends Component {
             {this.state.likeArr.length === 0 ? emptyLikeJSX : bodyLikeJSX}
           </div>
         </div>
+
+        <Modal show={this.state.showModal2} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Xác nhận mật khẩu</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">
+                  Nhập mật khẩu cũ để đổi mật khẩu 
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="emailForgot"
+                  name="emailForgot"
+                  value={this.state.emailForgot}
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className="viewmore pb-2 mt-2">
+                <button
+                  className="btn btn-danger mybtn"
+                  onClick={this.forgotPass}
+                >
+                  Gửi
+                </button>
+              </div>
+            </form>
+          </Modal.Body>
+          
+        </Modal>
       </div>
     );
   }

@@ -752,6 +752,7 @@ export default class Header extends Component {
             />
           </div>
         </div>
+        
         {/*Menu*/}
         <nav className="navbar navbar-expand-md navbar-line bg-white">
           <div className="container">
