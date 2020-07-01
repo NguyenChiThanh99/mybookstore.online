@@ -238,7 +238,7 @@ export class Home extends Component {
                   <span>Danh mục sản phẩm</span>
                 </div>
                 <nav className="nav flex-column">
-                  <Dropdown drop="right" className="d-flex flex-row-reverse">
+                  <Dropdown drop="right | down" className="d-flex flex-row-reverse">
                     <Dropdown.Toggle as={CustomToggle}></Dropdown.Toggle>
                     <a
                       href="# "
