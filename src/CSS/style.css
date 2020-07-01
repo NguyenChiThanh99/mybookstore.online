@@ -290,7 +290,7 @@ a {
     /* color: #eb2b3f; */
   }
   .mobile-pl3{
-    padding-left: 1rem;
+    padding-left: 1rem !important;
   }
 }
 

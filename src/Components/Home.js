@@ -90,7 +90,7 @@ export class Home extends Component {
                 <p className="mb-2 book_item_title">{product.tensp}</p>
               </div>
               <div style={{ height: 18 }}>
-                <p className="mb-0">
+                <p className="mb-0" style={{ color: "#616161" }}>
                   <small className="book_item_title2">
                     {product.tacgia === " " ? null : product.tacgia}
                   </small>
@@ -118,9 +118,9 @@ export class Home extends Component {
                   </p>
                 </div>
               </div>
-              <h6 className="textColor text-nowrap mb-0">
+              <h5 className="textColor text-nowrap mb-0">
                 <b>{this.currencyFormat(product.gia.toString())} đ</b>
-              </h6>
+              </h5>
             </NavLink>
           </div>
         );
@@ -905,6 +905,11 @@ export class Home extends Component {
                           >
                             Cấp 2
                           </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fit-content" }}
+                        >
                           <a
                             onClick={() => {
                               this.goToCategory(
@@ -954,6 +959,11 @@ export class Home extends Component {
                           >
                             Sách giáo viên
                           </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fit-content" }}
+                        >
                           <a
                             onClick={() => {
                               this.goToCategory(
