@@ -295,11 +295,13 @@ export class ChiTietSanPham extends Component {
           timer2 = setTimeout(() => this.setState({ noti: "" }), 3000);
         }
       });
+      return true;
     } else {
       this.setState({
         err: "Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng",
       });
       timer2 = setTimeout(() => this.setState({ err: "" }), 3000);
+      return false;
     }
   };
 
@@ -428,7 +430,7 @@ export class ChiTietSanPham extends Component {
       };
       axios(options).then((res) => {
         console.log(res.data.data);
-        
+
         if (res.data.data === "success")
           this.setState({
             like: true,
@@ -766,7 +768,17 @@ export class ChiTietSanPham extends Component {
                   <div
                     className="btn"
                     onClick={() => {
-                      this.like();
+                      if (Global.user.length !== 0)
+                      {this.like();} else {
+                        this.setState({
+                          err:
+                            "Bạn cần đăng nhập để thực hiện chức năng này",
+                        });
+                        timer2 = setTimeout(
+                          () => this.setState({ err: "" }),
+                          3000
+                        );
+                      }
                     }}
                   >
                     <img
@@ -829,8 +841,9 @@ export class ChiTietSanPham extends Component {
                   <div
                     className="btn btn-danger mybtn text-nowrap"
                     onClick={() => {
-                      this.addToCart(data._id);
-                      this.props.history.push("/cart");
+                      if (this.addToCart(data._id)) {
+                        this.props.history.push("/cart");
+                      }
                     }}
                   >
                     Mua ngay

@@ -33,30 +33,37 @@ export class GioHang extends Component {
   }
 
   getCart = () => {
-    const data = {
-      email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
-    };
-    const url = Global.link + "cart/showcart";
-    const options = {
-      method: "POST",
-      headers: { "content-type": "application/x-www-form-urlencoded" },
-      url,
-      data: qs.stringify(data),
-    };
-    axios(options).then((res) => {
-      this.setState({
-        cart: res.data.data,
-        loading: false,
-      });
-      if (res.data.data.length !== 0) {
-        this.calTotal();
-      } else {
+    if (Global.user.length !== 0) {
+      const data = {
+        email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+      };
+      const url = Global.link + "cart/showcart";
+      const options = {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        url,
+        data: qs.stringify(data),
+      };
+      axios(options).then((res) => {
         this.setState({
+          cart: res.data.data,
           loading: false,
-          emptyCart: true,
         });
-      }
-    });
+        if (res.data.data.length !== 0) {
+          this.calTotal();
+        } else {
+          this.setState({
+            loading: false,
+            emptyCart: true,
+          });
+        }
+      });
+    } else {
+      this.setState({
+        loading: false,
+        emptyCart: true,
+      });
+    }
   };
 
   show_cart = () => {
