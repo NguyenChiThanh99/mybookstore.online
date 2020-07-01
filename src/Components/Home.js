@@ -238,17 +238,16 @@ export class Home extends Component {
                   <span>Danh mục sản phẩm</span>
                 </div>
                 <nav className="nav flex-column">
-                  <Dropdown drop="down" className="d-flex flex-row-reverse">
+                  <Dropdown drop="right" className="d-flex flex-row-reverse">
                     <Dropdown.Toggle as={CustomToggle}>
-                      
                       <a
                         href="# "
                         className="nav-link list-item flex-fill"
                         onClick={(e) => {
-                          this.goToCategory('Văn học');
+                          this.goToCategory("Văn học");
                         }}
                       >
-                        
+                        Văn học
                       </a>
                     </Dropdown.Toggle>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
