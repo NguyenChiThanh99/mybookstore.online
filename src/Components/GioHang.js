@@ -202,6 +202,42 @@ export class GioHang extends Component {
     });
   };
 
+  showSuggest = () => {
+    var result = null;
+    if (this.state.suggest.length > 0) {
+      result = this.state.suggest.map((product, index) => {
+        return (
+          <div
+            className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
+            onClick={() => this.reloadPage(product.tenurl)}
+          >
+            <NavLink to={"/product/" + product.tenurl} key={index}>
+              <img
+                src={product.hinhanhsanpham}
+                className="img-fluid align-self-center"
+                alt={product.tensp}
+              />
+              <div style={{ height: 50 }}>
+                <p className="mb-2 book_item_title">{product.tensp}</p>
+              </div>
+              <div style={{ height: 18 }}>
+                <p className="mb-0">
+                  <small className="book_item_title2">
+                    {product.tacgia === " " ? null : product.tacgia}
+                  </small>
+                </p>
+              </div>
+              <h6 className="textColor">
+                <b>{this.currencyFormat(product.gia.toString())} đ</b>
+              </h6>
+            </NavLink>
+          </div>
+        );
+      });
+    }
+    return result;
+  };
+
   render() {
     var firstItemImg = "https://uit-hotelbooking.000webhostapp.com/logo.png";
     if (this.state.cart.length !== 0) {
@@ -347,14 +383,16 @@ export class GioHang extends Component {
         </div>
 
         {/*Suggest*/}
-        <div className="container bg-white p-3 mt-3">
-          <h5 className="p-2">
-            <b>Sản phẩm liên quan</b>
-          </h5>
-          <div className="d-flex justify-content-center row px-2">
-            {/* {this.getSuggest(this.state.suggest)} */}
+        {this.state.suggest.length === 0 ? null : (
+          <div className="container bg-white p-3 mt-3">
+            <h5 className="p-2">
+              <b>Sản phẩm liên quan</b>
+            </h5>
+            <div className="d-flex justify-content-center row px-2">
+              {this.showSuggest(this.state.suggest)}
+            </div>
           </div>
-        </div>
+        )}
 
         <Modal show={this.state.showModal} onHide={this.handleClose}>
           <Modal.Header closeButton>
