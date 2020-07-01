@@ -118,11 +118,8 @@ export class DanhSachSanPham extends Component {
       var discount = this.getRandom(5, 15);
       var newPrice = product.gia + (product.gia * discount) / 100;
       return (
-        <div
-          className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
-          key={index}
-        >
-          <NavLink to={"/product/" + product.tenurl}>
+        <div className="col-sm-3 col-6 product_shadow my-2">
+          <NavLink to={"/product/" + product.tenurl} key={index}>
             <img
               src={product.hinhanhsanpham}
               className="img-fluid align-self-center"
@@ -132,7 +129,7 @@ export class DanhSachSanPham extends Component {
               <p className="mb-2 book_item_title">{product.tensp}</p>
             </div>
             <div style={{ height: 18 }}>
-              <p className="mb-0" style={{ color: "#616161" }}>
+              <p className="mb-0">
                 <small className="book_item_title2">
                   {product.tacgia === " " ? null : product.tacgia}
                 </small>
