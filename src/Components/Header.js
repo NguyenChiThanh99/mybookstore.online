@@ -731,7 +731,7 @@ export class Header extends Component {
           <div>
             {/* thêm class top-banner */}
             <img
-              src={require("../images/ad1.jpg")}
+              src={require("../images/ad1.jp2")}
               className="top-banner mx-auto d-block"
               alt="mybookstore.online banner"
             />

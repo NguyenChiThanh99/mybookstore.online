@@ -1229,28 +1229,28 @@ export class Home extends Component {
                 <div className="carousel-inner">
                   <div className="carousel-item active">
                     <img
-                      src={require("../images/ad2.jpg")}
+                      src={require("../images/ad2.jp2")}
                       className="d-block w-100 img-fluid"
                       alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/ad3.jpg")}
+                      src={require("../images/ad3.jp2")}
                       className="d-block w-100 img-fluid"
                       alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/ad4.jpg")}
+                      src={require("../images/ad4.jp2")}
                       className="d-block w-100 img-fluid"
                       alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/ad5.jpg")}
+                      src={require("../images/ad5.jp2")}
                       className="d-block w-100 img-fluid"
                       alt="Quảng cáo sản phẩm"
                     />
@@ -1290,7 +1290,7 @@ export class Home extends Component {
           <div className="row px-1">
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ad7.png")}
+                src={require("../images/ad7.jp2")}
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1298,7 +1298,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ad6.jpg")}
+                src={require("../images/ad6.jp2")}
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1306,7 +1306,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ad8.jpg")}
+                src={require("../images/ad8.jp2")}
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1314,7 +1314,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ad9.jpg")}
+                src={require("../images/ad9.jp2")}
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
