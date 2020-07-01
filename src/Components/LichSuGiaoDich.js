@@ -14,6 +14,7 @@ export default class LichSuGiaoDich extends Component {
     this.state = {
       data: [],
       loading: true,
+      empty: false,
     };
   }
 
@@ -114,6 +115,15 @@ export default class LichSuGiaoDich extends Component {
           alt="loading"
           width="200px"
         />
+      </div>
+    );
+
+    const emptyJSX = (
+      <div className="container bg-white p-3 mt-3 text-center">
+        <p>Bạn chưa có đơn hàng nào</p>
+        <NavLink to="/" className="btn btn-danger mybtn mr-3 btn-viewmore-cart">
+          Tiếp tục mua sắm
+        </NavLink>
       </div>
     );
 

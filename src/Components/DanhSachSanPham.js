@@ -20,6 +20,7 @@ export class DanhSachSanPham extends Component {
       numOfPage: 0,
       page: 1,
       loading: true,
+      dropdown: window.innerWidth <= 576 ? "down" : "right",
     };
   }
 
@@ -177,23 +178,14 @@ export class DanhSachSanPham extends Component {
 
   render() {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-      <a className="row m-0" href="# " ref={ref}>
-        <div
-          className="nav-link list-item flex-fill"
-          onClick={(e) => {
-            this.goToCategory(children);
-          }}
-        >
-          {children}
-        </div>
-        <button
-          className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright list-item"
-          onClick={(e) => {
-            e.preventDefault();
-            onClick(e);
-          }}
-        />
-      </a>
+      <button
+        ref={ref}
+        className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
+        onClick={(e) => {
+          e.preventDefault();
+          onClick(e);
+        }}
+      />
     ));
 
     const PageJSX = (
