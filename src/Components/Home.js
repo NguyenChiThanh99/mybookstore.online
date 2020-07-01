@@ -255,7 +255,7 @@ export class Home extends Component {
                       <div className="row dropright-mobile">
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -296,7 +296,7 @@ export class Home extends Component {
                         </div>
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -337,7 +337,7 @@ export class Home extends Component {
                         </div>
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -378,7 +378,7 @@ export class Home extends Component {
                         </div>
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -549,151 +549,139 @@ export class Home extends Component {
                     </Dropdown.Menu>
                   </Dropdown>
 
-                  <Dropdown drop="right">
-                    <Dropdown.Toggle as={CustomToggle}>Kinh tế</Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item className="p-0 bg-white">
-                        <table className="table-sm table-borderless">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Quản trị - lãnh đạo"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Quản trị - lãnh đạo
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Marketing - bán hàng"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Marketing - bán hàng
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Nhân vật - bài học kinh doanh"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Nhân vật - bài học kinh doanh
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Phân tích kinh tế"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Phân tích kinh tế
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Khởi nghiệp làm giàu"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Khởi nghiệp làm giàu
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Tài chính - ngân hàng"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Tài chính - ngân hàng
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Chứng khoáng - bất động sản"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Chứng khoáng - bất động sản
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Nhân sự - việc làm"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Nhân sự - việc làm
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory("Kinh tế|Ngoại thương");
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Ngoại thương
-                                </a>
-                              </td>
-                              <td>
-                                <a
-                                  onClick={() => {
-                                    this.goToCategory(
-                                      "Kinh tế|Kế toán - kiểm toán - thuế"
-                                    );
-                                  }}
-                                  className="nav-link text-dark text-nowrap mya-dropright"
-                                  href="# "
-                                >
-                                  Kế toán - kiểm toán - thuế
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </Dropdown.Item>
+                  <Dropdown
+                    drop={this.state.dropdown}
+                    className="d-flex flex-row-reverse"
+                  >
+                    <Dropdown.Toggle as={CustomToggle}></Dropdown.Toggle>
+                    <a
+                      href="# "
+                      className="nav-link list-item flex-fill"
+                      onClick={(e) => {
+                        this.goToCategory("Kinh tế");
+                      }}
+                    >
+                      Kinh tế
+                    </a>
+                    <Dropdown.Menu style={{ marginRight: "9%" }}>
+                      <div className="row dropright-mobile">
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fix-content" }}
+                        >
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Kinh tế|Quản trị - lãnh đạo");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Quản trị - lãnh đạo
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Kinh tế|Marketing - bán hàng");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Marketing - bán hàng
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Kinh tế|Nhân vật - bài học kinh doanh"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Nhân vật - bài học kinh doanh
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Kinh tế|Phân tích kinh tế");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Phân tích kinh tế
+                          </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fix-content" }}
+                        >
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Kinh tế|Khởi nghiệp làm giàu");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Khởi nghiệp làm giàu
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Kinh tế|Tài chính - ngân hàng"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Tài chính - ngân hàng
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Kinh tế|Chứng khoáng - bất động sản"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Chứng khoáng - bất động sản
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Kinh tế|Nhân sự - việc làm");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Nhân sự - việc làm
+                          </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fix-content" }}
+                        >
+                          <a
+                            onClick={() => {
+                              this.goToCategory("Kinh tế|Ngoại thương");
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Ngoại thương
+                          </a>
+                          <a
+                            onClick={() => {
+                              this.goToCategory(
+                                "Kinh tế|Kế toán - kiểm toán - thuế"
+                              );
+                            }}
+                            className="nav-link text-dark text-nowrap mya-dropright"
+                            href="# "
+                          >
+                            Kế toán - kiểm toán - thuế
+                          </a>
+                        </div>
+                      </div>
                     </Dropdown.Menu>
                   </Dropdown>
+
 
                   <Dropdown drop="right">
                     <Dropdown.Toggle as={CustomToggle}>
