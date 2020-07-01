@@ -8,6 +8,8 @@ import axios from "axios";
 import qs from "qs";
 import { Modal } from "react-bootstrap";
 
+var timer4 = null;
+
 export default class Account extends Component {
   constructor(props) {
     super(props);
@@ -21,12 +23,18 @@ export default class Account extends Component {
       showModal2: false,
       loading: true,
       empty: false,
+      password: "",
+      noti: "",
     };
   }
 
   componentDidMount = () => {
     this.getSuggest();
   };
+
+  componentWillUnmount() {
+    clearTimeout(timer4);
+  }
 
   hoverInput(bool) {
     if (bool) {
@@ -190,6 +198,34 @@ export default class Account extends Component {
     }
   };
 
+  changeProfile = () => {
+    const data = {
+      email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+      name: this.state.name,
+      phone: this.state.phone,
+    };
+    const url = Global.link + "user/changeprofile";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      if (res.data.data === "success") {
+        this.setState({
+          noti: "Cập nhật thông tin thành công.",
+        });
+        timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
+      } else {
+        this.setState({
+          noti: "Đã xảy ra lỗi, vui lòng thử lại",
+        });
+        timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
+      }
+    });
+  };
+
   render() {
     const emptyLikeJSX = (
       <div className="pl-5 pb-3">
@@ -210,6 +246,20 @@ export default class Account extends Component {
           alt="loading"
           width="200px"
         />
+      </div>
+    );
+
+    const notiJSX = (
+      <div className="alert alert-success alert-dismissible fade show mt-3 mb-0">
+        {this.state.noti}
+        <button
+          onClick={this.closeNoti}
+          type="button"
+          className="close"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     );
 
@@ -315,11 +365,22 @@ export default class Account extends Component {
                       />
                     </div>
                   </div>
+                  {this.state.noti === "" ? null : notiJSX}
                   <div className="viewmore pb-2 mt-2">
-                    <button type="submit" className="btn btn-danger mybtn">
+                    <button
+                      className="btn btn-danger mybtn mr-4"
+                      onClick={() => {
+                        this.handleShow1();
+                      }}
+                    >
                       Đổi mật khẩu
                     </button>
-                    <button type="submit" className="btn btn-danger mybtn">
+                    <button
+                      className="btn btn-danger mybtn ml-4"
+                      onClick={() => {
+                        this.changeProfile();
+                      }}
+                    >
                       Lưu thay đổi
                     </button>
                   </div>
@@ -350,11 +411,11 @@ export default class Account extends Component {
                   Vui lòng nhập mật khẩu cũ để đổi mật khẩu
                 </label>
                 <input
-                  type="email"
+                  type="password"
                   className="form-control"
-                  id="emailForgot"
-                  name="emailForgot"
-                  value={this.state.emailForgot}
+                  id="password"
+                  name="password"
+                  value={this.state.password}
                   onChange={this.onChange}
                 />
               </div>
