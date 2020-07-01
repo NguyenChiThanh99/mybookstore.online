@@ -5,7 +5,7 @@ import axios from "axios";
 import qs from "qs";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
-import { Modal} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 import "../CSS/style.css";
 import Global from "./Global";
@@ -61,15 +61,14 @@ export default class Header extends Component {
       emailForgot: "",
       errForgot: "",
       showModalForgot: false,
+      search: "",
     };
   }
 
   forgotPass = (event) => {
     event.preventDefault();
     const { emailForgot } = this.state;
-    if (
-      emailForgot.length === 0
-    ) {
+    if (emailForgot.length === 0) {
       this.setState({
         errForgot: "Vui lòng nhập Email.",
       });
@@ -80,7 +79,7 @@ export default class Header extends Component {
       });
       timer = setTimeout(() => this.setState({ errForgot: "" }), 4000);
     } else {
-      const data = {email: this.state.emailForgot};
+      const data = { email: this.state.emailForgot };
       const url = Global.link + "user/forgotpassword";
       const options = {
         method: "POST",
@@ -89,23 +88,20 @@ export default class Header extends Component {
         data: qs.stringify(data),
       };
       axios(options).then((res) => {
-        if (res.data.err === 'success') {
+        if (res.data.err === "success") {
           this.setState({
             errForgot: "Vui lòng kiểm tra email để nhận mật khẩu mới",
             chooseSignIn: true,
             isSignUpSuccess: false,
           });
-          timer = setTimeout(
-            () =>
-              {this.setState({
-                errForgot: "",
-                emailForgot: "",
-              });
-              this.closeModalForgot(); 
-              this.openModal();
-            },
-            4000
-          );
+          timer = setTimeout(() => {
+            this.setState({
+              errForgot: "",
+              emailForgot: "",
+            });
+            this.closeModalForgot();
+            this.openModal();
+          }, 4000);
         } else {
           this.setState({
             errForgot: res.data.err,
@@ -114,7 +110,7 @@ export default class Header extends Component {
         }
       });
     }
-  }
+  };
 
   closeModal = () => {
     this.setState({
@@ -135,7 +131,7 @@ export default class Header extends Component {
   closeModalForgot = () => {
     this.setState({
       showModalForgot: false,
-      emailForgot: '',
+      emailForgot: "",
     });
   };
 
@@ -211,7 +207,7 @@ export default class Header extends Component {
     // localStorage.clear();
     // axios(options).then((res) => {
     //   console.log(res.data.err);
-      
+
     //   this.setState({
     //     chooseSignIn: true,
     //     isSignUpSuccess: false,
@@ -452,16 +448,30 @@ export default class Header extends Component {
   hoverSearch(bool) {
     if (bool) {
       this.setState({
-        styleSearch:
-          "border borderColor form-control search_box w-75",
+        styleSearch: "border borderColor form-control search_box w-75",
       });
     } else {
       this.setState({
-        styleSearch:
-          "border borderColor form-control w-75",
+        styleSearch: "border borderColor form-control w-75",
       });
     }
   }
+
+  search = (event) => {
+    event.preventDefault();
+    const { search } = this.state;
+    const data = {
+      email: search,
+    };
+    const url = Global.link + "user/login";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {});
+  };
 
   render() {
     let fbContent = (
@@ -752,7 +762,7 @@ export default class Header extends Component {
             />
           </div>
         </div>
-        
+
         {/*Menu*/}
         <nav className="navbar navbar-expand-md navbar-line bg-white">
           <div className="container">
@@ -794,8 +804,11 @@ export default class Header extends Component {
                     className={this.state.styleSearch}
                     id="search"
                     placeholder="Tìm kiếm sản phẩm mong muốn..."
+                    name="search"
+                    value={this.state.search}
+                    onChange={this.onChange}
                   />
-                  <a href="# " className={this.state.styleSearchBtn}>
+                  <a href="# " className={this.state.styleSearchBtn} onClick={() => {this.search()}}>
                     <i class="fas fa-search"></i>
                   </a>
                 </form>

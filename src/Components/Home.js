@@ -97,7 +97,7 @@ export class Home extends Component {
                 </p>
               </div>
 
-              <div className="row">
+              <div className="row mt-2">
                 <div className="col-6 d-flex align-items-center">
                   <p className="mb-0">
                     <small
@@ -118,7 +118,7 @@ export class Home extends Component {
                   </p>
                 </div>
               </div>
-              <h5 className="textColor text-nowrap mb-0">
+              <h5 className="textColor text-nowrap mb-0" style={{marginTop: -3}}>
                 <b>{this.currencyFormat(product.gia.toString())} đ</b>
               </h5>
             </NavLink>
