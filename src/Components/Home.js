@@ -74,7 +74,7 @@ export class Home extends Component {
     result = arr_6prod.map((product, index) => {
       if (index >= start && index < start + 6) {
         var discount = this.getRandom(5, 15);
-        var newPrice = product.gia * discount / 100;
+        var newPrice = product.gia - ((product.gia * discount) / 100);
         return (
           <div
             className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
@@ -97,12 +97,12 @@ export class Home extends Component {
                 </p>
               </div>
               <div className="row">
-                <div className="col-6">
-                  <h6 className="textColor text-nowrap">
+                <div className="col-6 d-flex align-items-center">
+                  <h6 className="textColor text-nowrap mb-0">
                     <b>{this.currencyFormat(newPrice.toString())} đ</b>
                   </h6>
                 </div>
-                <div className="col-6">
+                <div className="col-6 d-flex align-items-center">
                   <p className="mb-0">
                     <small style={{ color: "#616161" }}>
                       {"-" + discount + "%"}
@@ -111,7 +111,9 @@ export class Home extends Component {
                 </div>
               </div>
               <p className="mb-0">
-                <small style={{ color: "#616161", textDecoration: 'line-through' }}>
+                <small
+                  style={{ color: "#616161", textDecoration: "line-through" }}
+                >
                   {this.currencyFormat(product.gia.toString())} đ
                 </small>
               </p>
