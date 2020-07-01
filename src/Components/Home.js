@@ -1272,7 +1272,7 @@ export class Home extends Component {
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
                 src={
-                  "https://res.cloudinary.com/chefood/image/upload/v1593601928/mybookstore_banner/ad5_qdmg2a.jpg"
+                  "https://res.cloudinary.com/chefood/image/upload/v1593602444/mybookstore_banner/ad6_wngx0u.jpg"
                 }
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
