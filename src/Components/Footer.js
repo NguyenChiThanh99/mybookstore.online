@@ -10,7 +10,7 @@ export default class Footer extends Component {
           <div className="row">
             <div className="col-12 col-sm-4 pt-2 d-flex justify-content-center flex-column">
               <img
-                src={require("../images/giaodien-04.jpg")}
+                src={require("../images/logo2.png")}
                 className="img-fluid p-2 w-75"
                 alt="logo"
               />

@@ -731,9 +731,7 @@ export class Header extends Component {
           <div>
             {/* thêm class top-banner */}
             <img
-              src={
-                "https://res.cloudinary.com/chefood/image/upload/v1593150801/mybookstore_banner/Banner1_vojrkv.jpg"
-              }
+              src={require("../images/ad1.jpg")}
               className="top-banner mx-auto d-block"
               alt="mybookstore.online banner"
             />
@@ -785,7 +783,13 @@ export class Header extends Component {
                     value={this.state.search}
                     onChange={this.onChange}
                   />
-                  <a href="# " className={this.state.styleSearchBtn} onClick={() => {this.search()}}>
+                  <a
+                    href="# "
+                    className={this.state.styleSearchBtn}
+                    onClick={() => {
+                      this.search();
+                    }}
+                  >
                     <i class="fas fa-search"></i>
                   </a>
                 </form>

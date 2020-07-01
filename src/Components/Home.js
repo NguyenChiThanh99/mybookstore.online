@@ -118,7 +118,7 @@ export class Home extends Component {
                   </p>
                 </div>
               </div>
-              <h5 className="textColor text-nowrap mb-0" style={{marginTop: -3}}>
+              <h5 className="textColor text-nowrap mb-0 pb-2" style={{marginTop: -3}}>
                 <b>{this.currencyFormat(product.gia.toString())} đ</b>
               </h5>
             </NavLink>
@@ -153,6 +153,8 @@ export class Home extends Component {
     var result = null;
     if (this.state.hot_prod_arr.length > 0) {
       result = this.state.hot_prod_arr.map((product, index) => {
+        var discount = this.getRandom(5, 15);
+        var newPrice = product.gia + (product.gia * discount) / 100;
         return (
           <div
             className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
@@ -168,15 +170,40 @@ export class Home extends Component {
                 <p className="mb-2 book_item_title">{product.tensp}</p>
               </div>
               <div style={{ height: 18 }}>
-                <p className="mb-0">
+                <p className="mb-0" style={{ color: "#616161" }}>
                   <small className="book_item_title2">
                     {product.tacgia === " " ? null : product.tacgia}
                   </small>
                 </p>
               </div>
-              <h6 className="textColor">
+
+              <div className="row mt-2">
+                <div className="col-6 d-flex align-items-center">
+                  <p className="mb-0">
+                    <small
+                      style={{
+                        color: "#616161",
+                        textDecoration: "line-through",
+                      }}
+                    >
+                      {this.currencyFormat(newPrice.toString())} đ
+                    </small>
+                  </p>
+                </div>
+                <div className="col-6 d-flex align-items-center">
+                  <p className="mb-0">
+                    <small style={{ color: "#616161" }}>
+                      {"-" + discount + "%"}
+                    </small>
+                  </p>
+                </div>
+              </div>
+              <h5
+                className="textColor text-nowrap mb-0 pb-2"
+                style={{ marginTop: -3 }}
+              >
                 <b>{this.currencyFormat(product.gia.toString())} đ</b>
-              </h6>
+              </h5>
             </NavLink>
           </div>
         );
@@ -1202,36 +1229,28 @@ export class Home extends Component {
                 <div className="carousel-inner">
                   <div className="carousel-item active">
                     <img
-                      src={
-                        "https://res.cloudinary.com/chefood/image/upload/v1593150605/mybookstore_banner/carousel0_f5rxbe.jpg"
-                      }
+                      src={require("../images/ad2.jpg")}
                       className="d-block w-100 img-fluid"
                       alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={
-                        "https://res.cloudinary.com/chefood/image/upload/v1593150609/mybookstore_banner/carousel1_yuesxn.jpg"
-                      }
+                      src={require("../images/ad3.jpg")}
                       className="d-block w-100 img-fluid"
                       alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={
-                        "https://res.cloudinary.com/chefood/image/upload/v1593150605/mybookstore_banner/carousel2_hjflza.jpg"
-                      }
+                      src={require("../images/ad4.jpg")}
                       className="d-block w-100 img-fluid"
                       alt="Quảng cáo sản phẩm"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={
-                        "https://res.cloudinary.com/chefood/image/upload/v1593150606/mybookstore_banner/carousel3_pwqj62.jpg"
-                      }
+                      src={require("../images/ad5.jpg")}
                       className="d-block w-100 img-fluid"
                       alt="Quảng cáo sản phẩm"
                     />
@@ -1271,9 +1290,7 @@ export class Home extends Component {
           <div className="row px-1">
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={
-                  "https://res.cloudinary.com/chefood/image/upload/v1593602444/mybookstore_banner/ad6_wngx0u.jpg"
-                }
+                src={require("../images/ad7.png")}
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1281,9 +1298,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={
-                  "https://res.cloudinary.com/chefood/image/upload/v1593601928/mybookstore_banner/ad5_qdmg2a.jpg"
-                }
+                src={require("../images/ad6.jpg")}
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1291,9 +1306,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={
-                  "https://res.cloudinary.com/chefood/image/upload/v1593150931/mybookstore_banner/ad3_v1lqcm.jpg"
-                }
+                src={require("../images/ad8.jpg")}
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1301,9 +1314,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={
-                  "https://res.cloudinary.com/chefood/image/upload/v1593150930/mybookstore_banner/ad4_rcwdk4.png"
-                }
+                src={require("../images/ad9.jpg")}
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
                 style={{ width: "100%" }}
