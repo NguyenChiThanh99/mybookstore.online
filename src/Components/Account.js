@@ -1,20 +1,26 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import '../CSS/account.css';
+import "../CSS/account.css";
 import "../CSS/mystyle.css";
 import Global from "./Global";
 import MetaTags from "react-meta-tags";
+import axios from "axios";
+import qs from "qs";
 
 export default class Account extends Component {
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
       styleInput: "col-6 d-flex align-items-center border borderColor h-25",
+      likeArr: [],
     };
-    console.log(Global.user);
   }
-  
+
+  componentDidMount = () => {
+    this.getSuggest();
+  }
+
   hoverInput(bool) {
     if (bool) {
       this.setState({
@@ -27,8 +33,135 @@ export default class Account extends Component {
       });
     }
   }
-  
+
+  getSuggest = () => {
+    const data = {
+      email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+    };
+    const url = Global.link + "product/listproductlike";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      this.setState({
+        likeArr: res.data.datalike,
+      });
+    });
+  };
+
   render() {
+    const emptyLikeJSX = (
+      <div className="pl-5 pb-3">
+        <p style={{ display: "inline" }}>Chưa có sản phẩm yêu thích nào. </p>
+        <NavLink to="/" className="textColor">
+          <b>Về trang chủ</b>
+        </NavLink>
+      </div>
+    );
+
+    const bodyLikeJSX = (
+      <table className="table table-striped table-borderless">
+        <tbody>
+          <tr>
+            <td>
+              <img
+                src="./images/item.jpg"
+                className="img-fluid"
+                style={{ width: "130px" }}
+                alt=""
+              />
+            </td>
+            <td>
+              Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại
+              thật vui
+            </td>
+            <td className="text-nowrap">
+              <span className="new-price">25.000 vnd</span>
+              <span className="del-price">30.000 vnd</span>
+              <div className="viewmore pb-2 mt-2">
+                <button className="btn btn-danger mybtn">
+                  Thêm vào giỏ hàng
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="./images/item.jpg"
+                className="img-fluid"
+                style={{ width: "130px" }}
+                alt=""
+              />
+            </td>
+            <td>
+              Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại
+              thật vui
+            </td>
+            <td className="text-nowrap">
+              <span className="new-price">25.000 vnd</span>
+              <span className="del-price">30.000 vnd</span>
+              <div className="viewmore pb-2 mt-2">
+                <button className="btn btn-danger mybtn">
+                  Thêm vào giỏ hàng
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="./images/item.jpg"
+                className="img-fluid"
+                style={{ width: "130px" }}
+                alt=""
+              />
+            </td>
+            <td>
+              Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại
+              thật vui
+            </td>
+            <td className="text-nowrap">
+              <span className="new-price">25.000 vnd</span>
+              <span className="del-price">30.000 vnd</span>
+              <div className="viewmore pb-2 mt-2">
+                <button className="btn btn-danger mybtn">
+                  Thêm vào giỏ hàng
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="./images/item.jpg"
+                className="img-fluid"
+                style={{ width: "130px" }}
+                alt=""
+              />
+            </td>
+            <td>
+              Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại
+              thật vui
+            </td>
+            <td className="text-nowrap">
+              <span className="new-price">25.000 vnd</span>
+              <span className="del-price">30.000 vnd</span>
+              <div className="viewmore pb-2 mt-2">
+                <button className="btn btn-danger mybtn">
+                  Thêm vào giỏ hàng
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+    console.log(this.state.likeArr);
+    
     return (
       <div>
         <MetaTags>
@@ -64,7 +197,7 @@ export default class Account extends Component {
           <p className="path textColor">Thông tin tài khoản</p>
         </div>
 
-        <div className="container" style={{ backgroundColor: "white" }}>
+        <div className="container bg-white">
           {/* Thông tin tài khoản */}
           <div id="thongtintaikhoan">
             <h5 className="pt-3 pl-2">THÔNG TIN TÀI KHOẢN</h5>
@@ -154,66 +287,11 @@ export default class Account extends Component {
               </div>
             </div>
           </div>
+
           {/* Yêu thích */}
           <div id="yeuthich">
             <h5 className="pt-3 pl-2">YÊU THÍCH</h5>
-            {/* Chưa có yêu thích */}
-            <div className="pl-5 pb-3">
-              <p style={{ display: "inline" }}>Chưa có sản phẩm yêu thích. </p>
-              <NavLink to="/" className="textColor">
-                <b>Về trang chủ</b>
-              </NavLink>
-            </div>
-            {/* Đã có yêu thích */}
-            {/* <table class="table table-striped table-borderless">
-                <tbody>
-                    <tr>
-                        <td><img src="./images/item.jpg" class="img-fluid" style="width:130px" alt=""></td>
-                        <td>Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại thật vui</td>
-                        <td class="text-nowrap">
-                            <span class="new-price">25.000 vnd</span>
-                            <span class="del-price">30.000 vnd</span>
-                            <div class="viewmore pb-2 mt-2">
-                                <button class="btn btn-danger mybtn">Thêm vào giỏ hàng</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="./images/item.jpg" class="img-fluid" style="width:130px" alt=""></td>
-                        <td>Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại thật vui</td>
-                        <td class="text-nowrap">
-                            <span class="new-price">25.000 vnd</span>
-                            <span class="del-price">30.000 vnd</span>
-                            <div class="viewmore pb-2 mt-2">
-                                <button class="btn btn-danger mybtn">Thêm vào giỏ hàng</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="./images/item.jpg" class="img-fluid" style="width:130px" alt=""></td>
-                        <td>Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại thật vui</td>
-                        <td class="text-nowrap">
-                            <span class="new-price">25.000 vnd</span>
-                            <span class="del-price">30.000 vnd</span>
-                            <div class="viewmore pb-2 mt-2">
-                                <button class="btn btn-danger mybtn">Thêm vào giỏ hàng</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="./images/item.jpg" class="img-fluid" style="width:130px" alt=""></td>
-                        <td>Dã ngoại thật vui - Dã ngoại thật vui Dã ngoại thật vui Dã ngoại thật vui</td>
-                        <td class="text-nowrap">
-                            <span class="new-price">25.000 vnd</span>
-                            <span class="del-price">30.000 vnd</span>
-                            <div class="viewmore pb-2 mt-2">
-                                <button class="btn btn-danger mybtn">Thêm vào giỏ hàng</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> */}
-            {/* end đã có yêu thích */}
+            {this.state.likeArr.length === 0 ? emptyLikeJSX : bodyLikeJSX}
           </div>
         </div>
       </div>
