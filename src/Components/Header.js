@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
 import FacebookLogin from "react-facebook-login";
@@ -13,7 +13,7 @@ import FBicon from "./FBicon";
 
 var timer = null;
 
-export default class Header extends Component {
+export class Header extends Component {
   constructor(props) {
     super(props);
 
@@ -195,29 +195,6 @@ export default class Header extends Component {
       console.log(res.data.err);
     });
     window.location.reload();
-
-    // const data = {email: Global.isSignIn ? Global.user[0] : Global.user[0].email};
-    // const url = Global.link + "user/logout";
-    // const options = {
-    //   method: "POST",
-    //   headers: { "content-type": "application/x-www-form-urlencoded" },
-    //   url,
-    //   data: qs.stringify(data),
-    // };
-    // localStorage.clear();
-    // axios(options).then((res) => {
-    //   console.log(res.data.err);
-
-    //   this.setState({
-    //     chooseSignIn: true,
-    //     isSignUpSuccess: false,
-    //     userName: "Đăng nhập",
-    //   });
-    //   Global.isSignIn = false;
-    //   Global.isLoggedInS = false;
-    //   Global.user = [];
-    //   window.location.reload();
-    // });
   };
 
   responseFacebook = (response) => {
@@ -958,3 +935,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default withRouter(Header);

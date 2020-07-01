@@ -1272,7 +1272,7 @@ export class Home extends Component {
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
                 src={
-                  "https://res.cloudinary.com/chefood/image/upload/v1593220993/mybookstore_banner/ad1_cmmttd.jpg"
+                  "https://res.cloudinary.com/chefood/image/upload/v1593601928/mybookstore_banner/ad5_qdmg2a.jpg"
                 }
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
@@ -1282,7 +1282,7 @@ export class Home extends Component {
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
                 src={
-                  "https://res.cloudinary.com/chefood/image/upload/v1593220994/mybookstore_banner/ad2_hseykv.jpg"
+                  "https://res.cloudinary.com/chefood/image/upload/v1593601928/mybookstore_banner/ad5_qdmg2a.jpg"
                 }
                 alt="Quảng cáo sản phẩm"
                 className="img-fluid"
