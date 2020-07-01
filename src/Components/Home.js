@@ -65,8 +65,8 @@ export class Home extends Component {
   };
 
   getRandom = (min, max) => {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
 
   show_6_lastest_prod = (arr_6prod, page) => {
     var start = (page - 1) * 6;
@@ -74,7 +74,7 @@ export class Home extends Component {
     result = arr_6prod.map((product, index) => {
       if (index >= start && index < start + 6) {
         var discount = this.getRandom(5, 15);
-        var newPrice = product.gia - ((product.gia * discount) / 100);
+        var newPrice = product.gia - (product.gia * discount) / 100;
         return (
           <div
             className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
@@ -738,6 +738,11 @@ export class Home extends Component {
                           >
                             Lịch sử
                           </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fit-content" }}
+                        >
                           <a
                             onClick={() => {
                               this.goToCategory("Tiểu sử - hồi ký|Kinh tế");
@@ -747,11 +752,6 @@ export class Home extends Component {
                           >
                             Kinh tế
                           </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
                           <a
                             onClick={() => {
                               this.goToCategory("Tiểu sử - hồi ký|Thể thao");
@@ -808,6 +808,11 @@ export class Home extends Component {
                           >
                             Rèn luyện nhân cách
                           </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fit-content" }}
+                        >
                           <a
                             onClick={() => {
                               this.goToCategory("Tâm lý - Kỹ năng sống|Tâm lý");
@@ -1009,6 +1014,11 @@ export class Home extends Component {
                           >
                             Phương pháp giáo dục trẻ các nước
                           </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fit-content" }}
+                        >
                           <a
                             onClick={() => {
                               this.goToCategory(
@@ -1020,11 +1030,6 @@ export class Home extends Component {
                           >
                             Dinh dưỡng - Sức khỏe cho trẻ
                           </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
                           <a
                             onClick={() => {
                               this.goToCategory("Nuôi dạy con|Dành cho mẹ bầu");
@@ -1092,7 +1097,7 @@ export class Home extends Component {
                             onClick={() => {
                               this.goToCategory("Sách ngoại ngữ|Tiếng Trung");
                             }}
-                            className="nav-link text-dark mya-dropright"
+                            className="nav-link text-dark text-nowrap mya-dropright"
                             href="# "
                           >
                             Tiếng Trung
