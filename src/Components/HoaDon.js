@@ -234,7 +234,7 @@ export class HoaDon extends Component {
         </MetaTags>
 
         {/*Path*/}
-        <div className="container py-2 px-0">
+        <div className="container py-2 px-2">
           <NavLink to="/">
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>
@@ -245,9 +245,7 @@ export class HoaDon extends Component {
         </div>
 
         {/* thông tin hóa đơn */}
-        <div
-          className="container pb-4 bg-white"
-        >
+        <div className="container pb-4 bg-white">
           <div>
             <h5 className="pt-3 pl-2">
               Chi tiết đơn hàng <span>#{this.state.id}</span>
@@ -259,28 +257,30 @@ export class HoaDon extends Component {
                   <table className="table-sm table-borderless">
                     <tbody>
                       <tr>
-                        <td>Người nhận</td>
-                        <td className="pl-5">{info.ten}</td>
+                        <td className="align-top">Người nhận</td>
+                        <td className="pl-4">{info.ten}</td>
                       </tr>
                       <tr>
-                        <td>Địa chỉ</td>
-                        <td className="pl-5">{info.diachi}</td>
+                        <td className="align-top">Địa chỉ</td>
+                        <td className="pl-4">{info.diachi}</td>
                       </tr>
                       <tr>
                         <td>Số điện thoại</td>
-                        <td className="pl-5">{info.dienthoai}</td>
+                        <td className="pl-4">{info.dienthoai}</td>
                       </tr>
                       <tr>
-                        <td>Ngày đặt hàng</td>
-                        <td className="pl-5">{day}</td>
+                        <td className="align-top">Ngày đặt hàng</td>
+                        <td className="pl-4">{day}</td>
                       </tr>
                       <tr>
-                        <td>Ghi chú</td>
-                        <td className="pl-5">{info.ghichu}</td>
+                        <td className="align-top">Ghi chú</td>
+                        <td className="pl-4">{info.ghichu}</td>
                       </tr>
                       <tr>
-                        <td className="text-nowrap">Trạng thái đơn hàng</td>
-                        <td className="pl-5 ">Giao hàng thành công</td>
+                        <td className="text-nowrap align-top">
+                          Trạng thái đơn hàng
+                        </td>
+                        <td className="pl-4 ">Giao hàng thành công</td>
                       </tr>
                     </tbody>
                   </table>
@@ -301,12 +301,14 @@ export class HoaDon extends Component {
           <h4 className="pt-3 pl-2">Sản phẩm</h4>
           {this.state.loading ? loadingJSX : bodyProductJSX}
 
-          <NavLink
-            to="/"
+          <button
+            onClick={() => {
+              this.props.history.push("/");
+            }}
             className="btn btn-danger mybtn mr-3 btn-viewmore-cart"
           >
             Trang chủ
-          </NavLink>
+          </button>
         </div>
         {/* end sản phẩm */}
       </div>

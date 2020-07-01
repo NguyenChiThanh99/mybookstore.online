@@ -266,9 +266,14 @@ export class GioHang extends Component {
           width="300px"
         />
         <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
-        <NavLink to="/" className="btn btn-danger mybtn mr-3 btn-viewmore-cart">
+        <button
+          className="btn btn-danger mybtn btn-viewmore-cart"
+          onClick={() => {
+            this.props.history.push("/");
+          }}
+        >
           Tiếp tục mua sắm
-        </NavLink>
+        </button>
       </div>
     );
 

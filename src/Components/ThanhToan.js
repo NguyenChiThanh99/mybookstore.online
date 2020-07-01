@@ -494,7 +494,7 @@ export class ThanhToan extends Component {
           </div>
         </div>
         <span style={{ color: "gray" }} className="mt-2">
-          Quý khách vui lòng kiểm tra kỹ hàng hóa khi nhận.
+          *Quý khách vui lòng kiểm tra kỹ hàng hóa khi nhận.
         </span>
       </div>
     );

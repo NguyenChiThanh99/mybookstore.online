@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Global from "./Global";
 import axios from "axios";
 import qs from "qs";
@@ -7,7 +7,7 @@ import MetaTags from "react-meta-tags";
 
 import "../CSS/history.css";
 
-export default class LichSuGiaoDich extends Component {
+export class LichSuGiaoDich extends Component {
   constructor(props) {
     super(props);
 
@@ -128,9 +128,14 @@ export default class LichSuGiaoDich extends Component {
     const emptyJSX = (
       <div className="container bg-white p-3 mt-3 text-center">
         <p>Bạn chưa có đơn hàng nào</p>
-        <NavLink to="/" className="btn btn-danger mybtn mr-3 btn-viewmore-cart">
-          Tiếp tục mua sắm
-        </NavLink>
+        <button
+          onClick={() => {
+            this.props.history.push("/");
+          }}
+          className="btn btn-danger mybtn mr-3 btn-viewmore-cart"
+        >
+          Đi đến trang chủ
+        </button>
       </div>
     );
 
@@ -176,3 +181,5 @@ export default class LichSuGiaoDich extends Component {
     );
   }
 }
+
+export default withRouter(LichSuGiaoDich);
