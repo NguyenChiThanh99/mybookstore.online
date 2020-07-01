@@ -17,6 +17,7 @@ export class Home extends Component {
       lastest_prod_arr: [],
       lastest_prod_page: 0,
       hot_prod_arr: [],
+      dropdown: window.innerWidth <= 576 ? 'down' : 'right',
     };
   }
 
@@ -238,7 +239,7 @@ export class Home extends Component {
                   <span>Danh mục sản phẩm</span>
                 </div>
                 <nav className="nav flex-column">
-                  <Dropdown drop="right | down" className="d-flex flex-row-reverse">
+                  <Dropdown drop={this.state.dropdown} className="d-flex flex-row-reverse">
                     <Dropdown.Toggle as={CustomToggle}></Dropdown.Toggle>
                     <a
                       href="# "
