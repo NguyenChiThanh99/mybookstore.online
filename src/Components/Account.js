@@ -198,7 +198,8 @@ export default class Account extends Component {
     }
   };
 
-  changeProfile = () => {
+  changeProfile = (event) => {
+    event.preventDefault();
     const data = {
       email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
       name: this.state.name,
