@@ -230,15 +230,15 @@ export class Home extends Component {
 
         <div className="container px-3 pt-2">
           <div className="row">
-            <NavLink to="/">
+            <NavLink to="/" className="pl-3">
               <p className="path float-left textColor">Trang chủ</p>
             </NavLink>
           </div>
         </div>
 
-        <div className="container p-0">
+        <div className="container">
           <div className="row">
-            <div className="col-md-4 pt-2">
+            <div className="col-md-4 pt-3">
               <div style={{ backgroundColor: "white" }}>
                 <div className="list">
                   <span>Danh mục sản phẩm</span>
@@ -1154,7 +1154,7 @@ export class Home extends Component {
                 </nav>
               </div>
             </div>
-            <div className="col-md-8 pt-2 pl-0">
+            <div className="col-md-8 pt-3 px-0">
               {/* slide */}
               <div
                 id="carouselExampleIndicators"
