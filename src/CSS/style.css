@@ -289,6 +289,9 @@ a {
     font-weight: bold;
     /* color: #eb2b3f; */
   }
+  .mobile-pl3{
+    padding-left: 1rem;
+  }
 }
 
 .myinput-outline {

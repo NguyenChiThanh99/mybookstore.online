@@ -74,7 +74,7 @@ export class Home extends Component {
     result = arr_6prod.map((product, index) => {
       if (index >= start && index < start + 6) {
         var discount = this.getRandom(5, 15);
-        var newPrice = product.gia - (product.gia * discount) / 100;
+        var newPrice = product.gia + (product.gia * discount) / 100;
         return (
           <div
             className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
@@ -96,11 +96,19 @@ export class Home extends Component {
                   </small>
                 </p>
               </div>
+
               <div className="row">
                 <div className="col-6 d-flex align-items-center">
-                  <h6 className="textColor text-nowrap mb-0">
-                    <b>{this.currencyFormat(newPrice.toString())} đ</b>
-                  </h6>
+                  <p className="mb-0">
+                    <small
+                      style={{
+                        color: "#616161",
+                        textDecoration: "line-through",
+                      }}
+                    >
+                      {this.currencyFormat(newPrice.toString())} đ
+                    </small>
+                  </p>
                 </div>
                 <div className="col-6 d-flex align-items-center">
                   <p className="mb-0">
@@ -110,13 +118,9 @@ export class Home extends Component {
                   </p>
                 </div>
               </div>
-              <p className="mb-0">
-                <small
-                  style={{ color: "#616161", textDecoration: "line-through" }}
-                >
-                  {this.currencyFormat(product.gia.toString())} đ
-                </small>
-              </p>
+              <h6 className="textColor text-nowrap mb-0">
+                <b>{this.currencyFormat(product.gia.toString())} đ</b>
+              </h6>
             </NavLink>
           </div>
         );
@@ -230,7 +234,7 @@ export class Home extends Component {
 
         <div className="container px-3 pt-2">
           <div className="row">
-            <NavLink to="/" className="pl-3">
+            <NavLink to="/" className="mobile-pl3">
               <p className="path float-left textColor">Trang chủ</p>
             </NavLink>
           </div>
@@ -238,7 +242,7 @@ export class Home extends Component {
 
         <div className="container">
           <div className="row">
-            <div className="col-md-4 pt-3">
+            <div className="col-md-4 pt-3 pl-0 mobile-pl3">
               <div style={{ backgroundColor: "white" }}>
                 <div className="list">
                   <span>Danh mục sản phẩm</span>
@@ -729,6 +733,11 @@ export class Home extends Component {
                           >
                             Chính trị
                           </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fit-content" }}
+                        >
                           <a
                             onClick={() => {
                               this.goToCategory("Tiểu sử - hồi ký|Lịch sử");
@@ -738,11 +747,6 @@ export class Home extends Component {
                           >
                             Lịch sử
                           </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
                           <a
                             onClick={() => {
                               this.goToCategory("Tiểu sử - hồi ký|Kinh tế");
@@ -752,6 +756,11 @@ export class Home extends Component {
                           >
                             Kinh tế
                           </a>
+                        </div>
+                        <div
+                          className="col-sm-3 col-6"
+                          style={{ maxWidth: "fit-content" }}
+                        >
                           <a
                             onClick={() => {
                               this.goToCategory("Tiểu sử - hồi ký|Thể thao");
