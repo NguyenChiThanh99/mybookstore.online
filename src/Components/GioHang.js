@@ -55,6 +55,7 @@ export class GioHang extends Component {
       });
       if (res.data.data.length !== 0) {
         this.calTotal();
+        this.getSuggest(res.data.data[0].slug);
       } else {
         this.setState({
           loading: false,
@@ -183,13 +184,31 @@ export class GioHang extends Component {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
   };
 
-  getSuggest = () => {};
+  getSuggest = (slug) => {
+    const data = {
+      tenurl: slug,
+    };
+    const url = Global.link + "cart/sanphamlienquan";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      this.setState({
+        suggest: res.data.datalienquan,
+      });
+    });
+  };
 
   render() {
     var firstItemImg = "https://uit-hotelbooking.000webhostapp.com/logo.png";
     if (this.state.cart.length !== 0) {
       firstItemImg = this.state.cart[0].hinhanhsanpham;
     }
+    console.log(this.state.suggest);
+    
 
     const loadingJSX = (
       <div className="container bg-white p-3 mt-3 d-flex justify-content-center">
@@ -333,7 +352,7 @@ export class GioHang extends Component {
             <b>Sản phẩm liên quan</b>
           </h5>
           <div className="d-flex justify-content-center row px-2">
-            {this.getSuggest(this.state.suggest)}
+            {/* {this.getSuggest(this.state.suggest)} */}
           </div>
         </div>
 
