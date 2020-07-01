@@ -227,7 +227,7 @@ export class Home extends Component {
                 <nav className="nav flex-column">
                   <Dropdown drop="right">
                     <Dropdown.Toggle as={CustomToggle}>Văn học</Dropdown.Toggle>
-                    <Dropdown.Menu style={{ marginRight: "9%" }}>
+                    <Dropdown.Menu>
                       <Dropdown.Item className="p-0 bg-white">
                         <div className="row dropright-mobile">
                           <div
