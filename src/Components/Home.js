@@ -251,7 +251,7 @@ export class Home extends Component {
                     >
                       Văn học
                     </a>
-                    <Dropdown.Menu style={{ marginRight: "9%" }}>
+                    <Dropdown.Menu style={{ maxWidth: 'max-content'}}>
                       <div className="row dropright-mobile">
                         <div
                           className="col-sm-3 col-6"
@@ -439,7 +439,7 @@ export class Home extends Component {
                       <div className="row dropright-mobile">
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -486,7 +486,7 @@ export class Home extends Component {
                         </div>
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -531,7 +531,7 @@ export class Home extends Component {
                         </div>
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -567,7 +567,7 @@ export class Home extends Component {
                       <div className="row dropright-mobile">
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -610,7 +610,7 @@ export class Home extends Component {
                         </div>
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
@@ -655,7 +655,7 @@ export class Home extends Component {
                         </div>
                         <div
                           className="col-sm-3 col-6"
-                          style={{ maxWidth: "fix-content" }}
+                          style={{ maxWidth: "fit-content" }}
                         >
                           <a
                             onClick={() => {
