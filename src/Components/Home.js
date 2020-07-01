@@ -173,41 +173,33 @@ export class Home extends Component {
     );
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-      // <div ref={ref}>
-      //   <a
-      //     href="# "
+      <div ref={ref}>
+        
+        <button
+          className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
+          onClick={(e) => {
+            e.preventDefault();
+            onClick(e);
+          }}
+        />
+      </div>
+      // <a className="row m-0" href="# " ref={ref}>
+      //   <div
       //     className="nav-link list-item flex-fill"
       //     onClick={(e) => {
       //       this.goToCategory(children);
       //     }}
       //   >
       //     {children}
-      //   </a>
+      //   </div>
       //   <button
-      //     className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
+      //     className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright list-item"
       //     onClick={(e) => {
       //       e.preventDefault();
       //       onClick(e);
       //     }}
       //   />
-      // </div>
-      <a className="row m-0" href="# " ref={ref}>
-        <div
-          className="nav-link list-item flex-fill"
-          onClick={(e) => {
-            this.goToCategory(children);
-          }}
-        >
-          {children}
-        </div>
-        <button
-          className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright list-item"
-          onClick={(e) => {
-            e.preventDefault();
-            onClick(e);
-          }}
-        />
-      </a>
+      // </a>
     ));
 
     return (
@@ -247,7 +239,18 @@ export class Home extends Component {
                 </div>
                 <nav className="nav flex-column">
                   <Dropdown drop="down" className="d-flex flex-row-reverse">
-                    <Dropdown.Toggle as={CustomToggle}>Văn học</Dropdown.Toggle>
+                    <Dropdown.Toggle as={CustomToggle}>
+                      
+                      <a
+                        href="# "
+                        className="nav-link list-item flex-fill"
+                        onClick={(e) => {
+                          this.goToCategory('Văn học');
+                        }}
+                      >
+                        
+                      </a>
+                    </Dropdown.Toggle>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
                       <div className="row dropright-mobile">
                         <div
