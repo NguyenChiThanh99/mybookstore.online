@@ -173,25 +173,25 @@ export class Home extends Component {
     );
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-      <div ref={ref}>
-        <a
-          href="# "
-          className="nav-link list-item flex-fill"
-          onClick={(e) => {
-            this.goToCategory(children);
-          }}
-        >
-          {children}
-        </a>
-        <button
-          className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
-          onClick={(e) => {
-            e.preventDefault();
-            onClick(e);
-          }}
-        />
-      </div>
-      /* <a className="row m-0" href="# " ref={ref}>
+      // <div ref={ref}>
+      //   <a
+      //     href="# "
+      //     className="nav-link list-item flex-fill"
+      //     onClick={(e) => {
+      //       this.goToCategory(children);
+      //     }}
+      //   >
+      //     {children}
+      //   </a>
+      //   <button
+      //     className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
+      //     onClick={(e) => {
+      //       e.preventDefault();
+      //       onClick(e);
+      //     }}
+      //   />
+      // </div>
+      <a className="row m-0" href="# " ref={ref}>
         <div
           className="nav-link list-item flex-fill"
           onClick={(e) => {
@@ -207,7 +207,7 @@ export class Home extends Component {
             onClick(e);
           }}
         />
-      </a> */
+      </a>
     ));
 
     return (
@@ -246,7 +246,7 @@ export class Home extends Component {
                   <span>Danh mục sản phẩm</span>
                 </div>
                 <nav className="nav flex-column">
-                  <Dropdown drop="right" className="d-flex flex-row-reverse">
+                  <Dropdown drop="down" className="d-flex flex-row-reverse">
                     <Dropdown.Toggle as={CustomToggle}>Văn học</Dropdown.Toggle>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
                       <div className="row dropright-mobile">
