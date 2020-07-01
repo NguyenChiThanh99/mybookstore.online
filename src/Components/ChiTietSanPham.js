@@ -149,6 +149,7 @@ export class ChiTietSanPham extends Component {
         <div
           className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
           key={index}
+          onClick={() => this.reloadPage(product.tenurl)}
         >
           <NavLink to={"/product/" + product.tenurl}>
             <img
