@@ -84,7 +84,8 @@ export default class Account extends Component {
     });
   };
 
-  handleShow1 = () => {
+  handleShow1 = (event) => {
+    event.preventDefault();
     this.setState({ showModal1: true });
   };
   handleClose1 = () => {
@@ -370,17 +371,13 @@ export default class Account extends Component {
                   <div className="viewmore pb-2 mt-2">
                     <button
                       className="btn btn-danger mybtn mr-4"
-                      onClick={() => {
-                        this.handleShow1();
-                      }}
+                      onClick={this.handleShow1}
                     >
                       Đổi mật khẩu
                     </button>
                     <button
                       className="btn btn-danger mybtn ml-4"
-                      onClick={() => {
-                        this.changeProfile();
-                      }}
+                      onClick={this.changeProfile}
                     >
                       Lưu thay đổi
                     </button>
