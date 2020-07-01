@@ -88,7 +88,7 @@ export class ChiTietSanPham extends Component {
         data: res.data.data,
         suggest: res.data.datalienquan,
         dataRate: res.data.datarate,
-        like: 
+        like: false,
       });
       this.calRating(res.data.datarate);
       this.getDataComment(slug);
