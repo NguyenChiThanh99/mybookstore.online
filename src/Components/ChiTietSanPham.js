@@ -63,7 +63,8 @@ export class ChiTietSanPham extends Component {
     clearTimeout(timer2);
   }
 
-  scrollToMyRef = () => window.scrollTo(0, this.myRef.current.offsetTop)
+  scrollToMyRef = () => {console.log('call');
+   window.scrollTo(0, this.myRef.current.offsetTop)}
 
   closeNoti = () => {
     this.setState({ noti: "" });
