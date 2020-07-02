@@ -195,6 +195,7 @@ export class Header extends Component {
     axios(options).then((res) => {
       console.log(res.data.err);
     });
+    this.props.history.push("/");
     window.location.reload();
   };
 
