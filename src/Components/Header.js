@@ -6,6 +6,7 @@ import qs from "qs";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import { Modal } from "react-bootstrap";
+import Badge from "@material-ui/core/Badge";
 
 import "../CSS/style.css";
 import Global from "./Global";
@@ -795,19 +796,21 @@ export class Header extends Component {
               </div>
 
               <div className="d-flex justify-content-center align-items-center">
-                <NavLink
-                  to="/cart"
-                  className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
-                >
-                  <img
-                    src={require("../images/cart.png")}
-                    className="img-fluid"
-                    alt="cartImg"
-                    width="30px"
-                  />
-                  <p className="headerText text-nowrap">Giỏ hàng</p>
-                  <span class="badge badge-pill badge-danger">1</span>
-                </NavLink>
+                <Badge badgeContent={4} color="error">
+                  <NavLink
+                    to="/cart"
+                    className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
+                  >
+                    <img
+                      src={require("../images/cart.png")}
+                      className="img-fluid"
+                      alt="cartImg"
+                      width="30px"
+                    />
+                    <p className="headerText text-nowrap">Giỏ hàng</p>
+                  </NavLink>
+                </Badge>
+
                 <div
                   className={
                     this.state.userName === "Đăng nhập" ? "" : "dropdown"
