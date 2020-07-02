@@ -35,17 +35,18 @@ export class DanhSachSanPham extends Component {
     console.log(radio);
     console.log(this.state.dataSort);
 
+    var newArr = [];
     if (radio === "1") {
       this.setState({ dataSort: this.state.dataFull });
     } else if (radio === "2") {
       dataFull.map((product, index) => {
         if (product.gia < 100000) {
-          this.setState({ dataSort: this.state.dataSort.concat(product) });
+          newArr = newArr.concat(product)
         }
       });
     }
-    this.setState({ childData: this.state.dataSort.slice(0, 12), page: 1 });
-    this.numOfPage(this.state.dataSort);
+    this.setState({ dataSort: newArr, childData: newArr.slice(0, 12), page: 1 });
+    this.numOfPage(newArr);
   };
 
   goToCategory = (type) => {
