@@ -35,7 +35,6 @@ export class DanhSachSanPham extends Component {
   sortData = (radio, dataFull) => {
     var newArr = [];
     if (radio === "1") {
-      this.setState({ dataSort: this.state.dataFull });
       newArr = this.state.dataFull;
     } else if (radio === "2") {
       dataFull.map((product, index) => {

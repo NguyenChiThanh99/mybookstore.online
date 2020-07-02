@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
@@ -16,17 +17,75 @@ export class Search extends Component {
     this.state = {
       search: match.params.search,
       dataFull: [],
+      dataSort: [],
       dropdown: window.innerWidth <= 576 ? "down" : "right",
       childData: [],
       numOfPage: 0,
       page: 1,
       loading: true,
+      empty: false,
+      radio: "1",
     };
   }
 
   componentDidMount() {
     this.search(this.props.match.params.search);
   }
+
+  onChange = (event) => {
+    var target = event.target;
+    var value = target.value;
+    var name = target.name;
+    this.setState({
+      [name]: value,
+    });
+    this.sortData(value, this.state.dataFull);
+  };
+
+  sortData = (radio, dataFull) => {
+    var newArr = [];
+    if (radio === "1") {
+      newArr = this.state.dataFull;
+    } else if (radio === "2") {
+      dataFull.map((product, index) => {
+        if (product.gia < 100000) {
+          newArr = newArr.concat(product);
+        }
+      });
+    } else if (radio === "3") {
+      dataFull.map((product, index) => {
+        if (product.gia >= 100000 && product.gia < 200000) {
+          newArr = newArr.concat(product);
+        }
+      });
+    } else if (radio === "4") {
+      dataFull.map((product, index) => {
+        if (product.gia >= 200000 && product.gia < 400000) {
+          newArr = newArr.concat(product);
+        }
+      });
+    } else if (radio === "5") {
+      dataFull.map((product, index) => {
+        if (product.gia > 400000) {
+          newArr = newArr.concat(product);
+        }
+      });
+    }
+
+    if (newArr.length !== 0) {
+      this.setState({
+        loading: false,
+      })
+    } else {
+      this.setState({
+        loading: false,
+        empty: true,
+      });
+    }
+    this.setState({ dataSort: newArr, childData: newArr.slice(0, 12), page: 1 });
+    this.numOfPage(newArr);
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  };
 
   search = (search) => {
     const data = {
@@ -43,9 +102,8 @@ export class Search extends Component {
       this.setState({
         dataFull: res.data.data,
         loading: false,
-        childData: res.data.data.slice(0, 12),
       });
-      this.numOfPage(res.data.data);
+      this.sortData(this.state.radio, res.data.data);
     });
   };
 
@@ -53,8 +111,8 @@ export class Search extends Component {
     this.props.history.push("/category/" + type);
   };
 
-  numOfPage = (dataFull) => {
-    var lengthData = dataFull.length;
+  numOfPage = (dataSort) => {
+    var lengthData = dataSort.length;
     if (lengthData !== 0) {
       if (lengthData % 12 === 0) {
         this.setState({
@@ -141,7 +199,7 @@ export class Search extends Component {
       page_arr.push(i);
     }
     var result = null;
-    if (this.state.dataFull.length > 0) {
+    if (this.state.dataSort.length > 0) {
       result = page_arr.map((page, index) => {
         return (
           <button
@@ -167,7 +225,7 @@ export class Search extends Component {
     var start = (page - 1) * 12;
     this.setState({
       page: page,
-      childData: this.state.dataFull.slice(start, start + 12),
+      childData: this.state.dataSort.slice(start, start + 12),
     });
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -207,6 +265,24 @@ export class Search extends Component {
       </div>
     );
 
+    const emptySearchJSX = (
+      <div className="container bg-white p-3 mt-3 text-center">
+        <p className="mb-0 pt-2" style={{ fontSize: 22 }}>
+          Tìm kiếm không có kết quả
+        </p>
+        <p style={{ color: "#b3b3b3", fontSize: 16 }}>
+          Xin lỗi, chúng tôi không thể tìm được kết quả phù hợp với tìm kiếm của
+          bạn
+        </p>
+        <img
+          src={require("../images/search2.png")}
+          className="img-fluid align-self-center"
+          alt="empty-cart"
+          width="80px"
+        />
+      </div>
+    );
+
     const bodyJSX = (
       <div>
         <div className="mx-0 px-3">
@@ -226,7 +302,7 @@ export class Search extends Component {
         <div className="row mx-0 px-2">
           {this.show_4_prod(this.state.childData.slice(8, 12))}
         </div>
-        {this.state.dataFull.length !== 0 ? PageJSX : null}
+        {this.state.dataSort.length !== 0 ? PageJSX : null}
       </div>
     );
 
@@ -1228,23 +1304,58 @@ export class Search extends Component {
                 </div>
                 <div className="price mt-3 ml-4">
                   <label className="radio mb-0">
-                    <p className="fontPrice pb-0">0 - 100.00đ</p>
-                    <input type="radio" defaultChecked="checked" name="price" />
+                    <p className="fontPrice pb-0">Tất cả</p>
+                    <input
+                      type="radio"
+                      value={"1"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "1"}
+                      name="radio"
+                    />
+                    <span className="checkround" />
+                  </label>
+                  <label className="radio mb-0">
+                    <p className="fontPrice pb-0">0 - 100.000đ</p>
+                    <input
+                      type="radio"
+                      value={"2"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "2"}
+                      name="radio"
+                    />
                     <span className="checkround" />
                   </label>
                   <label className="radio mb-0">
                     <p className="fontPrice pb-0">100.000đ - 200.000đ</p>
-                    <input type="radio" name="price" />
+                    <input
+                      type="radio"
+                      value={"3"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "3"}
+                      name="radio"
+                    />
                     <span className="checkround" />
                   </label>
                   <label className="radio mb-0">
-                    <p className="fontPrice pb-0">200.000đ - 500.000đ</p>
-                    <input type="radio" name="price" />
+                    <p className="fontPrice pb-0">200.000đ - 400.000đ</p>
+                    <input
+                      type="radio"
+                      value={"4"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "4"}
+                      name="radio"
+                    />
                     <span className="checkround" />
                   </label>
                   <label className="radio mb-0 pb-2">
-                    <p className="fontPrice pb-0">500.000đ trở lên</p>
-                    <input type="radio" name="price" />
+                    <p className="fontPrice pb-0">400.000đ trở lên</p>
+                    <input
+                      type="radio"
+                      value={"5"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "5"}
+                      name="radio"
+                    />
                     <span className="checkround" />
                   </label>
                 </div>
@@ -1254,7 +1365,9 @@ export class Search extends Component {
             {/*Danh sach san pham*/}
             <div className="col-sm-9 px-0">
               <div className="bg-white">
-                {this.state.loading ? loadingJSX : bodyJSX}
+                {this.state.loading ? loadingJSX : null}
+                {this.state.empty ? emptySearchJSX : null}
+                {this.state.dataSort.length !== 0 ? bodyJSX : null}
               </div>
             </div>
           </div>
