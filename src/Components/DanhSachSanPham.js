@@ -230,6 +230,7 @@ export class DanhSachSanPham extends Component {
     this.setState({
       [name]: value,
     });
+    this.sortData(this.state.radio, this.state.dataFull);
   };
 
   render() {
