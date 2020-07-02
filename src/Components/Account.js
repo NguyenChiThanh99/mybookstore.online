@@ -99,7 +99,25 @@ export default class Account extends Component {
     this.setState({ showModal2: false });
   };
 
-  checkPass = () => {
+  validatePhone(text) {
+    let newText = "";
+    let numbers = "0123456789";
+
+    for (var i = 0; i < text.length; i++) {
+      if (numbers.indexOf(text[i]) > -1) {
+        newText = newText + text[i];
+      } else {
+        this.setState({
+          noti: "Vui lòng chỉ nhập số",
+        });
+        timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
+      }
+    }
+    this.setState({ phoneU: newText });
+  }
+
+  checkPass = (event) => {
+    event.preventDefault();
     if (this.state.password.length !== 0) {
       const data = {
         email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
@@ -418,7 +436,10 @@ export default class Account extends Component {
                         id="phone"
                         name="phone"
                         value={this.state.phone}
-                        onChange={this.onChange}
+                        onChange={(text) =>
+                          this.validatePhone(text.target.value)
+                        }
+                        maxLength={10}
                       />
                     </div>
                   </div>
