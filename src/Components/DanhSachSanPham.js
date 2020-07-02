@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
@@ -37,8 +36,8 @@ export class DanhSachSanPham extends Component {
     } else if (radio === "2") {
       dataFull.map((product, index) => {
         if (product.gia < 100000) {
-          this.setState({ dataSort: this.state.dataSort.concat(product) });
-        }
+          return this.setState({ dataSort: this.state.dataSort.concat(product) });
+        } else return null;
       });
     }
     this.setState({ childData: this.state.dataSort.slice(0, 12), page: 1 });
