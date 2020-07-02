@@ -13,6 +13,7 @@ var timer2 = null;
 export class ChiTietSanPham extends Component {
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();  
     var { match } = this.props;
     this.state = {
       slug: match.params.slug,
@@ -53,11 +54,16 @@ export class ChiTietSanPham extends Component {
 
   componentDidMount() {
     this.getData(this.state.slug);
+    if (this.state.isComment !== undefined) {
+      this.scrollToMyRef();
+    }
   }
 
   componentWillUnmount() {
     clearTimeout(timer2);
   }
+
+  scrollToMyRef = () => window.scrollTo(0, this.myRef.current.offsetTop)
 
   closeNoti = () => {
     this.setState({ noti: "" });
@@ -566,6 +572,7 @@ export class ChiTietSanPham extends Component {
     }
     const comment = (
       <div
+        ref={this.myRef}
         className="row py-3"
         style={{ borderBottom: "1px solid rgba(0,0,0,.1)" }}
       >
