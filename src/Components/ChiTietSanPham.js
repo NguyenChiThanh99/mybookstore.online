@@ -54,9 +54,6 @@ export class ChiTietSanPham extends Component {
 
   componentDidMount() {
     this.getData(this.state.slug);
-    if (this.state.isComment !== undefined) {
-      this.scrollToMyRef();
-    }
   }
 
   componentWillUnmount() {
@@ -65,14 +62,9 @@ export class ChiTietSanPham extends Component {
 
   scrollToMyRef = () => {
     console.log("call");
-    // this.myRef.current.scrollIntoView({
-    //   behavior: "smooth",
-    //   block: "start",
-    // });
-    window.scroll({
-      top: 100,
-      left: 100,
+    this.myRef.current.scrollIntoView({
       behavior: "smooth",
+      block: "start",
     });
   };
 
@@ -583,6 +575,7 @@ export class ChiTietSanPham extends Component {
     }
     const comment = (
       <div
+        ref={this.myRef}
         className="row py-3"
         style={{ borderBottom: "1px solid rgba(0,0,0,.1)" }}
       >
@@ -714,6 +707,10 @@ export class ChiTietSanPham extends Component {
       starImage = require("../images/4stars.png");
     } else if (AVGRating === 5) {
       starImage = require("../images/5stars.png");
+    }
+
+    if (this.state.isComment !== undefined) {
+      this.scrollToMyRef();
     }
     return (
       <div>
@@ -974,7 +971,7 @@ export class ChiTietSanPham extends Component {
         </div>
 
         {/*Review*/}
-        <div className="container bg-white p-3 mt-3" ref={this.myRef}>
+        <div className="container bg-white p-3 mt-3">
           <h5>
             <b>Khách hàng nhận xét</b>
           </h5>
