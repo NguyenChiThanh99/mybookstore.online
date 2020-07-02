@@ -479,6 +479,7 @@ export class ThanhToan extends Component {
           </tbody>
         </table>
         <hr className="mt-0" />
+        {this.state.err === "" ? null : errJSX}
         <div className="row">
           <div className="col">
             <button
@@ -662,7 +663,6 @@ export class ThanhToan extends Component {
                       />
                     </div>
                   </div>
-                  {this.state.err === "" ? null : errJSX}
                 </form>
               </div>
               {/*Phuong thuc thanh toan*/}

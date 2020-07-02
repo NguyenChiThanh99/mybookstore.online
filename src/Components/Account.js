@@ -113,7 +113,7 @@ export default class Account extends Component {
         timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
       }
     }
-    this.setState({ phoneU: newText });
+    this.setState({ phone: newText });
   }
 
   checkPass = (event) => {
@@ -139,7 +139,7 @@ export default class Account extends Component {
           this.handleShow2();
         } else {
           this.setState({
-            errPass: "res.data.data",
+            errPass: res.data.data,
           });
         }
       });
@@ -319,7 +319,7 @@ export default class Account extends Component {
     );
 
     const notiJSX = (
-      <div className="alert alert-success alert-dismissible fade show mt-3 mb-0">
+      <div className="alert alert-success alert-dismissible fade show mt-3 mb-0 mx-3">
         {this.state.noti}
         <button
           onClick={this.closeNoti}
