@@ -423,20 +423,32 @@ export default class Account extends Component {
                     </div>
                   </div>
                   {this.state.noti === "" ? null : notiJSX}
-                  <div className="viewmore pb-2 mt-2">
-                    <button
-                      className="btn btn-danger mybtn mr-4"
-                      onClick={this.handleShow1}
-                    >
-                      Đổi mật khẩu
-                    </button>
-                    <button
-                      className="btn btn-danger mybtn ml-4"
-                      onClick={this.changeProfile}
-                    >
-                      Lưu thay đổi
-                    </button>
-                  </div>
+
+                  {Global.isSignIn ? (
+                    <div className="viewmore pb-2 mt-2">
+                      <button
+                        className="btn btn-danger mybtn mr-4"
+                        onClick={this.handleShow1}
+                      >
+                        Đổi mật khẩu
+                      </button>
+                      <button
+                        className="btn btn-danger mybtn ml-4"
+                        onClick={this.changeProfile}
+                      >
+                        Lưu thay đổi
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="viewmore pb-2 mt-2">
+                      <button
+                        className="btn btn-danger mybtn"
+                        onClick={this.changeProfile}
+                      >
+                        Lưu thay đổi
+                      </button>
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
