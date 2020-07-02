@@ -23,7 +23,7 @@ export class DanhSachSanPham extends Component {
       page: 1,
       loading: true,
       dropdown: window.innerWidth <= 576 ? "down" : "right",
-      radio: "1",
+      radio: "2",
     };
   }
 
@@ -295,8 +295,6 @@ export class DanhSachSanPham extends Component {
     if (this.state.dataFull.length !== 0) {
       firstItemImg = this.state.dataFull[0].hinhanhsanpham;
     }
-
-    console.log(this.state.radio);
 
     return (
       <div>
