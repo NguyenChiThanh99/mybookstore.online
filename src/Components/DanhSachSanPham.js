@@ -32,19 +32,36 @@ export class DanhSachSanPham extends Component {
   }
 
   sortData = (radio, dataFull) => {
-    console.log(radio);
-    console.log(this.state.dataSort);
-
     var newArr = [];
     if (radio === "1") {
       this.setState({ dataSort: this.state.dataFull });
+      newArr = this.state.dataFull;
     } else if (radio === "2") {
       dataFull.map((product, index) => {
         if (product.gia < 100000) {
-          newArr = newArr.concat(product)
+          newArr = newArr.concat(product);
+        }
+      });
+    } else if (radio === "3") {
+      dataFull.map((product, index) => {
+        if (product.gia >= 100000 && product.gia < 200000) {
+          newArr = newArr.concat(product);
+        }
+      });
+    } else if (radio === "4") {
+      dataFull.map((product, index) => {
+        if (product.gia >= 200000 && product.gia < 400000) {
+          newArr = newArr.concat(product);
+        }
+      });
+    } else if (radio === "5") {
+      dataFull.map((product, index) => {
+        if (product.gia > 400000) {
+          newArr = newArr.concat(product);
         }
       });
     }
+
     this.setState({ dataSort: newArr, childData: newArr.slice(0, 12), page: 1 });
     this.numOfPage(newArr);
   };
@@ -234,7 +251,6 @@ export class DanhSachSanPham extends Component {
     this.setState({
       [name]: value,
     });
-    this.setState({ dataSort: [] });
     this.sortData(value, this.state.dataFull);
   };
 
