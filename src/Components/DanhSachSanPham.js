@@ -636,116 +636,120 @@ export class DanhSachSanPham extends Component {
                       Sách thiếu nhi
                     </a>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
-                      <div className="row dropright-mobile">
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách thiếu nhi|Truyện thiếu nhi"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                      <Dropdown.Item className="bg-white">
+                        <div className="row dropright-mobile">
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Truyện thiếu nhi
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Sách thiếu nhi|Manga - Comic");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách thiếu nhi|Truyện thiếu nhi"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Truyện thiếu nhi
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách thiếu nhi|Manga - Comic"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Manga - Comic
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách thiếu nhi|Kiến thức bách khoa"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Kiến thức bách khoa
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách thiếu nhi|Kỹ năng sống cho trẻ"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Kỹ năng sống cho trẻ
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Manga - Comic
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách thiếu nhi|Kiến thức bách khoa"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách thiếu nhi|Từ điển thiếu nhi"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Từ điển thiếu nhi
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Sách thiếu nhi|Flashcard");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Flashcard
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách thiếu nhi|Tạp chí thiếu nhi"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tạp chí thiếu nhi
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Sách thiếu nhi|Sách nói");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Sách nói
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Kiến thức bách khoa
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách thiếu nhi|Kỹ năng sống cho trẻ"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Kỹ năng sống cho trẻ
-                          </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách thiếu nhi|Tô màu, luyện chữ"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tô màu, luyện chữ
+                            </a>
+                          </div>
                         </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách thiếu nhi|Từ điển thiếu nhi"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Từ điển thiếu nhi
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Sách thiếu nhi|Flashcard");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Flashcard
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách thiếu nhi|Tạp chí thiếu nhi"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Tạp chí thiếu nhi
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Sách thiếu nhi|Sách nói");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Sách nói
-                          </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách thiếu nhi|Tô màu, luyện chữ"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Tô màu, luyện chữ
-                          </a>
-                        </div>
-                      </div>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
 
@@ -764,121 +768,129 @@ export class DanhSachSanPham extends Component {
                       Kinh tế
                     </a>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
-                      <div className="row dropright-mobile">
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Kinh tế|Quản trị - lãnh đạo");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                      <Dropdown.Item className="bg-white">
+                        <div className="row dropright-mobile">
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Quản trị - lãnh đạo
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Kinh tế|Marketing - bán hàng");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Kinh tế|Quản trị - lãnh đạo"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Quản trị - lãnh đạo
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Kinh tế|Marketing - bán hàng"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Marketing - bán hàng
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Kinh tế|Nhân vật - bài học kinh doanh"
+                                );
+                              }}
+                              className="nav-link text-dark mya-dropright"
+                              href="# "
+                            >
+                              Nhân vật - bài học kinh doanh
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Kinh tế|Phân tích kinh tế");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Phân tích kinh tế
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Marketing - bán hàng
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Kinh tế|Nhân vật - bài học kinh doanh"
-                              );
-                            }}
-                            className="nav-link text-dark mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Kinh tế|Khởi nghiệp làm giàu"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Khởi nghiệp làm giàu
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Kinh tế|Tài chính - ngân hàng"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tài chính - ngân hàng
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Kinh tế|Chứng khoáng - bất động sản"
+                                );
+                              }}
+                              className="nav-link text-dark mya-dropright"
+                              href="# "
+                            >
+                              Chứng khoáng - bất động sản
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Kinh tế|Nhân sự - việc làm");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Nhân sự - việc làm
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Nhân vật - bài học kinh doanh
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Kinh tế|Phân tích kinh tế");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Phân tích kinh tế
-                          </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Kinh tế|Ngoại thương");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Ngoại thương
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Kinh tế|Kế toán - kiểm toán - thuế"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Kế toán - kiểm toán - thuế
+                            </a>
+                          </div>
                         </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Kinh tế|Khởi nghiệp làm giàu");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Khởi nghiệp làm giàu
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Kinh tế|Tài chính - ngân hàng"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Tài chính - ngân hàng
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Kinh tế|Chứng khoáng - bất động sản"
-                              );
-                            }}
-                            className="nav-link text-dark mya-dropright"
-                            href="# "
-                          >
-                            Chứng khoáng - bất động sản
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Kinh tế|Nhân sự - việc làm");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Nhân sự - việc làm
-                          </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Kinh tế|Ngoại thương");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Ngoại thương
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Kinh tế|Kế toán - kiểm toán - thuế"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Kế toán - kiểm toán - thuế
-                          </a>
-                        </div>
-                      </div>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
 
@@ -897,70 +909,72 @@ export class DanhSachSanPham extends Component {
                       Tiểu sử - hồi ký
                     </a>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
-                      <div className="row dropright-mobile">
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Tiểu sử - hồi ký|Câu chuyện cuộc đời"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                      <Dropdown.Item className="bg-white">
+                        <div className="row dropright-mobile">
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Câu chuyện cuộc đời
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Tiểu sử - hồi ký|Chính trị");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Tiểu sử - hồi ký|Câu chuyện cuộc đời"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Câu chuyện cuộc đời
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Tiểu sử - hồi ký|Chính trị");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Chính trị
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Chính trị
-                          </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Tiểu sử - hồi ký|Lịch sử");
+                              }}
+                              className="nav-link text-dark mya-dropright"
+                              href="# "
+                            >
+                              Lịch sử
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Tiểu sử - hồi ký|Kinh tế");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Kinh tế
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
+                          >
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Tiểu sử - hồi ký|Thể thao");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Thể thao
+                            </a>
+                          </div>
                         </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Tiểu sử - hồi ký|Lịch sử");
-                            }}
-                            className="nav-link text-dark mya-dropright"
-                            href="# "
-                          >
-                            Lịch sử
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Tiểu sử - hồi ký|Kinh tế");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Kinh tế
-                          </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Tiểu sử - hồi ký|Thể thao");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Thể thao
-                          </a>
-                        </div>
-                      </div>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
 
@@ -979,76 +993,80 @@ export class DanhSachSanPham extends Component {
                       Tâm lý - Kỹ năng sống
                     </a>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
-                      <div className="row dropright-mobile">
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Tâm lý - Kỹ năng sống|Kỹ năng sống"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                      <Dropdown.Item className="bg-white">
+                        <div className="row dropright-mobile">
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Kỹ năng sống
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Tâm lý - Kỹ năng sống|Rèn luyện nhân cách"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Tâm lý - Kỹ năng sống|Kỹ năng sống"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Kỹ năng sống
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Tâm lý - Kỹ năng sống|Rèn luyện nhân cách"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Rèn luyện nhân cách
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Rèn luyện nhân cách
-                          </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Tâm lý - Kỹ năng sống|Tâm lý"
+                                );
+                              }}
+                              className="nav-link text-dark mya-dropright"
+                              href="# "
+                            >
+                              Tâm lý
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Tâm lý - Kỹ năng sống|Sách cho tuổi mới lớn"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Sách cho tuổi mới lớn
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
+                          >
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Tâm lý - Kỹ năng sống|Hạt giống tâm hồn"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Hạt giống tâm hồn
+                            </a>
+                          </div>
                         </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Tâm lý - Kỹ năng sống|Tâm lý");
-                            }}
-                            className="nav-link text-dark mya-dropright"
-                            href="# "
-                          >
-                            Tâm lý
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Tâm lý - Kỹ năng sống|Sách cho tuổi mới lớn"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Sách cho tuổi mới lớn
-                          </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Tâm lý - Kỹ năng sống|Hạt giống tâm hồn"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Hạt giống tâm hồn
-                          </a>
-                        </div>
-                      </div>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
 
@@ -1067,105 +1085,107 @@ export class DanhSachSanPham extends Component {
                       Sách giáo khoa - tham khảo
                     </a>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
-                      <div className="row dropright-mobile">
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách giáo khoa - tham khảo|Cấp 1"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                      <Dropdown.Item className="bg-white">
+                        <div className="row dropright-mobile">
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Cấp 1
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách giáo khoa - tham khảo|Cấp 2"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách giáo khoa - tham khảo|Cấp 1"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Cấp 1
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách giáo khoa - tham khảo|Cấp 2"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Cấp 2
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Cấp 2
-                          </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách giáo khoa - tham khảo|Cấp 3"
+                                );
+                              }}
+                              className="nav-link text-dark mya-dropright"
+                              href="# "
+                            >
+                              Cấp 3
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách giáo khoa - tham khảo|Mẫu giáo"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Mẫu giáo
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
+                          >
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách giáo khoa - tham khảo|Luyện thi Đại học"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Luyện thi Đại học
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách giáo khoa - tham khảo|Sách giáo viên"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Sách giáo viên
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
+                          >
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách giáo khoa - tham khảo|Đại học"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Đại học
+                            </a>
+                          </div>
                         </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách giáo khoa - tham khảo|Cấp 3"
-                              );
-                            }}
-                            className="nav-link text-dark mya-dropright"
-                            href="# "
-                          >
-                            Cấp 3
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách giáo khoa - tham khảo|Mẫu giáo"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Mẫu giáo
-                          </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách giáo khoa - tham khảo|Luyện thi Đại học"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Luyện thi Đại học
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách giáo khoa - tham khảo|Sách giáo viên"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Sách giáo viên
-                          </a>
-                        </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách giáo khoa - tham khảo|Đại học"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Đại học
-                          </a>
-                        </div>
-                      </div>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
 
@@ -1184,82 +1204,86 @@ export class DanhSachSanPham extends Component {
                       Nuôi dạy con
                     </a>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
-                      <div className="row dropright-mobile">
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Nuôi dạy con|Cẩm nang làm cha mẹ"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                      <Dropdown.Item className="bg-white">
+                        <div className="row dropright-mobile">
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Cẩm nang làm cha mẹ
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Nuôi dạy con|Phát triển kỹ năng - trí tuệ cho trẻ"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Nuôi dạy con|Cẩm nang làm cha mẹ"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Cẩm nang làm cha mẹ
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Nuôi dạy con|Phát triển kỹ năng - trí tuệ cho trẻ"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Phát triển kỹ năng - trí tuệ cho trẻ
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Nuôi dạy con|Phương pháp giáo dục trẻ các nước"
+                                );
+                              }}
+                              className="nav-link text-dark mya-dropright"
+                              href="# "
+                            >
+                              Phương pháp giáo dục trẻ các nước
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Phát triển kỹ năng - trí tuệ cho trẻ
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Nuôi dạy con|Phương pháp giáo dục trẻ các nước"
-                              );
-                            }}
-                            className="nav-link text-dark mya-dropright"
-                            href="# "
-                          >
-                            Phương pháp giáo dục trẻ các nước
-                          </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Nuôi dạy con|Dinh dưỡng - Sức khỏe cho trẻ"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Dinh dưỡng - Sức khỏe cho trẻ
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Nuôi dạy con|Dành cho mẹ bầu"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Dành cho mẹ bầu
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Nuôi dạy con|Giáo dục trẻ tuổi teen"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Giáo dục trẻ tuổi teen
+                            </a>
+                          </div>
                         </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Nuôi dạy con|Dinh dưỡng - Sức khỏe cho trẻ"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Dinh dưỡng - Sức khỏe cho trẻ
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Nuôi dạy con|Dành cho mẹ bầu");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Dành cho mẹ bầu
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Nuôi dạy con|Giáo dục trẻ tuổi teen"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Giáo dục trẻ tuổi teen
-                          </a>
-                        </div>
-                      </div>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
 
@@ -1278,85 +1302,87 @@ export class DanhSachSanPham extends Component {
                       Sách ngoại ngữ
                     </a>
                     <Dropdown.Menu style={{ marginRight: "9%" }}>
-                      <div className="row dropright-mobile">
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Sách ngoại ngữ|Tiếng Anh");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                      <Dropdown.Item className="bg-white">
+                        <div className="row dropright-mobile">
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Tiếng Anh
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Sách ngoại ngữ|Tiếng Nhật");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Sách ngoại ngữ|Tiếng Anh");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tiếng Anh
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Sách ngoại ngữ|Tiếng Nhật");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tiếng Nhật
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Sách ngoại ngữ|Tiếng Trung");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tiếng Trung
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Sách ngoại ngữ|Tiếng Hàn");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tiếng Hàn
+                            </a>
+                          </div>
+                          <div
+                            className="col-sm-3 col-6"
+                            style={{ maxWidth: "fit-content" }}
                           >
-                            Tiếng Nhật
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Sách ngoại ngữ|Tiếng Trung");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Tiếng Trung
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Sách ngoại ngữ|Tiếng Hàn");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Tiếng Hàn
-                          </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory("Sách ngoại ngữ|Tiếng Pháp");
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tiếng Pháp
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách ngoại ngữ|Ngoại ngữ khác"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Ngoại ngữ khác
+                            </a>
+                            <a
+                              onClick={() => {
+                                this.goToCategory(
+                                  "Sách ngoại ngữ|Tiếng Việt cho người ngước ngoài"
+                                );
+                              }}
+                              className="nav-link text-dark text-nowrap mya-dropright"
+                              href="# "
+                            >
+                              Tiếng Việt cho người ngước ngoài
+                            </a>
+                          </div>
                         </div>
-                        <div
-                          className="col-sm-3 col-6"
-                          style={{ maxWidth: "fit-content" }}
-                        >
-                          <a
-                            onClick={() => {
-                              this.goToCategory("Sách ngoại ngữ|Tiếng Pháp");
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Tiếng Pháp
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách ngoại ngữ|Ngoại ngữ khác"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Ngoại ngữ khác
-                          </a>
-                          <a
-                            onClick={() => {
-                              this.goToCategory(
-                                "Sách ngoại ngữ|Tiếng Việt cho người ngước ngoài"
-                              );
-                            }}
-                            className="nav-link text-dark text-nowrap mya-dropright"
-                            href="# "
-                          >
-                            Tiếng Việt cho người ngước ngoài
-                          </a>
-                        </div>
-                      </div>
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </nav>

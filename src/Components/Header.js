@@ -751,6 +751,7 @@ export class Header extends Component {
             </NavLink>
 
             <button
+              style={{outlineColor:"#eb2b3f"}}
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
