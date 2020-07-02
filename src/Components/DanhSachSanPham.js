@@ -1422,7 +1422,7 @@ export class DanhSachSanPham extends Component {
               <div className="bg-white">
                 {this.state.loading ? loadingJSX : null}
                 {this.state.emptyCart ? emptySearchJSX : null}
-                {this.state.sortData.length !== 0 ? bodyJSX : null}
+                {this.state.dataSort.length !== 0 ? bodyJSX : null}
               </div>
             </div>
           </div>
