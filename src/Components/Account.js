@@ -186,7 +186,7 @@ export default class Account extends Component {
         data: qs.stringify(data),
       };
       axios(options).then((res) => {
-        if (res.data.err === "success") {
+        if (res.data.data === "success") {
           this.setState({
             noti: "Đổi mật khẩu thành công",
           });
