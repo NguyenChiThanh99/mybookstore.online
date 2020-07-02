@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
@@ -36,8 +37,8 @@ export class DanhSachSanPham extends Component {
     } else if (radio === "2") {
       dataFull.map((product, index) => {
         if (product.gia < 100000) {
-          return this.setState({ dataSort: this.state.dataSort.concat(product) });
-        } else return null;
+          this.setState({ dataSort: this.state.dataSort.concat(product) });
+        }
       });
     }
     this.setState({ childData: this.state.dataSort.slice(0, 12), page: 1 });
@@ -229,10 +230,11 @@ export class DanhSachSanPham extends Component {
     this.setState({
       [name]: value,
     });
+    console.log(value);
+    console.log(typeof value);
   };
 
   render() {
-    this.sortData(this.state.radio, this.state.dataFull);
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <button
         ref={ref}
