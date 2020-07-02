@@ -796,20 +796,20 @@ export class Header extends Component {
               </div>
 
               <div className="d-flex justify-content-center align-items-center">
-                <Badge badgeContent={4} color="error">
-                  <NavLink
-                    to="/cart"
-                    className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
-                  >
+                <NavLink
+                  to="/cart"
+                  className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
+                >
+                  <Badge badgeContent={4} color="#eb2b3f">
                     <img
                       src={require("../images/cart.png")}
                       className="img-fluid"
                       alt="cartImg"
                       width="30px"
                     />
-                    <p className="headerText text-nowrap">Giỏ hàng</p>
-                  </NavLink>
-                </Badge>
+                  </Badge>
+                  <p className="headerText text-nowrap">Giỏ hàng</p>
+                </NavLink>
 
                 <div
                   className={
