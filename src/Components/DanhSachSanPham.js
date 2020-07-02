@@ -33,7 +33,6 @@ export class DanhSachSanPham extends Component {
   }
 
   sortData = (radio, dataFull) => {
-    this.setState({ dataSort: [], loading: true, empty: false });
     var newArr = [];
     if (radio === "1") {
       this.setState({ dataSort: this.state.dataFull });
@@ -81,7 +80,14 @@ export class DanhSachSanPham extends Component {
 
   goToCategory = (type) => {
     this.props.history.push("/category/" + type);
-    this.setState({ slug: type, page: 1, loading: true, radio: "1" });
+    this.setState({
+      slug: type,
+      page: 1,
+      loading: true,
+      radio: "1",
+      dataSort: [],
+      empty: false,
+    });
     this.get_danh_muc(type);
   };
 
