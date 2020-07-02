@@ -124,7 +124,7 @@ export default class Account extends Component {
     if (this.state.password.length !== 0) {
       const data = {
         email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
-        password: this.state.password
+        password: this.state.password,
       };
       const url = Global.link + "user/checkpassword";
       const options = {
@@ -134,9 +134,9 @@ export default class Account extends Component {
         data: qs.stringify(data),
       };
       axios(options).then((res) => {
-        if (res.data.data === 'success') {
+        if (res.data.data === "success") {
           this.setState({
-            password: '',
+            password: "",
           });
           this.handleClose1();
           this.handleShow2();
@@ -151,9 +151,56 @@ export default class Account extends Component {
       this.setState({ errPass: "Vui lòng nhập mật khẩu cũ để đổi mật khẩu" });
       timer4 = setTimeout(() => this.setState({ errPass: "" }), 4000);
     }
-  }
+  };
 
-  changePass = () => {}
+  changePass = (event) => {
+    event.preventDefault();
+    const { password1, password2 } = this.state;
+    if (password1.length === 0 || password2.length === 0) {
+      this.setState({
+        errNewPass: "Vui lòng nhập tất cả thông tin.",
+      });
+      timer4 = setTimeout(() => this.setState({ errNewPass: "" }), 4000);
+    } else if (password1.length < 3 || password1.length > 30) {
+      this.setState({
+        errNewPass: "Độ dài mật khẩu không hợp lệ. Yêu cầu ít nhất 3 ký tự",
+      });
+      timer4 = setTimeout(() => this.setState({ errNewPass: "" }), 4000);
+    } else if (password1 !== password2) {
+      this.setState({
+        errNewPass: "Mật khẩu không trùng khớp.",
+      });
+      timer4 = setTimeout(() => this.setState({ errNewPass: "" }), 4000);
+    } else {
+      const data = {
+        email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+        password: password1,
+      };
+      const url = Global.link + "user/changepassword";
+      const options = {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+        },
+        url,
+        data: qs.stringify(data),
+      };
+      axios(options).then((res) => {
+        if (res.data.err === "success") {
+          this.setState({
+            noti: "Đổi mật khẩu thành công",
+          });
+          timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
+          this.handleClose2();
+        } else {
+          this.setState({
+            errNewPass: "Đã xảy ra lỗi, vui lòng thử lại",
+          });
+          timer4 = setTimeout(() => this.setState({ errNewPass: "" }), 4000);
+        }
+      });
+    }
+  };
 
   getRandom = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
