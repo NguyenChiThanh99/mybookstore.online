@@ -268,6 +268,7 @@ export class DanhSachSanPham extends Component {
     var name = target.name;
     this.setState({
       [name]: value,
+      empty: false,
     });
     this.sortData(value, this.state.dataFull);
   };
