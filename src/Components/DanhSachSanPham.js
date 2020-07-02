@@ -32,6 +32,10 @@ export class DanhSachSanPham extends Component {
   }
 
   sortData = (radio, dataFull) => {
+    console.log(radio);
+    console.log(dataFull);
+    
+    
     if (radio === "1") {
       this.setState({ dataSort: this.state.dataFull });
     } else if (radio === "2") {
@@ -230,8 +234,7 @@ export class DanhSachSanPham extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(value);
-    console.log(typeof value);
+    this.sortData(value, this.state.dataFull);
   };
 
   render() {
@@ -1321,7 +1324,7 @@ export class DanhSachSanPham extends Component {
                     <span className="checkround" />
                   </label>
                   <label className="radio mb-0">
-                    <p className="fontPrice pb-0">0 - 100.00đ</p>
+                    <p className="fontPrice pb-0">0 - 100.000đ</p>
                     <input
                       type="radio"
                       value={"2"}
