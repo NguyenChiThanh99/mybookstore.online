@@ -209,6 +209,14 @@ export class Search extends Component {
 
     const bodyJSX = (
       <div>
+        <div className="mx-0 px-2 mb-2">
+          <h4 class="display-4 float-left">
+            Kết quả tìm kiếm cho '{this.props.match.params.search}':{"\u00A0"}
+          </h4>
+          <h4 class="display-4" style={{ color: "#616161" }}>
+            {this.state.dataFull.length} kết quả
+          </h4>
+        </div>
         <div className="row mx-0 px-2">
           {this.show_4_prod(this.state.childData.slice(0, 4))}
         </div>
@@ -258,7 +266,7 @@ export class Search extends Component {
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>
           <p className="path float-left">Tìm kiếm:{"\u00A0"}</p>
-          <p className="path textColor">"{this.props.match.params.search}"</p>
+          <p className="path textColor">'{this.props.match.params.search}'</p>
         </div>
 
         {/*Main*/}
