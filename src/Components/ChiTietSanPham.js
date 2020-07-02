@@ -578,7 +578,6 @@ export class ChiTietSanPham extends Component {
     }
     const comment = (
       <div
-        ref={this.myRef}
         className="row py-3"
         style={{ borderBottom: "1px solid rgba(0,0,0,.1)" }}
       >
@@ -970,7 +969,7 @@ export class ChiTietSanPham extends Component {
         </div>
 
         {/*Review*/}
-        <div className="container bg-white p-3 mt-3">
+        <div className="container bg-white p-3 mt-3" ref={this.myRef}>
           <h5>
             <b>Khách hàng nhận xét</b>
           </h5>
