@@ -35,7 +35,8 @@ export class DanhSachSanPham extends Component {
     console.log(radio);
     console.log(dataFull);
     
-    
+    this.setState({ dataSort: [] });
+    console.log(this.state.dataSort);
     if (radio === "1") {
       this.setState({ dataSort: this.state.dataFull });
     } else if (radio === "2") {
