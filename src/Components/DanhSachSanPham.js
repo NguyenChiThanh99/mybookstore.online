@@ -23,7 +23,7 @@ export class DanhSachSanPham extends Component {
       page: 1,
       loading: true,
       dropdown: window.innerWidth <= 576 ? "down" : "right",
-      radio: "1",
+      radio: "2",
     };
   }
 
