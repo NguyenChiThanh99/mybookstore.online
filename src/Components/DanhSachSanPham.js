@@ -29,11 +29,9 @@ export class DanhSachSanPham extends Component {
 
   componentDidMount() {
     this.get_danh_muc(this.state.slug);
-    this.sortData();
   }
 
-  sortData = () => {
-    const { radio, dataFull } = this.state;
+  sortData = (radio, dataFull) => {
     if (radio === "1") {
       this.setState({ dataSort: this.state.dataFull });
     } else if (radio === "2") {
@@ -70,6 +68,7 @@ export class DanhSachSanPham extends Component {
           loading: false,
           dataFull: res.data.data,
         });
+        this.sortData(this.state.radio, res.data.data);
       }
     });
   };
@@ -91,6 +90,7 @@ export class DanhSachSanPham extends Component {
           loading: false,
           dataFull: res.data.data,
         });
+        this.sortData(this.state.radio, res.data.data);
       }
     });
   };
