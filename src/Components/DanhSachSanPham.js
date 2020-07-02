@@ -1421,7 +1421,7 @@ export class DanhSachSanPham extends Component {
             <div className="col-sm-9 px-0">
               <div className="bg-white">
                 {this.state.loading ? loadingJSX : null}
-                {this.state.emptyCart ? emptySearchJSX : null}
+                {this.state.empty ? emptySearchJSX : null}
                 {this.state.dataSort.length !== 0 ? bodyJSX : null}
               </div>
             </div>
