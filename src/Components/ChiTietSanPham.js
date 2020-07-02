@@ -101,6 +101,9 @@ export class ChiTietSanPham extends Component {
       });
       this.calRating(res.data.datarate);
       this.getDataComment(slug);
+      if (this.state.isComment !== undefined) {
+        this.scrollToMyRef();
+      }
     });
   };
 
@@ -709,9 +712,6 @@ export class ChiTietSanPham extends Component {
       starImage = require("../images/5stars.png");
     }
 
-    if (this.state.isComment !== undefined) {
-      this.scrollToMyRef();
-    }
     return (
       <div>
         <MetaTags>
