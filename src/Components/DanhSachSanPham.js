@@ -33,6 +33,7 @@ export class DanhSachSanPham extends Component {
   }
 
   sortData = (radio, dataFull) => {
+    this.setState({ dataSort: [], loading: true, empty: false });
     var newArr = [];
     if (radio === "1") {
       this.setState({ dataSort: this.state.dataFull });
@@ -262,9 +263,6 @@ export class DanhSachSanPham extends Component {
     var name = target.name;
     this.setState({
       [name]: value,
-      dataSort: [],
-      loading: true,
-      empty: false,
     });
     this.sortData(value, this.state.dataFull);
   };
