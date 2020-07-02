@@ -210,10 +210,10 @@ export class Search extends Component {
     const bodyJSX = (
       <div>
         <div className="mx-0 px-3">
-          <p className="my-2" style={{ fontSize: 20 }}>
+          <p className="mb-2 pt-2 float-left" style={{ fontSize: 24 }}>
             Kết quả tìm kiếm cho '{this.props.match.params.search}':{"\u00A0"}
           </p>
-          <p className="my-2" style={{ color: "#ebebeb", fontSize: 20 }}>
+          <p className="mb-0" style={{ color: "#b3b3b3", fontSize: 20 }}>
             {this.state.dataFull.length} kết quả
           </p>
         </div>
