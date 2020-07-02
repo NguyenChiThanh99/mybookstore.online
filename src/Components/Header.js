@@ -438,11 +438,13 @@ export class Header extends Component {
   search = (event) => {
     event.preventDefault();
     this.props.history.push("/search/" + this.state.search);
+    window.location.reload();
   };
 
   _handleKeyDown = (e) => {
     if (e.key === "Enter") {
       this.props.history.push("/search/" + this.state.search);
+      window.location.reload();
     }
   };
 

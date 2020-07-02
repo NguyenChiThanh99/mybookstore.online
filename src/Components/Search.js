@@ -25,11 +25,10 @@ export class Search extends Component {
   }
 
   componentDidMount() {
-    this.search();
+    this.search(this.props.match.params.search);
   }
 
-  search = () => {
-    const { search } = this.state;
+  search = (search) => {
     const data = {
       filter: search,
     };
@@ -52,8 +51,6 @@ export class Search extends Component {
 
   goToCategory = (type) => {
     this.props.history.push("/category/" + type);
-    this.setState({ slug: type, page: 1, loading: true });
-    this.get_danh_muc(type);
   };
 
   numOfPage = (dataFull) => {
@@ -245,15 +242,12 @@ export class Search extends Component {
             name="description"
             content={
               "Hàng ngàn mặt hàng sách " +
-             
               " tại mybookstore.online, với ưu đãi hàng ngày lên đến 50%, giao hàng miễn phí trên toàn quốc chỉ từ 120k. Mua ngay!"
             }
           />
           <meta
             property="og:title"
-            content={
-              "Tổng hợp sách " +  " hay và mới nhất | mybookstore.online"
-            }
+            content={"Tổng hợp sách " + " hay và mới nhất | mybookstore.online"}
           />
           <meta property="og:image" content={firstItemImg} />
         </MetaTags>
@@ -263,16 +257,8 @@ export class Search extends Component {
           <NavLink to="/">
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>
-          <p
-            className="path float-left"
-          >
-            Tìm kiếm:{"\u00A0"}
-          </p>
-          <p
-            className="path textColor"
-          >
-            "{this.state.search}"
-          </p>
+          <p className="path float-left">Tìm kiếm:{"\u00A0"}</p>
+          <p className="path textColor">"{this.props.match.params.search}"</p>
         </div>
 
         {/*Main*/}
