@@ -117,6 +117,7 @@ export class DanhSachSanPham extends Component {
     result = arr_4_prod.map((product, index) => {
       var discount = this.getRandom(5, 15);
       var newPrice = product.gia + (product.gia * discount) / 100;
+      newPrice = Math.round(newPrice / 1000) * 1000;
       return (
         <div className="col-sm-3 col-6 product_shadow my-2">
           <NavLink to={"/product/" + product.tenurl} key={index}>

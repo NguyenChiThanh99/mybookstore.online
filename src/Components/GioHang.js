@@ -208,6 +208,7 @@ export class GioHang extends Component {
       result = this.state.suggest.map((product, index) => {
         var discount = this.getRandom(5, 15);
         var newPrice = product.gia + (product.gia * discount) / 100;
+        newPrice = Math.round(newPrice / 1000) * 1000;
         return (
           <div
             className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
