@@ -22,6 +22,7 @@ export class DanhSachSanPham extends Component {
       numOfPage: 0,
       page: 1,
       loading: true,
+      empty: false,
       dropdown: window.innerWidth <= 576 ? "down" : "right",
       radio: "1",
     };
@@ -62,8 +63,19 @@ export class DanhSachSanPham extends Component {
       });
     }
 
+    if (newArr.length !== 0) {
+      this.setState({
+        loading: false,
+      })
+    } else {
+      this.setState({
+        loading: false,
+        empty: true,
+      });
+    }
     this.setState({ dataSort: newArr, childData: newArr.slice(0, 12), page: 1 });
     this.numOfPage(newArr);
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
   goToCategory = (type) => {
@@ -265,6 +277,23 @@ export class DanhSachSanPham extends Component {
         }}
       />
     ));
+
+    const emptySearchJSX = (
+      <div className="container bg-white p-3 mt-3 text-center">
+        <p className="mb-0 pt-2" style={{ fontSize: 20 }}>
+          Tìm kiếm không có kết quả
+        </p>
+        <p className="mb-0" style={{ color: "#b3b3b3", fontSize: 14 }}>
+          Xin lỗi, chúng tôi không thể tìm được kết quả phù hợp với tìm kiếm của bạn
+        </p>
+        <img
+          src={require("../images/search.png")}
+          className="img-fluid align-self-center"
+          alt="empty-cart"
+          width="250px"
+        />
+      </div>
+    );
 
     const PageJSX = (
       <div className="d-flex justify-content-center">
@@ -1391,7 +1420,9 @@ export class DanhSachSanPham extends Component {
             {/*Danh sach san pham*/}
             <div className="col-sm-9 px-0">
               <div className="bg-white">
-                {this.state.loading ? loadingJSX : bodyJSX}
+                {this.state.loading ? loadingJSX : null}
+                {this.state.emptyCart ? emptySearchJSX : null}
+                {this.state.sortData.length !== 0 ? bodyJSX : null}
               </div>
             </div>
           </div>
