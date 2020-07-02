@@ -438,19 +438,14 @@ export class Header extends Component {
 
   search = (event) => {
     event.preventDefault();
-    const { search } = this.state;
-    const data = {
-      email: search,
-    };
-    const url = Global.link + "user/login";
-    const options = {
-      method: "POST",
-      headers: { "content-type": "application/x-www-form-urlencoded" },
-      url,
-      data: qs.stringify(data),
-    };
-    axios(options).then((res) => {});
+    this.props.history.push("/search/" + this.state.search);
   };
+
+  _handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      this.search();
+    }
+  }
 
   render() {
     let fbContent = (
@@ -777,6 +772,7 @@ export class Header extends Component {
                     onMouseLeave={() => {
                       this.hoverSearch(false);
                     }}
+                    onKeyDown={this._handleKeyDown}
                     type="text"
                     className={this.state.styleSearch}
                     id="search"

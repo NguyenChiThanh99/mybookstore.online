@@ -8,6 +8,7 @@ import Home from "./Components/Home";
 import Account from "./Components/Account";
 import HoaDon from "./Components/HoaDon";
 import LichSuGiaoDich from "./Components/LichSuGiaoDich";
+import Search from './Components/Search'
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     path: "/order-history",
     exact: false,
     main: () => <LichSuGiaoDich />,
+  },
+  {
+    path: "/search/:search",
+    exact: false,
+    main: ({ match }) => <Search match={match} />,
   },
   {
     path: "",
