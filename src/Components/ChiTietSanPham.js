@@ -98,11 +98,11 @@ export class ChiTietSanPham extends Component {
         dataRate: res.data.datarate,
         like: res.data.islike,
       });
-      this.calRating(res.data.datarate);
-      this.getDataComment(slug);
       if (this.state.isComment !== undefined) {
         this.scrollToMyRef();
       }
+      this.calRating(res.data.datarate);
+      this.getDataComment(slug);
     });
   };
 

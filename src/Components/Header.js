@@ -751,7 +751,7 @@ export class Header extends Component {
             </NavLink>
 
             <button
-              style={{outlineColor:"#eb2b3f"}}
+              style={{ outlineColor: "#eb2b3f" }}
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -806,6 +806,7 @@ export class Header extends Component {
                     width="30px"
                   />
                   <p className="headerText text-nowrap">Giỏ hàng</p>
+                  <span class="badge badge-pill badge-danger">1</span>
                 </NavLink>
                 <div
                   className={
