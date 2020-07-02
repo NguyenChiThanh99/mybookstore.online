@@ -19,7 +19,7 @@ export class ThanhToan extends Component {
       total: 0,
       ship: 0,
       name: Global.isSignIn ? Global.user[1] : Global.user[0].name,
-      phone: Global.isSignIn ? Global.user[2] : "",
+      phone: Global.isSignIn ? Global.user[2] : Global.user[0].phone,
       email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
       province: "Vui lòng chọn...",
       provinceItem: 0,

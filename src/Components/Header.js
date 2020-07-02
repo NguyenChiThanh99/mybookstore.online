@@ -157,7 +157,8 @@ export class Header extends Component {
     axios(options).then((res) => {
       if (res.data.err === "Data is added to database") {
         this.setState({ userName: name });
-        var user = [{ email, name, picture }];
+        var phone = '';
+        var user = [{ email, name, picture, phone }];
         Global.user = user;
         Global.isLoggedInS = true;
         localStorage.setItem("user", JSON.stringify(user));
