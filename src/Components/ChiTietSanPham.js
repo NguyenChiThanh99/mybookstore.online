@@ -65,10 +65,11 @@ export class ChiTietSanPham extends Component {
 
   scrollToMyRef = () => {
     console.log("call");
-    this.myRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    // this.myRef.current.scrollIntoView({
+    //   behavior: "smooth",
+    //   block: "start",
+    // });
+    window.scroll({ top: 50, left: 0, behavior: "smooth" });
   };
 
   closeNoti = () => {
