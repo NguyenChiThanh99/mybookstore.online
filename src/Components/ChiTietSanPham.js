@@ -69,7 +69,11 @@ export class ChiTietSanPham extends Component {
     //   behavior: "smooth",
     //   block: "start",
     // });
-    window.scroll({ top: 50, left: 0, behavior: "smooth" });
+    window.scroll({
+      top: 100,
+      left: 100,
+      behavior: "smooth",
+    });
   };
 
   closeNoti = () => {
