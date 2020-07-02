@@ -262,6 +262,9 @@ export class DanhSachSanPham extends Component {
     var name = target.name;
     this.setState({
       [name]: value,
+      dataSort: [],
+      loading: true,
+      empty: false,
     });
     this.sortData(value, this.state.dataFull);
   };
@@ -280,17 +283,17 @@ export class DanhSachSanPham extends Component {
 
     const emptySearchJSX = (
       <div className="container bg-white p-3 mt-3 text-center">
-        <p className="mb-0 pt-2" style={{ fontSize: 20 }}>
+        <p className="mb-0 pt-2" style={{ fontSize: 22 }}>
           Tìm kiếm không có kết quả
         </p>
-        <p className="mb-0" style={{ color: "#b3b3b3", fontSize: 14 }}>
+        <p style={{ color: "#b3b3b3", fontSize: 16 }}>
           Xin lỗi, chúng tôi không thể tìm được kết quả phù hợp với tìm kiếm của bạn
         </p>
         <img
-          src={require("../images/search.png")}
+          src={require("../images/search2.png")}
           className="img-fluid align-self-center"
           alt="empty-cart"
-          width="250px"
+          width="80px"
         />
       </div>
     );
