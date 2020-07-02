@@ -21,6 +21,7 @@ export class DanhSachSanPham extends Component {
       page: 1,
       loading: true,
       dropdown: window.innerWidth <= 576 ? "down" : "right",
+      radio: "1",
     };
   }
 
@@ -208,6 +209,15 @@ export class DanhSachSanPham extends Component {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
+  onChange = (event) => {
+    var target = event.target;
+    var value = target.value;
+    var name = target.name;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <button
@@ -238,7 +248,7 @@ export class DanhSachSanPham extends Component {
           src={require("../images/loading.gif")}
           className="img-fluid align-self-center"
           alt="loading"
-          width="150px"
+          width="200px"
         />
       </div>
     );
@@ -271,6 +281,8 @@ export class DanhSachSanPham extends Component {
       firstItemImg = this.state.dataFull[0].hinhanhsanpham;
     }
 
+    console.log(this.state.radio);
+    
     return (
       <div>
         <MetaTags>
@@ -1284,23 +1296,58 @@ export class DanhSachSanPham extends Component {
                 </div>
                 <div className="price mt-3 ml-4">
                   <label className="radio mb-0">
+                    <p className="fontPrice pb-0">Tất cả</p>
+                    <input
+                      type="radio"
+                      value={"1"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "1"}
+                      name="radio"
+                    />
+                    <span className="checkround" />
+                  </label>
+                  <label className="radio mb-0">
                     <p className="fontPrice pb-0">0 - 100.00đ</p>
-                    <input type="radio" defaultChecked="checked" name="price" />
+                    <input
+                      type="radio"
+                      value={"2"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "2"}
+                      name="radio"
+                    />
                     <span className="checkround" />
                   </label>
                   <label className="radio mb-0">
                     <p className="fontPrice pb-0">100.000đ - 200.000đ</p>
-                    <input type="radio" name="price" />
+                    <input
+                      type="radio"
+                      value={"3"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "3"}
+                      name="radio"
+                    />
                     <span className="checkround" />
                   </label>
                   <label className="radio mb-0">
-                    <p className="fontPrice pb-0">200.000đ - 500.000đ</p>
-                    <input type="radio" name="price" />
+                    <p className="fontPrice pb-0">200.000đ - 400.000đ</p>
+                    <input
+                      type="radio"
+                      value={"4"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "4"}
+                      name="radio"
+                    />
                     <span className="checkround" />
                   </label>
                   <label className="radio mb-0 pb-2">
-                    <p className="fontPrice pb-0">500.000đ trở lên</p>
-                    <input type="radio" name="price" />
+                    <p className="fontPrice pb-0">400.000đ trở lên</p>
+                    <input
+                      type="radio"
+                      value={"4"}
+                      onChange={this.onChange}
+                      checked={this.state.radio === "4"}
+                      name="radio"
+                    />
                     <span className="checkround" />
                   </label>
                 </div>
