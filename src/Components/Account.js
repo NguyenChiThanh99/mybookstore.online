@@ -25,6 +25,7 @@ export default class Account extends Component {
       empty: false,
       password: "",
       noti: "",
+      errPass: '',
     };
   }
 
@@ -89,7 +90,7 @@ export default class Account extends Component {
     this.setState({ showModal1: true });
   };
   handleClose1 = () => {
-    this.setState({ showModal1: false });
+    this.setState({ showModal1: false, password: "" });
   };
   handleShow2 = () => {
     this.setState({ showModal2: true });
@@ -97,6 +98,38 @@ export default class Account extends Component {
   handleClose2 = () => {
     this.setState({ showModal2: false });
   };
+
+  checkPass = () => {
+    if (this.state.password.length !== 0) {
+      const data = {
+        email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+        password: this.state.password
+      };
+      const url = Global.link + "user/checkpassword";
+      const options = {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        url,
+        data: qs.stringify(data),
+      };
+      axios(options).then((res) => {
+        if (res.data.data === 'success') {
+          this.setState({
+            password: '',
+          });
+          this.handleClose1();
+          this.handleShow2();
+        } else {
+          this.setState({
+            errPass: "res.data.data",
+          });
+        }
+      });
+    } else {
+      this.setState({ errPass: "Vui lòng nhập mật khẩu cũ để đổi mật khẩu" });
+      timer4 = setTimeout(() => this.setState({ errPass: "" }), 4000);
+    }
+  }
 
   getRandom = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -281,6 +314,12 @@ export default class Account extends Component {
       </div>
     );
 
+    const errPassJSX = (
+      <div className="alert alert-danger alert-dismissible fade show">
+        {this.state.errPass}
+      </div>
+    );
+
     return (
       <div>
         <MetaTags>
@@ -433,10 +472,11 @@ export default class Account extends Component {
                   onChange={this.onChange}
                 />
               </div>
+              {this.state.errPass === "" ? null : errPassJSX}
               <div className="viewmore pb-2 mt-2">
                 <button
                   className="btn btn-danger mybtn"
-                  onClick={this.forgotPass}
+                  onClick={this.checkPass}
                 >
                   Xác nhận
                 </button>
