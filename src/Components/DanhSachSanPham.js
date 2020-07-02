@@ -23,7 +23,7 @@ export class DanhSachSanPham extends Component {
       page: 1,
       loading: true,
       dropdown: window.innerWidth <= 576 ? "down" : "right",
-      radio: "2",
+      radio: "1",
     };
   }
 
@@ -33,10 +33,8 @@ export class DanhSachSanPham extends Component {
 
   sortData = (radio, dataFull) => {
     console.log(radio);
-    console.log(dataFull);
-    
-    this.setState({ dataSort: [] });
     console.log(this.state.dataSort);
+
     if (radio === "1") {
       this.setState({ dataSort: this.state.dataFull });
     } else if (radio === "2") {
@@ -235,6 +233,7 @@ export class DanhSachSanPham extends Component {
     this.setState({
       [name]: value,
     });
+    this.setState({ dataSort: [] });
     this.sortData(value, this.state.dataFull);
   };
 
