@@ -41,7 +41,7 @@ export class DanhSachSanPham extends Component {
         }
       });
     }
-    this.setState({ childData: this.state.dataSort.slice(0, 12) });
+    this.setState({ childData: this.state.dataSort.slice(0, 12), page: 1 });
     this.numOfPage(this.state.dataSort);
   };
 
@@ -230,10 +230,10 @@ export class DanhSachSanPham extends Component {
     this.setState({
       [name]: value,
     });
-    this.sortData(value, this.state.dataFull);
   };
 
   render() {
+    this.sortData(this.state.radio, this.state.dataFull);
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <button
         ref={ref}
