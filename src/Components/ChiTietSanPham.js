@@ -13,7 +13,7 @@ var timer2 = null;
 export class ChiTietSanPham extends Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();  
+    this.myRef = React.createRef();
     var { match } = this.props;
     this.state = {
       slug: match.params.slug,
@@ -63,8 +63,13 @@ export class ChiTietSanPham extends Component {
     clearTimeout(timer2);
   }
 
-  scrollToMyRef = () => {console.log('call');
-   window.scrollTo(0, this.myRef.current.offsetTop)}
+  scrollToMyRef = () => {
+    console.log("call");
+    this.myRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   closeNoti = () => {
     this.setState({ noti: "" });
