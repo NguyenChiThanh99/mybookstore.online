@@ -24,8 +24,11 @@ export default class Account extends Component {
       loading: true,
       empty: false,
       password: "",
+      password1: "",
+      password2: "",
       noti: "",
-      errPass: '',
+      errPass: "",
+      errNewPass: "",
     };
   }
 
@@ -96,7 +99,7 @@ export default class Account extends Component {
     this.setState({ showModal2: true });
   };
   handleClose2 = () => {
-    this.setState({ showModal2: false });
+    this.setState({ showModal2: false, password1: "", password2: "" });
   };
 
   validatePhone(text) {
@@ -141,6 +144,7 @@ export default class Account extends Component {
           this.setState({
             errPass: res.data.data,
           });
+          timer4 = setTimeout(() => this.setState({ errPass: "" }), 4000);
         }
       });
     } else {
@@ -148,6 +152,8 @@ export default class Account extends Component {
       timer4 = setTimeout(() => this.setState({ errPass: "" }), 4000);
     }
   }
+
+  changePass = () => {}
 
   getRandom = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -338,6 +344,12 @@ export default class Account extends Component {
       </div>
     );
 
+    const errNewPassJSX = (
+      <div className="alert alert-danger alert-dismissible fade show">
+        {this.state.errNewPass}
+      </div>
+    );
+
     return (
       <div>
         <MetaTags>
@@ -512,6 +524,47 @@ export default class Account extends Component {
                   onClick={this.checkPass}
                 >
                   Xác nhận
+                </button>
+              </div>
+            </form>
+          </Modal.Body>
+        </Modal>
+
+        <Modal show={this.state.showModal2} onHide={this.handleClose2}>
+          <Modal.Header closeButton>
+            <Modal.Title>Đổi mật khẩu</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Mật khẩu</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password1"
+                  name="password1"
+                  value={this.state.password1}
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Nhập lại mật khẩu</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password2"
+                  name="password2"
+                  value={this.state.password2}
+                  onChange={this.onChange}
+                />
+              </div>
+              {this.state.errNewPass === "" ? null : errNewPassJSX}
+              <div className="viewmore pb-2 mt-2">
+                <button
+                  className="btn btn-danger mybtn"
+                  onClick={this.changePass}
+                >
+                  Đổi mật khẩu
                 </button>
               </div>
             </form>
