@@ -442,7 +442,7 @@ export class Header extends Component {
 
   _handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      this.search();
+      this.props.history.push("/search/" + this.state.search);
     }
   };
 

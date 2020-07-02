@@ -25,23 +25,25 @@ export class Search extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.search);
-    
+    this.search();
   }
 
   search = () => {
     const { search } = this.state;
     const data = {
-      email: search,
+      filter: search,
     };
-    const url = Global.link + "user/login";
+    const url = Global.link + "product/searchproduct";
     const options = {
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded" },
       url,
       data: qs.stringify(data),
     };
-    axios(options).then((res) => {});
+    axios(options).then((res) => {
+      console.log(res.data.data);
+      this.setState({dataFull: res.data.data})
+    });
   };
 
   goToCategory = (type) => {
