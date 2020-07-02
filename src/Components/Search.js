@@ -202,20 +202,20 @@ export class Search extends Component {
           src={require("../images/loading.gif")}
           className="img-fluid align-self-center"
           alt="loading"
-          width="150px"
+          width="200px"
         />
       </div>
     );
 
     const bodyJSX = (
       <div>
-        <div className="mx-0 px-2 mb-2">
-          <h4 class="display-4 float-left">
+        <div className="mx-0 px-3">
+          <p className="my-2" style={{ fontSize: 20 }}>
             Kết quả tìm kiếm cho '{this.props.match.params.search}':{"\u00A0"}
-          </h4>
-          <h4 class="display-4" style={{ color: "#616161" }}>
+          </p>
+          <p className="my-2" style={{ color: "#ebebeb", fontSize: 20 }}>
             {this.state.dataFull.length} kết quả
-          </h4>
+          </p>
         </div>
         <div className="row mx-0 px-2">
           {this.show_4_prod(this.state.childData.slice(0, 4))}
