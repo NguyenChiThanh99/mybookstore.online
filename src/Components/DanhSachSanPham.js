@@ -23,7 +23,7 @@ export class DanhSachSanPham extends Component {
       page: 1,
       loading: true,
       dropdown: window.innerWidth <= 576 ? "down" : "right",
-      radio: "2",
+      radio: "1",
     };
   }
 
@@ -230,7 +230,7 @@ export class DanhSachSanPham extends Component {
     this.setState({
       [name]: value,
     });
-    this.sortData(this.state.radio, this.state.dataFull);
+    this.sortData(value, this.state.dataFull);
   };
 
   render() {
