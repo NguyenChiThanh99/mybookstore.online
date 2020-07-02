@@ -30,7 +30,6 @@ export class Header extends Component {
 
     this.state = {
       styleSearch: "form-control myinput-outline border borderColor w-75",
-      styleSearchBtn: "btn btn-outline-danger my-2 my-sm-0 mybtn-outline ml-2",
       nameU: "",
       emailU: "",
       pass1U: "",
@@ -157,7 +156,7 @@ export class Header extends Component {
     axios(options).then((res) => {
       if (res.data.err === "Data is added to database") {
         this.setState({ userName: name });
-        var phone = '';
+        var phone = "";
         var user = [{ email, name, picture, phone }];
         Global.user = user;
         Global.isLoggedInS = true;
@@ -442,10 +441,10 @@ export class Header extends Component {
   };
 
   _handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       this.search();
     }
-  }
+  };
 
   render() {
     let fbContent = (
@@ -781,15 +780,12 @@ export class Header extends Component {
                     value={this.state.search}
                     onChange={this.onChange}
                   />
-                  <a
-                    href="# "
-                    className={this.state.styleSearchBtn}
-                    onClick={() => {
-                      this.search();
-                    }}
+                  <button
+                    className='btn btn-outline-danger my-2 my-sm-0 mybtn-outline ml-2'
+                    onClick={this.search}
                   >
                     <i class="fas fa-search"></i>
-                  </a>
+                  </button>
                 </form>
               </div>
 
