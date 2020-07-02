@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
@@ -16,6 +17,7 @@ export class DanhSachSanPham extends Component {
     this.state = {
       slug: match.params.slug,
       dataFull: [],
+      dataSort: [],
       childData: [],
       numOfPage: 0,
       page: 1,
@@ -27,11 +29,27 @@ export class DanhSachSanPham extends Component {
 
   componentDidMount() {
     this.get_danh_muc(this.state.slug);
+    this.sortData();
   }
+
+  sortData = () => {
+    const { radio, dataFull } = this.state;
+    if (radio === "1") {
+      this.setState({ dataSort: this.state.dataFull });
+    } else if (radio === "2") {
+      dataFull.map((product, index) => {
+        if (product.gia < 100000) {
+          this.setState({ dataSort: this.state.dataSort.concat(product) });
+        }
+      });
+    }
+    this.setState({ childData: this.state.dataSort.slice(0, 12) });
+    this.numOfPage(this.state.dataSort);
+  };
 
   goToCategory = (type) => {
     this.props.history.push("/category/" + type);
-    this.setState({ slug: type, page: 1, loading: true });
+    this.setState({ slug: type, page: 1, loading: true, radio: "1" });
     this.get_danh_muc(type);
   };
 
@@ -51,9 +69,7 @@ export class DanhSachSanPham extends Component {
         this.setState({
           loading: false,
           dataFull: res.data.data,
-          childData: res.data.data.slice(0, 12),
         });
-        this.numOfPage(res.data.data);
       }
     });
   };
@@ -74,9 +90,7 @@ export class DanhSachSanPham extends Component {
         this.setState({
           loading: false,
           dataFull: res.data.data,
-          childData: res.data.data.slice(0, 12),
         });
-        this.numOfPage(res.data.data);
       }
     });
   };
@@ -90,8 +104,8 @@ export class DanhSachSanPham extends Component {
     }
   };
 
-  numOfPage = (dataFull) => {
-    var lengthData = dataFull.length;
+  numOfPage = (dataSort) => {
+    var lengthData = dataSort.length;
     if (lengthData !== 0) {
       if (lengthData % 12 === 0) {
         this.setState({
@@ -178,7 +192,7 @@ export class DanhSachSanPham extends Component {
       page_arr.push(i);
     }
     var result = null;
-    if (this.state.dataFull.length > 0) {
+    if (this.state.dataSort.length > 0) {
       result = page_arr.map((page, index) => {
         return (
           <button
@@ -204,7 +218,7 @@ export class DanhSachSanPham extends Component {
     var start = (page - 1) * 12;
     this.setState({
       page: page,
-      childData: this.state.dataFull.slice(start, start + 12),
+      childData: this.state.dataSort.slice(start, start + 12),
     });
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -282,7 +296,7 @@ export class DanhSachSanPham extends Component {
     }
 
     console.log(this.state.radio);
-    
+
     return (
       <div>
         <MetaTags>
@@ -1343,9 +1357,9 @@ export class DanhSachSanPham extends Component {
                     <p className="fontPrice pb-0">400.000đ trở lên</p>
                     <input
                       type="radio"
-                      value={"4"}
+                      value={"5"}
                       onChange={this.onChange}
-                      checked={this.state.radio === "4"}
+                      checked={this.state.radio === "5"}
                       name="radio"
                     />
                     <span className="checkround" />
