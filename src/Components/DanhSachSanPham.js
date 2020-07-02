@@ -448,7 +448,7 @@ export class DanhSachSanPham extends Component {
                       Văn học
                     </a>
                     <Dropdown.Menu style={{ maxWidth: "fit-content" }}>
-                      <Dropdown.Item>
+                      <Dropdown.Item className="bg-white">
                         <div className="row dropright-mobile">
                           <div
                             className="col-sm-3 col-6"
