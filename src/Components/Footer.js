@@ -12,7 +12,7 @@ export default class Footer extends Component {
               <img
                 src={require("../images/logo2.png")}
                 className="img-fluid p-2 w-75"
-                alt="logo"
+                alt="logoWeb"
               />
               <p className="textFooter pl-2">Website phục vụ Đồ án môn học</p>
               <p className="textFooter pl-2">
