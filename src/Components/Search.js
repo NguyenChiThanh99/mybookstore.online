@@ -16,11 +16,11 @@ export class Search extends Component {
     this.state = {
       search: match.params.search,
       dataFull: [],
+      dropdown: window.innerWidth <= 576 ? "down" : "right",
       childData: [],
       numOfPage: 0,
       page: 1,
       loading: true,
-      dropdown: window.innerWidth <= 576 ? "down" : "right",
     };
   }
 
@@ -41,8 +41,12 @@ export class Search extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      console.log(res.data.data);
-      this.setState({dataFull: res.data.data})
+      this.setState({
+        dataFull: res.data.data,
+        loading: false,
+        childData: res.data.data.slice(0, 12),
+      });
+      this.numOfPage(res.data.data);
     });
   };
 
@@ -267,7 +271,7 @@ export class Search extends Component {
           <p
             className="path textColor"
           >
-            {this.state.search}
+            "{this.state.search}"
           </p>
         </div>
 
