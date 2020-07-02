@@ -239,23 +239,39 @@ export class Search extends Component {
       <div>
         <MetaTags>
           <title>
-            {"Tổng hợp sách " + " hay và mới nhất | mybookstore.online"}
+            {"Có " +
+              this.state.dataFull.length +
+              " sản phẩm " +
+              this.props.match.params.search +
+              " với giá tốt nhất | mybookstore.online"}
           </title>
           <meta
             property="og:url"
-            content={"https://mybookstore.online/category/" + this.state.slug}
+            content={
+              "https://mybookstore.online/search/" +
+              this.props.match.params.search
+            }
           />
           <meta property="og:type" content="website" />
           <meta
             name="description"
             content={
-              "Hàng ngàn mặt hàng sách " +
-              " tại mybookstore.online, với ưu đãi hàng ngày lên đến 50%, giao hàng miễn phí trên toàn quốc chỉ từ 120k. Mua ngay!"
+              "Có " +
+              this.state.dataFull.length +
+              " sản phẩm " +
+              this.props.match.params.search +
+              " tại mybookstore.online với giá cạnh tranh và nhiều ưu đãi hấp dẫn."
             }
           />
           <meta
             property="og:title"
-            content={"Tổng hợp sách " + " hay và mới nhất | mybookstore.online"}
+            content={
+              "Có " +
+              this.state.dataFull.length +
+              " sản phẩm " +
+              this.props.match.params.search +
+              " với giá tốt nhất | mybookstore.online"
+            }
           />
           <meta property="og:image" content={firstItemImg} />
         </MetaTags>

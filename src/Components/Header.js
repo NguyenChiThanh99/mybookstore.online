@@ -437,12 +437,14 @@ export class Header extends Component {
 
   search = (event) => {
     event.preventDefault();
-    this.props.history.push("/search/" + this.state.search);
-    window.location.reload();
+    if (this.state.search.length !== 0) {
+      this.props.history.push("/search/" + this.state.search);
+      window.location.reload();
+    }
   };
 
   _handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && this.state.search.length !== 0) {
       this.props.history.push("/search/" + this.state.search);
       window.location.reload();
     }
@@ -783,7 +785,7 @@ export class Header extends Component {
                     onChange={this.onChange}
                   />
                   <button
-                    className='btn btn-outline-danger my-2 my-sm-0 mybtn-outline ml-2'
+                    className="btn btn-outline-danger my-2 my-sm-0 mybtn-outline ml-2"
                     onClick={this.search}
                   >
                     <i class="fas fa-search"></i>
