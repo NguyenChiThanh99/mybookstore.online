@@ -506,7 +506,7 @@ export class ThanhToan extends Component {
     }
 
     return (
-      <div className="container-fluid background2">
+      <div className="background2">
         <MetaTags>
           <title>Thông tin thanh toán | mybookstore.online</title>
           <meta property="og:url" content="https://mybookstore.online/pay" />
@@ -523,7 +523,7 @@ export class ThanhToan extends Component {
         </MetaTags>
 
         {/*Path*/}
-        <div className="container py-2 px-0">
+        <div className="container py-2 pl-3">
           <NavLink to="/">
             <p className="path float-left">Trang chủ /{"\u00A0"}</p>
           </NavLink>
@@ -536,7 +536,7 @@ export class ThanhToan extends Component {
         {/*Main*/}
         <div className="container">
           <div className="row">
-            <div className="col-sm-5 pl-0">
+            <div className="col-sm-5 pl-3">
               {/*Thong tin dia chi*/}
               <div className="bg-white">
                 <div className="text-center text-light background1 p-1">

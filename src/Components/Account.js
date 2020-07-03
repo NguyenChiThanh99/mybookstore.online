@@ -295,7 +295,7 @@ export default class Account extends Component {
       result = page_arr.map((page, index) => {
         var start = index * 6;
         return (
-          <div className="d-flex justify-content-center row px-2" key={index}>
+          <div className="d-flex row px-2" key={index}>
             {this.show_6_like_prod(likeArr.slice(start, start + 6))}
           </div>
         );

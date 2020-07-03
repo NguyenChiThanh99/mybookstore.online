@@ -882,7 +882,7 @@ export class ChiTietSanPham extends Component {
               {this.state.noti === "" ? null : notiJSX}
               <div className="row py-4 pl-3">
                 <div
-                  className="btn btn-danger mybtn mb-0 pr-4 text-nowrap"
+                  className="btn btn-danger mybtn mb-0 text-nowrap"
                   onClick={() => this.addToCart(data._id)}
                 >
                   Thêm vào giỏ hàng

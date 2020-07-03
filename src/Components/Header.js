@@ -800,7 +800,7 @@ export class Header extends Component {
                   to="/cart"
                   className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
                 >
-                  <Badge badgeContent={4} color="error" className='mt-1'>
+                  <Badge badgeContent={1} color="error" className='mt-1'>
                     <img
                       src={require("../images/cart.png")}
                       className="img-fluid"
