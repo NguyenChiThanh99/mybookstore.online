@@ -761,7 +761,6 @@ export class Header extends Component {
         {/*Menu*/}
         <nav className="navbar navbar-expand-md navbar-line bg-white">
           <div className="container">
-            {/* <div className="row d-flex align-items-center"> */}
             <NavLink to="/" className="navbar-branch">
               <img
                 src={require("../images/logo.png")}

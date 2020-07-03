@@ -234,7 +234,6 @@ export class Home extends Component {
       <button
         ref={ref}
         className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
-        style={{width: "14%"}}
         onClick={(e) => {
           e.preventDefault();
           onClick(e);

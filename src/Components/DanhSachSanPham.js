@@ -426,7 +426,7 @@ export class DanhSachSanPham extends Component {
         {/*Main*/}
         <div className="container">
           <div className="row">
-            <div className="col-sm-4">
+            <div className="col-md-4 col-sm-5">
               {/*Danh muc*/}
               <div className="bg-white">
                 <div className="list">
@@ -1454,7 +1454,7 @@ export class DanhSachSanPham extends Component {
             </div>
 
             {/*Danh sach san pham*/}
-            <div className="col-sm-8 px-0">
+            <div className="col-md-8 col-sm-7 px-0">
               <div className="bg-white">
                 {this.state.loading ? loadingJSX : null}
                 {this.state.empty ? emptySearchJSX : null}
