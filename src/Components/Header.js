@@ -18,14 +18,19 @@ export class Header extends Component {
   constructor(props) {
     super(props);
 
-    var user = [];
-    if (localStorage !== null && localStorage.getItem("user") !== null) {
-      user = JSON.parse(localStorage.getItem("user"));
-      Global.user = user;
-      if (user.length === 1) {
-        Global.isLoggedInS = true;
-      } else {
-        Global.isSignIn = true;
+    var user = [], cart = 0;
+    if (localStorage !== null) {
+      if (localStorage.getItem("user") !== null) {
+        user = JSON.parse(localStorage.getItem("user"));
+        Global.user = user;
+        if (user.length === 1) {
+          Global.isLoggedInS = true;
+        } else {
+          Global.isSignIn = true;
+        }
+      }
+      if (localStorage.getItem("cart") !== null) {
+        cart = JSON.parse(localStorage.getItem("cart"));
       }
     }
 
@@ -51,6 +56,7 @@ export class Header extends Component {
           : user.length === 1
           ? user[0].name
           : user[1],
+      cart: cart,
       isLoggedInF: false,
       userIDS: "",
       nameS: "",
@@ -795,12 +801,12 @@ export class Header extends Component {
                 </form>
               </div>
 
-              <div className="d-flex justify-content-center align-items-center">
+              <div className="d-flex justify-content-center align-items-center mt-1">
                 <NavLink
                   to="/cart"
                   className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
                 >
-                  <Badge badgeContent={1} color="error" className='mt-1'>
+                  <Badge badgeContent={this.state.cart} color="error">
                     <img
                       src={require("../images/cart.png")}
                       className="img-fluid"

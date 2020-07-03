@@ -176,8 +176,8 @@ export class ThanhToan extends Component {
                 width="60px"
               />
             </td>
-            <td>{item.soluongsanpham}</td>
-            <td style={{ whiteSpace: "nowrap" }}>
+            <td className="text-center">{item.soluongsanpham}</td>
+            <td style={{ whiteSpace: "nowrap" }} className="text-right">
               {this.currencyFormat((item.gia * item.soluongsanpham).toString())}{" "}
               đ
             </td>
