@@ -739,7 +739,7 @@ export class Header extends Component {
     return (
       <div>
         {/* Banner */}
-        <div style={{ backgroundColor: "#3c056d" }}>
+        <div style={{ backgroundColor: "#fbc1cc" }}>
           <div>
             {/* thêm class top-banner */}
             <img
@@ -811,7 +811,7 @@ export class Header extends Component {
                   to="/cart"
                   className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
                 >
-                  <Badge badgeContent={this.state.cart} color="error">
+                  <Badge badgeContent={parseInt(this.state.cart)} color="error">
                     <img
                       src={require("../images/cart.png")}
                       className="img-fluid"
