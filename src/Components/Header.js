@@ -753,7 +753,7 @@ export class Header extends Component {
             <img
               src={require("../images/ad1.webp")}
               className="top-banner mx-auto d-block"
-              alt="mybookstore.online banner"
+              alt="mybookstore.online"
             />
           </div>
         </div>

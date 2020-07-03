@@ -1233,28 +1233,28 @@ export class Home extends Component {
                     <img
                       src={require("../images/ad2.webp")}
                       className="d-block w-100 img-fluid"
-                      alt="Quảng cáo sản phẩm"
+                      alt="mybookstore.online"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
                       src={require("../images/ad3.webp")}
                       className="d-block w-100 img-fluid"
-                      alt="Quảng cáo sản phẩm"
+                      alt="mybookstore.online"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
                       src={require("../images/ad4.webp")}
                       className="d-block w-100 img-fluid"
-                      alt="Quảng cáo sản phẩm"
+                      alt="mybookstore.online"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
                       src={require("../images/ad5.webp")}
                       className="d-block w-100 img-fluid"
-                      alt="Quảng cáo sản phẩm"
+                      alt="mybookstore.online"
                     />
                   </div>
                 </div>
@@ -1293,7 +1293,7 @@ export class Home extends Component {
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
                 src={require("../images/ad7.webp")}
-                alt="Quảng cáo sản phẩm"
+                alt="mybookstore.online"
                 className="img-fluid"
                 style={{ width: "100%" }}
               />
@@ -1301,7 +1301,7 @@ export class Home extends Component {
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
                 src={require("../images/ad6.webp")}
-                alt="Quảng cáo sản phẩm"
+                alt="mybookstore.online"
                 className="img-fluid"
                 style={{ width: "100%" }}
               />
@@ -1309,7 +1309,7 @@ export class Home extends Component {
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
                 src={require("../images/ad8.webp")}
-                alt="Quảng cáo sản phẩm"
+                alt="mybookstore.online"
                 className="img-fluid"
                 style={{ width: "100%" }}
               />
@@ -1317,7 +1317,7 @@ export class Home extends Component {
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
                 src={require("../images/ad9.webp")}
-                alt="Quảng cáo sản phẩm"
+                alt="mybookstore.online"
                 className="img-fluid"
                 style={{ width: "100%" }}
               />
