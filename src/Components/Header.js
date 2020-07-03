@@ -735,7 +735,9 @@ export class Header extends Component {
         </a>
       </div>
     );
-
+    console.log(this.state.cart);
+    console.log(typeof this.state.cart);
+    
     return (
       <div>
         {/* Banner */}
