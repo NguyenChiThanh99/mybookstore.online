@@ -168,9 +168,7 @@ export class Header extends Component {
         Global.user = user;
         Global.isLoggedInS = true;
         localStorage.setItem("user", JSON.stringify(user));
-        this.setState({
-          userName: name,
-        });
+        localStorage.setItem("cart", JSON.stringify(0));
         this.closeModal();
       } else {
         this.setState({
@@ -277,6 +275,7 @@ export class Header extends Component {
           Global.isSignIn = true;
           this.closeModal();
           localStorage.setItem("user", JSON.stringify(res.data.data));
+          localStorage.setItem("cart", JSON.stringify(0));
         }
         if (res.data.err === "Please verify your account") {
           this.setState({
@@ -532,7 +531,9 @@ export class Header extends Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email</label>
+          <label htmlFor="exampleInputEmail1" style={{ color: "#7d7d7d" }}>
+            Email
+          </label>
           <input
             type="email"
             className="form-control"
@@ -543,7 +544,9 @@ export class Header extends Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
+          <label htmlFor="exampleInputPassword1" style={{ color: "#7d7d7d" }}>
+            Mật khẩu
+          </label>
           <input
             type="password"
             className="form-control"
@@ -554,7 +557,9 @@ export class Header extends Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputPassword2">Password</label>
+          <label htmlFor="exampleInputPassword2" style={{ color: "#7d7d7d" }}>
+            Xác nhận mật khẩu
+          </label>
           <input
             type="password"
             className="form-control"
@@ -565,7 +570,9 @@ export class Header extends Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputPhone">Số điện thoại</label>
+          <label htmlFor="exampleInputPhone" style={{ color: "#7d7d7d" }}>
+            Số điện thoại
+          </label>
           <input
             type="text"
             className="form-control"
@@ -588,18 +595,15 @@ export class Header extends Component {
               style={{
                 textAlign: "center",
                 display: "block",
+                color: '#7d7d7d'
               }}
             >
               Đăng nhập bằng
             </label>
           </div>
           <div className="row text-nowrap">
-            <div className="col-6 d-flex justify-content-end">
-              {fbContent}
-            </div>
-            <div className="col-6">
-              {ggContent}
-            </div>
+            <div className="col-6 d-flex justify-content-end">{fbContent}</div>
+            <div className="col-6">{ggContent}</div>
           </div>
         </div>
       </form>
@@ -641,7 +645,9 @@ export class Header extends Component {
       <form>
         {this.state.errInputSignIn === "" ? null : errInputSignInJSX}
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email</label>
+          <label htmlFor="exampleInputEmail1" style={{ color: "#7d7d7d" }}>
+            Email
+          </label>
           <input
             type="email"
             className="form-control"
@@ -652,7 +658,9 @@ export class Header extends Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
+          <label htmlFor="exampleInputPassword1" style={{ color: "#7d7d7d" }}>
+            Password
+          </label>
           <input
             type="password"
             className="form-control"
@@ -688,18 +696,15 @@ export class Header extends Component {
               style={{
                 textAlign: "center",
                 display: "block",
+                color: '#7d7d7d'
               }}
             >
               Đăng nhập bằng
             </label>
           </div>
           <div className="row text-nowrap">
-            <div className="col-6 d-flex justify-content-end">
-              {fbContent}
-            </div>
-            <div className="col-6">
-              {ggContent}
-            </div>
+            <div className="col-6 d-flex justify-content-end">{fbContent}</div>
+            <div className="col-6">{ggContent}</div>
           </div>
         </div>
       </form>
