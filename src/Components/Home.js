@@ -78,7 +78,7 @@ export class Home extends Component {
         newPrice = Math.round(newPrice / 1000) * 1000;
         return (
           <div
-            className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
+            className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
             key={index}
           >
             <NavLink to={"/product/" + product.tenurl}>
@@ -159,7 +159,7 @@ export class Home extends Component {
         newPrice = Math.round(newPrice / 1000) * 1000;
         return (
           <div
-            className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
+            className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
             key={index}
           >
             <NavLink to={"/product/" + product.tenurl}>
@@ -234,6 +234,7 @@ export class Home extends Component {
       <button
         ref={ref}
         className="btn dropdown-toggle dropdown-toggle-split mybtn-dropright"
+        style={{width: "14%"}}
         onClick={(e) => {
           e.preventDefault();
           onClick(e);

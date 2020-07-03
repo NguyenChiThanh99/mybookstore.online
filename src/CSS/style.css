@@ -217,7 +217,7 @@ a {
 
 /* Thêm drop right các loại sách và drop down tài khoản */
 .mybtn-dropright:focus {
-  box-shadow: 0 0 0 0.2rem rgb(255, 124, 137) !important;
+  box-shadow: none !important;
 }
 
 .list-item:hover {

@@ -173,7 +173,7 @@ export class DanhSachSanPham extends Component {
       var newPrice = product.gia + (product.gia * discount) / 100;
       newPrice = Math.round(newPrice / 1000) * 1000;
       return (
-        <div className="col-sm-3 col-6 product_shadow my-2">
+        <div className="col-md-3 col-6 product_shadow my-2">
           <NavLink to={"/product/" + product.tenurl} key={index}>
             <img
               src={product.hinhanhsanpham}
@@ -193,7 +193,7 @@ export class DanhSachSanPham extends Component {
 
             <div className="row mt-2">
               <div className="col-6 d-flex align-items-center">
-                <p className="mb-0">
+                <p className="mb-0 text-nowrap">
                   <small
                     style={{
                       color: "#616161",
@@ -212,12 +212,12 @@ export class DanhSachSanPham extends Component {
                 </p>
               </div>
             </div>
-            <h5
+            <h6
               className="textColor text-nowrap mb-0 pb-2"
               style={{ marginTop: -3 }}
             >
               <b>{this.currencyFormat(product.gia.toString())} đ</b>
-            </h5>
+            </h6>
           </NavLink>
         </div>
       );
@@ -426,7 +426,7 @@ export class DanhSachSanPham extends Component {
         {/*Main*/}
         <div className="container">
           <div className="row">
-            <div className="col-sm-3">
+            <div className="col-sm-4">
               {/*Danh muc*/}
               <div className="bg-white">
                 <div className="list">
@@ -1454,7 +1454,7 @@ export class DanhSachSanPham extends Component {
             </div>
 
             {/*Danh sach san pham*/}
-            <div className="col-sm-9 px-0">
+            <div className="col-sm-8 px-0">
               <div className="bg-white">
                 {this.state.loading ? loadingJSX : null}
                 {this.state.empty ? emptySearchJSX : null}
