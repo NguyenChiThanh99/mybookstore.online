@@ -163,7 +163,10 @@ export class Header extends Component {
     axios(options).then((res) => {
       if (res.data.err === "Data is added to database") {
         this.setState({ userName: name });
-        var phone = "";
+        var phone = '';
+        if (res.data.dataphone !== undefined) {
+          phone = res.data.dataphone
+        }
         var user = [{ email, name, picture, phone }];
         Global.user = user;
         Global.isLoggedInS = true;
