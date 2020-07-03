@@ -162,6 +162,7 @@ export class Header extends Component {
     };
     axios(options).then((res) => {
       if (res.data.err === "Data is added to database") {
+        //res.data.datacount
         this.setState({ userName: name });
         var phone = '';
         if (res.data.dataphone !== undefined) {
@@ -273,6 +274,7 @@ export class Header extends Component {
       };
       axios(options).then((res) => {
         if (res.data.err === undefined) {
+          //phan tu thu 4
           this.setState({ userName: res.data.data[1] });
           Global.user = res.data.data;
           Global.isSignIn = true;
@@ -816,7 +818,7 @@ export class Header extends Component {
                   to="/cart"
                   className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
                 >
-                  <Badge badgeContent={parseInt(this.state.cart)} color="error">
+                  <Badge badgeContent={1} color="error">
                     <img
                       src={require("../images/cart.png")}
                       className="img-fluid"
