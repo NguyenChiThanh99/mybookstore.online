@@ -8,7 +8,6 @@ export default class FBicon extends Component {
             <a
               href="# "
               className="btn btn-primary btn-facebook"
-              style={{ float: "right" }}
             >
               <div className="text-nowrap">
                 <i className="fab fa-facebook-f"></i> Facebook

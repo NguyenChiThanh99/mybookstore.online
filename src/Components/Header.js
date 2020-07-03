@@ -464,7 +464,7 @@ export class Header extends Component {
         autoLoad={false}
         fields="name,email,picture"
         callback={this.responseFacebook}
-        cssClass="facebook-button m-0 p-0"
+        cssClass="facebook-button align-text-bottom p-0"
         icon={<FBicon />}
       />
     );
@@ -476,7 +476,7 @@ export class Header extends Component {
           <button
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
-            className="btn btn-danger btn-google mt-05"
+            className="btn btn-danger btn-google"
           >
             <i className="fab fa-google-plus-g" /> Google
           </button>
@@ -594,10 +594,10 @@ export class Header extends Component {
             </label>
           </div>
           <div className="row text-nowrap">
-            <div className="col d-flex justify-content-center p-0 pl-5">
+            <div className="col-6 d-flex justify-content-end">
               {fbContent}
             </div>
-            <div className="col mt-3 p-0 d-flex justify-content-center pr-5">
+            <div className="col-6">
               {ggContent}
             </div>
           </div>
@@ -694,10 +694,10 @@ export class Header extends Component {
             </label>
           </div>
           <div className="row text-nowrap">
-            <div className="col d-flex justify-content-center p-0 pl-5">
+            <div className="col-6 d-flex justify-content-end">
               {fbContent}
             </div>
-            <div className="col mt-3 p-0 d-flex justify-content-center pr-5">
+            <div className="col-6">
               {ggContent}
             </div>
           </div>
