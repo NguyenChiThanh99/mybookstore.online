@@ -18,7 +18,8 @@ export class Header extends Component {
   constructor(props) {
     super(props);
 
-    var user = [], cart = 0;
+    var user = [],
+      cart = 0;
     if (localStorage !== null) {
       if (localStorage.getItem("user") !== null) {
         user = JSON.parse(localStorage.getItem("user"));
@@ -69,7 +70,16 @@ export class Header extends Component {
       showModalForgot: false,
       search: "",
     };
+    Global.cart = this.changeCart();
   }
+
+  changeCart = () => {
+    var cart = 0;
+    if ((localStorage !== null && localStorage.getItem("cart")) !== null) {
+      cart = JSON.parse(localStorage.getItem("cart"));
+    }
+    this.setState({ cart: cart });
+  };
 
   forgotPass = (event) => {
     event.preventDefault();
@@ -163,9 +173,9 @@ export class Header extends Component {
     axios(options).then((res) => {
       if (res.data.err === "Data is added to database") {
         this.setState({ userName: name, cart: res.data.datacount });
-        var phone = '';
+        var phone = "";
         if (res.data.dataphone !== undefined) {
-          phone = res.data.dataphone
+          phone = res.data.dataphone;
         }
         var user = [{ email, name, picture, phone }];
         Global.user = user;
@@ -598,7 +608,7 @@ export class Header extends Component {
               style={{
                 textAlign: "center",
                 display: "block",
-                color: '#7d7d7d'
+                color: "#7d7d7d",
               }}
             >
               Đăng nhập bằng
@@ -699,7 +709,7 @@ export class Header extends Component {
               style={{
                 textAlign: "center",
                 display: "block",
-                color: '#7d7d7d'
+                color: "#7d7d7d",
               }}
             >
               Đăng nhập bằng
@@ -738,7 +748,7 @@ export class Header extends Component {
         </a>
       </div>
     );
-    
+
     return (
       <div>
         {/* Banner */}

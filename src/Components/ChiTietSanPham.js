@@ -344,6 +344,7 @@ export class ChiTietSanPham extends Component {
             cart = JSON.parse(localStorage.getItem("cart"));
           }
           localStorage.setItem("cart", JSON.stringify(cart + 1));
+          Global.cart();
         }
       });
       return true;

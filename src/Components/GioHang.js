@@ -157,6 +157,7 @@ export class GioHang extends Component {
           cart = JSON.parse(localStorage.getItem("cart"));
         }
         localStorage.setItem("cart", JSON.stringify(cart - 1));
+        Global.cart();
       }
     });
   };
@@ -177,6 +178,7 @@ export class GioHang extends Component {
       if (res.data.data === "success") {
         this.setState({ cart: [], total: 0, emptyCart: true });
         localStorage.setItem("cart", JSON.stringify(0));
+        Global.cart();
       }
     });
   };
