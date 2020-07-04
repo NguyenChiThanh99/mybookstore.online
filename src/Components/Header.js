@@ -9,6 +9,7 @@ import { Modal } from "react-bootstrap";
 import Badge from "@material-ui/core/Badge";
 
 import "../CSS/style.css";
+import "../CSS/mystyle.css";
 import Global from "./Global";
 import FBicon from "./FBicon";
 
