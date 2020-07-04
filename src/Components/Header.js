@@ -162,8 +162,7 @@ export class Header extends Component {
     };
     axios(options).then((res) => {
       if (res.data.err === "Data is added to database") {
-        //res.data.datacount
-        this.setState({ userName: name });
+        this.setState({ userName: name, cart: res.data.datacount });
         var phone = '';
         if (res.data.dataphone !== undefined) {
           phone = res.data.dataphone
@@ -172,7 +171,7 @@ export class Header extends Component {
         Global.user = user;
         Global.isLoggedInS = true;
         localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("cart", JSON.stringify(0));
+        localStorage.setItem("cart", JSON.stringify(res.data.datacount));
         this.closeModal();
       } else {
         this.setState({
@@ -274,13 +273,12 @@ export class Header extends Component {
       };
       axios(options).then((res) => {
         if (res.data.err === undefined) {
-          //phan tu thu 4
-          this.setState({ userName: res.data.data[1] });
+          this.setState({ userName: res.data.data[1], cart: res.data.data[3] });
           Global.user = res.data.data;
           Global.isSignIn = true;
           this.closeModal();
           localStorage.setItem("user", JSON.stringify(res.data.data));
-          localStorage.setItem("cart", JSON.stringify(0));
+          localStorage.setItem("cart", JSON.stringify(res.data.data[3]));
         }
         if (res.data.err === "Please verify your account") {
           this.setState({
