@@ -70,7 +70,7 @@ export class Header extends Component {
       showModalForgot: false,
       search: "",
     };
-    Global.cart = this.changeCart().bind(this);
+    Global.cart = this.changeCart;
   }
 
   changeCart = () => {
