@@ -42,7 +42,7 @@ class SocialShare extends Component {
         <div className="Demo__some-network">
           <FacebookMessengerShareButton
             url={shareUrl}
-            appId="521270401588372"
+            appId="633365450854482"
             className="Demo__some-network__share-button"
           >
             <FacebookMessengerIcon size={28} round />
