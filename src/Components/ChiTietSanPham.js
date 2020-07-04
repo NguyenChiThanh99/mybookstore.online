@@ -334,13 +334,15 @@ export class ChiTietSanPham extends Component {
         data: qs.stringify(data),
       };
       axios(options).then((res) => {
-        if (res.data.data === "success") {
-          this.setState({
-            noti: "Đã thêm " + this.state.soluong + " sản phẩm vào giỏ hàng",
-          });
-          timer2 = setTimeout(() => this.setState({ noti: "" }), 4000);
+        this.setState({
+          noti: "Đã thêm " + this.state.soluong + " sản phẩm vào giỏ hàng",
+        });
+        timer2 = setTimeout(() => this.setState({ noti: "" }), 4000);
+        if (res.data.data === "addcartsuccess") {
           var cart = 0;
-          if ((localStorage !== null && localStorage.getItem("cart")) !== null) {
+          if (
+            (localStorage !== null && localStorage.getItem("cart")) !== null
+          ) {
             cart = JSON.parse(localStorage.getItem("cart"));
           }
           localStorage.setItem("cart", JSON.stringify(cart + 1));
