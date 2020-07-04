@@ -723,16 +723,26 @@ export class ChiTietSanPham extends Component {
         <MetaTags>
           <title>{data.tensp + " | mybookstore.online"}</title>
           <meta
+            id="meta-url-detail"
             property="og:url"
             content={"https://mybookstore.online/product/" + this.state.slug}
           />
-          <meta property="og:type" content="website" />
-          <meta name="description" content={data.mota.slice(0, 250) + "..."} />
+          <meta id="meta-type-detail" property="og:type" content="website" />
           <meta
+            id="meta-description-detail"
+            name="description"
+            content={data.mota.slice(0, 250) + "..."}
+          />
+          <meta
+            id="og-title-detail"
             property="og:title"
             content={data.tensp + " | mybookstore.online"}
           />
-          <meta property="og:image" content={data.hinhanhsanpham} />
+          <meta
+            id="og-image-detail"
+            property="og:image"
+            content={data.hinhanhsanpham}
+          />
         </MetaTags>
 
         {/*Path*/}

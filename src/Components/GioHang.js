@@ -285,7 +285,7 @@ export class GioHang extends Component {
     }
 
     const loadingJSX = (
-      <div className="container bg-white p-3 mt-3 d-flex justify-content-center">
+      <div className="container bg-white p-3 d-flex justify-content-center">
         <img
           src={require("../images/loading.gif")}
           className="img-fluid align-self-center"
@@ -296,7 +296,7 @@ export class GioHang extends Component {
     );
 
     const emptyCartJSX = (
-      <div className="container bg-white p-3 mt-3 text-center">
+      <div className="container bg-white p-3 text-center">
         <img
           src={require("../images/empty-cart.png")}
           className="img-fluid align-self-center"

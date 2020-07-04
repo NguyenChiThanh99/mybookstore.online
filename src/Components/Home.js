@@ -245,17 +245,24 @@ export class Home extends Component {
       <div>
         <MetaTags>
           <title>Nhà sách trực tuyến mybookstore.online</title>
-          <meta property="og:url" content="https://mybookstore.online" />
-          <meta property="og:type" content="website" />
           <meta
+            id="meta-url-home"
+            property="og:url"
+            content="https://mybookstore.online"
+          />
+          <meta id="meta-type-home" property="og:type" content="website" />
+          <meta
+            id="meta-description-home"
             name="description"
             content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
           />
           <meta
+            id="og-title-home"
             property="og:title"
             content="Nhà sách trực tuyến mybookstore.online"
           />
           <meta
+            id="og-image-home"
             property="og:image"
             content="https://uit-hotelbooking.000webhostapp.com/logo.png"
           />
