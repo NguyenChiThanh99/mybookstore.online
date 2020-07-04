@@ -9,6 +9,7 @@ import MetaTags from "react-meta-tags";
 
 import "../CSS/danhsachsp.css";
 import "../CSS/style.css";
+import "../CSS/mystyle.css";
 
 export class Search extends Component {
   constructor(props) {
