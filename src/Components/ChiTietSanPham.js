@@ -339,6 +339,11 @@ export class ChiTietSanPham extends Component {
             noti: "Đã thêm " + this.state.soluong + " sản phẩm vào giỏ hàng",
           });
           timer2 = setTimeout(() => this.setState({ noti: "" }), 4000);
+          var cart = 0;
+          if ((localStorage !== null && localStorage.getItem("cart")) !== null) {
+            cart = JSON.parse(localStorage.getItem("cart"));
+          }
+          localStorage.setItem("cart", JSON.stringify(cart + 1));
         }
       });
       return true;

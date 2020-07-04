@@ -738,9 +738,6 @@ export class Header extends Component {
         </a>
       </div>
     );
-    console.log(this.state.cart);
-    console.log(typeof this.state.cart);
-    var numCart = this.state.cart;
     
     return (
       <div>
@@ -816,7 +813,7 @@ export class Header extends Component {
                   to="/cart"
                   className="d-flex justify-content-center align-items-center flex-column ml-2 mr-4"
                 >
-                  <Badge badgeContent={numCart} color="error">
+                  <Badge badgeContent={this.state.cart} color="error">
                     <img
                       src={require("../images/cart.png")}
                       className="img-fluid"

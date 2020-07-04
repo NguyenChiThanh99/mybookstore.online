@@ -152,6 +152,11 @@ export class GioHang extends Component {
       if (res.data.data === "success") {
         this.setState({ cart: [], loading: true });
         this.getCart();
+        var cart = 0;
+        if ((localStorage !== null && localStorage.getItem("cart")) !== null) {
+          cart = JSON.parse(localStorage.getItem("cart"));
+        }
+        localStorage.setItem("cart", JSON.stringify(cart - 1));
       }
     });
   };
@@ -171,6 +176,7 @@ export class GioHang extends Component {
     axios(options).then((res) => {
       if (res.data.data === "success") {
         this.setState({ cart: [], total: 0, emptyCart: true });
+        localStorage.setItem("cart", JSON.stringify(0));
       }
     });
   };
