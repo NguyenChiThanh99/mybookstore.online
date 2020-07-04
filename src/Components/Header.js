@@ -70,10 +70,12 @@ export class Header extends Component {
       showModalForgot: false,
       search: "",
     };
-    Global.cart = this.changeCart();
+    Global.cart = this.changeCart().bind(this);
   }
 
   changeCart = () => {
+    console.log('call');
+    
     var cart = 0;
     if ((localStorage !== null && localStorage.getItem("cart")) !== null) {
       cart = JSON.parse(localStorage.getItem("cart"));
