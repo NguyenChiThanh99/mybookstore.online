@@ -1231,28 +1231,28 @@ export class Home extends Component {
                 <div className="carousel-inner">
                   <div className="carousel-item active">
                     <img
-                      src={require("../images/ad2.webp")}
+                      src={require("../images/book2.webp")}
                       className="d-block w-100 img-fluid"
                       alt="mybookstore.online"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/ad3.webp")}
+                      src={require("../images/book3.webp")}
                       className="d-block w-100 img-fluid"
                       alt="mybookstore.online"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/ad4.webp")}
+                      src={require("../images/book4.webp")}
                       className="d-block w-100 img-fluid"
                       alt="mybookstore.online"
                     />
                   </div>
                   <div className="carousel-item">
                     <img
-                      src={require("../images/ad5.webp")}
+                      src={require("../images/book5.webp")}
                       className="d-block w-100 img-fluid"
                       alt="mybookstore.online"
                     />
@@ -1292,7 +1292,7 @@ export class Home extends Component {
           <div className="row px-1">
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ad7.webp")}
+                src={require("../images/book7.webp")}
                 alt="mybookstore.online"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1300,7 +1300,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ad6.webp")}
+                src={require("../images/book6.webp")}
                 alt="mybookstore.online"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1308,7 +1308,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ad8.webp")}
+                src={require("../images/book8.webp")}
                 alt="mybookstore.online"
                 className="img-fluid"
                 style={{ width: "100%" }}
@@ -1316,7 +1316,7 @@ export class Home extends Component {
             </div>
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
-                src={require("../images/ad9.webp")}
+                src={require("../images/book9.webp")}
                 alt="mybookstore.online"
                 className="img-fluid"
                 style={{ width: "100%" }}
