@@ -367,8 +367,8 @@ export class Search extends Component {
         <div className="container">
           <div className="row">
             <div className="col-sm-3">
+            
               {/*Danh muc*/}
-
               <div className="bg-white">
                 <div className="list">
                   <span>Danh mục sản phẩm</span>
