@@ -359,9 +359,7 @@ export class ThanhToan extends Component {
           {this.state.province}
         </Dropdown.Toggle>
 
-        <Dropdown.Menu
-          style={{ maxHeight: 250, width: 275, overflow: "auto" }}
-        >
+        <Dropdown.Menu className="dropdowm-scroll">
           {this.showProvince()}
         </Dropdown.Menu>
       </Dropdown>
@@ -382,9 +380,7 @@ export class ThanhToan extends Component {
         </Dropdown.Toggle>
 
         {this.state.districtArr.length === 0 ? null : (
-          <Dropdown.Menu
-            style={{ maxHeight: 250, width: 275, overflow: "auto" }}
-          >
+          <Dropdown.Menu className="dropdowm-scroll">
             {this.showDistrict()}
           </Dropdown.Menu>
         )}
@@ -411,9 +407,7 @@ export class ThanhToan extends Component {
         </Dropdown.Toggle>
 
         {this.state.districtArr.length === 0 ? null : (
-          <Dropdown.Menu
-            style={{ maxHeight: 250, width: 275, overflow: "auto" }}
-          >
+          <Dropdown.Menu className="dropdowm-scroll">
             {this.showWard()}
           </Dropdown.Menu>
         )}
@@ -671,7 +665,6 @@ export class ThanhToan extends Component {
                   </div>
                 </form>
               </div>
-              
               {/*Phuong thuc thanh toan*/}
               <div className="bg-white mb-3 pb-2">
                 <div className="text-center text-light background1 p-1 mt-3">
