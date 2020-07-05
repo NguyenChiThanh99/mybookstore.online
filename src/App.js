@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import ScrollToTop from "./Components/ScrollToTop";
@@ -25,7 +25,9 @@ export default class App extends Component {
             <Header />
 
             {/* Main */}
-            <Switch>{this.showContent(routes)}</Switch>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Switch>{this.showContent(routes)}</Switch>
+            </Suspense>
 
             <Footer />
           </div>
