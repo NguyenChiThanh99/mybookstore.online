@@ -79,56 +79,58 @@ export class Home extends Component {
         var newPrice = product.gia + (product.gia * discount) / 100;
         newPrice = Math.round(newPrice / 1000) * 1000;
         return (
-          <LazyLoad
+          <div
             className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
             key={index}
           >
-            <NavLink to={"/product/" + product.tenurl}>
-              <img
-                src={product.hinhanhsanpham}
-                className="img-fluid align-self-center"
-                alt={product.tensp}
-              />
-              <div style={{ height: 50 }}>
-                <p className="mb-2 book_item_title">{product.tensp}</p>
-              </div>
-              <div style={{ height: 18 }}>
-                <p className="mb-0" style={{ color: "#616161" }}>
-                  <small className="book_item_title2">
-                    {product.tacgia === " " ? null : product.tacgia}
-                  </small>
-                </p>
-              </div>
+            <LazyLoad>
+              <NavLink to={"/product/" + product.tenurl}>
+                <img
+                  src={product.hinhanhsanpham}
+                  className="img-fluid align-self-center"
+                  alt={product.tensp}
+                />
+                <div style={{ height: 50 }}>
+                  <p className="mb-2 book_item_title">{product.tensp}</p>
+                </div>
+                <div style={{ height: 18 }}>
+                  <p className="mb-0" style={{ color: "#616161" }}>
+                    <small className="book_item_title2">
+                      {product.tacgia === " " ? null : product.tacgia}
+                    </small>
+                  </p>
+                </div>
 
-              <div className="row mt-2">
-                <div className="col-6 d-flex align-items-center">
-                  <p className="mb-0">
-                    <small
-                      style={{
-                        color: "#616161",
-                        textDecoration: "line-through",
-                      }}
-                    >
-                      {this.currencyFormat(newPrice.toString())} đ
-                    </small>
-                  </p>
+                <div className="row mt-2">
+                  <div className="col-6 d-flex align-items-center">
+                    <p className="mb-0">
+                      <small
+                        style={{
+                          color: "#616161",
+                          textDecoration: "line-through",
+                        }}
+                      >
+                        {this.currencyFormat(newPrice.toString())} đ
+                      </small>
+                    </p>
+                  </div>
+                  <div className="col-6 d-flex align-items-center">
+                    <p className="mb-0">
+                      <small style={{ color: "#616161" }}>
+                        {"-" + discount + "%"}
+                      </small>
+                    </p>
+                  </div>
                 </div>
-                <div className="col-6 d-flex align-items-center">
-                  <p className="mb-0">
-                    <small style={{ color: "#616161" }}>
-                      {"-" + discount + "%"}
-                    </small>
-                  </p>
-                </div>
-              </div>
-              <h5
-                className="textColor text-nowrap mb-0 pb-2"
-                style={{ marginTop: -3 }}
-              >
-                <b>{this.currencyFormat(product.gia.toString())} đ</b>
-              </h5>
-            </NavLink>
-          </LazyLoad>
+                <h5
+                  className="textColor text-nowrap mb-0 pb-2"
+                  style={{ marginTop: -3 }}
+                >
+                  <b>{this.currencyFormat(product.gia.toString())} đ</b>
+                </h5>
+              </NavLink>
+            </LazyLoad>
+          </div>
         );
       } else {
         return null;
@@ -163,56 +165,58 @@ export class Home extends Component {
         var newPrice = product.gia + (product.gia * discount) / 100;
         newPrice = Math.round(newPrice / 1000) * 1000;
         return (
-          <LazyLoad
+          <div
             className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
             key={index}
           >
-            <NavLink to={"/product/" + product.tenurl}>
-              <img
-                src={product.hinhanhsanpham}
-                className="img-fluid align-self-center"
-                alt={product.tensp}
-              />
-              <div style={{ height: 50 }}>
-                <p className="mb-2 book_item_title">{product.tensp}</p>
-              </div>
-              <div style={{ height: 18 }}>
-                <p className="mb-0" style={{ color: "#616161" }}>
-                  <small className="book_item_title2">
-                    {product.tacgia === " " ? null : product.tacgia}
-                  </small>
-                </p>
-              </div>
+            <LazyLoad>
+              <NavLink to={"/product/" + product.tenurl}>
+                <img
+                  src={product.hinhanhsanpham}
+                  className="img-fluid align-self-center"
+                  alt={product.tensp}
+                />
+                <div style={{ height: 50 }}>
+                  <p className="mb-2 book_item_title">{product.tensp}</p>
+                </div>
+                <div style={{ height: 18 }}>
+                  <p className="mb-0" style={{ color: "#616161" }}>
+                    <small className="book_item_title2">
+                      {product.tacgia === " " ? null : product.tacgia}
+                    </small>
+                  </p>
+                </div>
 
-              <div className="row mt-2">
-                <div className="col-6 d-flex align-items-center">
-                  <p className="mb-0">
-                    <small
-                      style={{
-                        color: "#616161",
-                        textDecoration: "line-through",
-                      }}
-                    >
-                      {this.currencyFormat(newPrice.toString())} đ
-                    </small>
-                  </p>
+                <div className="row mt-2">
+                  <div className="col-6 d-flex align-items-center">
+                    <p className="mb-0">
+                      <small
+                        style={{
+                          color: "#616161",
+                          textDecoration: "line-through",
+                        }}
+                      >
+                        {this.currencyFormat(newPrice.toString())} đ
+                      </small>
+                    </p>
+                  </div>
+                  <div className="col-6 d-flex align-items-center">
+                    <p className="mb-0">
+                      <small style={{ color: "#616161" }}>
+                        {"-" + discount + "%"}
+                      </small>
+                    </p>
+                  </div>
                 </div>
-                <div className="col-6 d-flex align-items-center">
-                  <p className="mb-0">
-                    <small style={{ color: "#616161" }}>
-                      {"-" + discount + "%"}
-                    </small>
-                  </p>
-                </div>
-              </div>
-              <h5
-                className="textColor text-nowrap mb-0 pb-2"
-                style={{ marginTop: -3 }}
-              >
-                <b>{this.currencyFormat(product.gia.toString())} đ</b>
-              </h5>
-            </NavLink>
-          </LazyLoad>
+                <h5
+                  className="textColor text-nowrap mb-0 pb-2"
+                  style={{ marginTop: -3 }}
+                >
+                  <b>{this.currencyFormat(product.gia.toString())} đ</b>
+                </h5>
+              </NavLink>
+            </LazyLoad>
+          </div>
         );
       });
     }

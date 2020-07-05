@@ -10,7 +10,7 @@ const HoaDon = React.lazy(() => import("./Components/HoaDon"));
 const Search = React.lazy(() => import("./Components/Search"));
 
 const loadingJSX = (
-  <div className="container p-3 mt-2 bg-white d-flex justify-content-center">
+  <div className="container p-3 mt-4 bg-white d-flex justify-content-center">
     <img
       src={require("./images/loading.gif")}
       className="img-fluid align-self-center"

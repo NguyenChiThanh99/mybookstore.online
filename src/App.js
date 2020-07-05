@@ -20,7 +20,7 @@ export default class App extends Component {
 
   render() {
     const loadingJSX = (
-      <div className="container mt-2 p-3 bg-white d-flex justify-content-center">
+      <div className="container mt-4 p-3 bg-white d-flex justify-content-center">
         <img
           src={require("./images/loading.gif")}
           className="img-fluid align-self-center"
