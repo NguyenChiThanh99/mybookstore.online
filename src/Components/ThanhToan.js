@@ -665,6 +665,7 @@ export class ThanhToan extends Component {
                   </div>
                 </form>
               </div>
+              
               {/*Phuong thuc thanh toan*/}
               <div className="bg-white mb-3 pb-2">
                 <div className="text-center text-light background1 p-1 mt-3">

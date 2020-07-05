@@ -18,17 +18,6 @@ export default class App extends Component {
   }
 
   render() {
-    const loadingJSX = (
-      <div className="container p-3 d-flex justify-content-center">
-        <img
-          src={require("./images/loading.gif")}
-          className="img-fluid align-self-center"
-          alt="loading"
-          width="200px"
-        />
-      </div>
-    );
-
     return (
       <Router>
         <ScrollToTop>
@@ -36,7 +25,18 @@ export default class App extends Component {
             <Header />
 
             {/* Main */}
-            <Suspense fallback={loadingJSX}>
+            <Suspense
+              fallback={
+                <div className="container p-3 d-flex justify-content-center">
+                  <img
+                    src={require("./images/loading.gif")}
+                    className="img-fluid align-self-center"
+                    alt="loading"
+                    width="200px"
+                  />
+                </div>
+              }
+            >
               <Switch>{this.showContent(routes)}</Switch>
             </Suspense>
 
