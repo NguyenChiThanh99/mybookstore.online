@@ -12,17 +12,17 @@ import React from "react";
 
 import Loadable from "react-loadable";
 
-const ThanhToan = React.lazy(() => import("./Components/ThanhToan"));
-const GioHang = React.lazy(() => import("./Components/GioHang"));
+//const ThanhToan = React.lazy(() => import("./Components/ThanhToan"));
+//const GioHang = React.lazy(() => import("./Components/GioHang"));
 const NotFound = React.lazy(() => import("./Components/NotFound"));
 const ChiTietSanPham = React.lazy(() => import("./Components/ChiTietSanPham"));
 const DanhSachSanPham = React.lazy(() =>
   import("./Components/DanhSachSanPham")
 );
-const Home = React.lazy(() => import("./Components/Home"));
-const Account = React.lazy(() => import("./Components/Account"));
+//const Home = React.lazy(() => import("./Components/Home"));
+//const Account = React.lazy(() => import("./Components/Account"));
 const HoaDon = React.lazy(() => import("./Components/HoaDon"));
-const LichSuGiaoDich = React.lazy(() => import("./Components/LichSuGiaoDich"));
+//const LichSuGiaoDich = React.lazy(() => import("./Components/LichSuGiaoDich"));
 const Search = React.lazy(() => import("./Components/Search"));
 
 
@@ -36,26 +36,26 @@ const routes = [
   {
     path: "/",
     exact: true,
-    main: () => <Home />,
-    //main: DynamicImport(() => import("./Components/Home")),
+    //main: () => <Home />,
+    main: DynamicImport(() => import("./Components/Home")),
   },
   {
     path: "/pay",
     exact: false,
-    main: () => <ThanhToan />,
-    //main: DynamicImport(() => import("./Components/ThanhToan")),
+    //main: () => <ThanhToan />,
+    main: DynamicImport(() => import("./Components/ThanhToan")),
   },
   {
     path: "/cart",
     exact: false,
-    main: () => <GioHang />,
-    //main: DynamicImport(() => import("./Components/GioHang")),
+    //main: () => <GioHang />,
+    main: DynamicImport(() => import("./Components/GioHang")),
   },
   {
     path: "/account",
     exact: false,
-    main: () => <Account />,
-    //main: DynamicImport(() => import("./Components/Account")),
+    //main: () => <Account />,
+    main: DynamicImport(() => import("./Components/Account")),
   },
   {
     path: "/category/:slug",
@@ -75,8 +75,8 @@ const routes = [
   {
     path: "/order-history",
     exact: false,
-    main: () => <LichSuGiaoDich />,
-    //main: DynamicImport(() => import("./Components/LichSuGiaoDich")),
+    //main: () => <LichSuGiaoDich />,
+    main: DynamicImport(() => import("./Components/LichSuGiaoDich")),
   },
   {
     path: "/search/:search",
