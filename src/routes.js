@@ -36,26 +36,26 @@ const routes = [
   {
     path: "/",
     exact: true,
-    main: () => <Home />,
-    //main: DynamicImport(() => import("./Components/Home")),
+    //main: () => <Home />,
+    main: DynamicImport(() => import("./Components/Home")),
   },
   {
     path: "/pay",
     exact: false,
-    main: () => <ThanhToan />,
-    //main: DynamicImport(() => import("./Components/ThanhToan")),
+    //main: () => <ThanhToan />,
+    main: DynamicImport(() => import("./Components/ThanhToan")),
   },
   {
     path: "/cart",
     exact: false,
-    main: () => <GioHang />,
-    //main: DynamicImport(() => import("./Components/GioHang")),
+    //main: () => <GioHang />,
+    main: DynamicImport(() => import("./Components/GioHang")),
   },
   {
     path: "/account",
     exact: false,
-    main: () => <Account />,
-    //main: DynamicImport(() => import("./Components/Account")),
+    //main: () => <Account />,
+    main: DynamicImport(() => import("./Components/Account")),
   },
   {
     path: "/category/:slug",
@@ -75,8 +75,8 @@ const routes = [
   {
     path: "/order-history",
     exact: false,
-    main: () => <LichSuGiaoDich />,
-    //main: DynamicImport(() => import("./Components/LichSuGiaoDich")),
+    //main: () => <LichSuGiaoDich />,
+    main: DynamicImport(() => import("./Components/LichSuGiaoDich")),
   },
   {
     path: "/search/:search",
