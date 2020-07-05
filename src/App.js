@@ -1,8 +1,8 @@
 import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import "../CSS/style.css";
-import "../CSS/mystyle.css";
+import "./CSS/style.css";
+import "./CSS/mystyle.css";
 
 import routes from "./routes";
 const Header = React.lazy(() => import("./Components/Header"));
