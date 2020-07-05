@@ -263,7 +263,7 @@ export class Home extends Component {
           <meta
             id="meta-description-home"
             name="description"
-            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn."
+            content="Thỏa sức mua sắm qua mạng với hàng ngàn mặt hàng sách thuộc nhiều lĩnh vực khác nhau tại mybookstore.online với giá rẻ hơn và nhiều ưu đãi hấp dẫn. Mua ngay!"
           />
           <meta
             id="og-title-home"
