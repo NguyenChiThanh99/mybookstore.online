@@ -30,18 +30,26 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <ScrollToTop>
-          <div className="container-fluid background2 px-0">
-            <Header />
-
-            {/* Main */}
-            <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="container p-3 d-flex justify-content-center">
+              <img
+                src={require("./images/loading.gif")}
+                className="img-fluid align-self-center"
+                alt="loading"
+                width="200px"
+              />
+            </div>
+          }
+        >
+          <ScrollToTop>
+            <div className="container-fluid background2 px-0">
+              <Header />
               <Switch>{this.showContent(routes)}</Switch>
-            </Suspense>
-
-            <Footer />
-          </div>
-        </ScrollToTop>
+              <Footer />
+            </div>
+          </ScrollToTop>
+        </Suspense>
       </Router>
     );
   }
