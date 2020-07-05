@@ -119,7 +119,8 @@ export class ThanhToan extends Component {
       };
       axios(options).then((res) => {
         if (res.data.data !== 'error') {
-          console.log('Thanh toan thanh cong');
+          localStorage.setItem("cart", JSON.stringify(0));
+          Global.cart();
           this.props.history.push("/bill/" + res.data.data);
         }
       });
