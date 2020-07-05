@@ -1,6 +1,9 @@
 import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import "../CSS/style.css";
+import "../CSS/mystyle.css";
+
 import routes from "./routes";
 const Header = React.lazy(() => import("./Components/Header"));
 const Footer = React.lazy(() => import("./Components/Footer"));
@@ -27,10 +30,9 @@ export default class App extends Component {
             {/* Main */}
             <Suspense
               fallback={
-                <div className="container p-3 d-flex justify-content-center">
+                <div>
                   <img
                     src={require("./images/loading.gif")}
-                    className="img-fluid align-self-center"
                     alt="loading"
                     width="200px"
                   />
