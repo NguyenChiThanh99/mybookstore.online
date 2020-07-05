@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LazyLoad from "react-lazyload";
 
 import ScrollToTop from "./Components/ScrollToTop";
 import Header from '../src/Components/Header';
@@ -19,7 +20,7 @@ export default class App extends Component {
 
   render() {
     const loadingJSX = (
-      <div className="container p-3 bg-white d-flex justify-content-center">
+      <div className="container mt-2 p-3 bg-white d-flex justify-content-center">
         <img
           src={require("./images/loading.gif")}
           className="img-fluid align-self-center"
@@ -40,7 +41,9 @@ export default class App extends Component {
               <Switch>{this.showContent(routes)}</Switch>
             </Suspense>
 
-            <Footer />
+            <LazyLoad>
+              <Footer />
+            </LazyLoad>
           </div>
         </ScrollToTop>
       </Router>

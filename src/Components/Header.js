@@ -10,6 +10,7 @@ import Badge from "@material-ui/core/Badge";
 
 import "../CSS/style.css";
 import "../CSS/mystyle.css";
+import "../fontawesome-free-5.13.0-web/css/all.css";
 import Global from "./Global";
 import FBicon from "./FBicon";
 
