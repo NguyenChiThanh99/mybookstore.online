@@ -12,7 +12,7 @@ const Search = React.lazy(() => import("./Components/Search"));
 const loadingJSX = (
   <div className="container p-3 d-flex justify-content-center">
     <img
-      src={require("../images/loading.gif")}
+      src={require("./images/loading.gif")}
       className="img-fluid align-self-center"
       alt="loading"
       width="200px"
