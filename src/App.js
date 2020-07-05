@@ -14,11 +14,18 @@ export default class App extends Component {
     var result = null;
     if (routes.length > 0) {
       result = routes.map((route, index) => {
-        return <Route key={index} path={route.path} component={route.main} exact={route.exact} />;
+        return (
+          <Route
+            key={index}
+            path={route.path}
+            component={route.main}
+            exact={route.exact}
+          />
+        );
       });
     }
     return result;
-  }
+  };
 
   render() {
     return (
@@ -28,17 +35,7 @@ export default class App extends Component {
             <Header />
 
             {/* Main */}
-            <Suspense
-              fallback={
-                <div>
-                  <img
-                    src={require("./images/loading.gif")}
-                    alt="loading"
-                    width="200px"
-                  />
-                </div>
-              }
-            >
+            <Suspense fallback={<div>Loading...</div>}>
               <Switch>{this.showContent(routes)}</Switch>
             </Suspense>
 
