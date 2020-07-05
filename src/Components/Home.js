@@ -5,6 +5,7 @@ import Global from "./Global";
 import axios from "axios";
 import qs from "qs";
 import MetaTags from "react-meta-tags";
+import LazyLoad from "react-lazyload";
 
 import "../CSS/mystyle.css";
 import "../fontawesome-free-5.13.0-web/css/all.css";
@@ -77,7 +78,7 @@ export class Home extends Component {
         var newPrice = product.gia + (product.gia * discount) / 100;
         newPrice = Math.round(newPrice / 1000) * 1000;
         return (
-          <div
+          <LazyLoad
             className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
             key={index}
           >
@@ -123,7 +124,7 @@ export class Home extends Component {
                 <b>{this.currencyFormat(product.gia.toString())} đ</b>
               </h5>
             </NavLink>
-          </div>
+          </LazyLoad>
         );
       } else {
         return null;
@@ -158,7 +159,7 @@ export class Home extends Component {
         var newPrice = product.gia + (product.gia * discount) / 100;
         newPrice = Math.round(newPrice / 1000) * 1000;
         return (
-          <div
+          <LazyLoad
             className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
             key={index}
           >
@@ -207,7 +208,7 @@ export class Home extends Component {
                 <b>{this.currencyFormat(product.gia.toString())} đ</b>
               </h5>
             </NavLink>
-          </div>
+          </LazyLoad>
         );
       });
     }
@@ -268,15 +269,15 @@ export class Home extends Component {
           />
         </MetaTags>
 
-        <div className="container px-3 pt-2">
+        <LazyLoad className="container px-3 pt-2">
           <div className="row">
             <NavLink to="/" className="mobile-pl3">
               <p className="path float-left textColor">Trang chủ</p>
             </NavLink>
           </div>
-        </div>
+        </LazyLoad>
 
-        <div className="container">
+        <LazyLoad className="container">
           <div className="row">
             <div className="col-md-4 py-2 pl-0 mobile-pl3">
               <div style={{ backgroundColor: "white" }}>
@@ -1293,9 +1294,9 @@ export class Home extends Component {
               {/* end slide  */}
             </div>
           </div>
-        </div>
+        </LazyLoad>
 
-        <div className="container px-3 bg-white mt-3 pb-3">
+        <LazyLoad className="container px-3 bg-white mt-3 pb-3">
           <div className="row px-1">
             <div className="col-sm-3 col-6 mt-3 px-2">
               <img
@@ -1330,29 +1331,29 @@ export class Home extends Component {
               />
             </div>
           </div>
-        </div>
+        </LazyLoad>
 
         {/* Lastest product */}
         {this.state.lastest_prod_arr.length === 0 ? null : (
-          <div className="container bg-white p-3 mt-3">
+          <LazyLoad className="container bg-white p-3 mt-3">
             <h5 className="p-2">
               <b>Sản phẩm mới nhất</b>
             </h5>
             {this.show_lastest_prod()}
             {this.state.lastest_prod_page < 5 ? viewMoreLastestJSX : null}
-          </div>
+          </LazyLoad>
         )}
 
         {/* Hot product */}
         {this.state.hot_prod_arr.length === 0 ? null : (
-          <div className="container bg-white p-3 mt-3">
+          <LazyLoad className="container bg-white p-3 mt-3">
             <h5 className="p-2">
               <b>Sản phẩm nổi bật</b>
             </h5>
             <div className="d-flex justify-content-center row px-2">
               {this.show_hot_prod()}
             </div>
-          </div>
+          </LazyLoad>
         )}
       </div>
     );
