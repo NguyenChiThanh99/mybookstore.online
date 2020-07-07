@@ -59,12 +59,12 @@ export default class Account extends Component {
   componentDidMount = () => {
     this.getSuggest();
     this.getProvince();
-    const {province, provinceItem, ward, wardItem} = this.state;
+    const {province, provinceItem, district, districtItem} = this.state;
     if (province !== "Vui lòng chọn...") {
       this.getDistrict(provinceItem.id);
     }
-    if (ward !== "Vui lòng chọn...") {
-      this.getWard(wardItem.id);
+    if (district !== "Vui lòng chọn...") {
+      this.getWard(districtItem.id);
     }
   };
 
