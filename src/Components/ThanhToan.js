@@ -21,13 +21,25 @@ export class ThanhToan extends Component {
       name: Global.isSignIn ? Global.user[1] : Global.user[0].name,
       phone: Global.isSignIn ? Global.user[2] : Global.user[0].phone,
       email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
-      province: "Vui lòng chọn...",
-      provinceItem: 0,
-      district: "Vui lòng chọn...",
-      districtItem: 0,
-      ward: "Vui lòng chọn...",
-      wardItem: 0,
-      addressDetail: "",
+      province: Global.isSignIn
+        ? Global.user[3][0]._name
+        : Global.user[0].address[0]._name,
+      provinceItem: Global.isSignIn
+        ? Global.user[3][0]
+        : Global.user[0].address[0],
+      district: Global.isSignIn
+        ? Global.user[3][1]._name
+        : Global.user[0].address[1]._name,
+      districtItem: Global.isSignIn
+        ? Global.user[3][1]
+        : Global.user[0].address[1],
+      ward: Global.isSignIn
+        ? Global.user[3][2]._name
+        : Global.user[0].address[2]._name,
+      wardItem: Global.isSignIn ? Global.user[3][2] : Global.user[0].address[2],
+      addressDetail: Global.isSignIn
+        ? Global.user[3][3]
+        : Global.user[0].address[3],
       note: " ",
       provinceArr: [],
       districtArr: [],
