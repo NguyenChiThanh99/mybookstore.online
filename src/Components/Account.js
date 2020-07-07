@@ -549,7 +549,7 @@ export default class Account extends Component {
     );
 
     const provinceDropdown = (
-      <Dropdown className="col-sm-8">
+      <Dropdown className="col-sm-10">
         <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
           {this.state.province}
         </Dropdown.Toggle>
@@ -562,7 +562,7 @@ export default class Account extends Component {
 
     const districtDropdown = (
       <Dropdown
-        className="col-sm-8"
+        className="col-sm-10"
         onToggle={() => {
           if (this.state.province === "Vui lòng chọn...") {
             this.setState({ err: "Vui lòng chọn Tỉnh/Thành phố" });
@@ -584,7 +584,7 @@ export default class Account extends Component {
 
     const wardDropdown = (
       <Dropdown
-        className="col-sm-8"
+        className="col-sm-10"
         onToggle={() => {
           if (
             this.state.province === "Vui lòng chọn..." ||
@@ -714,7 +714,7 @@ export default class Account extends Component {
                       />
                     </div>
                   </div>
-                  <div className="form-group row">
+                  <div className="form-group row pl-3 pr-3">
                     <label
                       htmlFor="inputAddress1"
                       className="col-sm-2 col-form-label"
@@ -723,7 +723,7 @@ export default class Account extends Component {
                     </label>
                     {provinceDropdown}
                   </div>
-                  <div className="form-group row">
+                  <div className="form-group row pl-3 pr-3">
                     <label
                       htmlFor="inputAddress2"
                       className="col-sm-2 col-form-label"
@@ -732,7 +732,7 @@ export default class Account extends Component {
                     </label>
                     {districtDropdown}
                   </div>
-                  <div className="form-group row">
+                  <div className="form-group row pl-3 pr-3">
                     <label
                       htmlFor="inputAddress3"
                       className="col-sm-2 col-form-label"
@@ -741,7 +741,7 @@ export default class Account extends Component {
                     </label>
                     {wardDropdown}
                   </div>
-                  <div className="form-group row">
+                  <div className="form-group row pl-3 pr-3">
                     <label
                       htmlFor="inputAddress4"
                       className="col-sm-2 col-form-label"
