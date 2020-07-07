@@ -7,6 +7,7 @@ import MetaTags from "react-meta-tags";
 import axios from "axios";
 import qs from "qs";
 import { Modal } from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
 
 var timer4 = null;
 
@@ -29,11 +30,22 @@ export default class Account extends Component {
       noti: "",
       errPass: "",
       errNewPass: "",
+      province: "Vui lòng chọn...",
+      provinceItem: 0,
+      district: "Vui lòng chọn...",
+      districtItem: 0,
+      ward: "Vui lòng chọn...",
+      wardItem: 0,
+      addressDetail: "",
+      provinceArr: [],
+      districtArr: [],
+      wardArr: [],
     };
   }
 
   componentDidMount = () => {
     this.getSuggest();
+    this.getProvince();
   };
 
   componentWillUnmount() {
@@ -348,7 +360,146 @@ export default class Account extends Component {
     });
   };
 
+  getProvince = () => {
+    axios
+      .get(Global.linkAddress + "download_province")
+      .then((response) => {
+        this.setState({
+          provinceArr: response.data.res,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  setProvince = (province) => {
+    this.setState({
+      province: province._name,
+      provinceItem: province,
+    });
+  };
+
+  showProvince = () => {
+    var result = null;
+    if (this.state.provinceArr.length !== 0) {
+      result = this.state.provinceArr.map((province, index) => {
+        return (
+          <Dropdown.Item
+            key={index}
+            className="mydropdown-item account_active_dropdown"
+            onSelect={() => {
+              this.setProvince(province);
+              this.getDistrict(province.id);
+            }}
+          >
+            {province._name}
+          </Dropdown.Item>
+        );
+      });
+    } else {
+      return null;
+    }
+    return result;
+  };
+
+  getDistrict = (provinceID) => {
+    axios
+      .get(Global.linkAddress + "download_district/" + provinceID)
+      .then((response) => {
+        this.setState({
+          districtArr: response.data.res,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  setDistrict = (district) => {
+    this.setState({
+      district: district._name,
+      districtItem: district,
+    });
+  };
+
+  showDistrict = () => {
+    var result = null;
+    if (this.state.districtArr.length !== 0) {
+      result = this.state.districtArr.map((district, index) => {
+        return (
+          <Dropdown.Item
+            key={index}
+            className="mydropdown-item account_active_dropdown"
+            onSelect={() => {
+              this.setDistrict(district);
+              this.getWard(district.id);
+            }}
+          >
+            {district._prefix + " " + district._name}
+          </Dropdown.Item>
+        );
+      });
+    } else {
+      return null;
+    }
+    return result;
+  };
+
+  getWard = (districtID) => {
+    axios
+      .get(Global.linkAddress + "download_ward/" + districtID)
+      .then((response) => {
+        this.setState({
+          wardArr: response.data.res,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  setWard = (ward) => {
+    this.setState({
+      ward: ward._name,
+      wardItem: ward,
+    });
+  };
+
+  showWard = () => {
+    var result = null;
+    if (this.state.wardArr.length !== 0) {
+      result = this.state.wardArr.map((ward, index) => {
+        return (
+          <Dropdown.Item
+            key={index}
+            className="mydropdown-item account_active_dropdown"
+            onSelect={() => this.setWard(ward)}
+          >
+            {ward._prefix + " " + ward._name}
+          </Dropdown.Item>
+        );
+      });
+    } else {
+      return null;
+    }
+    return result;
+  };
+
   render() {
+    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+      <a
+        href="# "
+        ref={ref}
+        onClick={(e) => {
+          e.preventDefault();
+          onClick(e);
+        }}
+      >
+        <div className="form-control dropdown-add">{children}</div>
+      </a>
+    ));
+
     const emptyLikeJSX = (
       <div className="pl-5 pb-3">
         <p style={{ display: "inline" }}>Chưa có sản phẩm yêu thích nào. </p>
@@ -395,6 +546,67 @@ export default class Account extends Component {
       <div className="alert alert-danger alert-dismissible fade show">
         {this.state.errNewPass}
       </div>
+    );
+
+    const provinceDropdown = (
+      <Dropdown className="col-sm-8">
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          {this.state.province}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu className="dropdowm-scroll">
+          {this.showProvince()}
+        </Dropdown.Menu>
+      </Dropdown>
+    );
+
+    const districtDropdown = (
+      <Dropdown
+        className="col-sm-8"
+        onToggle={() => {
+          if (this.state.province === "Vui lòng chọn...") {
+            this.setState({ err: "Vui lòng chọn Tỉnh/Thành phố" });
+            timer4 = setTimeout(() => this.setState({ err: "" }), 4000);
+          }
+        }}
+      >
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          {this.state.district}
+        </Dropdown.Toggle>
+
+        {this.state.districtArr.length === 0 ? null : (
+          <Dropdown.Menu className="dropdowm-scroll">
+            {this.showDistrict()}
+          </Dropdown.Menu>
+        )}
+      </Dropdown>
+    );
+
+    const wardDropdown = (
+      <Dropdown
+        className="col-sm-8"
+        onToggle={() => {
+          if (
+            this.state.province === "Vui lòng chọn..." ||
+            this.state.district === "Vui lòng chọn..."
+          ) {
+            this.setState({
+              err: "Vui lòng chọn Tỉnh/Thành phố và Quận/Huyện",
+            });
+            timer4 = setTimeout(() => this.setState({ err: "" }), 4000);
+          }
+        }}
+      >
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          {this.state.ward}
+        </Dropdown.Toggle>
+
+        {this.state.districtArr.length === 0 ? null : (
+          <Dropdown.Menu className="dropdowm-scroll">
+            {this.showWard()}
+          </Dropdown.Menu>
+        )}
+      </Dropdown>
     );
 
     return (
@@ -499,6 +711,51 @@ export default class Account extends Component {
                           this.validatePhone(text.target.value)
                         }
                         maxLength={10}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="inputAddress1"
+                      className="col-sm-2 col-form-label"
+                    >
+                      Tỉnh/Thành phố
+                    </label>
+                    {provinceDropdown}
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="inputAddress2"
+                      className="col-sm-2 col-form-label"
+                    >
+                      Quận/Huyện
+                    </label>
+                    {districtDropdown}
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="inputAddress3"
+                      className="col-sm-2 col-form-label"
+                    >
+                      Phường/Xã
+                    </label>
+                    {wardDropdown}
+                  </div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="inputAddress4"
+                      className="col-sm-2 col-form-label"
+                    >
+                      Địa chỉ
+                    </label>
+                    <div className="col-sm-10">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="addressDetail"
+                        name="addressDetail"
+                        value={this.state.addressDetail}
+                        onChange={this.onChange}
                       />
                     </div>
                   </div>
