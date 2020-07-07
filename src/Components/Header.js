@@ -191,7 +191,7 @@ export class Header extends Component {
           },
           "",
         ];
-        if (res.data.datadiachi.length === 0) {
+        if (res.data.datadiachi.length !== 0) {
           address = res.data.datadiachi;
         }
         var user = [{ email, name, picture, phone, address }];
