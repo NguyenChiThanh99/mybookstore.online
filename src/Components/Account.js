@@ -28,6 +28,7 @@ export default class Account extends Component {
       password1: "",
       password2: "",
       noti: "",
+      err: "",
       errPass: "",
       errNewPass: "",
       province: "Vui lòng chọn...",
@@ -318,46 +319,87 @@ export default class Account extends Component {
 
   changeProfile = (event) => {
     event.preventDefault();
-    const data = {
-      email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
-      name: this.state.name,
-      phone: this.state.phone,
-    };
-    const url = Global.link + "user/changeprofile";
-    const options = {
-      method: "POST",
-      headers: { "content-type": "application/x-www-form-urlencoded" },
-      url,
-      data: qs.stringify(data),
-    };
-    axios(options).then((res) => {
-      if (res.data.data === "success") {
-        this.setState({
-          noti: "Cập nhật thông tin thành công.",
-        });
-        timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
-        if (!Global.isSignIn) {
-          var email = Global.user[0].email;
-          var name = this.state.name;
-          var picture = Global.user[0].picture;
-          var phone = this.state.phone;
-          var user = [{ email, name, picture, phone }];
-          Global.user = user;
-          localStorage.setItem("user", JSON.stringify(user));
+    const {
+      name,
+      phone,
+      province,
+      district,
+      ward,
+      addressDetail,
+      provinceItem,
+      districtItem, wardItem
+    } = this.state;
+    if (
+      name.length === 0 ||
+      phone.length !== 10 ||
+      province === "Vui lòng chọn..." ||
+      district === "Vui lòng chọn..." ||
+      ward === "Vui lòng chọn..." ||
+      addressDetail.length === 0
+    ) {
+      this.setState({
+        err: "Vui lòng nhập tất cả thông tin.",
+      });
+      timer4 = setTimeout(() => this.setState({ err: "" }), 4000);
+    } else if (name.length > 50) {
+      this.setState({
+        err: "Chiều dài Tên vượt quá giới hạn cho phép 50 ký tự.",
+      });
+      timer4 = setTimeout(() => this.setState({ err: "" }), 4000);
+    } else if (
+      wardItem._province_id !== provinceItem.id ||
+      wardItem._district_id !== districtItem.id
+    ) {
+      this.setState({
+        err: "Vui lòng kiểm tra lại thông tin địa chỉ",
+      });
+      timer4 = setTimeout(() => this.setState({ err: "" }), 4000);
+    } else {
+      const data = {
+        email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
+        name: name,
+        phone: phone,
+      };
+      const url = Global.link + "user/changeprofile";
+      const options = {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        url,
+        data: qs.stringify(data),
+      };
+      axios(options).then((res) => {
+        if (res.data.data === "success") {
+          this.setState({
+            noti: "Cập nhật thông tin thành công.",
+          });
+          timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
+          if (!Global.isSignIn) {
+            var email = Global.user[0].email;
+            var name = this.state.name;
+            var picture = Global.user[0].picture;
+            var phone = this.state.phone;
+            var user = [{ email, name, picture, phone }];
+            Global.user = user;
+            localStorage.setItem("user", JSON.stringify(user));
+          } else {
+            Global.user = [Global.user[0], this.state.name, this.state.phone];
+            localStorage.setItem(
+              "user",
+              JSON.stringify([
+                Global.user[0],
+                this.state.name,
+                this.state.phone,
+              ])
+            );
+          }
         } else {
-          Global.user = [Global.user[0], this.state.name, this.state.phone];
-          localStorage.setItem(
-            "user",
-            JSON.stringify([Global.user[0], this.state.name, this.state.phone])
-          );
+          this.setState({
+            err: "Đã xảy ra lỗi, vui lòng thử lại",
+          });
+          timer4 = setTimeout(() => this.setState({ err: "" }), 4000);
         }
-      } else {
-        this.setState({
-          noti: "Đã xảy ra lỗi, vui lòng thử lại",
-        });
-        timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
-      }
-    });
+      });
+    }
   };
 
   getProvince = () => {
@@ -487,10 +529,6 @@ export default class Account extends Component {
   };
 
   render() {
-    console.log(this.state.provinceItem);
-    console.log(this.state.districtItem);
-    console.log(this.state.wardItem);
-    
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <a
         href="# "
@@ -529,6 +567,20 @@ export default class Account extends Component {
     const notiJSX = (
       <div className="alert alert-success alert-dismissible fade show mt-3 mb-0 mx-3">
         {this.state.noti}
+        <button
+          onClick={this.closeNoti}
+          type="button"
+          className="close"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    );
+
+    const errJSX = (
+      <div className="alert alert-danger alert-dismissible fade show mt-3 mb-0 mx-3">
+        {this.state.err}
         <button
           onClick={this.closeNoti}
           type="button"
@@ -764,6 +816,7 @@ export default class Account extends Component {
                     </div>
                   </div>
                   {this.state.noti === "" ? null : notiJSX}
+                  {this.state.err === "" ? null : errJSX}
 
                   {Global.isSignIn ? (
                     <div className="viewmore pb-2 mt-2">
