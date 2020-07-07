@@ -355,6 +355,7 @@ export default class Account extends Component {
       });
       timer4 = setTimeout(() => this.setState({ err: "" }), 4000);
     } else {
+      var address = [provinceItem, districtItem, wardItem, addressDetail];
       const data = {
         email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
         name: name,
@@ -373,22 +374,24 @@ export default class Account extends Component {
             noti: "Cập nhật thông tin thành công.",
           });
           timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
+          
           if (!Global.isSignIn) {
             var email = Global.user[0].email;
             var name = this.state.name;
             var picture = Global.user[0].picture;
             var phone = this.state.phone;
-            var user = [{ email, name, picture, phone }];
+            var user = [{ email, name, picture, phone, address }];
             Global.user = user;
             localStorage.setItem("user", JSON.stringify(user));
           } else {
-            Global.user = [Global.user[0], this.state.name, this.state.phone];
+            Global.user = [Global.user[0], this.state.name, this.state.phone, address];
             localStorage.setItem(
               "user",
               JSON.stringify([
                 Global.user[0],
                 this.state.name,
                 this.state.phone,
+                address,
               ])
             );
           }
