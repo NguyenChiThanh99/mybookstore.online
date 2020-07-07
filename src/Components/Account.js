@@ -487,6 +487,10 @@ export default class Account extends Component {
   };
 
   render() {
+    console.log(this.state.provinceItem);
+    console.log(this.state.districtItem);
+    console.log(this.state.wardItem);
+    
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <a
         href="# "
@@ -549,7 +553,7 @@ export default class Account extends Component {
     );
 
     const provinceDropdown = (
-      <Dropdown className="col-sm-10">
+      <Dropdown className="col-sm-9">
         <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
           {this.state.province}
         </Dropdown.Toggle>
@@ -562,7 +566,7 @@ export default class Account extends Component {
 
     const districtDropdown = (
       <Dropdown
-        className="col-sm-10"
+        className="col-sm-9"
         onToggle={() => {
           if (this.state.province === "Vui lòng chọn...") {
             this.setState({ err: "Vui lòng chọn Tỉnh/Thành phố" });
@@ -584,7 +588,7 @@ export default class Account extends Component {
 
     const wardDropdown = (
       <Dropdown
-        className="col-sm-10"
+        className="col-sm-9"
         onToggle={() => {
           if (
             this.state.province === "Vui lòng chọn..." ||
@@ -664,10 +668,10 @@ export default class Account extends Component {
               <div className="col-md-9">
                 <form>
                   <div className="form-group row pl-3 pr-3">
-                    <label htmlFor="name" className="col-sm-2 col-form-label">
+                    <label htmlFor="name" className="col-sm-3 col-form-label">
                       Tên
                     </label>
-                    <div className="col-sm-10">
+                    <div className="col-sm-9">
                       <input
                         type="text"
                         className="form-control"
@@ -679,10 +683,10 @@ export default class Account extends Component {
                     </div>
                   </div>
                   <div className="form-group row pl-3 pr-3">
-                    <label htmlFor="email" className="col-sm-2 col-form-label">
+                    <label htmlFor="email" className="col-sm-3 col-form-label">
                       Email
                     </label>
-                    <div className="col-sm-10">
+                    <div className="col-sm-9">
                       <input
                         type="email"
                         className="form-control"
@@ -697,10 +701,10 @@ export default class Account extends Component {
                     </div>
                   </div>
                   <div className="form-group row pl-3 pr-3">
-                    <label htmlFor="phone" className="col-sm-2 col-form-label">
+                    <label htmlFor="phone" className="col-sm-3 col-form-label">
                       Số điện thoại
                     </label>
-                    <div className="col-sm-10">
+                    <div className="col-sm-9">
                       <input
                         type="text"
                         className="form-control"
@@ -717,7 +721,7 @@ export default class Account extends Component {
                   <div className="form-group row pl-3 pr-3">
                     <label
                       htmlFor="inputAddress1"
-                      className="col-sm-2 col-form-label"
+                      className="col-sm-3 col-form-label"
                     >
                       Tỉnh/Thành phố
                     </label>
@@ -726,7 +730,7 @@ export default class Account extends Component {
                   <div className="form-group row pl-3 pr-3">
                     <label
                       htmlFor="inputAddress2"
-                      className="col-sm-2 col-form-label"
+                      className="col-sm-3 col-form-label"
                     >
                       Quận/Huyện
                     </label>
@@ -735,7 +739,7 @@ export default class Account extends Component {
                   <div className="form-group row pl-3 pr-3">
                     <label
                       htmlFor="inputAddress3"
-                      className="col-sm-2 col-form-label"
+                      className="col-sm-3 col-form-label"
                     >
                       Phường/Xã
                     </label>
@@ -744,11 +748,11 @@ export default class Account extends Component {
                   <div className="form-group row pl-3 pr-3">
                     <label
                       htmlFor="inputAddress4"
-                      className="col-sm-2 col-form-label"
+                      className="col-sm-3 col-form-label"
                     >
                       Địa chỉ
                     </label>
-                    <div className="col-sm-10">
+                    <div className="col-sm-9">
                       <input
                         type="text"
                         className="form-control"
