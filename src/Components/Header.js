@@ -504,6 +504,12 @@ export class Header extends Component {
     }
   };
 
+  _handleKeyEnter = (e) => {
+    if (e.key === "Enter") {
+      this.signIn();
+    }
+  };
+
   render() {
     let fbContent = (
       <FacebookLogin
@@ -732,6 +738,7 @@ export class Header extends Component {
           <button
             className="btn btn-danger mybtn"
             onClick={this.signIn}
+            onKeyDown={this._handleKeyEnter}
             data-dismiss={this.state.userName === "Đăng nhập" ? "" : "modal"}
           >
             Đăng nhập
