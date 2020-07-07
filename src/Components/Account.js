@@ -372,6 +372,7 @@ export default class Account extends Component {
         email: Global.isSignIn ? Global.user[0] : Global.user[0].email,
         name: name,
         phone: phone,
+        diachi: address,
       };
       const url = Global.link + "user/changeprofile";
       const options = {

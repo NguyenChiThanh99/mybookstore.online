@@ -179,7 +179,22 @@ export class Header extends Component {
         if (res.data.dataphone !== undefined) {
           phone = res.data.dataphone;
         }
-        var user = [{ email, name, picture, phone }];
+        var Address = [
+          { id: 0, _name: "Vui lòng chọn..." },
+          { id: 0, _name: "Vui lòng chọn...", _prefix: "" },
+          {
+            id: 0,
+            _name: "Vui lòng chọn...",
+            _prefix: "",
+            _province_id: 0,
+            _district_id: 0,
+          },
+          "",
+        ];
+        if (res.data.datadiachi !== undefined) {
+          Address = res.data.datadiachi;
+        }
+        var user = [{ email, name, picture, phone, Address }];
         Global.user = user;
         Global.isLoggedInS = true;
         localStorage.setItem("user", JSON.stringify(user));
@@ -286,10 +301,28 @@ export class Header extends Component {
       axios(options).then((res) => {
         if (res.data.err === undefined) {
           this.setState({ userName: res.data.data[1], cart: res.data.data[3] });
-          Global.user = res.data.data;
+          var emptyAddress = [
+            { id: 0, _name: "Vui lòng chọn..." },
+            { id: 0, _name: "Vui lòng chọn...", _prefix: "" },
+            {
+              id: 0,
+              _name: "Vui lòng chọn...",
+              _prefix: "",
+              _province_id: 0,
+              _district_id: 0,
+            },
+            "",
+          ];
+          var user = [
+            res.data.data[0],
+            res.data.data[1],
+            res.data.data[2],
+            res.data.data[4] === undefined ? emptyAddress : res.data.data[4],
+          ];
+          Global.user = user;
           Global.isSignIn = true;
           this.closeModal();
-          localStorage.setItem("user", JSON.stringify(res.data.data));
+          localStorage.setItem("user", JSON.stringify(user));
           localStorage.setItem("cart", JSON.stringify(res.data.data[3]));
         }
         if (res.data.err === "Please verify your account") {
