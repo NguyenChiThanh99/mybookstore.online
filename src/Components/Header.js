@@ -179,7 +179,7 @@ export class Header extends Component {
         if (res.data.dataphone !== undefined) {
           phone = res.data.dataphone;
         }
-        var Address = [
+        var address = [
           { id: 0, _name: "Vui lòng chọn..." },
           { id: 0, _name: "Vui lòng chọn...", _prefix: "" },
           {
@@ -191,10 +191,10 @@ export class Header extends Component {
           },
           "",
         ];
-        if (res.data.datadiachi !== undefined) {
-          Address = res.data.datadiachi;
+        if (res.data.datadiachi === undefined) {
+          address = res.data.datadiachi;
         }
-        var user = [{ email, name, picture, phone, Address }];
+        var user = [{ email, name, picture, phone, address }];
         Global.user = user;
         Global.isLoggedInS = true;
         localStorage.setItem("user", JSON.stringify(user));
