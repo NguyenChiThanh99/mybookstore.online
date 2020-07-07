@@ -191,7 +191,7 @@ export class Header extends Component {
           },
           "",
         ];
-        if (res.data.datadiachi === undefined) {
+        if (res.data.datadiachi.length === 0) {
           address = res.data.datadiachi;
         }
         var user = [{ email, name, picture, phone, address }];
@@ -317,7 +317,7 @@ export class Header extends Component {
             res.data.data[0],
             res.data.data[1],
             res.data.data[2],
-            res.data.data[4] === undefined ? emptyAddress : res.data.data[4],
+            res.data.data[4].length === 0 ? emptyAddress : res.data.data[4],
           ];
           Global.user = user;
           Global.isSignIn = true;
