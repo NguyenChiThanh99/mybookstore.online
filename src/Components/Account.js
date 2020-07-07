@@ -31,13 +31,25 @@ export default class Account extends Component {
       err: "",
       errPass: "",
       errNewPass: "",
-      province: Global.isSignIn ? Global.user[3][0]._name: "Vui lòng chọn...",
-      provinceItem: Global.isSignIn ? Global.user[3][0] : 0,
-      district: Global.isSignIn ? Global.user[3][1]._name : "Vui lòng chọn...",
-      districtItem: Global.isSignIn ? Global.user[3][1] : 0,
-      ward: Global.isSignIn ? Global.user[3][2]._name : "Vui lòng chọn...",
-      wardItem: Global.isSignIn ? Global.user[3][2] : 0,
-      addressDetail: Global.isSignIn ? Global.user[3][3] : "",
+      province: Global.isSignIn
+        ? Global.user[3][0]._name
+        : Global.user[0].address[0]._name,
+      provinceItem: Global.isSignIn
+        ? Global.user[3][0]
+        : Global.user[0].address[0],
+      district: Global.isSignIn
+        ? Global.user[3][1]._name
+        : Global.user[0].address[1]._name,
+      districtItem: Global.isSignIn
+        ? Global.user[3][1]
+        : Global.user[0].address[1],
+      ward: Global.isSignIn
+        ? Global.user[3][2]._name
+        : Global.user[0].address[2]._name,
+      wardItem: Global.isSignIn ? Global.user[3][2] : Global.user[0].address[2],
+      addressDetail: Global.isSignIn
+        ? Global.user[3][3]
+        : Global.user[0].address[3],
       provinceArr: [],
       districtArr: [],
       wardArr: [],
