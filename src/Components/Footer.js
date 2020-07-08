@@ -19,10 +19,10 @@ export default class Footer extends Component {
                 Nhóm 3 - Thương mại điện tử và Triển khai ứng dụng NT210-K21 -
                 ThS. Trần Tuấn Dũng
               </p>
-              <p className="textFooter pl-2">
+              {/* <p className="textFooter pl-2">
                 Nhóm 6 - Lập trình ứng dụng mạng NT109.K21 - ThS. Đỗ Thị Hương
                 Lan
-              </p>
+              </p> */}
             </div>
             <div className="col-12 col-sm-8">
               <div className="row">
