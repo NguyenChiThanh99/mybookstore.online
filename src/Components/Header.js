@@ -514,6 +514,7 @@ export class Header extends Component {
     let fbContent = (
       <FacebookLogin
         appId="633365450854482"
+        disableMobileRedirect={true}
         autoLoad={false}
         fields="name,email,picture"
         callback={this.responseFacebook}
