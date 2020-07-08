@@ -16,8 +16,11 @@ export default class Footer extends Component {
               />
               <p className="textFooter pl-2">Website phục vụ Đồ án môn học</p>
               <p className="textFooter pl-2">
-                Nhóm 3 - Thương mại điện tử và Triển khai ứng dụng NT210-K21 -
+                Nhóm 3 - Thương mại điện tử và Triển khai ứng dụng NT210.K21 -
                 ThS. Trần Tuấn Dũng
+              </p>
+              <p className="textFooter pl-2">
+                Trường Đại học Công nghệ Thông tin, Đại học Quốc gia Tp.HCM
               </p>
               {/* <p className="textFooter pl-2">
                 Nhóm 6 - Lập trình ứng dụng mạng NT109.K21 - ThS. Đỗ Thị Hương
