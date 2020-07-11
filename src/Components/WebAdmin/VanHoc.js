@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Modal, Button } from "react-bootstrap";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -8,6 +9,24 @@ import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
 export default class VanHoc extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      showModal: false,
+    };
+  }
+
+  handleClose = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleShow = () => {
+    this.setState({ showModal: true });
+  };
+
+  delete = () => {}
+
   currencyFormat = (num) => {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
   };
@@ -28,6 +47,24 @@ export default class VanHoc extends Component {
 
             {/* Begin Page Content */}
             <div className="container-fluid">
+              <Modal show={this.state.showModal} onHide={this.handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Xác nhận xóa sách</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  Bạn có chắc muốn xóa sách Nhà Lãnh Đạo Không Chức Danh khỏi
+                  database ?
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={this.handleClose}>
+                    Cancel
+                  </Button>
+                  <Button variant="danger" onClick={this.delete}>
+                    Xóa
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+
               {/* DataTales Example */}
               <div className="card shadow mb-4">
                 <div className="card-header py-3">
@@ -53,7 +90,6 @@ export default class VanHoc extends Component {
                     >
                       <thead>
                         <tr>
-                          <th>ID</th>
                           <th>Tên Sách</th>
                           <th>Hình Ảnh</th>
                           <th>Tác Giả</th>
@@ -73,7 +109,6 @@ export default class VanHoc extends Component {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>5f01a3d19426d3001742ddc3</td>
                           <td>Nhà Lãnh Đạo Không Chức Danh</td>
                           <td>
                             <img
@@ -94,7 +129,7 @@ export default class VanHoc extends Component {
                           <td>Bìa mềm</td>
                           <td>270</td>
                           <td>
-                            <p className='mota'>
+                            <p className="mota">
                               Suốt hơn 15 năm, Robin Sharma đã thầm lặng chia sẻ
                               với những công ty trong danh sách Fortune 500 và
                               nhiều người siêu giàu khác một công thức thành
@@ -117,38 +152,25 @@ export default class VanHoc extends Component {
                             </p>
                           </td>
                           <td>
-                            <form action="hanoi_edit.php" method="post">
-                              <input
-                                type="hidden"
-                                name="edit_id"
-                                defaultValue="<?php echo $row['id'];  ?>"
-                              />
-                              <button
-                                type="submit"
-                                name="edithanoi_btn"
-                                className="btn btn-success"
-                              >
-                                {" "}
-                                EDIT
-                              </button>
-                            </form>
+                            <button
+                              type="submit"
+                              name="edithanoi_btn"
+                              className="btn btn-primary"
+                            >
+                              {" "}
+                              EDIT
+                            </button>
                           </td>
                           <td>
-                            <form action="code.php" method="post">
-                              <input
-                                type="hidden"
-                                name="delete_id"
-                                defaultValue="<?php echo $row['id'];  ?>"
-                              />
-                              <button
-                                type="submit"
-                                name="deletehanoi_btn"
-                                className="btn btn-danger"
-                              >
-                                {" "}
-                                DELETE
-                              </button>
-                            </form>
+                            <button
+                              onClick={this.handleShow}
+                              type="submit"
+                              name="deletehanoi_btn"
+                              className="btn btn-danger"
+                            >
+                              {" "}
+                              DELETE
+                            </button>
                           </td>
                         </tr>
                       </tbody>
