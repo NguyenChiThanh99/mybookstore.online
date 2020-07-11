@@ -85,6 +85,11 @@ const routes = [
     main: DynamicImport(() => import("./Components/WebAdmin/Dashboard")),
   },
   {
+    path: "/admin/vanhoc",
+    exact: false,
+    main: DynamicImport(() => import("./Components/WebAdmin/VanHoc")),
+  },
+  {
     path: "",
     exact: false,
     main: ({ match }) => <NotFound match={match} />,

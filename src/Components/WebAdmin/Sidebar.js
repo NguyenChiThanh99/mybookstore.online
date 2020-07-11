@@ -50,7 +50,7 @@ export default class Sidebar extends Component {
             aria-controls="collapseTwo"
           >
             <i className="fas fa-book" />
-            &nbsp;
+            &nbsp;&nbsp;
             <span>Đầu sách</span>
           </a>
           <div
@@ -61,9 +61,9 @@ export default class Sidebar extends Component {
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">DANH MỤC SÁCH:</h6>
-              <a className="collapse-item" href="hanoi.php">
+              <NavLink className="collapse-item" to="/admin/vanhoc">
                 Văn học
-              </a>
+              </NavLink>
               <a className="collapse-item" href="hochiminh.php">
                 Sách thiếu nhi
               </a>
@@ -96,7 +96,7 @@ export default class Sidebar extends Component {
         <li className="nav-item">
           <a className="nav-link" href="donhang.php">
             <i className="fas fa-file-invoice" />
-            &nbsp;
+            &nbsp;&nbsp;
             <span>Đơn Hàng</span>
           </a>
         </li>
