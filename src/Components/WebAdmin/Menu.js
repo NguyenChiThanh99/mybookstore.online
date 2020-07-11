@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+
 import "../../CSS/sb-admin-2.min.css";
+import "../../fontawesome-free-5.13.0-web/css/all.min.css";
 
 export default class Menu extends Component {
   render() {
@@ -23,9 +26,6 @@ export default class Menu extends Component {
                   alt="mybookstore.online Logo"
                   height="50px"
                 />
-              </div>
-              <div className="sidebar-brand-text mx-3" img="img/icon_app.png">
-                HOTEL BOOOKING
               </div>
             </a>
             {/* Divider */}
@@ -52,7 +52,7 @@ export default class Menu extends Component {
                 aria-controls="collapseTwo"
               >
                 <i className="fas fa-fw fa-cog" />
-                <span>Khách Sạn</span>
+                <span>Đầu sách</span>
               </a>
               <div
                 id="collapseTwo"
@@ -61,24 +61,33 @@ export default class Menu extends Component {
                 data-parent="#accordionSidebar"
               >
                 <div className="bg-white py-2 collapse-inner rounded">
-                  <h6 className="collapse-header">DANH SÁCH KHÁCH SẠN:</h6>
+                  <h6 className="collapse-header">DANH MỤC SÁCH:</h6>
                   <a className="collapse-item" href="hanoi.php">
-                    Hà Nội
+                    Văn học
                   </a>
                   <a className="collapse-item" href="hochiminh.php">
-                    TP. Hồ Chí Minh
+                    Sách thiếu nhi
                   </a>
                   <a className="collapse-item" href="danang.php">
-                    Đà Nẵng
+                    Kinh tế
+                  </a>
+                  <a className="collapse-item" href="hanoi.php">
+                    Tiểu sử - hồi ký
+                  </a>
+                  <a className="collapse-item" href="hochiminh.php">
+                    Tâm lý - kỹ năng sống
+                  </a>
+                  <a className="collapse-item" href="danang.php">
+                    Sách giao khoa - tham khảo
+                  </a>
+                  <a className="collapse-item" href="hanoi.php">
+                    Nuôi dạy con
+                  </a>
+                  <a className="collapse-item" href="hochiminh.php">
+                    Sách ngoại ngữ
                   </a>
                 </div>
               </div>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="register.php">
-                <i className="fas fa-fw fa-chart-area" />
-                <span>Tài Khoản</span>
-              </a>
             </li>
             {/* Divider */}
             <hr className="sidebar-divider" />
@@ -127,7 +136,7 @@ export default class Menu extends Component {
                       aria-expanded="false"
                     >
                       <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-                        {/*?php echo $_SESSION['username']; ?*/}
+                        Admin
                       </span>
                       <img
                         alt="avatar"
@@ -195,19 +204,94 @@ export default class Menu extends Component {
                       >
                         Cancel
                       </button>
-                      <form action="logout.php" method="POST">
-                        <button
+                      <form>
+                        <NavLink
+                          to="/admin"
                           type="submit"
                           name="logout_btn"
                           className="btn btn-primary"
                         >
                           Logout
-                        </button>
+                        </NavLink>
                       </form>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* Begin Page Content */}
+              <div className="container-fluid">
+                {/* Page Heading */}
+                <div className="d-sm-flex align-items-center justify-content-between mb-3">
+                  <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
+                </div>
+                {/* Content Row */}
+                <div className="row">
+                  {/* Earnings (Monthly) Card Example */}
+                  <div className="col-xl-3 col-md-6 mb-4">
+                    <div className="card border-left-primary shadow h-100 py-2">
+                      <div className="card-body">
+                        <div className="row no-gutters align-items-center">
+                          <div className="col mr-2">
+                            <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                              TỔNG SỐ ĐẦU SÁCH
+                            </div>
+                            <div className="h5 mb-0 font-weight-bold text-gray-800">
+                              180
+                            </div>
+                          </div>
+                          <div className="col-auto">
+                            <i className="fas fa-calendar fa-2x text-gray-300" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Earnings (Monthly) Card Example */}
+                  <div className="col-xl-3 col-md-6 mb-4">
+                    <div className="card border-left-success shadow h-100 py-2">
+                      <div className="card-body">
+                        <div className="row no-gutters align-items-center">
+                          <div className="col mr-2">
+                            <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
+                              TỔNG SỐ ĐƠN HÀNG
+                            </div>
+                            <div className="h5 mb-0 font-weight-bold text-gray-800">
+                              120
+                            </div>
+                          </div>
+                          <div className="col-auto">
+                            <i className="fas fa-dollar-sign fa-2x text-gray-300" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Pending Requests Card Example */}
+                  <div className="col-xl-3 col-md-6 mb-4">
+                    <div className="card border-left-warning shadow h-100 py-2">
+                      <div className="card-body">
+                        <div className="row no-gutters align-items-center">
+                          <div className="col mr-2">
+                            <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                              TỔNG SỐ TÀI KHOẢN
+                            </div>
+                            <div className="h5 mb-0 font-weight-bold text-gray-800">
+                              25
+                            </div>
+                          </div>
+                          <div className="col-auto">
+                            <i className="fas fa-comments fa-2x text-gray-300" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Footer */}
               <footer className="sticky-footer bg-white">
                 <div className="container my-auto">

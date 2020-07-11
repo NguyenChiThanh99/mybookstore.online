@@ -11,7 +11,7 @@ import Footer from "./Footer";
 
 import "../CSS/mystyle.css";
 import "../CSS/style.css";
-import "../fontawesome-free-5.13.0-web/css/all.css";
+import "../fontawesome-free-5.13.0-web/css/all.min.css";
 
 export class Home extends Component {
   constructor(props) {
