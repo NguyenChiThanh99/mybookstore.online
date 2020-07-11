@@ -88,6 +88,7 @@ export default class DonHang extends Component {
                           <th>Ghi Chú</th>
                           <th>Hình Thức Thanh Toán</th>
                           <th>Tổng Tiền</th>
+                          <th>Chi Tiết Đơn Hàng</th>
                           <th>EDIT</th>
                           <th>DELETE</th>
                         </tr>
@@ -107,6 +108,16 @@ export default class DonHang extends Component {
                           </td>
                           <td className="p-1">
                             {this.currencyFormat("791889")} đ
+                          </td>
+                          <td className="p-1">
+                            <button
+                              type="submit"
+                              name="edithanoi_btn"
+                              className="btn btn-success"
+                            >
+                              {" "}
+                              SELECT
+                            </button>
                           </td>
                           <td className="p-1">
                             <button
