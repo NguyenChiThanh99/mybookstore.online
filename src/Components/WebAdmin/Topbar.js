@@ -100,14 +100,16 @@ export default class Topbar extends Component {
                 >
                   Cancel
                 </button>
-                <NavLink
-                  to="/admin"
-                  className="btn btn-danger"
-                  type="button"
-                  data-dismiss="modal"
-                >
-                  Logout
-                </NavLink>
+                <form method="POST">
+                  <NavLink
+                    to="/admin"
+                    type="submit"
+                    name="logout_btn"
+                    className="btn btn-danger"
+                  >
+                    Logout
+                  </NavLink>
+                </form>
               </div>
             </div>
           </div>
