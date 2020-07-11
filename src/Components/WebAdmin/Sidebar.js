@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
-import { Nav } from "react-bootstrap";
 
-export default class Sidebar extends Component {
+export class Sidebar extends Component {
+  goToDanhSachSanPham = (danhmuc) => {
+    this.props.history.push("/admin/category/" + danhmuc);
+    window.location.reload();
+  }
+
   render() {
     return (
       <ul
@@ -62,9 +66,9 @@ export default class Sidebar extends Component {
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">DANH MỤC SÁCH:</h6>
-              <NavLink className="collapse-item" to="/admin/category/Văn học">
+              <div className="collapse-item" onClick={() => {this.goToDanhSachSanPham('Văn học')}}>
                 Văn học
-              </NavLink>
+              </div>
               <NavLink
                 className="collapse-item"
                 to="/admin/category/Sách thiếu nhi"
@@ -125,3 +129,5 @@ export default class Sidebar extends Component {
     );
   }
 }
+
+export default withRouter(Sidebar);
