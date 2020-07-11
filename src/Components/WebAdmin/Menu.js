@@ -12,22 +12,23 @@ export default class Menu extends Component {
         <div id="wrapper">
           {/* Sidebar */}
           <ul
-            className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+            className="navbar-nav sidebar sidebar-dark accordion"
             id="accordionSidebar"
+            style={{ backgroundColor: "#eb2b3f" }}
           >
             {/* Sidebar - Brand */}
-            <a
+            <NavLink
               className="sidebar-brand d-flex align-items-center justify-content-center"
-              href="index.php"
+              to="/admin/dashboard"
             >
               <div className="sidebar-brand-icon rotate-n-1">
                 <img
-                  src={require("../../images/logo.png")}
+                  src={require("../../images/giaodien-04.jpg")}
                   alt="mybookstore.online Logo"
-                  height="50px"
+                  height="42px"
                 />
               </div>
-            </a>
+            </NavLink>
             {/* Divider */}
             <hr className="sidebar-divider my-0" />
             {/* Nav Item - Dashboard */}
@@ -51,7 +52,7 @@ export default class Menu extends Component {
                 aria-expanded="true"
                 aria-controls="collapseTwo"
               >
-                <i className="fas fa-fw fa-cog" />
+                <i className="fas fa-book" />
                 <span>Đầu sách</span>
               </a>
               <div
@@ -72,13 +73,13 @@ export default class Menu extends Component {
                     Kinh tế
                   </a>
                   <a className="collapse-item" href="hanoi.php">
-                    Tiểu sử - hồi ký
+                    Tiểu sử-hồi ký
                   </a>
                   <a className="collapse-item" href="hochiminh.php">
-                    Tâm lý - kỹ năng sống
+                    Tâm lý-kỹ năng sống
                   </a>
                   <a className="collapse-item" href="danang.php">
-                    Sách giao khoa - tham khảo
+                    Sách giáo khoa-tham khảo
                   </a>
                   <a className="collapse-item" href="hanoi.php">
                     Nuôi dạy con
@@ -96,7 +97,7 @@ export default class Menu extends Component {
             {/* Nav Item - Charts */}
             <li className="nav-item">
               <a className="nav-link" href="donhang.php">
-                <i className="fas fa-fw fa-chart-area" />
+                <i className="fas fa-file-invoice" />
                 <span>Đơn Hàng</span>
               </a>
             </li>
@@ -104,7 +105,10 @@ export default class Menu extends Component {
             <hr className="sidebar-divider d-none d-md-block" />
             {/* Sidebar Toggler (Sidebar) */}
             <div className="text-center d-none d-md-inline">
-              <button className="rounded-circle border-0" id="sidebarToggle" />
+              <button
+                className="rounded-circle border-0"
+                id="sidebarToggle"
+              ></button>
             </div>
           </ul>
           {/* End of Sidebar */}
@@ -204,16 +208,15 @@ export default class Menu extends Component {
                       >
                         Cancel
                       </button>
-                      <form>
-                        <NavLink
-                          to="/admin"
-                          type="submit"
-                          name="logout_btn"
-                          className="btn btn-primary"
+                      <NavLink to="/admin">
+                        <button
+                          className="btn btn-danger"
+                          type="button"
+                          data-dismiss="modal"
                         >
                           Logout
-                        </NavLink>
-                      </form>
+                        </button>
+                      </NavLink>
                     </div>
                   </div>
                 </div>
@@ -228,7 +231,7 @@ export default class Menu extends Component {
                 {/* Content Row */}
                 <div className="row">
                   {/* Earnings (Monthly) Card Example */}
-                  <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="col-xl-4 col-md-6 mb-4">
                     <div className="card border-left-primary shadow h-100 py-2">
                       <div className="card-body">
                         <div className="row no-gutters align-items-center">
@@ -241,15 +244,15 @@ export default class Menu extends Component {
                             </div>
                           </div>
                           <div className="col-auto">
-                            <i className="fas fa-calendar fa-2x text-gray-300" />
+                            <i className="fas fa-book fa-2x text-gray-300" />
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Earnings (Monthly) Card Example */}
-                  <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="col-xl-4 col-md-6 mb-4">
                     <div className="card border-left-success shadow h-100 py-2">
                       <div className="card-body">
                         <div className="row no-gutters align-items-center">
@@ -262,7 +265,7 @@ export default class Menu extends Component {
                             </div>
                           </div>
                           <div className="col-auto">
-                            <i className="fas fa-dollar-sign fa-2x text-gray-300" />
+                            <i className="fas fa-file-invoice fa-2x text-gray-300" />
                           </div>
                         </div>
                       </div>
@@ -270,7 +273,7 @@ export default class Menu extends Component {
                   </div>
 
                   {/* Pending Requests Card Example */}
-                  <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="col-xl-4 col-md-6 mb-4">
                     <div className="card border-left-warning shadow h-100 py-2">
                       <div className="card-body">
                         <div className="row no-gutters align-items-center">
@@ -283,7 +286,7 @@ export default class Menu extends Component {
                             </div>
                           </div>
                           <div className="col-auto">
-                            <i className="fas fa-comments fa-2x text-gray-300" />
+                            <i className="fas fa-user-alt fa-2x text-gray-300" />
                           </div>
                         </div>
                       </div>
