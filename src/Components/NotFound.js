@@ -3,8 +3,8 @@ import "../CSS/style.css";
 import MetaTags from "react-meta-tags";
 import { NavLink, withRouter } from "react-router-dom";
 
-import Header from "../src/Components/Header";
-import Footer from "../src/Components/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export class NotFound extends Component {
   render() {
