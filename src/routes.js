@@ -72,6 +72,13 @@ const routes = [
     exact: false,
     main: ({ match }) => <Search match={match} />,
   },
+
+  //-----------------------Web Admin-------------------------//
+  {
+    path: "/admin",
+    exact: false,
+    main: DynamicImport(() => import("./Components/WebAdmin/Login")),
+  },
   {
     path: "",
     exact: false,
