@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../../CSS/sb-admin-2.min.css";
 
 export default class Menu extends Component {
   render() {
