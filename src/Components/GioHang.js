@@ -5,7 +5,6 @@ import axios from "axios";
 import qs from "qs";
 import Global from "./Global";
 import MetaTags from "react-meta-tags";
-import LazyLoad from "react-lazyload";
 
 import "../CSS/giohang.css";
 import ItemCart from "./ItemCart";
@@ -485,9 +484,7 @@ export class GioHang extends Component {
         {this.state.emptyCart ? emptyCartJSX : null}
         {this.state.cart.length !== 0 ? bodyJSX : null}
 
-        <LazyLoad>
-          <Footer />
-        </LazyLoad>
+        <Footer />
       </div>
     );
   }

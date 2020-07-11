@@ -3,10 +3,15 @@ import "../CSS/style.css";
 import MetaTags from "react-meta-tags";
 import { NavLink, withRouter } from "react-router-dom";
 
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
+
 export class NotFound extends Component {
   render() {
     return (
       <div>
+        <Header />
+
         {/*Path*/}
         <div className="container py-2 px-0">
           <NavLink to="/">
@@ -51,6 +56,8 @@ export class NotFound extends Component {
             Đi đến trang chủ
           </button>
         </div>
+
+        <Footer />
       </div>
     );
   }

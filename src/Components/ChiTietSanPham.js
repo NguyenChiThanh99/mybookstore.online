@@ -5,7 +5,6 @@ import axios from "axios";
 import qs from "qs";
 import SocialShare from "./SocialShare";
 import MetaTags from "react-meta-tags";
-import LazyLoad from "react-lazyload";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -1107,10 +1106,8 @@ export class ChiTietSanPham extends Component {
           <div className="pt-3">{this.showComment(this.state.dataComment)}</div>
           {this.state.btnViewmore ? viewMoreJSX : null}
         </div>
-        
-   
-          <Footer />
-    
+
+        <Footer />
       </div>
     );
   }

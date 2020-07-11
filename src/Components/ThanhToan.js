@@ -3,7 +3,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { withRouter, NavLink } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
-import LazyLoad from "react-lazyload";
 import Global from "./Global";
 import MetaTags from "react-meta-tags";
 import Header from "./Header";
@@ -130,7 +129,7 @@ export class ThanhToan extends Component {
         dienthoai: phone,
         ghichu: note,
         thanhtoan: radio,
-        tongtien: total
+        tongtien: total,
       };
       const url = Global.link + "orther/orther";
       const options = {
@@ -140,7 +139,7 @@ export class ThanhToan extends Component {
         data: qs.stringify(data),
       };
       axios(options).then((res) => {
-        if (res.data.data !== 'error') {
+        if (res.data.data !== "error") {
           localStorage.setItem("cart", JSON.stringify(0));
           Global.cart();
           this.props.history.push("/bill/" + res.data.data);
@@ -736,10 +735,8 @@ export class ThanhToan extends Component {
             </div>
           </div>
         </div>
-        
-        <LazyLoad>
-          <Footer />
-        </LazyLoad>
+
+        <Footer />
       </div>
     );
   }

@@ -8,7 +8,6 @@ import axios from "axios";
 import qs from "qs";
 import { Modal } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
-import LazyLoad from "react-lazyload";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -63,7 +62,7 @@ export default class Account extends Component {
   componentDidMount = () => {
     this.getSuggest();
     this.getProvince();
-    const {province, provinceItem, district, districtItem} = this.state;
+    const { province, provinceItem, district, districtItem } = this.state;
     if (province !== "Vui lòng chọn...") {
       this.getDistrict(provinceItem.id);
     }
@@ -350,7 +349,8 @@ export default class Account extends Component {
       ward,
       addressDetail,
       provinceItem,
-      districtItem, wardItem
+      districtItem,
+      wardItem,
     } = this.state;
     if (
       name.length === 0 ||
@@ -398,7 +398,7 @@ export default class Account extends Component {
             noti: "Cập nhật thông tin thành công.",
           });
           timer4 = setTimeout(() => this.setState({ noti: "" }), 4000);
-          
+
           if (!Global.isSignIn) {
             var email = Global.user[0].email;
             var name = this.state.name;
@@ -408,7 +408,12 @@ export default class Account extends Component {
             Global.user = user;
             localStorage.setItem("user", JSON.stringify(user));
           } else {
-            Global.user = [Global.user[0], this.state.name, this.state.phone, address];
+            Global.user = [
+              Global.user[0],
+              this.state.name,
+              this.state.phone,
+              address,
+            ];
             localStorage.setItem(
               "user",
               JSON.stringify([
@@ -961,9 +966,7 @@ export default class Account extends Component {
           </Modal.Body>
         </Modal>
 
-        <LazyLoad>
-          <Footer />
-        </LazyLoad>
+        <Footer />
       </div>
     );
   }

@@ -5,6 +5,9 @@ import axios from "axios";
 import qs from "qs";
 import MetaTags from "react-meta-tags";
 
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
+
 import "../CSS/history.css";
 
 export class LichSuGiaoDich extends Component {
@@ -141,6 +144,8 @@ export class LichSuGiaoDich extends Component {
 
     return (
       <div className="container pb-0 px-0">
+        <Header />
+
         <MetaTags>
           <title>Lịch sử giao dịch | mybookstore.online</title>
           <meta
@@ -177,6 +182,8 @@ export class LichSuGiaoDich extends Component {
           {this.state.empty ? emptyJSX : null}
           {this.state.data.length !== 0 ? bodyJSX : null}
         </div>
+
+        <Footer />
       </div>
     );
   }

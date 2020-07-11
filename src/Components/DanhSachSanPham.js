@@ -6,7 +6,6 @@ import Global from "./Global";
 import axios from "axios";
 import qs from "qs";
 import MetaTags from "react-meta-tags";
-import LazyLoad from "react-lazyload";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -69,14 +68,18 @@ export class DanhSachSanPham extends Component {
     if (newArr.length !== 0) {
       this.setState({
         loading: false,
-      })
+      });
     } else {
       this.setState({
         loading: false,
         empty: true,
       });
     }
-    this.setState({ dataSort: newArr, childData: newArr.slice(0, 12), page: 1 });
+    this.setState({
+      dataSort: newArr,
+      childData: newArr.slice(0, 12),
+      page: 1,
+    });
     this.numOfPage(newArr);
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -295,7 +298,8 @@ export class DanhSachSanPham extends Component {
           Tìm kiếm không có kết quả
         </p>
         <p style={{ color: "#b3b3b3", fontSize: 16 }}>
-          Xin lỗi, chúng tôi không thể tìm được kết quả phù hợp với tìm kiếm của bạn
+          Xin lỗi, chúng tôi không thể tìm được kết quả phù hợp với tìm kiếm của
+          bạn
         </p>
         <img
           src={require("../images/search2.png")}
@@ -359,7 +363,7 @@ export class DanhSachSanPham extends Component {
 
     return (
       <div>
-      <Header />
+        <Header />
 
         <MetaTags>
           <title>
@@ -1470,9 +1474,7 @@ export class DanhSachSanPham extends Component {
           </div>
         </div>
 
-        <LazyLoad>
-          <Footer />
-        </LazyLoad>
+        <Footer />
       </div>
     );
   }

@@ -7,6 +7,9 @@ import axios from "axios";
 import qs from "qs";
 import MetaTags from "react-meta-tags";
 
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
+
 import "../CSS/danhsachsp.css";
 import "../CSS/style.css";
 import "../CSS/mystyle.css";
@@ -77,14 +80,18 @@ export class Search extends Component {
     if (newArr.length !== 0) {
       this.setState({
         loading: false,
-      })
+      });
     } else {
       this.setState({
         loading: false,
         empty: true,
       });
     }
-    this.setState({ dataSort: newArr, childData: newArr.slice(0, 12), page: 1 });
+    this.setState({
+      dataSort: newArr,
+      childData: newArr.slice(0, 12),
+      page: 1,
+    });
     this.numOfPage(newArr);
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
@@ -315,6 +322,8 @@ export class Search extends Component {
 
     return (
       <div>
+        <Header />
+
         <MetaTags>
           <title>
             {"Có " +
@@ -367,7 +376,6 @@ export class Search extends Component {
         <div className="container">
           <div className="row">
             <div className="col-sm-3">
-            
               {/*Danh muc*/}
               <div className="bg-white">
                 <div className="list">
@@ -1374,6 +1382,8 @@ export class Search extends Component {
             </div>
           </div>
         </div>
+
+        <Footer />
       </div>
     );
   }
