@@ -24,9 +24,9 @@ export default class Dashboard extends Component {
       kichthuoc: "",
       nhacungcap: "",
       hinhanhsanpham: "",
-      gia: 0,
+      gia: "",
       loaibia: "",
-      sotrang: 0,
+      sotrang: "",
       mota: "",
     };
   }
@@ -194,7 +194,6 @@ export default class Dashboard extends Component {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <a
         href="# "
-        ref={ref}
         onClick={(e) => {
           e.preventDefault();
           onClick(e);
@@ -210,7 +209,7 @@ export default class Dashboard extends Component {
           {this.state.urlloaisp}
         </Dropdown.Toggle>
 
-        <Dropdown.Menu className="dropdowm-scroll">
+        <Dropdown.Menu className="dropdowm-scroll-admin">
           {this.showDropdown()}
         </Dropdown.Menu>
       </Dropdown>
