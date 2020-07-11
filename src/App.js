@@ -20,7 +20,7 @@ export default class App extends Component {
 
   render() {
     const loadingJSX = (
-      <div className="container mt-4 p-3 bg-white d-flex justify-content-center">
+      <div className="bg-white d-flex justify-content-center">
         <img
           src={require("./images/loading.gif")}
           className="img-fluid align-self-center"
@@ -29,19 +29,19 @@ export default class App extends Component {
         />
       </div>
     );
-
+    
     return (
       <Router>
         <ScrollToTop>
           <div className="container-fluid background2 px-0">
-            
+           
 
             {/* Main */}
             <Suspense fallback={loadingJSX}>
               <Switch>{this.showContent(routes)}</Switch>
             </Suspense>
 
-           
+          
           </div>
         </ScrollToTop>
       </Router>

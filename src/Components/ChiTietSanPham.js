@@ -1108,9 +1108,9 @@ export class ChiTietSanPham extends Component {
           {this.state.btnViewmore ? viewMoreJSX : null}
         </div>
         
-        <LazyLoad>
+   
           <Footer />
-        </LazyLoad>
+    
       </div>
     );
   }

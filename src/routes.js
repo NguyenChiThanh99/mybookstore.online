@@ -11,7 +11,7 @@ const Search = React.lazy(() => import("./Components/Search"));
 const AdminLogin = React.lazy(() => import("./Components/WebAdmin/Login"));
 
 const loadingJSX = (
-  <div className="container p-3 mt-4 bg-white d-flex justify-content-center">
+  <div className="bg-white d-flex justify-content-center">
     <img
       src={require("./images/loading.gif")}
       className="img-fluid align-self-center"
