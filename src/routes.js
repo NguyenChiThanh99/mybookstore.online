@@ -76,7 +76,7 @@ const routes = [
   //-----------------------Web Admin-------------------------//
   {
     path: "/admin",
-    exact: false,
+    exact: true,
     main: DynamicImport(() => import("./Components/WebAdmin/Login")),
   },
   {
