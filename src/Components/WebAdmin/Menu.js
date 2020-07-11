@@ -18,7 +18,7 @@ export default class Menu extends Component {
                 >
                   <div className="sidebar-brand-icon rotate-n-1">
                     <img
-                      src={require("../images/logo.png")}
+                      src={require("../../images/logo.png")}
                       alt="mybookstore.online Logo"
                       height="50px"
                     />

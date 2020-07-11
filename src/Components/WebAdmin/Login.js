@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom';
 
 export default class Login extends Component {
     render() {
@@ -39,13 +40,13 @@ export default class Login extends Component {
                                 placeholder="Password"
                               />
                             </div>
-                            <button
-                              type="submit"
+                            <NavLink
+                              to="/admin/dashboard"
                               name="login_btn"
                               className="btn btn-danger btn-user btn-block"
                             >
                               Login
-                            </button>
+                            </NavLink>
                             <hr />
                           </form>
                         </div>
