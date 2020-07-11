@@ -46,8 +46,7 @@ export default class Topbar extends Component {
               >
                 <div className="dropdown-divider" />
                 <a
-                  className="dropdown-item"
-                  style={{ backgroundColor: "#eb2b3f" }}
+                  className="dropdown-item nav-link text-dark text-nowrap mya-dropright"
                   href="# "
                   data-toggle="modal"
                   data-target="#logoutModal"
