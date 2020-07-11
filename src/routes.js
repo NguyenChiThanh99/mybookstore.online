@@ -99,6 +99,11 @@ const routes = [
     main: ({ match }) => <AdminThemSach match={match} />,
   },
   {
+    path: "/admin/order",
+    exact: false,
+    main: DynamicImport(() => import("./Components/WebAdmin/DonHang")),
+  },
+  {
     path: "",
     exact: false,
     main: ({ match }) => <NotFound match={match} />,

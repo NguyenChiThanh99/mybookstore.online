@@ -66,70 +66,78 @@ export class Sidebar extends Component {
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">DANH MỤC SÁCH:</h6>
-              <div
+              <a
+                href="# "
                 className="collapse-item"
                 onClick={() => {
                   this.goToDanhSachSanPham("Văn học");
                 }}
               >
                 Văn học
-              </div>
-              <div
+              </a>
+              <a
+                href="# "
                 className="collapse-item"
                 onClick={() => {
                   this.goToDanhSachSanPham("Sách thiếu nhi");
                 }}
               >
                 Sách thiếu nhi
-              </div>
-              <div
+              </a>
+              <a
+                href="# "
                 className="collapse-item"
                 onClick={() => {
                   this.goToDanhSachSanPham("Kinh tế");
                 }}
               >
                 Kinh tế
-              </div>
-              <div
+              </a>
+              <a
+                href="# "
                 className="collapse-item"
                 onClick={() => {
                   this.goToDanhSachSanPham("Tiểu sử - hồi ký");
                 }}
               >
                 Tiểu sử-hồi ký
-              </div>
-              <div
+              </a>
+              <a
+                href="# "
                 className="collapse-item"
                 onClick={() => {
                   this.goToDanhSachSanPham("Tâm lý - Kỹ năng sống");
                 }}
               >
                 Tâm lý-kỹ năng sống
-              </div>
-              <div
+              </a>
+              <a
+                href="# "
                 className="collapse-item"
                 onClick={() => {
                   this.goToDanhSachSanPham("Sách giáo khoa - tham khảo");
                 }}
               >
                 Sách giáo khoa-tham khảo
-              </div>
-              <div
+              </a>
+              <a
+                href="# "
                 className="collapse-item"
                 onClick={() => {
                   this.goToDanhSachSanPham("Nuôi dạy con");
                 }}
               >
                 Nuôi dạy con
-              </div>
-              <div
+              </a>
+              <a
+                href="# "
                 className="collapse-item"
                 onClick={() => {
                   this.goToDanhSachSanPham("Sách ngoại ngữ");
                 }}
               >
                 Sách ngoại ngữ
-              </div>
+              </a>
             </div>
           </div>
         </li>
@@ -139,11 +147,11 @@ export class Sidebar extends Component {
         <div className="sidebar-heading">QUẢN LÝ ĐƠN HÀNG</div>
         {/* Nav Item - Charts */}
         <li className="nav-item">
-          <a className="nav-link" href="donhang.php">
+          <NavLink className="nav-link" to="/admin/order">
             <i className="fas fa-file-invoice" />
             &nbsp;&nbsp;
             <span>Đơn Hàng</span>
-          </a>
+          </NavLink>
         </li>
         {/* Divider */}
         <hr className="sidebar-divider d-none d-md-block" />

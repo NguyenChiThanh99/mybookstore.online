@@ -38,7 +38,8 @@ export default class Dashboard extends Component {
     });
   };
 
-  update = () => {
+  update = (event) => {
+    event.preventDefault();
     const {
       tensp,
       tacgia,
@@ -246,6 +247,7 @@ export default class Dashboard extends Component {
                     >
                       CANCEL
                     </NavLink>
+                    &nbsp;
                     <button
                       onClick={() => {
                         this.update();
@@ -254,7 +256,7 @@ export default class Dashboard extends Component {
                       name="updatebtn"
                       className="btn btn-primary"
                     >
-                      UPDATE
+                      THÊM SÁCH
                     </button>
                   </form>
                 </div>

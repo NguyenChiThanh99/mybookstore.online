@@ -9,7 +9,7 @@ import "../../CSS/webadmin.css";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-export default class VanHoc extends Component {
+export default class DanhSachSanPham extends Component {
   constructor(props) {
     super(props)
     var { match } = this.props;
