@@ -86,7 +86,7 @@ const routes = [
     main: DynamicImport(() => import("./Components/WebAdmin/Dashboard")),
   },
   {
-    path: "/admin/category:danhmuc",
+    path: "/admin/category/:danhmuc",
     exact: false,
     main: ({ match }) => <AdminDanhSachSP match={match} />,
   },
