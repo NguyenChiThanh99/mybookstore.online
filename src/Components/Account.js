@@ -8,6 +8,10 @@ import axios from "axios";
 import qs from "qs";
 import { Modal } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
+import LazyLoad from "react-lazyload";
+
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
 
 var timer4 = null;
 
@@ -690,6 +694,8 @@ export default class Account extends Component {
 
     return (
       <div>
+        <Header />
+
         <MetaTags>
           <title>Thông tin tài khoản | mybookstore.online</title>
           <meta
@@ -954,6 +960,10 @@ export default class Account extends Component {
             </form>
           </Modal.Body>
         </Modal>
+
+        <LazyLoad>
+          <Footer />
+        </LazyLoad>
       </div>
     );
   }

@@ -6,6 +6,10 @@ import Global from "./Global";
 import axios from "axios";
 import qs from "qs";
 import MetaTags from "react-meta-tags";
+import LazyLoad from "react-lazyload";
+
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
 
 import "../CSS/danhsachsp.css";
 import "../CSS/style.css";
@@ -355,6 +359,8 @@ export class DanhSachSanPham extends Component {
 
     return (
       <div>
+      <Header />
+
         <MetaTags>
           <title>
             {"Tổng hợp sách " + title + " hay và mới nhất | mybookstore.online"}
@@ -1463,6 +1469,10 @@ export class DanhSachSanPham extends Component {
             </div>
           </div>
         </div>
+
+        <LazyLoad>
+          <Footer />
+        </LazyLoad>
       </div>
     );
   }

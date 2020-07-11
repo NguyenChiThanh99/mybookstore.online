@@ -5,6 +5,10 @@ import axios from "axios";
 import qs from "qs";
 import SocialShare from "./SocialShare";
 import MetaTags from "react-meta-tags";
+import LazyLoad from "react-lazyload";
+
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
 
 import "../CSS/style.css";
 
@@ -720,6 +724,8 @@ export class ChiTietSanPham extends Component {
 
     return (
       <div>
+        <Header />
+
         <MetaTags>
           <title>{data.tensp + " | mybookstore.online"}</title>
           <meta
@@ -1101,6 +1107,10 @@ export class ChiTietSanPham extends Component {
           <div className="pt-3">{this.showComment(this.state.dataComment)}</div>
           {this.state.btnViewmore ? viewMoreJSX : null}
         </div>
+        
+        <LazyLoad>
+          <Footer />
+        </LazyLoad>
       </div>
     );
   }

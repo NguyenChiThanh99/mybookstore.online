@@ -29,22 +29,19 @@ export default class App extends Component {
         />
       </div>
     );
-    console.log(this.props.match);
-    
+
     return (
       <Router>
         <ScrollToTop>
           <div className="container-fluid background2 px-0">
-            <Header />
+            
 
             {/* Main */}
             <Suspense fallback={loadingJSX}>
               <Switch>{this.showContent(routes)}</Switch>
             </Suspense>
 
-            <LazyLoad>
-              <Footer />
-            </LazyLoad>
+           
           </div>
         </ScrollToTop>
       </Router>

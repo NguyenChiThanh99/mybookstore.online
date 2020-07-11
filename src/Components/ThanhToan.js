@@ -3,8 +3,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { withRouter, NavLink } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
+import LazyLoad from "react-lazyload";
 import Global from "./Global";
 import MetaTags from "react-meta-tags";
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
 
 import "../CSS/style.css";
 
@@ -527,6 +530,8 @@ export class ThanhToan extends Component {
 
     return (
       <div className="background2">
+        <Header />
+
         <MetaTags>
           <title>Thông tin thanh toán | mybookstore.online</title>
           <meta property="og:url" content="https://mybookstore.online/pay" />
@@ -731,6 +736,10 @@ export class ThanhToan extends Component {
             </div>
           </div>
         </div>
+        
+        <LazyLoad>
+          <Footer />
+        </LazyLoad>
       </div>
     );
   }

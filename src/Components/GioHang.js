@@ -5,9 +5,12 @@ import axios from "axios";
 import qs from "qs";
 import Global from "./Global";
 import MetaTags from "react-meta-tags";
+import LazyLoad from "react-lazyload";
 
 import "../CSS/giohang.css";
 import ItemCart from "./ItemCart";
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
 
 export class GioHang extends Component {
   constructor(props) {
@@ -457,6 +460,8 @@ export class GioHang extends Component {
 
     return (
       <div>
+        <Header />
+
         <MetaTags>
           <title>Giỏ hàng | mybookstore.online</title>
           <meta property="og:url" content="https://mybookstore.online/cart" />
@@ -479,6 +484,10 @@ export class GioHang extends Component {
         {this.state.loading ? loadingJSX : null}
         {this.state.emptyCart ? emptyCartJSX : null}
         {this.state.cart.length !== 0 ? bodyJSX : null}
+
+        <LazyLoad>
+          <Footer />
+        </LazyLoad>
       </div>
     );
   }

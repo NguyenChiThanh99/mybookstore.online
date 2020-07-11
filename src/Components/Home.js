@@ -6,6 +6,8 @@ import axios from "axios";
 import qs from "qs";
 import MetaTags from "react-meta-tags";
 import LazyLoad from "react-lazyload";
+import Header from "../src/Components/Header";
+import Footer from "../src/Components/Footer";
 
 import "../CSS/mystyle.css";
 import "../CSS/style.css";
@@ -252,6 +254,8 @@ export class Home extends Component {
 
     return (
       <div>
+        <Header />
+
         <MetaTags>
           <title>Nhà sách trực tuyến mybookstore.online</title>
           <meta
@@ -1387,6 +1391,10 @@ export class Home extends Component {
             </div>
           </LazyLoad>
         )}
+
+        <LazyLoad>
+          <Footer />
+        </LazyLoad>
       </div>
     );
   }
