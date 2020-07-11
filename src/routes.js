@@ -8,7 +8,6 @@ const DanhSachSanPham = React.lazy(() =>
 );
 const HoaDon = React.lazy(() => import("./Components/HoaDon"));
 const Search = React.lazy(() => import("./Components/Search"));
-const AdminLogin = React.lazy(() => import("./Components/WebAdmin/Login"));
 
 const loadingJSX = (
   <div className="bg-white d-flex justify-content-center">
@@ -78,7 +77,12 @@ const routes = [
   {
     path: "/admin",
     exact: false,
-    main: ({ match }) => <AdminLogin match={match} />,
+    main: DynamicImport(() => import("./Components/WebAdmin/Login")),
+  },
+  {
+    path: "/admin/dashboard",
+    exact: false,
+    main: DynamicImport(() => import("./Components/WebAdmin/Menu")),
   },
   {
     path: "",
