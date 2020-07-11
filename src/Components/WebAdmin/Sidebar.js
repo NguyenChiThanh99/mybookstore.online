@@ -26,7 +26,7 @@ export class Sidebar extends Component {
             <img
               src={require("../../images/giaodien-04.jpg")}
               alt="mybookstore.online Logo"
-              height="32px"
+              height="30px"
             />
           </div>
         </NavLink>

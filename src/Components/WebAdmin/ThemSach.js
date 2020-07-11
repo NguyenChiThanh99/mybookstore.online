@@ -210,11 +210,9 @@ export default class Dashboard extends Component {
           {this.state.urlloaisp}
         </Dropdown.Toggle>
 
-        {this.state.districtArr.length === 0 ? null : (
-          <Dropdown.Menu className="dropdowm-scroll">
-            {this.showDropdown()}
-          </Dropdown.Menu>
-        )}
+        <Dropdown.Menu className="dropdowm-scroll">
+          {this.showDropdown()}
+        </Dropdown.Menu>
       </Dropdown>
     );
 
