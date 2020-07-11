@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Modal, Button, NavLink } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -114,7 +115,7 @@ export default class VanHoc extends Component {
                             <img
                               src="https://salt.tikicdn.com/cache/280x280/media/catalog/product//n/h/nhalanhdao.u2769.d20170307.t090846.484463.jpg"
                               className="img-fluid"
-                              style={{ width: "700px" }}
+                              style={{ width: "250px" }}
                               alt="Nhà Lãnh Đạo Không Chức Danh"
                             />
                           </td>
@@ -131,7 +132,10 @@ export default class VanHoc extends Component {
                           <td className="p-1">Bìa mềm</td>
                           <td className="p-1">270</td>
                           <td className="p-1">
-                            <p className="mota mb-0">
+                            <p
+                              className="mota mb-0 text-justify"
+                              style={{ width: "400px" }}
+                            >
                               Suốt hơn 15 năm, Robin Sharma đã thầm lặng chia sẻ
                               với những công ty trong danh sách Fortune 500 và
                               nhiều người siêu giàu khác một công thức thành
