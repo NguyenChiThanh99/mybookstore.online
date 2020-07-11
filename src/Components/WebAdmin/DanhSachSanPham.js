@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, NavLink } from "react-bootstrap";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -71,14 +71,13 @@ export default class VanHoc extends Component {
                 <div className="card-header py-3">
                   <h6 className="m-0 font-weight-bold text-danger">
                     Sách {this.state.danhmuc} &nbsp;
-                    <button
+                    <NavLink
+                      to={"/admin/addproduct/" + this.state.danhmuc}
                       type="button"
                       className="btn btn-danger"
-                      data-toggle="modal"
-                      data-target="#hotelhanoi"
                     >
-                      Thêm sách {this.state.danhmuc}
-                    </button>
+                      Thêm sách
+                    </NavLink>
                   </h6>
                 </div>
                 <div className="card-body">
@@ -115,7 +114,7 @@ export default class VanHoc extends Component {
                             <img
                               src="https://salt.tikicdn.com/cache/280x280/media/catalog/product//n/h/nhalanhdao.u2769.d20170307.t090846.484463.jpg"
                               className="img-fluid"
-                              style={{ width: "750px" }}
+                              style={{ width: "700px" }}
                               alt="Nhà Lãnh Đạo Không Chức Danh"
                             />
                           </td>
