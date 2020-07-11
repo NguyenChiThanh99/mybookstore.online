@@ -39,7 +39,7 @@ export default class Dashboard extends Component {
                             TỔNG SỐ ĐẦU SÁCH
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            180
+                            <h1>180</h1>
                           </div>
                         </div>
                         <div className="col-auto">
@@ -60,7 +60,7 @@ export default class Dashboard extends Component {
                             TỔNG SỐ ĐƠN HÀNG
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            120
+                            <h1>120</h1>
                           </div>
                         </div>
                         <div className="col-auto">
@@ -81,7 +81,7 @@ export default class Dashboard extends Component {
                             TỔNG SỐ TÀI KHOẢN
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            25
+                            <h1>30</h1>
                           </div>
                         </div>
                         <div className="col-auto">

@@ -31,6 +31,7 @@ export default class Sidebar extends Component {
         <li className="nav-item active">
           <NavLink className="nav-link" to="/admin/dashboard">
             <i className="fa fa-fw fa-tachometer-alt" />
+            &nbsp;
             <span>Dashboard</span>
           </NavLink>
         </li>
@@ -49,6 +50,7 @@ export default class Sidebar extends Component {
             aria-controls="collapseTwo"
           >
             <i className="fas fa-book" />
+            &nbsp;
             <span>Đầu sách</span>
           </a>
           <div
@@ -94,6 +96,7 @@ export default class Sidebar extends Component {
         <li className="nav-item">
           <a className="nav-link" href="donhang.php">
             <i className="fas fa-file-invoice" />
+            &nbsp;
             <span>Đơn Hàng</span>
           </a>
         </li>
