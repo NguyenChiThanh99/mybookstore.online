@@ -1,10 +1,31 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
 
-export default class Topbar extends Component {
+export class Topbar extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      showModal: false,
+    };
+  }
+
+  handleClose = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleShow = () => {
+    this.setState({ showModal: true });
+  };
+
+  logout = () => {
+    this.props.history.push("/admin");
+  }
+  
   render() {
     return (
       <div>
@@ -16,6 +37,7 @@ export default class Topbar extends Component {
           >
             <i className="fa fa-bars" />
           </button>
+
           {/* Topbar Navbar */}
           <ul className="navbar-nav ml-auto">
             <div className="topbar-divider d-none d-sm-block" />
@@ -39,6 +61,7 @@ export default class Topbar extends Component {
                   src="https://anhnendep.net/wp-content/uploads/2018/10/hinh-anh-chibi-nam-cute-lanh-lung-de-thuong-02.jpg"
                 />
               </a>
+
               {/* Dropdown - User Information */}
               <div
                 className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -46,10 +69,9 @@ export default class Topbar extends Component {
               >
                 <div className="dropdown-divider" />
                 <a
-                  className="dropdown-item nav-link text-dark text-nowrap mya-dropright"
+                  className="dropdown-item"
                   href="# "
-                  data-toggle="modal"
-                  data-target="#logoutModal"
+                  onClick={this.handleShow}
                 >
                   <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
                   Logout
@@ -59,61 +81,32 @@ export default class Topbar extends Component {
           </ul>
         </nav>
         {/* End of Topbar */}
+
         {/* Scroll to Top Button*/}
         <a className="scroll-to-top rounded" href="#page-top">
           <i className="fas fa-angle-up" />
         </a>
+
         {/* Logout Modal*/}
-        <div
-          className="modal fade"
-          id="logoutModal"
-          tabIndex={-1}
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  Ready to Leave?
-                </h5>
-                <button
-                  className="close"
-                  type="button"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                Select "Logout" below if you are ready to end your current
-                session.
-              </div>
-              <div className="modal-footer">
-                <button
-                  className="btn btn-secondary"
-                  type="button"
-                  data-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <form method="POST">
-                  <NavLink
-                    to="/admin"
-                    type="submit"
-                    name="logout_btn"
-                    className="btn btn-danger"
-                  >
-                    Logout
-                  </NavLink>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Modal show={this.state.showModal} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Ready to Leave?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Select "Logout" below if you are ready to end your current session.
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Cancel
+            </Button>
+            <Button variant="danger" onClick={this.logout}>
+              Logout
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
 }
+
+export default withRouter(Topbar);
