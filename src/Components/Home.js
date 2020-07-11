@@ -6,8 +6,8 @@ import axios from "axios";
 import qs from "qs";
 import MetaTags from "react-meta-tags";
 import LazyLoad from "react-lazyload";
-import Header from "../src/Components/Header";
-import Footer from "../src/Components/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 import "../CSS/mystyle.css";
 import "../CSS/style.css";

@@ -9,8 +9,8 @@ import LazyLoad from "react-lazyload";
 
 import "../CSS/giohang.css";
 import ItemCart from "./ItemCart";
-import Header from "../src/Components/Header";
-import Footer from "../src/Components/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export class GioHang extends Component {
   constructor(props) {

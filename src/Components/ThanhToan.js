@@ -6,8 +6,8 @@ import qs from "qs";
 import LazyLoad from "react-lazyload";
 import Global from "./Global";
 import MetaTags from "react-meta-tags";
-import Header from "../src/Components/Header";
-import Footer from "../src/Components/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 import "../CSS/style.css";
 

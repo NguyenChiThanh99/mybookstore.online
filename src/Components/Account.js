@@ -10,8 +10,8 @@ import { Modal } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import LazyLoad from "react-lazyload";
 
-import Header from "../src/Components/Header";
-import Footer from "../src/Components/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 var timer4 = null;
 
