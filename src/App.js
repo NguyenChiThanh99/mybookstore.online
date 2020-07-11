@@ -29,7 +29,8 @@ export default class App extends Component {
         />
       </div>
     );
-
+    console.log(this.props.match);
+    
     return (
       <Router>
         <ScrollToTop>
