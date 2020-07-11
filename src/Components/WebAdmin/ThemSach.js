@@ -193,7 +193,9 @@ export default class Dashboard extends Component {
   render() {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <a
+        className="text-decoration-none"
         href="# "
+        ref={ref}
         onClick={(e) => {
           e.preventDefault();
           onClick(e);
