@@ -66,48 +66,70 @@ export class Sidebar extends Component {
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">DANH MỤC SÁCH:</h6>
-              <div className="collapse-item" onClick={() => {this.goToDanhSachSanPham('Văn học')}}>
+              <div
+                className="collapse-item"
+                onClick={() => {
+                  this.goToDanhSachSanPham("Văn học");
+                }}
+              >
                 Văn học
               </div>
-              <NavLink
+              <div
                 className="collapse-item"
-                to="/admin/category/Sách thiếu nhi"
+                onClick={() => {
+                  this.goToDanhSachSanPham("Sách thiếu nhi");
+                }}
               >
                 Sách thiếu nhi
-              </NavLink>
-              <NavLink className="collapse-item" to="/admin/category/Kinh tế">
-                Kinh tế
-              </NavLink>
-              <NavLink
+              </div>
+              <div
                 className="collapse-item"
-                to="/admin/category/Tiểu sử - hồi ký"
+                onClick={() => {
+                  this.goToDanhSachSanPham("Kinh tế");
+                }}
+              >
+                Kinh tế
+              </div>
+              <div
+                className="collapse-item"
+                onClick={() => {
+                  this.goToDanhSachSanPham("Tiểu sử - hồi ký");
+                }}
               >
                 Tiểu sử-hồi ký
-              </NavLink>
-              <NavLink
+              </div>
+              <div
                 className="collapse-item"
-                to="/admin/category/ Tâm lý - Kỹ năng sống"
+                onClick={() => {
+                  this.goToDanhSachSanPham("Tâm lý - Kỹ năng sống");
+                }}
               >
                 Tâm lý-kỹ năng sống
-              </NavLink>
-              <NavLink
+              </div>
+              <div
                 className="collapse-item"
-                to="/admin/category/Sách giáo khoa - tham khảo"
+                onClick={() => {
+                  this.goToDanhSachSanPham("Sách giáo khoa - tham khảo");
+                }}
               >
                 Sách giáo khoa-tham khảo
-              </NavLink>
-              <NavLink
+              </div>
+              <div
                 className="collapse-item"
-                to="/admin/category/Nuôi dạy con"
+                onClick={() => {
+                  this.goToDanhSachSanPham("Nuôi dạy con");
+                }}
               >
                 Nuôi dạy con
-              </NavLink>
-              <NavLink
+              </div>
+              <div
                 className="collapse-item"
-                to="/admin/category/Sách ngoại ngữ"
+                onClick={() => {
+                  this.goToDanhSachSanPham("Sách ngoại ngữ");
+                }}
               >
                 Sách ngoại ngữ
-              </NavLink>
+              </div>
             </div>
           </div>
         </li>
