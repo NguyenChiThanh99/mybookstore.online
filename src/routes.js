@@ -82,7 +82,7 @@ const routes = [
   {
     path: "/admin/dashboard",
     exact: false,
-    main: DynamicImport(() => import("./Components/WebAdmin/Menu")),
+    main: DynamicImport(() => import("./Components/WebAdmin/Dashboard")),
   },
   {
     path: "",
