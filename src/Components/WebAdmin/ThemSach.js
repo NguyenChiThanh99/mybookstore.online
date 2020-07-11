@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
+import "../../CSS/webadmin.css";
 
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
@@ -16,7 +18,7 @@ export default class Dashboard extends Component {
       tensp: "",
       tacgia: "",
       tenurl: "",
-      urlloaisp: "",
+      urlloaisp: "Vui lòng chọn...",
       nxb: "",
       namxb: "",
       kichthuoc: "",
@@ -72,7 +74,150 @@ export default class Dashboard extends Component {
     );
   };
 
+  showDropdown = () => {
+    var result = null;
+    var dataDropdown = [];
+    if (this.state.danhmuc === "Văn học") {
+      dataDropdown = [
+        "Tiểu thuyết",
+        "Truyện ngắn",
+        "Light Novel",
+        "Truyện trinh thám",
+        "Ngôn tình",
+        "Tác phẩm kinh điển",
+        "Huyền bí - Giả tưởng",
+        "Thơ ca, tục ngữ",
+        "Phóng sự, ký sự",
+        "Truyện tranh",
+        "12 cung hoàng đạo",
+        "Tuổi teen",
+        "Truyện cười",
+        "Sách ảnh",
+        "Du ký",
+        "Kinh dị",
+      ];
+    } else if (this.state.danhmuc === "Sách thiếu nhi") {
+      dataDropdown = [
+        "Truyện thiếu nhi",
+        "Manga - Comic",
+        "Kiến thức bách khoa",
+        "Kỹ năng sống cho trẻ",
+        "Từ điển thiếu nhi",
+        "Flashcard",
+        "Tạp chí thiếu nhi",
+        "Sách nói",
+        "Tô màu, luyện chữ",
+      ];
+    } else if (this.state.danhmuc === "Kinh tế") {
+      dataDropdown = [
+        "Quản trị - lãnh đạo",
+        "Marketing - bán hàng",
+        "Nhân vật - bài học kinh doanh",
+        "Phân tích kinh tế",
+        "Khởi nghiệp làm giàu",
+        "Tài chính- ngân hàng",
+        "Chứng khoáng - bất động sản",
+        "Nhân sự - việc làm",
+        "Ngoại thương",
+        "Kế toán - kiểm toán - thuế",
+      ];
+    } else if (this.state.danhmuc === "Tiểu sử - hồi ký") {
+      dataDropdown = [
+        "Câu chuyện cuộc đời",
+        "Chính trị",
+        "Lịch sử",
+        "Kinh tế",
+        "Thể thao",
+      ];
+    } else if (this.state.danhmuc === "Tâm lý - Kỹ năng sống") {
+      dataDropdown = [
+        "Kỹ năng sống",
+        "Rèn luyện nhân cách",
+        "Tâm lý",
+        "Sách cho tuổi mới lớn",
+        "Hạt giống tâm hồn",
+      ];
+    } else if (this.state.danhmuc === "Sách giáo khoa - tham khảo") {
+      dataDropdown = [
+        "Cấp 1",
+        "Cấp 2",
+        "Cấp 3",
+        "Đại học",
+        "Mẫu giáo",
+        "Luyện thi Đại học",
+        "Sách giáo viên",
+      ];
+    } else if (this.state.danhmuc === "Nuôi dạy con") {
+      dataDropdown = [
+        "Cẩm nang làm cha mẹ",
+        "Phát triển kỹ năng - trí tuệ cho trẻ",
+        "Phương pháp giáo dục trẻ các nước",
+        "Dinh dưỡng - Sức khỏe cho trẻ",
+        "Dành cho mẹ bầu",
+        "Giáo dục trẻ tuổi teen",
+      ];
+    } else if (this.state.danhmuc === "Sách ngoại ngữ") {
+      dataDropdown = [
+        "Tiếng Anh",
+        "Tiếng Nhật",
+        "Tiếng Trung",
+        "Tiếng Hàn",
+        "Tiếng Pháp",
+        "Ngoại ngữ khác",
+        "Tiếng Việt cho người nước ngoài",
+      ];
+    }
+
+    if (dataDropdown.length !== 0) {
+      result = dataDropdown.map((item, index) => {
+        return (
+          <Dropdown.Item
+            key={index}
+            className="mydropdown-item account_active_dropdown"
+            onSelect={() => {
+              this.setState({
+                urlloaisp: item,
+              });
+            }}
+          >
+            {item}
+          </Dropdown.Item>
+        );
+      });
+    } else {
+      return null;
+    }
+    return result;
+  };
+
   render() {
+    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+      <a
+        href="# "
+        ref={ref}
+        onClick={(e) => {
+          e.preventDefault();
+          onClick(e);
+        }}
+      >
+        <div className="form-control">{children}</div>
+      </a>
+    ));
+
+    const URLLoaiSachDropdown = (
+      <Dropdown>
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          {this.state.urlloaisp}
+        </Dropdown.Toggle>
+
+        {this.state.districtArr.length === 0 ? null : (
+          <Dropdown.Menu className="dropdowm-scroll">
+            {this.showDropdown()}
+          </Dropdown.Menu>
+        )}
+      </Dropdown>
+    );
+
     return (
       <div id="wrapper">
         {/* Sidebar */}
@@ -100,6 +245,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Tên Sách </label>
                       <input
+                        placeholder="VD: Nhà Lãnh Đạo Không Chức Danh"
                         type="text"
                         className="form-control"
                         id="tensp"
@@ -111,6 +257,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Tác Giả </label>
                       <input
+                        placeholder="VD: Robin Sharma"
                         type="text"
                         className="form-control"
                         id="tacgia"
@@ -122,6 +269,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Slug </label>
                       <input
+                        placeholder="VD: nha-lanh-dao-khong-chuc-danh"
                         type="text"
                         className="form-control"
                         id="tenurl"
@@ -132,18 +280,12 @@ export default class Dashboard extends Component {
                     </div>
                     <div className="form-group">
                       <label> URL Loại Sách </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="urlloaisp"
-                        name="urlloaisp"
-                        value={this.state.urlloaisp}
-                        onChange={this.onChange}
-                      />
+                      {URLLoaiSachDropdown}
                     </div>
                     <div className="form-group">
                       <label> Nhà Xuất Bản </label>
                       <input
+                        placeholder="VD: Nhà Xuất Bản Trẻ"
                         type="text"
                         className="form-control"
                         id="nxb"
@@ -155,6 +297,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Năm Xuất Bản </label>
                       <input
+                        placeholder="VD: 02-2017"
                         type="text"
                         className="form-control"
                         id="namxb"
@@ -166,6 +309,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Kích Thước </label>
                       <input
+                        placeholder="VD: 13 x 20.5 cm"
                         type="text"
                         className="form-control"
                         id="kichthuoc"
@@ -177,6 +321,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Nhà Cung Cấp </label>
                       <input
+                        placeholder="VD: NXB Trẻ"
                         type="text"
                         className="form-control"
                         id="nhacungcap"
@@ -188,6 +333,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Hình Ảnh </label>
                       <input
+                        placeholder="VD: https://salt.tikicdn.com/cache/280x280/media/catalog/product//n/h/nhalanhdao.u2769.d20170307.t090846.484463.jpg"
                         type="text"
                         className="form-control"
                         id="hinhanhsanpham"
@@ -199,6 +345,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Giá </label>
                       <input
+                        placeholder="VD: 48000"
                         type="number"
                         className="form-control"
                         id="gia"
@@ -210,6 +357,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Loại Bìa </label>
                       <input
+                        placeholder="VD: Bìa mềm"
                         type="text"
                         className="form-control"
                         id="loaibia"
@@ -221,6 +369,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Số Trang </label>
                       <input
+                        placeholder="VD: 270"
                         type="number"
                         className="form-control"
                         id="sotrang"
@@ -232,6 +381,7 @@ export default class Dashboard extends Component {
                     <div className="form-group">
                       <label> Mô tả </label>
                       <textarea
+                        placeholder="VD: Suốt hơn 15 năm, Robin Sharma đã thầm lặng chia sẻ với những công ty trong danh sách Fortune 500 và nhiều người siêu giàu khác một công thức thành công đã giúp ông trở thành một trong những nhà cố vấn lãnh đạo được theo đuổi nhiều nhất thế giới."
                         type="text"
                         className="form-control"
                         id="mota"
@@ -240,7 +390,6 @@ export default class Dashboard extends Component {
                         onChange={this.onChange}
                       />
                     </div>
-
                     <NavLink
                       to={"/admin/category/" + this.state.danhmuc}
                       className="btn btn-danger"
@@ -249,9 +398,7 @@ export default class Dashboard extends Component {
                     </NavLink>
                     &nbsp;
                     <button
-                      onClick={() => {
-                        this.update();
-                      }}
+                      onClick={this.update}
                       type="submit"
                       name="updatebtn"
                       className="btn btn-primary"

@@ -5,3 +5,8 @@
    -webkit-line-clamp: 5; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
+
+.mydropdown-item:hover {
+  background-color: rgb(255, 124, 137) !important;
+}
+
