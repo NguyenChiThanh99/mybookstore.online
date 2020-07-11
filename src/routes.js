@@ -8,6 +8,7 @@ const DanhSachSanPham = React.lazy(() =>
 );
 const HoaDon = React.lazy(() => import("./Components/HoaDon"));
 const Search = React.lazy(() => import("./Components/Search"));
+const AdminDanhSachSP = React.lazy(() => import("./Components/WebAdmin/DanhSachSanPham"));
 
 const loadingJSX = (
   <div className="bg-white d-flex justify-content-center">
@@ -85,9 +86,9 @@ const routes = [
     main: DynamicImport(() => import("./Components/WebAdmin/Dashboard")),
   },
   {
-    path: "/admin/vanhoc",
+    path: "/admin/category:danhmuc",
     exact: false,
-    main: DynamicImport(() => import("./Components/WebAdmin/VanHoc")),
+    main: ({ match }) => <AdminDanhSachSP match={match} />,
   },
   {
     path: "",

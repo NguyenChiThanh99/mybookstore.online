@@ -11,9 +11,10 @@ import Topbar from "./Topbar";
 export default class VanHoc extends Component {
   constructor(props) {
     super(props)
-  
+    var { match } = this.props;
     this.state = {
       showModal: false,
+      danhmuc: match.params.danhmuc,
     };
   }
 
@@ -49,10 +50,10 @@ export default class VanHoc extends Component {
             <div className="container-fluid">
               <Modal show={this.state.showModal} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Xác nhận xóa sách</Modal.Title>
+                  <Modal.Title>Xác nhận xóa sản phẩm</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Bạn có chắc muốn xóa sách Nhà Lãnh Đạo Không Chức Danh khỏi
+                  Bạn có chắc muốn xóa cuốn Nhà Lãnh Đạo Không Chức Danh khỏi
                   database ?
                 </Modal.Body>
                 <Modal.Footer>
@@ -69,14 +70,14 @@ export default class VanHoc extends Component {
               <div className="card shadow mb-4">
                 <div className="card-header py-3">
                   <h6 className="m-0 font-weight-bold text-danger">
-                    Sách Văn học &nbsp;
+                    Sách {this.state.danhmuc} &nbsp;
                     <button
                       type="button"
                       className="btn btn-danger"
                       data-toggle="modal"
                       data-target="#hotelhanoi"
                     >
-                      Thêm sách Văn học
+                      Thêm sách {this.state.danhmuc}
                     </button>
                   </h6>
                 </div>
@@ -109,27 +110,29 @@ export default class VanHoc extends Component {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Nhà Lãnh Đạo Không Chức Danh</td>
-                          <td>
+                          <td className="p-1">Nhà Lãnh Đạo Không Chức Danh</td>
+                          <td className="p-1">
                             <img
                               src="https://salt.tikicdn.com/cache/280x280/media/catalog/product//n/h/nhalanhdao.u2769.d20170307.t090846.484463.jpg"
                               className="img-fluid"
-                              style={{ width: "70px" }}
+                              style={{ width: "750px" }}
                               alt="Nhà Lãnh Đạo Không Chức Danh"
                             />
                           </td>
-                          <td>Robin Sharma</td>
-                          <td>nha-lanh-dao-khong-chuc-danh</td>
-                          <td>Kinh tế/Quản trị - lãnh đạo</td>
-                          <td>Nhà Xuất Bản Trẻ</td>
-                          <td>02-2017</td>
-                          <td>13 x 20.5 cm</td>
-                          <td>NXB Trẻ</td>
-                          <td>{this.currencyFormat("48000")} đ</td>
-                          <td>Bìa mềm</td>
-                          <td>270</td>
-                          <td>
-                            <p className="mota">
+                          <td className="p-1">Robin Sharma</td>
+                          <td className="p-1">nha-lanh-dao-khong-chuc-danh</td>
+                          <td className="p-1">Kinh tế/Quản trị - lãnh đạo</td>
+                          <td className="p-1">Nhà Xuất Bản Trẻ</td>
+                          <td className="p-1">02-2017</td>
+                          <td className="p-1">13 x 20.5 cm</td>
+                          <td className="p-1">NXB Trẻ</td>
+                          <td className="p-1">
+                            {this.currencyFormat("48000")} đ
+                          </td>
+                          <td className="p-1">Bìa mềm</td>
+                          <td className="p-1">270</td>
+                          <td className="p-1">
+                            <p className="mota mb-0">
                               Suốt hơn 15 năm, Robin Sharma đã thầm lặng chia sẻ
                               với những công ty trong danh sách Fortune 500 và
                               nhiều người siêu giàu khác một công thức thành
@@ -151,7 +154,7 @@ export default class VanHoc extends Component {
                               thay đổi cuộc sống và thế giới xung quanh bạn.
                             </p>
                           </td>
-                          <td>
+                          <td className="p-1">
                             <button
                               type="submit"
                               name="edithanoi_btn"
@@ -161,7 +164,7 @@ export default class VanHoc extends Component {
                               EDIT
                             </button>
                           </td>
-                          <td>
+                          <td className="p-1">
                             <button
                               onClick={this.handleShow}
                               type="submit"

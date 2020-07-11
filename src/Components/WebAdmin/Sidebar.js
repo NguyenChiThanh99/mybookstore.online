@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
+import { Nav } from "react-bootstrap";
 
 export default class Sidebar extends Component {
   render() {
@@ -61,30 +62,48 @@ export default class Sidebar extends Component {
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">DANH MỤC SÁCH:</h6>
-              <NavLink className="collapse-item" to="/admin/vanhoc">
+              <NavLink className="collapse-item" to="/admin/category/Văn học">
                 Văn học
               </NavLink>
-              <a className="collapse-item" href="hochiminh.php">
+              <NavLink
+                className="collapse-item"
+                to="/admin/category/Sách thiếu nhi"
+              >
                 Sách thiếu nhi
-              </a>
-              <a className="collapse-item" href="danang.php">
+              </NavLink>
+              <NavLink className="collapse-item" to="/admin/category/Kinh tế">
                 Kinh tế
-              </a>
-              <a className="collapse-item" href="hanoi.php">
+              </NavLink>
+              <NavLink
+                className="collapse-item"
+                to="/admin/category/Tiểu sử - hồi ký"
+              >
                 Tiểu sử-hồi ký
-              </a>
-              <a className="collapse-item" href="hochiminh.php">
+              </NavLink>
+              <NavLink
+                className="collapse-item"
+                to="/admin/category/ Tâm lý - Kỹ năng sống"
+              >
                 Tâm lý-kỹ năng sống
-              </a>
-              <a className="collapse-item" href="danang.php">
+              </NavLink>
+              <NavLink
+                className="collapse-item"
+                to="/admin/category/Sách giáo khoa - tham khảo"
+              >
                 Sách giáo khoa-tham khảo
-              </a>
-              <a className="collapse-item" href="hanoi.php">
+              </NavLink>
+              <NavLink
+                className="collapse-item"
+                to="/admin/category/Nuôi dạy con"
+              >
                 Nuôi dạy con
-              </a>
-              <a className="collapse-item" href="hochiminh.php">
+              </NavLink>
+              <NavLink
+                className="collapse-item"
+                to="/admin/category/Sách ngoại ngữ"
+              >
                 Sách ngoại ngữ
-              </a>
+              </NavLink>
             </div>
           </div>
         </li>
