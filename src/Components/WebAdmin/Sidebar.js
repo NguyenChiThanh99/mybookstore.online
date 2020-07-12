@@ -24,7 +24,7 @@ export class Sidebar extends Component {
         >
           <div className="sidebar-brand-icon rotate-n-1">
             <img
-              src={require("../../images/giaodien-04.jpg")}
+              src={require("../../images/giaodien-05.png")}
               alt="mybookstore.online Logo"
               height="50px"
             />

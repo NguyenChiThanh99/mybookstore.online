@@ -77,7 +77,7 @@ export default class DanhSachSanPham extends Component {
                       type="button"
                       className="btn btn-danger"
                     >
-                      THÊM SÁCH
+                      Thêm Sách
                     </NavLink>
                   </h6>
                 </div>
@@ -104,8 +104,8 @@ export default class DanhSachSanPham extends Component {
                           <th>Loại Bìa</th>
                           <th>Số Trang</th>
                           <th>Mô Tả</th>
-                          <th>CẬP NHẬT</th>
-                          <th>NGỪNG KINH DOANH</th>
+                          <th>Edit</th>
+                          <th>Ngừng Kinh Doanh ?</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -164,7 +164,7 @@ export default class DanhSachSanPham extends Component {
                               className="btn btn-primary"
                             >
                               {" "}
-                              CẬP NHẬT
+                              Edit
                             </button>
                           </td>
                           <td className="p-1">
@@ -175,7 +175,7 @@ export default class DanhSachSanPham extends Component {
                               className="btn btn-danger"
                             >
                               {" "}
-                              NGỪNG KINH DOANH?
+                              Yes
                             </button>
                           </td>
                         </tr>

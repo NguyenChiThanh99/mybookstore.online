@@ -397,18 +397,18 @@ export default class Dashboard extends Component {
                     </div>
                     <NavLink
                       to={"/admin/category/" + this.state.danhmuc}
-                      className="btn btn-danger"
+                      className="btn btn-danger mb-2"
                     >
-                      CANCEL
+                      Cancel
                     </NavLink>
                     &nbsp;
                     <button
                       onClick={this.update}
                       type="submit"
                       name="updatebtn"
-                      className="btn btn-primary"
+                      className="btn btn-primary mb-2"
                     >
-                      THÊM SÁCH
+                      Thêm Sách
                     </button>
                   </form>
                 </div>
