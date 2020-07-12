@@ -32,9 +32,73 @@ export default class DonHang extends Component {
       url,
     };
     axios(options).then((res) => {
-      console.log(res.data);
+      this.setState({data: res.data.dataorder})
     });
   }
+
+  show_data = () => {
+    var result = null;
+    if (this.state.data.length > 0) {
+      result = this.state.data.map((item, index) => {
+        return (
+          <tr key={index}>
+            <td className="p-1">
+              #{item._id.slice(0, 12) + " " + item._id.slice(12, 24)}
+            </td>
+            <td className="p-1">{item.email}</td>
+            <td className="p-1">{item.ten}</td>
+            <td className="p-1">{item.diachi}</td>
+            <td className="p-1">{item.dienthoai}</td>
+            <td className="p-1">{item.ghichu}</td>
+            <td className="p-1">{item.thanhtoan}</td>
+            <td className="p-1">Tiếp nhận đơn hàng</td>
+            <td className="p-1">
+              {this.currencyFormat(item.tongtien.toString())} đ
+            </td>
+            <td>
+              <NavLink
+                to={"/admin/orderdetail/" + item._id}
+                type="submit"
+                name="select-btn"
+                className="btn btn-success"
+              >
+                {" "}
+                Select
+              </NavLink>
+            </td>
+            <td>
+              <NavLink
+                to={{
+                  pathname: "/admin/editorder",
+                  state: {
+                    data: item,
+                  },
+                }}
+                type="submit"
+                name="edit"
+                className="btn btn-primary"
+              >
+                {" "}
+                Edit
+              </NavLink>
+            </td>
+            <td>
+              <button
+                onClick={this.handleShow}
+                type="submit"
+                name="deletehanoi_btn"
+                className="btn btn-danger"
+              >
+                {" "}
+                Delete
+              </button>
+            </td>
+          </tr>
+        );
+      });
+    }
+    return result;
+  };
 
   handleClose = () => {
     this.setState({ showModal: false });
@@ -51,18 +115,6 @@ export default class DonHang extends Component {
   };
 
   render() {
-    var item = {
-      _id: "5efed0b77989540017a050bc",
-      email: "17521049@gm.uit.edu.vn",
-      ten: "Nguyễn Chí Thanh",
-      diachi: "abc, Xã An Phú Tây, Huyện Bình Chánh, Hồ Chí Minh",
-      dienthoai: "1234999373",
-      ghichu: "Day la ghi chu",
-      thanhtoan: "Thanh toán tiền mặt khi nhận hàng",
-      tongtien: 791889,
-      trangthai: "Giao hàng thành công",
-    };
-
     return (
       <div id="wrapper">
         {/* Sidebar */}
@@ -126,62 +178,7 @@ export default class DonHang extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td className="p-1">
-                            #
-                            {item._id.slice(0, 12) +
-                              " " +
-                              item._id.slice(12, 24)}
-                          </td>
-                          <td className="p-1">{item.email}</td>
-                          <td className="p-1">{item.ten}</td>
-                          <td className="p-1">{item.diachi}</td>
-                          <td className="p-1">{item.dienthoai}</td>
-                          <td className="p-1">{item.ghichu}</td>
-                          <td className="p-1">{item.thanhtoan}</td>
-                          <td className="p-1">{item.trangthai}</td>
-                          <td className="p-1">
-                            {this.currencyFormat(item.tongtien.toString())} đ
-                          </td>
-                          <td>
-                            <NavLink
-                              to={"/admin/orderdetail/" + item._id}
-                              type="submit"
-                              name="select-btn"
-                              className="btn btn-success"
-                            >
-                              {" "}
-                              Select
-                            </NavLink>
-                          </td>
-                          <td>
-                            <NavLink
-                              to={{
-                                pathname: "/admin/editorder",
-                                state: {
-                                  data: item,
-                                },
-                              }}
-                              type="submit"
-                              name="edit"
-                              className="btn btn-primary"
-                            >
-                              {" "}
-                              Edit
-                            </NavLink>
-                          </td>
-                          <td>
-                            <button
-                              onClick={this.handleShow}
-                              type="submit"
-                              name="deletehanoi_btn"
-                              className="btn btn-danger"
-                            >
-                              {" "}
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
+                        {this.show_data}
                       </tbody>
                     </table>
                   </div>
