@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
-import Global from "./Global";
+import Global from "../Global";
 import axios from "axios";
 import qs from "qs";
 
