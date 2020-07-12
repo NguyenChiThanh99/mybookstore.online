@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import Global from "../Global";
+import axios from "axios";
+import qs from "qs";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -16,7 +19,28 @@ export default class DanhSachSanPham extends Component {
     this.state = {
       showModal: false,
       danhmuc: match.params.danhmuc,
+      data: [],
     };
+  }
+
+  componentDidMount = () => {
+    this.getData();
+  }
+
+  getData = () => {
+    const data = {
+      urlloaisp: this.state.danhmuc,
+    };
+    const url = Global.link + "webadmin/showalldataproduct";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      console.log(res.data);
+    });
   }
 
   handleClose = () => {

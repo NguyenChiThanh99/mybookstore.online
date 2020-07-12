@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import Global from "../Global";
+import axios from "axios";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -14,7 +16,24 @@ export default class DonHang extends Component {
     super(props);
     this.state = {
       showModal: false,
+      data: [],
     };
+  }
+
+  componentDidMount = () => {
+    this.getData();
+  }
+
+  getData = () => {
+    const url = Global.link + "webadmin/showalldataorder";
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+    };
+    axios(options).then((res) => {
+      console.log(res.data);
+    });
   }
 
   handleClose = () => {

@@ -32,9 +32,9 @@ export default class Dashboard extends Component {
     };
     axios(options).then((res) => {
       this.setState({
-        product: res.datacountproduct,
-        order: res.datacountorder,
-        user: res.datacountuser,
+        product: res.data.datacountproduct,
+        order: res.data.datacountorder,
+        user: res.data.datacountuser,
       });
     });
   }

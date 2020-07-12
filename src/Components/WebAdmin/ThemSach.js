@@ -79,7 +79,7 @@ export class ThemSach extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      if (res.data === 'error') {
+      if (res.data.data === 'error') {
         this.setState({
           err: "Dữ liệu nhập vào không đúng, vui lòng kiểm tra lại.",
         });
