@@ -133,7 +133,7 @@ export default class DanhSachSanPham extends Component {
                               src={item.hinhanhsanpham}
                               className="img-fluid"
                               style={{ width: "250px" }}
-                              alt="Nhà Lãnh Đạo Không Chức Danh"
+                              alt={item.tensp}
                             />
                           </td>
                           <td className="p-1">{item.tacgia}</td>
@@ -159,8 +159,7 @@ export default class DanhSachSanPham extends Component {
                           <td>
                             <NavLink
                               to={{
-                                pathname:
-                                  "/admin/editproduct",
+                                pathname: "/admin/editproduct",
                                 state: {
                                   data: item,
                                   danhmuc: this.state.danhmuc,

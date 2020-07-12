@@ -60,9 +60,7 @@ export default class ChiTietDonHAng extends Component {
             <div className="container-fluid">
               <Modal show={this.state.showModal} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                  <Modal.Title>
-                    Xác nhận xóa chi tiết đơn hàng đơn hàng
-                  </Modal.Title>
+                  <Modal.Title>Xác nhận xóa chi tiết đơn hàng</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   Bạn có chắc muốn xóa cuốn {item.ten} khỏi đơn hàng ?
@@ -105,7 +103,14 @@ export default class ChiTietDonHAng extends Component {
                       <tbody>
                         <tr>
                           <td className="p-1">{item.ten}</td>
-                          <td className="p-1">{item.hinhanhsanpham}</td>
+                          <td className="p-1">
+                            <img
+                              src={item.hinhanhsanpham}
+                              className="img-fluid"
+                              style={{ width: "250px" }}
+                              alt={item.tensp}
+                            />
+                          </td>
                           <td className="p-1">
                             {this.currencyFormat(item.gia.toString())} đ
                           </td>
@@ -113,9 +118,10 @@ export default class ChiTietDonHAng extends Component {
                           <td>
                             <NavLink
                               to={{
-                                pathname: "/admin/editorder",
+                                pathname: "/admin/editorderdetail",
                                 state: {
                                   data: item,
+                                  order: this.state.order,
                                 },
                               }}
                               type="submit"

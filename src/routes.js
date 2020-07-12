@@ -23,6 +23,9 @@ const AdminEditDonHang = React.lazy(() =>
 const AdminChiTietDonHang = React.lazy(() =>
   import("./Components/WebAdmin/ChiTietDonHang")
 );
+const AdminEditChiTietDonHang = React.lazy(() =>
+  import("./Components/WebAdmin/EditChiTietDonHang")
+);
 
 const loadingJSX = (
   <div className="bg-white d-flex justify-content-center">
@@ -128,6 +131,11 @@ const routes = [
     path: "/admin/orderdetail/:order",
     exact: false,
     main: ({ match }) => <AdminChiTietDonHang match={match} />,
+  },
+  {
+    path: "/admin/editorderdetail",
+    exact: false,
+    main: ({ location }) => <AdminEditChiTietDonHang location={location} />,
   },
   {
     path: "",
