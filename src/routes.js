@@ -8,6 +8,8 @@ const DanhSachSanPham = React.lazy(() =>
 );
 const HoaDon = React.lazy(() => import("./Components/HoaDon"));
 const Search = React.lazy(() => import("./Components/Search"));
+
+//-----------------------Web Admin-------------------------//
 const AdminDanhSachSP = React.lazy(() => import("./Components/WebAdmin/DanhSachSanPham"));
 const AdminThemSach = React.lazy(() =>
   import("./Components/WebAdmin/ThemSach")
@@ -17,6 +19,9 @@ const AdminEditSach = React.lazy(() =>
 );
 const AdminEditDonHang = React.lazy(() =>
   import("./Components/WebAdmin/EditDonHang")
+);
+const AdminChiTietDonHang = React.lazy(() =>
+  import("./Components/WebAdmin/ChiTietDonHang")
 );
 
 const loadingJSX = (
@@ -118,6 +123,11 @@ const routes = [
     path: "/admin/editorder",
     exact: false,
     main: ({ location }) => <AdminEditDonHang location={location} />,
+  },
+  {
+    path: "/admin/orderdetail/:order",
+    exact: false,
+    main: ({ match }) => <AdminChiTietDonHang match={match} />,
   },
   {
     path: "",

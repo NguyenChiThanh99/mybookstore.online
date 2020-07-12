@@ -9,11 +9,13 @@ import "../../CSS/webadmin.css";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-export default class DonHang extends Component {
+export default class ChiTietDonHAng extends Component {
   constructor(props) {
-    super(props);
+    super(props)
+    var { match } = this.props;
     this.state = {
       showModal: false,
+      order: match.params.order,
     };
   }
 
@@ -25,7 +27,7 @@ export default class DonHang extends Component {
     this.setState({ showModal: true });
   };
 
-  delete = () => {};
+  delete = () => {}
 
   currencyFormat = (num) => {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
@@ -33,15 +35,12 @@ export default class DonHang extends Component {
 
   render() {
     var item = {
-      _id: "5efed0b77989540017a050bc",
-      email: "17521049@gm.uit.edu.vn",
-      ten: "Nguyễn Chí Thanh",
-      diachi: "abc, Xã An Phú Tây, Huyện Bình Chánh, Hồ Chí Minh",
-      dienthoai: "1234999373",
-      ghichu: "Day la ghi chu",
-      thanhtoan: "Thanh toán tiền mặt khi nhận hàng",
-      tongtien: 791889,
-      trangthai: "Giao hàng thành công",
+      _id: 0,
+      ten: "Đừng Chết Ở Ả Rập Xê Út",
+      hinhanhsanpham:
+        "https://salt.tikicdn.com/cache/280x280/ts/product/49/3b/7b/53b204d12d9579fa628aed08d10033de.jpg",
+      gia: 99000,
+      soluongsanpham: 2,
     };
 
     return (
@@ -61,11 +60,12 @@ export default class DonHang extends Component {
             <div className="container-fluid">
               <Modal show={this.state.showModal} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Xác nhận xóa đơn hàng</Modal.Title>
+                  <Modal.Title>
+                    Xác nhận xóa chi tiết đơn hàng đơn hàng
+                  </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Bạn có chắc muốn xóa đơn hàng #idididididididid khỏi database
-                  ?
+                  Bạn có chắc muốn xóa cuốn {item.ten} khỏi đơn hàng ?
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.handleClose}>
@@ -80,7 +80,9 @@ export default class DonHang extends Component {
               {/* DataTales Example */}
               <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                  <h6 className="m-0 font-weight-bold text-danger">Đơn Hàng</h6>
+                  <h6 className="m-0 font-weight-bold text-danger">
+                    Chi Tiết Đơn Hàng #{this.state.order}
+                  </h6>
                 </div>
                 <div className="card-body">
                   <div className="table-responsive">
@@ -92,49 +94,22 @@ export default class DonHang extends Component {
                     >
                       <thead>
                         <tr>
-                          <th>ID</th>
-                          <th>Email</th>
-                          <th>Tên Khách Hàng</th>
-                          <th>Địa Chỉ</th>
-                          <th>Số Điện Thoại</th>
-                          <th>Ghi Chú</th>
-                          <th>Hình Thức Thanh Toán</th>
-                          <th>Trạng Thái</th>
-                          <th>Tổng Tiền</th>
-                          <th>Chi Tiết Đơn Hàng</th>
+                          <th>Tên Sách</th>
+                          <th>Hình Ảnh</th>
+                          <th>Giá</th>
+                          <th>Số Lượng</th>
                           <th>Edit</th>
                           <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="p-1">
-                            #
-                            {item._id.slice(0, 12) +
-                              " " +
-                              item._id.slice(12, 24)}
-                          </td>
-                          <td className="p-1">{item.email}</td>
                           <td className="p-1">{item.ten}</td>
-                          <td className="p-1">{item.diachi}</td>
-                          <td className="p-1">{item.dienthoai}</td>
-                          <td className="p-1">{item.ghichu}</td>
-                          <td className="p-1">{item.thanhtoan}</td>
-                          <td className="p-1">{item.trangthai}</td>
+                          <td className="p-1">{item.hinhanhsanpham}</td>
                           <td className="p-1">
-                            {this.currencyFormat(item.tongtien.toString())} đ
+                            {this.currencyFormat(item.gia.toString())} đ
                           </td>
-                          <td>
-                            <NavLink
-                              to={"/admin/orderdetail/" + item._id}
-                              type="submit"
-                              name="select-btn"
-                              className="btn btn-success"
-                            >
-                              {" "}
-                              Select
-                            </NavLink>
-                          </td>
+                          <td className="p-1">{item.soluongsanpham}</td>
                           <td>
                             <NavLink
                               to={{
