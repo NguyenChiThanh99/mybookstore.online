@@ -30,7 +30,7 @@ export class Sidebar extends Component {
             />
           </div>
           <div className="sidebar-brand-text mr-3 ml-1" img="img/icon_app.png">
-            mybookstore online
+            mybookstore .online
           </div>
         </NavLink>
         {/* Divider */}

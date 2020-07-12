@@ -9,7 +9,7 @@ import "../../CSS/webadmin.css";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-export default class Dashboard extends Component {
+export default class EditSach extends Component {
   constructor(props) {
     super(props);
     var { match } = this.props;
@@ -40,7 +40,7 @@ export default class Dashboard extends Component {
     });
   };
 
-  addProduct = (event) => {
+  update = (event) => {
     event.preventDefault();
     const {
       tensp,
@@ -216,6 +216,7 @@ export default class Dashboard extends Component {
         </Dropdown.Menu>
       </Dropdown>
     );
+    console.log(this.props.location.state.data);
 
     return (
       <div id="wrapper">
@@ -236,7 +237,7 @@ export default class Dashboard extends Component {
               <div className="card shadow mb-4">
                 <div className="card-header py-3">
                   <h6 className="m-0 font-weight-bold text-danger">
-                    Thêm sách {this.state.danhmuc}
+                    Chỉnh Sửa Thông Tin Sách
                   </h6>
                 </div>
                 <div className="card-body">
@@ -403,12 +404,12 @@ export default class Dashboard extends Component {
                     </NavLink>
                     &nbsp;
                     <button
-                      onClick={this.addProduct}
+                      onClick={this.update}
                       type="submit"
                       name="updatebtn"
                       className="btn btn-primary mb-2"
                     >
-                      Thêm Sách
+                      Cập Nhật
                     </button>
                   </form>
                 </div>

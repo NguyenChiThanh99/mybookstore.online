@@ -12,6 +12,9 @@ const AdminDanhSachSP = React.lazy(() => import("./Components/WebAdmin/DanhSachS
 const AdminThemSach = React.lazy(() =>
   import("./Components/WebAdmin/ThemSach")
 );
+const AdminEditSach = React.lazy(() =>
+  import("./Components/WebAdmin/EditSach")
+);
 
 const loadingJSX = (
   <div className="bg-white d-flex justify-content-center">
@@ -97,6 +100,11 @@ const routes = [
     path: "/admin/addproduct/:danhmuc",
     exact: false,
     main: ({ match }) => <AdminThemSach match={match} />,
+  },
+  {
+    path: "/admin/editproduct/:danhmuc",
+    exact: false,
+    main: ({ match }) => <AdminEditSach match={match} />,
   },
   {
     path: "/admin/order",
