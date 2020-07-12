@@ -57,7 +57,7 @@ export class Sidebar extends Component {
             aria-expanded="true"
             aria-controls="collapseTwo"
           >
-            <i className="fal fa-books" />
+            <i className="fas fa-book-open" />
             &nbsp;&nbsp;
             <span>Đầu sách</span>
           </a>
