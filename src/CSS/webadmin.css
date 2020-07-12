@@ -11,7 +11,7 @@
 }
 
 .dropdowm-scroll-admin {
-  max-height: 600px;
-  width: 600px;
+  max-height: 400px;
+  width: 300px;
   overflow: auto;
 }

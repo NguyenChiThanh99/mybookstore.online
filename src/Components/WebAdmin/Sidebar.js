@@ -22,14 +22,14 @@ export class Sidebar extends Component {
           className="sidebar-brand d-flex align-items-center justify-content-center"
           to="/admin/dashboard"
         >
-          <div className="sidebar-brand-icon rotate-n-1">
+          <div className="sidebar-brand-icon rotate-n-1 ml-3 mr-1">
             <img
               src={require("../../images/giaodien-05.png")}
               alt="mybookstore.online Logo"
               height="50px"
             />
           </div>
-          <div className="sidebar-brand-text mx-3" img="img/icon_app.png">
+          <div className="sidebar-brand-text mr-3 ml-1" img="img/icon_app.png">
             mybookstore online
           </div>
         </NavLink>

@@ -105,7 +105,7 @@ export default class DanhSachSanPham extends Component {
                           <th>Số Trang</th>
                           <th>Mô Tả</th>
                           <th>Edit</th>
-                          <th>Ngừng Kinh Doanh ?</th>
+                          <th>Ngừng Kinh Doanh?</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -157,7 +157,7 @@ export default class DanhSachSanPham extends Component {
                               thay đổi cuộc sống và thế giới xung quanh bạn.
                             </p>
                           </td>
-                          <td className="p-1">
+                          <td>
                             <button
                               type="submit"
                               name="edithanoi_btn"
@@ -167,7 +167,7 @@ export default class DanhSachSanPham extends Component {
                               Edit
                             </button>
                           </td>
-                          <td className="p-1">
+                          <td>
                             <button
                               onClick={this.handleShow}
                               type="submit"
