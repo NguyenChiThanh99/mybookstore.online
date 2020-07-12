@@ -107,7 +107,7 @@ export default class ChiTietDonHAng extends Component {
                             <img
                               src={item.hinhanhsanpham}
                               className="img-fluid"
-                              style={{ width: "250px" }}
+                              style={{ width: "150px" }}
                               alt={item.tensp}
                             />
                           </td>
