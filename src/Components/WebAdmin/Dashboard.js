@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Global from "./Global";
+import Global from "../Global";
 import axios from "axios";
 
 import "../../CSS/sb-admin-2.min.css";
