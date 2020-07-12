@@ -24,7 +24,7 @@ export default class Dashboard extends Component {
   }
 
   getData = () => {
-    const url = Global.link + "webadmin/showalldata";
+    const url = Global.link + "webadmin/showalldatacount";
     const options = {
       method: "GET",
       headers: { "content-type": "application/x-www-form-urlencoded" },
@@ -32,9 +32,9 @@ export default class Dashboard extends Component {
     };
     axios(options).then((res) => {
       this.setState({
-        product: res.dataproduct,
-        order: res.dataorder,
-        user: res.datauser,
+        product: res.datacountproduct,
+        order: res.datacountorder,
+        user: res.datacountuser,
       });
     });
   }

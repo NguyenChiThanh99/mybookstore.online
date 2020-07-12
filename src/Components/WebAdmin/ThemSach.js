@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import Global from "../Global";
 import axios from "axios";
@@ -12,7 +12,9 @@ import "../../CSS/webadmin.css";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-export default class Dashboard extends Component {
+var timer7 = null;
+
+export class ThemSach extends Component {
   constructor(props) {
     super(props);
     var { match } = this.props;
@@ -31,6 +33,7 @@ export default class Dashboard extends Component {
       loaibia: "",
       sotrang: "",
       mota: "",
+      err: '',
     };
   }
 
@@ -42,6 +45,10 @@ export default class Dashboard extends Component {
       [name]: value,
     });
   };
+
+  componentWillUnmount() {
+    clearTimeout(timer7);
+  }
 
   addProduct = (event) => {
     event.preventDefault();
@@ -72,7 +79,14 @@ export default class Dashboard extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      console.log(res.data);
+      if (res.data === 'error') {
+        this.setState({
+          err: "Dữ liệu nhập vào không đúng, vui lòng kiểm tra lại.",
+        });
+        timer7 = setTimeout(() => this.setState({ err: "" }), 4000);
+      } else {
+        this.props.history.push("/admin/category/" + this.state.danhmuc);
+      }
     });
   };
 
@@ -193,6 +207,12 @@ export default class Dashboard extends Component {
   };
 
   render() {
+    const errJSX = (
+      <div className="alert alert-danger alert-dismissible fade show mb-4">
+        {this.state.err}
+      </div>
+    );
+
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <a
         className="text-decoration-none"
@@ -397,6 +417,7 @@ export default class Dashboard extends Component {
                         </div>
                       </div>
                     </div>
+                    {this.state.err === "" ? null : errJSX}
                     <NavLink
                       to={"/admin/category/" + this.state.danhmuc}
                       className="btn btn-danger mb-2"
@@ -424,3 +445,5 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+export default withRouter(ThemSach);
