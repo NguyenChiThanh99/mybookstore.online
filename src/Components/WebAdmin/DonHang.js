@@ -32,6 +32,18 @@ export default class DonHang extends Component {
   };
 
   render() {
+    var item = {
+      _id: "5efed0b77989540017a050bc",
+      email: "17521049@gm.uit.edu.vn",
+      ten: "Nguyễn Chí Thanh",
+      diachi: "abc, Xã An Phú Tây, Huyện Bình Chánh, Hồ Chí Minh",
+      dienthoai: "1234999373",
+      ghichu: "Day la ghi chu",
+      thanhtoan: "Thanh toán tiền mặt khi nhận hàng",
+      tongtien: 791889,
+      trangthai: "Giao hàng thành công",
+    };
+
     return (
       <div id="wrapper">
         {/* Sidebar */}
@@ -87,49 +99,53 @@ export default class DonHang extends Component {
                           <th>Số Điện Thoại</th>
                           <th>Ghi Chú</th>
                           <th>Hình Thức Thanh Toán</th>
+                          <th>Trạng Thái</th>
                           <th>Tổng Tiền</th>
                           <th>Chi Tiết Đơn Hàng</th>
-                          <th>EDIT</th>
-                          <th>DELETE</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="p-1">5efed0b77989540017a050bc</td>
-                          <td className="p-1">17521049@gm.uit.edu.vn</td>
-                          <td className="p-1">Nguyễn Chí Thanh</td>
+                          <td className="p-1">{item._id}</td>
+                          <td className="p-1">{item.email}</td>
+                          <td className="p-1">{item.ten}</td>
+                          <td className="p-1">{item.diachi}</td>
+                          <td className="p-1">{item.dienthoai}</td>
+                          <td className="p-1">{item.ghichu}</td>
+                          <td className="p-1">{item.thanhtoan}</td>
+                          <td className="p-1">{item.trangthai}</td>
                           <td className="p-1">
-                            abc, Xã An Phú Tây, Huyện Bình Chánh, Hồ Chí Minh
+                            {this.currencyFormat(item.tongtien.toString())} đ
                           </td>
-                          <td className="p-1">1234999373</td>
-                          <td className="p-1">Đây là ghi chú</td>
-                          <td className="p-1">
-                            Thanh toán tiền mặt khi nhận hàng
-                          </td>
-                          <td className="p-1">
-                            {this.currencyFormat("791889")} đ
-                          </td>
-                          <td className="p-1">
+                          <td>
                             <button
                               type="submit"
                               name="edithanoi_btn"
                               className="btn btn-success"
                             >
                               {" "}
-                              SELECT
+                              Select
                             </button>
                           </td>
-                          <td className="p-1">
-                            <button
+                          <td>
+                            <NavLink
+                              to={{
+                                pathname: "/admin/editorder",
+                                state: {
+                                  data: item,
+                                },
+                              }}
                               type="submit"
-                              name="edithanoi_btn"
+                              name="edit"
                               className="btn btn-primary"
                             >
                               {" "}
-                              EDIT
-                            </button>
+                              Edit
+                            </NavLink>
                           </td>
-                          <td className="p-1">
+                          <td>
                             <button
                               onClick={this.handleShow}
                               type="submit"
@@ -137,7 +153,7 @@ export default class DonHang extends Component {
                               className="btn btn-danger"
                             >
                               {" "}
-                              DELETE
+                              Delete
                             </button>
                           </td>
                         </tr>

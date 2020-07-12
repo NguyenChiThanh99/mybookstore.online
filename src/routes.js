@@ -15,6 +15,9 @@ const AdminThemSach = React.lazy(() =>
 const AdminEditSach = React.lazy(() =>
   import("./Components/WebAdmin/EditSach")
 );
+const AdminEditDonHang = React.lazy(() =>
+  import("./Components/WebAdmin/EditDonHang")
+);
 
 const loadingJSX = (
   <div className="bg-white d-flex justify-content-center">
@@ -104,14 +107,17 @@ const routes = [
   {
     path: "/admin/editproduct",
     exact: false,
-    main: ({ location }) => (
-      <AdminEditSach location={location} />
-    ),
+    main: ({ location }) => <AdminEditSach location={location} />,
   },
   {
     path: "/admin/order",
     exact: false,
     main: DynamicImport(() => import("./Components/WebAdmin/DonHang")),
+  },
+  {
+    path: "/admin/editorder",
+    exact: false,
+    main: ({ location }) => <AdminEditDonHang location={location} />,
   },
   {
     path: "",
