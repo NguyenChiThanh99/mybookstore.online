@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Global from "./Global";
+import axios from "axios";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -7,6 +9,36 @@ import Sidebar from './Sidebar'
 import Topbar from './Topbar'
 
 export default class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       product: 0,
+       order: 0,
+       user: 0,
+    }
+  }
+
+  componentDidMount = () => {
+    this.getData();
+  }
+
+  getData = () => {
+    const url = Global.link + "webadmin/showalldata";
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+    };
+    axios(options).then((res) => {
+      this.setState({
+        product: res.dataproduct,
+        order: res.dataorder,
+        user: res.datauser,
+      });
+    });
+  }
+  
   render() {
     return (
       <div id="wrapper">
@@ -39,7 +71,7 @@ export default class Dashboard extends Component {
                             TỔNG SỐ ĐẦU SÁCH
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            <h1>180</h1>
+                            <h1>{this.state.product}</h1>
                           </div>
                         </div>
                         <div className="col-auto">
@@ -60,7 +92,7 @@ export default class Dashboard extends Component {
                             TỔNG SỐ ĐƠN HÀNG
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            <h1>120</h1>
+                            <h1>{this.state.order}</h1>
                           </div>
                         </div>
                         <div className="col-auto">
@@ -81,7 +113,7 @@ export default class Dashboard extends Component {
                             TỔNG SỐ TÀI KHOẢN
                           </div>
                           <div className="h5 mb-0 font-weight-bold text-gray-800">
-                            <h1>30</h1>
+                            <h1>{this.state.user}</h1>
                           </div>
                         </div>
                         <div className="col-auto">
