@@ -216,7 +216,7 @@ export default class EditSach extends Component {
         </Dropdown.Menu>
       </Dropdown>
     );
-    console.log(this.props.location.state.data);
+    console.log(this.props.location);
 
     return (
       <div id="wrapper">

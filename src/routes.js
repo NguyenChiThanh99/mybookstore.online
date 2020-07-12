@@ -104,7 +104,9 @@ const routes = [
   {
     path: "/admin/editproduct/:danhmuc",
     exact: false,
-    main: ({ match }) => <AdminEditSach match={match} />,
+    main: ({ match, location }) => (
+      <AdminEditSach match={match} location={location} />
+    ),
   },
   {
     path: "/admin/order",
