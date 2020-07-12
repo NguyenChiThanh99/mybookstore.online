@@ -27,7 +27,8 @@ export class Login extends Component {
     });
   };
 
-  login = () => {
+  login = (event) => {
+    event.preventDefault();
     const {username, password} = this.state;
     if (username === 'admin' && password === 'admin') {
       this.props.history.push("/admin/dashboard");
@@ -58,9 +59,9 @@ export class Login extends Component {
                   <div className="col-lg-12">
                     <div className="p-5">
                       <div className="text-center">
-                        <h1 className="h4 text-gray-900">Login Here!</h1>
+                        <h1 className="h4 text-gray-900 mb-4">Login Here!</h1>
                       </div>
-                      {this.state.err === '' ? null : errJSX}
+                      {this.state.err === "" ? null : errJSX}
                       <form className="user">
                         <div className="form-group">
                           <input
@@ -92,8 +93,8 @@ export class Login extends Component {
                           Login
                         </button>
                         <hr />
-                        <NavLink to='/'>
-                          <b style={{ color: "#eb2b3f" }}>Về Trang Chủ</b>
+                        <NavLink to="/" className="link">
+                          <b>Về Trang Chủ</b>
                         </NavLink>
                       </form>
                     </div>
