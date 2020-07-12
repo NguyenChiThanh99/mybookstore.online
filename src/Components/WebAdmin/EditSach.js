@@ -12,22 +12,22 @@ import Topbar from "./Topbar";
 export default class EditSach extends Component {
   constructor(props) {
     super(props);
-    var { match } = this.props;
+    var { match, location } = this.props;
     this.state = {
       danhmuc: match.params.danhmuc,
-      tensp: "",
-      tacgia: "",
-      tenurl: "",
-      urlloaisp: "Vui lòng chọn...",
-      nxb: "",
-      namxb: "",
-      kichthuoc: "",
-      nhacungcap: "",
-      hinhanhsanpham: "",
-      gia: "",
-      loaibia: "",
-      sotrang: "",
-      mota: "",
+      tensp: location.state.data.tensp,
+      tacgia: location.state.data.tacgia,
+      tenurl: location.state.data.tenurl,
+      urlloaisp: location.state.data.urlloaisp,
+      nxb: location.state.data.nxb,
+      namxb: location.state.data.namxb,
+      kichthuoc: location.state.data.kichthuoc,
+      nhacungcap: location.state.data.nhacungcap,
+      hinhanhsanpham: location.state.data.hinhanhsanpham,
+      gia: location.state.data.gia,
+      loaibia: location.state.data.loaibia,
+      sotrang: location.state.data.sotrang,
+      mota: location.state.data.mota,
     };
   }
 
@@ -216,7 +216,6 @@ export default class EditSach extends Component {
         </Dropdown.Menu>
       </Dropdown>
     );
-    console.log(this.props.location);
 
     return (
       <div id="wrapper">
