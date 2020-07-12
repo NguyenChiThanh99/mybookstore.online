@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
+import Global from "./Global";
+import axios from "axios";
+import qs from "qs";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -57,21 +60,20 @@ export default class Dashboard extends Component {
       sotrang,
       mota,
     } = this.state;
-    console.log(
-      tensp,
-      tacgia,
-      tenurl,
-      urlloaisp,
-      nxb,
-      namxb,
-      kichthuoc,
-      nhacungcap,
-      hinhanhsanpham,
-      gia,
-      loaibia,
-      sotrang,
-      mota
-    );
+    
+    const data = {
+      tensp: tensp, tacgia: tacgia, tenurl: tenurl, nxb: nxb, namxb: namxb, kichthuoc: kichthuoc, nhacungcap: nhacungcap, hinhanhsanpham: hinhanhsanpham, gia: gia, loaibia: loaibia, sotrang: sotrang, mota: mota, urlloaisp: urlloaisp
+    };
+    const url = Global.link + "webadmin/adddata";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      console.log(res.data);
+    });
   };
 
   showDropdown = () => {

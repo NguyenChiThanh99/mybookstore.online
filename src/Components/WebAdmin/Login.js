@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { withRouter, NavLink } from "react-router-dom";
 
+import "../../CSS/webadmin.css";
+
 var timer6 = null;
 
 export class Login extends Component {
