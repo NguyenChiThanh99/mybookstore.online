@@ -102,10 +102,10 @@ const routes = [
     main: ({ match }) => <AdminThemSach match={match} />,
   },
   {
-    path: "/admin/editproduct/:danhmuc",
+    path: "/admin/editproduct",
     exact: false,
-    main: ({ match, location }) => (
-      <AdminEditSach match={match} location={location} />
+    main: ({ location }) => (
+      <AdminEditSach location={location} />
     ),
   },
   {

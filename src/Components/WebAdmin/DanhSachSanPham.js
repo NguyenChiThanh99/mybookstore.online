@@ -160,8 +160,11 @@ export default class DanhSachSanPham extends Component {
                             <NavLink
                               to={{
                                 pathname:
-                                  "/admin/editproduct/" + this.state.danhmuc,
-                                state: { data: item },
+                                  "/admin/editproduct",
+                                state: {
+                                  data: item,
+                                  danhmuc: this.state.danhmuc,
+                                },
                               }}
                               type="submit"
                               name="edithanoi_btn"

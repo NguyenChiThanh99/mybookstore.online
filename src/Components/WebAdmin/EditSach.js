@@ -12,9 +12,9 @@ import Topbar from "./Topbar";
 export default class EditSach extends Component {
   constructor(props) {
     super(props);
-    var { match, location } = this.props;
+    var { location } = this.props;
     this.state = {
-      danhmuc: match.params.danhmuc,
+      danhmuc: location.state.danhmuc,
       tensp: location.state.data.tensp,
       tacgia: location.state.data.tacgia,
       tenurl: location.state.data.tenurl,
