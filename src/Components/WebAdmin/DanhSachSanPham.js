@@ -200,7 +200,7 @@ export default class DanhSachSanPham extends Component {
                           <th>Ngừng Kinh Doanh?</th>
                         </tr>
                       </thead>
-                      <tbody>{this.show_data}</tbody>
+                      <tbody>{this.show_data()}</tbody>
                     </table>
                   </div>
                 </div>
