@@ -47,6 +47,7 @@ export default class DanhSachSanPham extends Component {
     var result = null;
     if (this.state.data.length > 0) {
       result = this.state.data.map((item, index) => {
+        console.log(item);
         return (
           <tr key={index}>
             <td className="p-1">{item.tensp}</td>
