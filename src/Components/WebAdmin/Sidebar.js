@@ -26,8 +26,11 @@ export class Sidebar extends Component {
             <img
               src={require("../../images/giaodien-04.jpg")}
               alt="mybookstore.online Logo"
-              height="30px"
+              height="50px"
             />
+          </div>
+          <div className="sidebar-brand-text mx-3" img="img/icon_app.png">
+            mybookstore online
           </div>
         </NavLink>
         {/* Divider */}
@@ -54,7 +57,7 @@ export class Sidebar extends Component {
             aria-expanded="true"
             aria-controls="collapseTwo"
           >
-            <i className="fas fa-book" />
+            <i className="fal fa-books" />
             &nbsp;&nbsp;
             <span>Đầu sách</span>
           </a>

@@ -51,18 +51,18 @@ export default class DanhSachSanPham extends Component {
             <div className="container-fluid">
               <Modal show={this.state.showModal} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Xác nhận xóa sản phẩm</Modal.Title>
+                  <Modal.Title>Xác nhận ngừng kinh doanh sản phẩm</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Bạn có chắc muốn xóa cuốn Nhà Lãnh Đạo Không Chức Danh khỏi
-                  database ?
+                  Bạn có chắc muốn ngừng kinh doanh cuốn Nhà Lãnh Đạo Không Chức
+                  Danh ?
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.handleClose}>
                     Cancel
                   </Button>
                   <Button variant="danger" onClick={this.delete}>
-                    Xóa
+                    Ngừng Kinh Doanh
                   </Button>
                 </Modal.Footer>
               </Modal>
@@ -77,7 +77,7 @@ export default class DanhSachSanPham extends Component {
                       type="button"
                       className="btn btn-danger"
                     >
-                      Thêm sách
+                      THÊM SÁCH
                     </NavLink>
                   </h6>
                 </div>
@@ -104,8 +104,8 @@ export default class DanhSachSanPham extends Component {
                           <th>Loại Bìa</th>
                           <th>Số Trang</th>
                           <th>Mô Tả</th>
-                          <th>EDIT</th>
-                          <th>DELETE</th>
+                          <th>CẬP NHẬT</th>
+                          <th>NGỪNG KINH DOANH</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -164,7 +164,7 @@ export default class DanhSachSanPham extends Component {
                               className="btn btn-primary"
                             >
                               {" "}
-                              EDIT
+                              CẬP NHẬT
                             </button>
                           </td>
                           <td className="p-1">
@@ -175,7 +175,7 @@ export default class DanhSachSanPham extends Component {
                               className="btn btn-danger"
                             >
                               {" "}
-                              DELETE
+                              NGỪNG KINH DOANH?
                             </button>
                           </td>
                         </tr>

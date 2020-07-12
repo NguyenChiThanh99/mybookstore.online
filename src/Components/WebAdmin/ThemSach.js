@@ -79,92 +79,92 @@ export default class Dashboard extends Component {
     var dataDropdown = [];
     if (this.state.danhmuc === "Văn học") {
       dataDropdown = [
-        "Tiểu thuyết",
-        "Truyện ngắn",
-        "Light Novel",
-        "Truyện trinh thám",
-        "Ngôn tình",
-        "Tác phẩm kinh điển",
-        "Huyền bí - Giả tưởng",
-        "Thơ ca, tục ngữ",
-        "Phóng sự, ký sự",
-        "Truyện tranh",
-        "12 cung hoàng đạo",
-        "Tuổi teen",
-        "Truyện cười",
-        "Sách ảnh",
-        "Du ký",
-        "Kinh dị",
+        "Văn học/Tiểu thuyết",
+        "Văn học/Truyện ngắn",
+        "Văn học/Light Novel",
+        "Văn học/Truyện trinh thám",
+        "Văn học/Ngôn tình",
+        "Văn học/Tác phẩm kinh điển",
+        "Văn học/Huyền bí - Giả tưởng",
+        "Văn học/Thơ ca, tục ngữ",
+        "Văn học/Phóng sự, ký sự",
+        "Văn học/Truyện tranh",
+        "Văn học/12 cung hoàng đạo",
+        "Văn học/Tuổi teen",
+        "Văn học/Truyện cười",
+        "Văn học/Sách ảnh",
+        "Văn học/Du ký",
+        "Văn học/Kinh dị",
       ];
     } else if (this.state.danhmuc === "Sách thiếu nhi") {
       dataDropdown = [
-        "Truyện thiếu nhi",
-        "Manga - Comic",
-        "Kiến thức bách khoa",
-        "Kỹ năng sống cho trẻ",
-        "Từ điển thiếu nhi",
-        "Flashcard",
-        "Tạp chí thiếu nhi",
-        "Sách nói",
-        "Tô màu, luyện chữ",
+        "Sách thiếu nhi/Truyện thiếu nhi",
+        "Sách thiếu nhi/Manga - Comic",
+        "Sách thiếu nhi/Kiến thức bách khoa",
+        "Sách thiếu nhi/Kỹ năng sống cho trẻ",
+        "Sách thiếu nhi/Từ điển thiếu nhi",
+        "Sách thiếu nhi/Flashcard",
+        "Sách thiếu nhi/Tạp chí thiếu nhi",
+        "Sách thiếu nhi/Sách nói",
+        "Sách thiếu nhi/Tô màu, luyện chữ",
       ];
     } else if (this.state.danhmuc === "Kinh tế") {
       dataDropdown = [
-        "Quản trị - lãnh đạo",
-        "Marketing - bán hàng",
-        "Nhân vật - bài học kinh doanh",
-        "Phân tích kinh tế",
-        "Khởi nghiệp làm giàu",
-        "Tài chính- ngân hàng",
-        "Chứng khoáng - bất động sản",
-        "Nhân sự - việc làm",
-        "Ngoại thương",
-        "Kế toán - kiểm toán - thuế",
+        "Kinh tế/Quản trị - lãnh đạo",
+        "Kinh tế/Marketing - bán hàng",
+        "Kinh tế/Nhân vật - bài học kinh doanh",
+        "Kinh tế/Phân tích kinh tế",
+        "Kinh tế/Khởi nghiệp làm giàu",
+        "Kinh tế/Tài chính- ngân hàng",
+        "Kinh tế/Chứng khoáng - bất động sản",
+        "Kinh tế/Nhân sự - việc làm",
+        "Kinh tế/Ngoại thương",
+        "Kinh tế/Kế toán - kiểm toán - thuế",
       ];
     } else if (this.state.danhmuc === "Tiểu sử - hồi ký") {
       dataDropdown = [
-        "Câu chuyện cuộc đời",
-        "Chính trị",
-        "Lịch sử",
-        "Kinh tế",
-        "Thể thao",
+        "Tiểu sử - hồi ký/Câu chuyện cuộc đời",
+        "Tiểu sử - hồi ký/Chính trị",
+        "Tiểu sử - hồi ký/Lịch sử",
+        "Tiểu sử - hồi ký/Kinh tế",
+        "Tiểu sử - hồi ký/Thể thao",
       ];
     } else if (this.state.danhmuc === "Tâm lý - Kỹ năng sống") {
       dataDropdown = [
-        "Kỹ năng sống",
-        "Rèn luyện nhân cách",
-        "Tâm lý",
-        "Sách cho tuổi mới lớn",
-        "Hạt giống tâm hồn",
+        "Tâm lý - Kỹ năng sống/Kỹ năng sống",
+        "Tâm lý - Kỹ năng sống/Rèn luyện nhân cách",
+        "Tâm lý - Kỹ năng sống/Tâm lý",
+        "Tâm lý - Kỹ năng sống/Sách cho tuổi mới lớn",
+        "Tâm lý - Kỹ năng sống/Hạt giống tâm hồn",
       ];
     } else if (this.state.danhmuc === "Sách giáo khoa - tham khảo") {
       dataDropdown = [
-        "Cấp 1",
-        "Cấp 2",
-        "Cấp 3",
-        "Đại học",
-        "Mẫu giáo",
-        "Luyện thi Đại học",
-        "Sách giáo viên",
+        "Sách giáo khoa - tham khảo/Cấp 1",
+        "Sách giáo khoa - tham khảo/Cấp 2",
+        "Sách giáo khoa - tham khảo/Cấp 3",
+        "Sách giáo khoa - tham khảo/Đại học",
+        "Sách giáo khoa - tham khảo/Mẫu giáo",
+        "Sách giáo khoa - tham khảo/Luyện thi Đại học",
+        "Sách giáo khoa - tham khảo/Sách giáo viên",
       ];
     } else if (this.state.danhmuc === "Nuôi dạy con") {
       dataDropdown = [
-        "Cẩm nang làm cha mẹ",
-        "Phát triển kỹ năng - trí tuệ cho trẻ",
-        "Phương pháp giáo dục trẻ các nước",
-        "Dinh dưỡng - Sức khỏe cho trẻ",
-        "Dành cho mẹ bầu",
-        "Giáo dục trẻ tuổi teen",
+        "Nuôi dạy con/Cẩm nang làm cha mẹ",
+        "Nuôi dạy con/Phát triển kỹ năng - trí tuệ cho trẻ",
+        "Nuôi dạy con/Phương pháp giáo dục trẻ các nước",
+        "Nuôi dạy con/Dinh dưỡng - Sức khỏe cho trẻ",
+        "Nuôi dạy con/Dành cho mẹ bầu",
+        "Nuôi dạy con/Giáo dục trẻ tuổi teen",
       ];
     } else if (this.state.danhmuc === "Sách ngoại ngữ") {
       dataDropdown = [
-        "Tiếng Anh",
-        "Tiếng Nhật",
-        "Tiếng Trung",
-        "Tiếng Hàn",
-        "Tiếng Pháp",
-        "Ngoại ngữ khác",
-        "Tiếng Việt cho người nước ngoài",
+        "Sách ngoại ngữ/Tiếng Anh",
+        "Sách ngoại ngữ/Tiếng Nhật",
+        "Sách ngoại ngữ/Tiếng Trung",
+        "Sách ngoại ngữ/Tiếng Hàn",
+        "Sách ngoại ngữ/Tiếng Pháp",
+        "Sách ngoại ngữ/Ngoại ngữ khác",
+        "Sách ngoại ngữ/Tiếng Việt cho người nước ngoài",
       ];
     }
 
@@ -241,153 +241,159 @@ export default class Dashboard extends Component {
                 </div>
                 <div className="card-body">
                   <form>
-                    <div className="form-group">
-                      <label> Tên Sách </label>
-                      <input
-                        placeholder="VD: Nhà Lãnh Đạo Không Chức Danh"
-                        type="text"
-                        className="form-control"
-                        id="tensp"
-                        name="tensp"
-                        value={this.state.tensp}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Tác Giả </label>
-                      <input
-                        placeholder="VD: Robin Sharma"
-                        type="text"
-                        className="form-control"
-                        id="tacgia"
-                        name="tacgia"
-                        value={this.state.tacgia}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Slug </label>
-                      <input
-                        placeholder="VD: nha-lanh-dao-khong-chuc-danh"
-                        type="text"
-                        className="form-control"
-                        id="tenurl"
-                        name="tenurl"
-                        value={this.state.tenurl}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> URL Loại Sách </label>
-                      {URLLoaiSachDropdown}
-                    </div>
-                    <div className="form-group">
-                      <label> Nhà Xuất Bản </label>
-                      <input
-                        placeholder="VD: Nhà Xuất Bản Trẻ"
-                        type="text"
-                        className="form-control"
-                        id="nxb"
-                        name="nxb"
-                        value={this.state.nxb}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Năm Xuất Bản </label>
-                      <input
-                        placeholder="VD: 02-2017"
-                        type="text"
-                        className="form-control"
-                        id="namxb"
-                        name="namxb"
-                        value={this.state.namxb}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Kích Thước </label>
-                      <input
-                        placeholder="VD: 13 x 20.5 cm"
-                        type="text"
-                        className="form-control"
-                        id="kichthuoc"
-                        name="kichthuoc"
-                        value={this.state.kichthuoc}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Nhà Cung Cấp </label>
-                      <input
-                        placeholder="VD: NXB Trẻ"
-                        type="text"
-                        className="form-control"
-                        id="nhacungcap"
-                        name="nhacungcap"
-                        value={this.state.nhacungcap}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Hình Ảnh </label>
-                      <input
-                        placeholder="VD: https://salt.tikicdn.com/cache/280x280/media/catalog/product//n/h/nhalanhdao.u2769.d20170307.t090846.484463.jpg"
-                        type="text"
-                        className="form-control"
-                        id="hinhanhsanpham"
-                        name="hinhanhsanpham"
-                        value={this.state.hinhanhsanpham}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Giá </label>
-                      <input
-                        placeholder="VD: 48000"
-                        type="number"
-                        className="form-control"
-                        id="gia"
-                        name="gia"
-                        value={this.state.gia}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Loại Bìa </label>
-                      <input
-                        placeholder="VD: Bìa mềm"
-                        type="text"
-                        className="form-control"
-                        id="loaibia"
-                        name="loaibia"
-                        value={this.state.loaibia}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Số Trang </label>
-                      <input
-                        placeholder="VD: 270"
-                        type="number"
-                        className="form-control"
-                        id="sotrang"
-                        name="sotrang"
-                        value={this.state.sotrang}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label> Mô tả </label>
-                      <textarea
-                        placeholder="VD: Suốt hơn 15 năm, Robin Sharma đã thầm lặng chia sẻ với những công ty trong danh sách Fortune 500 và nhiều người siêu giàu khác một công thức thành công đã giúp ông trở thành một trong những nhà cố vấn lãnh đạo được theo đuổi nhiều nhất thế giới."
-                        type="text"
-                        className="form-control"
-                        id="mota"
-                        name="mota"
-                        value={this.state.mota}
-                        onChange={this.onChange}
-                      />
+                    <div class="row">
+                      <div class="col-sm-6 col-12">
+                        <div className="form-group">
+                          <label> Tên Sách </label>
+                          <input
+                            placeholder="VD: Nhà Lãnh Đạo Không Chức Danh"
+                            type="text"
+                            className="form-control"
+                            id="tensp"
+                            name="tensp"
+                            value={this.state.tensp}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Tác Giả </label>
+                          <input
+                            placeholder="VD: Robin Sharma"
+                            type="text"
+                            className="form-control"
+                            id="tacgia"
+                            name="tacgia"
+                            value={this.state.tacgia}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Slug </label>
+                          <input
+                            placeholder="VD: nha-lanh-dao-khong-chuc-danh"
+                            type="text"
+                            className="form-control"
+                            id="tenurl"
+                            name="tenurl"
+                            value={this.state.tenurl}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> URL Loại Sách </label>
+                          {URLLoaiSachDropdown}
+                        </div>
+                        <div className="form-group">
+                          <label> Nhà Xuất Bản </label>
+                          <input
+                            placeholder="VD: Nhà Xuất Bản Trẻ"
+                            type="text"
+                            className="form-control"
+                            id="nxb"
+                            name="nxb"
+                            value={this.state.nxb}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Năm Xuất Bản </label>
+                          <input
+                            placeholder="VD: 02-2017"
+                            type="text"
+                            className="form-control"
+                            id="namxb"
+                            name="namxb"
+                            value={this.state.namxb}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Mô tả </label>
+                          <textarea
+                            placeholder="VD: Suốt hơn 15 năm, Robin Sharma đã thầm lặng chia sẻ với những công ty trong danh sách Fortune 500 và nhiều người siêu giàu khác một công thức thành công đã giúp ông trở thành một trong những nhà cố vấn lãnh đạo được theo đuổi nhiều nhất thế giới."
+                            type="text"
+                            className="form-control"
+                            id="mota"
+                            name="mota"
+                            value={this.state.mota}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-12">
+                        <div className="form-group">
+                          <label> Kích Thước </label>
+                          <input
+                            placeholder="VD: 13 x 20.5 cm"
+                            type="text"
+                            className="form-control"
+                            id="kichthuoc"
+                            name="kichthuoc"
+                            value={this.state.kichthuoc}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Nhà Cung Cấp </label>
+                          <input
+                            placeholder="VD: NXB Trẻ"
+                            type="text"
+                            className="form-control"
+                            id="nhacungcap"
+                            name="nhacungcap"
+                            value={this.state.nhacungcap}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Hình Ảnh </label>
+                          <input
+                            placeholder="VD: https://salt.tikicdn.com/cache/280x280/media/catalog/product//n/h/nhalanhdao.u2769.d20170307.t090846.484463.jpg"
+                            type="text"
+                            className="form-control"
+                            id="hinhanhsanpham"
+                            name="hinhanhsanpham"
+                            value={this.state.hinhanhsanpham}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Giá </label>
+                          <input
+                            placeholder="VD: 48000"
+                            type="number"
+                            className="form-control"
+                            id="gia"
+                            name="gia"
+                            value={this.state.gia}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Loại Bìa </label>
+                          <input
+                            placeholder="VD: Bìa mềm"
+                            type="text"
+                            className="form-control"
+                            id="loaibia"
+                            name="loaibia"
+                            value={this.state.loaibia}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label> Số Trang </label>
+                          <input
+                            placeholder="VD: 270"
+                            type="number"
+                            className="form-control"
+                            id="sotrang"
+                            name="sotrang"
+                            value={this.state.sotrang}
+                            onChange={this.onChange}
+                          />
+                        </div>
+                      </div>
                     </div>
                     <NavLink
                       to={"/admin/category/" + this.state.danhmuc}

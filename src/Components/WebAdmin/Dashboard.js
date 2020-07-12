@@ -43,7 +43,7 @@ export default class Dashboard extends Component {
                           </div>
                         </div>
                         <div className="col-auto">
-                          <i className="fas fa-book fa-2x text-gray-300" />
+                          <i className="fal fa-books fa-2x text-gray-300" />
                         </div>
                       </div>
                     </div>
