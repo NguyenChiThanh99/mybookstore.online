@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import Global from "../Global";
 import axios from "axios";
@@ -14,7 +14,7 @@ import Topbar from "./Topbar";
 
 var timer9 = null;
 
-export default class EditSach extends Component {
+export class EditSach extends Component {
   constructor(props) {
     super(props);
     var { location } = this.props;
@@ -477,3 +477,5 @@ export default class EditSach extends Component {
     );
   }
 }
+
+export default withRouter(EditSach);
