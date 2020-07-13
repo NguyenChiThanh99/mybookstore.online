@@ -22,6 +22,7 @@ export class HoaDon extends Component {
         ten: "",
         thanhtoan: "",
         tongtien: 0,
+        trangthai: '',
       },
       products: [
         {

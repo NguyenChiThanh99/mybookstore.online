@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import Global from "../Global";
+import axios from "axios";
+import qs from "qs";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -16,8 +19,96 @@ export default class ChiTietDonHAng extends Component {
     this.state = {
       showModal: false,
       order: match.params.order,
+      data: [],
     };
   }
+
+  componentDidMount = () => {
+    this.getData();
+  };
+
+  getData = () => {
+    const data = {
+      id: this.state.order,
+    };
+    const url = Global.link + "webadmin/chitietdonhang";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      console.log(res.data.data);
+    });
+  };
+
+  // show_data = () => {
+  //   var result = null;
+  //   if (this.state.data.length > 0) {
+  //     result = this.state.data.map((item, index) => {
+  //       return (
+  //         <tr key={index}>
+  //           <td className="p-1">
+  //             #{item._id.slice(0, 12) + " " + item._id.slice(12, 24)}
+  //           </td>
+  //           <td className="p-1">{item.email}</td>
+  //           <td className="p-1">{item.ten}</td>
+  //           <td className="p-1">{item.diachi}</td>
+  //           <td className="p-1">{item.dienthoai}</td>
+  //           <td className="p-1">{item.ghichu}</td>
+  //           <td className="p-1">{item.thanhtoan}</td>
+  //           <td className="p-1">{item.trangthai}</td>
+  //           <td className="p-1">
+  //             {this.currencyFormat(item.tongtien.toString())} đ
+  //           </td>
+  //           <td>
+  //             <NavLink
+  //               to={"/admin/orderdetail/" + item._id}
+  //               type="submit"
+  //               name="select-btn"
+  //               className="btn btn-success"
+  //             >
+  //               {" "}
+  //               Select
+  //             </NavLink>
+  //           </td>
+  //           <td>
+  //             <NavLink
+  //               to={{
+  //                 pathname: "/admin/editorder",
+  //                 state: {
+  //                   data: item,
+  //                 },
+  //               }}
+  //               type="submit"
+  //               name="edit"
+  //               className="btn btn-primary"
+  //             >
+  //               {" "}
+  //               Edit
+  //             </NavLink>
+  //           </td>
+  //           <td>
+  //             <button
+  //               onClick={() => {
+  //                 this.handleShow();
+  //                 this.setState({ idOrder: item._id });
+  //               }}
+  //               type="submit"
+  //               name="deletehanoi_btn"
+  //               className="btn btn-danger"
+  //             >
+  //               {" "}
+  //               Delete
+  //             </button>
+  //           </td>
+  //         </tr>
+  //       );
+  //     });
+  //   }
+  //   return result;
+  // };
 
   handleClose = () => {
     this.setState({ showModal: false });
