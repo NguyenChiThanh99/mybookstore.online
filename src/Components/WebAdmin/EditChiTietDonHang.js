@@ -23,7 +23,7 @@ export class EditChiTietDonHang extends Component {
       _id: location.state.data._id,
       tensp: location.state.data.tensp,
       soluongsanpham: location.state.data.soluongsanpham,
-      iscomment: location.state.data.iscomment ? 1 : 0,
+      iscomment: location.state.data.iscomment ? '1' : '0',
       allProduct: [],
       err: '',
     };
@@ -64,7 +64,7 @@ export class EditChiTietDonHang extends Component {
           idsanpham: this.props.location.state.data._id,
           idsanphamnew: _id,
           soluongsanpham: soluongsanpham,
-          iscomment: 0,
+          iscomment: '0',
         };
       } else {
         data = {
