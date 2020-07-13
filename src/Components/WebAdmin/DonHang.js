@@ -3,6 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Global from "../Global";
 import axios from "axios";
+import qs from "qs";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -17,13 +18,13 @@ export default class DonHang extends Component {
     this.state = {
       showModal: false,
       data: [],
-      idOrder: '',
+      idOrder: "",
     };
   }
 
   componentDidMount = () => {
     this.getData();
-  }
+  };
 
   getData = () => {
     const url = Global.link + "webadmin/showalldataorder";
@@ -33,9 +34,9 @@ export default class DonHang extends Component {
       url,
     };
     axios(options).then((res) => {
-      this.setState({data: res.data.dataorder})
+      this.setState({ data: res.data.dataorder });
     });
-  }
+  };
 
   show_data = () => {
     var result = null;
@@ -85,7 +86,10 @@ export default class DonHang extends Component {
             </td>
             <td>
               <button
-                onClick={() => {this.handleShow(); this.setState({idOrder: item._id})}}
+                onClick={() => {
+                  this.handleShow();
+                  this.setState({ idOrder: item._id });
+                }}
                 type="submit"
                 name="deletehanoi_btn"
                 className="btn btn-danger"
@@ -109,7 +113,23 @@ export default class DonHang extends Component {
     this.setState({ showModal: true });
   };
 
-  delete = () => {};
+  delete = () => {
+    const data = {
+      id: this.state.idOrder,
+    };
+    const url = Global.link + "webadmin/deleteorder";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      if (res.data.data === "success") {
+        window.location.reload();
+      }
+    });
+  };
 
   currencyFormat = (num) => {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
@@ -136,8 +156,8 @@ export default class DonHang extends Component {
                   <Modal.Title>Xác nhận xóa đơn hàng</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Bạn có chắc muốn xóa đơn hàng #{this.state.idOrder} khỏi database
-                  ?
+                  Bạn có chắc muốn xóa đơn hàng #{this.state.idOrder} khỏi
+                  database ?
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.handleClose}>
@@ -178,9 +198,7 @@ export default class DonHang extends Component {
                           <th>Delete</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        {this.show_data()}
-                      </tbody>
+                      <tbody>{this.show_data()}</tbody>
                     </table>
                   </div>
                 </div>
