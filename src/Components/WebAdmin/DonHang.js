@@ -17,6 +17,7 @@ export default class DonHang extends Component {
     this.state = {
       showModal: false,
       data: [],
+      idOrder: '',
     };
   }
 
@@ -84,7 +85,7 @@ export default class DonHang extends Component {
             </td>
             <td>
               <button
-                onClick={this.handleShow}
+                onClick={() => {this.handleShow(); this.setState({idOrder: item._id})}}
                 type="submit"
                 name="deletehanoi_btn"
                 className="btn btn-danger"
@@ -135,7 +136,7 @@ export default class DonHang extends Component {
                   <Modal.Title>Xác nhận xóa đơn hàng</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Bạn có chắc muốn xóa đơn hàng #idididididididid khỏi database
+                  Bạn có chắc muốn xóa đơn hàng #{this.state.idOrder} khỏi database
                   ?
                 </Modal.Body>
                 <Modal.Footer>
