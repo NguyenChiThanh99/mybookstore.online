@@ -114,15 +114,6 @@ export default class ChiTietDonHAng extends Component {
   };
 
   render() {
-    var item = {
-      _id: 0,
-      ten: "Đừng Chết Ở Ả Rập Xê Út",
-      hinhanhsanpham:
-        "https://salt.tikicdn.com/cache/280x280/ts/product/49/3b/7b/53b204d12d9579fa628aed08d10033de.jpg",
-      gia: 99000,
-      soluongsanpham: 2,
-    };
-
     return (
       <div id="wrapper">
         {/* Sidebar */}
@@ -143,7 +134,7 @@ export default class ChiTietDonHAng extends Component {
                   <Modal.Title>Xác nhận xóa chi tiết đơn hàng</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Bạn có chắc muốn xóa cuốn {item.ten} khỏi đơn hàng ?
+                  Bạn có chắc muốn xóa cuốn A khỏi đơn hàng ?
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.handleClose}>
