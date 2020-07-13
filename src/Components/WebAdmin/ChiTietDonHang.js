@@ -172,7 +172,7 @@ export default class ChiTietDonHAng extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        {this.show_data}
+                        {this.show_data()}
                       </tbody>
                     </table>
                   </div>
