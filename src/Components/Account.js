@@ -264,7 +264,7 @@ export default class Account extends Component {
       newPrice = Math.round(newPrice / 1000) * 1000;
       return (
         <div
-          className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
+          className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
           key={index}
         >
           <NavLink to={"/product/" + product.tenurl}>
@@ -739,7 +739,7 @@ export default class Account extends Component {
           <div id="thongtintaikhoan">
             <h5 className="pt-3 pl-2">THÔNG TIN TÀI KHOẢN</h5>
             <div className="row">
-              <div className="col-md-3 text-center">
+              <div className="col-lg-3 col-md-4 text-center">
                 <img
                   src={
                     Global.isSignIn
@@ -751,7 +751,7 @@ export default class Account extends Component {
                   height="210px"
                 />
               </div>
-              <div className="col-md-9">
+              <div className="col-lg-9 col-md-8">
                 <form>
                   <div className="form-group row pl-3 pr-3">
                     <label htmlFor="name" className="col-sm-3 col-form-label">

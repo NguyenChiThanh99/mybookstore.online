@@ -94,7 +94,7 @@ export class HoaDon extends Component {
                 </NavLink>
                 <div className="col-md-5">
                   <div className="row">
-                    <div className="col-sm-4 col-6">
+                    <div className="col-sm-4 col-6 text-nowrap">
                       <span>
                         {this.currencyFormat(product.gia.toString())} đ
                       </span>

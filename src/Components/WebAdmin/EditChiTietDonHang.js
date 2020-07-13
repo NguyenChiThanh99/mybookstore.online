@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
+import Global from "../Global";
+import axios from "axios";
+import qs from "qs";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -19,6 +22,8 @@ export default class EditChiTietDonHang extends Component {
       tensp: location.state.data.tensp,
       gia: location.state.data.gia,
       soluongsanpham: location.state.data.soluongsanpham,
+      iscomment: location.state.data.iscomment,
+      allProduct: [],
     };
   }
 
@@ -37,8 +42,67 @@ export default class EditChiTietDonHang extends Component {
     console.log(order, _id, ten, hinhanhsanpham, gia, soluongsanpham);
   };
 
+  getProduct = () => {
+    const url = Global.link + "webadmin/dropdownproduct";
+    const options = {
+      method: "GET",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+    };
+    axios(options).then((res) => {
+      this.setState({ allProduct: res.data.data });
+    });
+  };
+
+  showProduct = () => {
+    var result = null;
+    if (this.state.allProduct.length !== 0) {
+      result = this.state.allProduct.map((item, index) => {
+        return (
+          <Dropdown.Item
+            key={index}
+            className="mydropdown-item account_active_dropdown"
+            onSelect={() => {
+              this.setState({
+                thanhtoan: item,
+              });
+            }}
+          >
+            {item}
+          </Dropdown.Item>
+        );
+      });
+    }
+    return result;
+  };
+
   render() {
-    console.log(this.props.location.state.data);
+    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+      <a
+        className="text-decoration-none"
+        href="# "
+        ref={ref}
+        onClick={(e) => {
+          e.preventDefault();
+          onClick(e);
+        }}
+      >
+        <div className="form-control">{children}</div>
+      </a>
+    ));
+
+    const ProductDropdown = (
+      <Dropdown>
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          {this.state.tensp}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu className="dropdowm-scroll-admin">
+          {this.showPayment()}
+        </Dropdown.Menu>
+      </Dropdown>
+    );
+
     return (
       <div id="wrapper">
         {/* Sidebar */}

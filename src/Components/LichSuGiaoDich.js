@@ -64,21 +64,21 @@ export class LichSuGiaoDich extends Component {
         return (
           <NavLink to={"/bill/" + item._id}>
             <div className="row">
-              <div className="col-sm-3 pr-0 text-nowrap">
+              <div className="col-lg-3 pr-0 text-nowrap">
                 <p className="mb-0 madonhang">{item._id}</p>
               </div>
-              <div className="col-sm-2 pr-0">
+              <div className="col-lg-2 pr-0">
                 <p className="mb-0 ngay">{day}</p>
               </div>
-              <div className="col-sm-4 pr-0">
+              <div className="col-lg-4 pr-0">
                 <p className="mb-0 sanpham">{item.tensp}</p>
               </div>
-              <div className="col-sm-1 text-nowrap pr-0">
+              <div className="col-lg-1 text-nowrap pr-0">
                 <p className="mb-0 an-thongtin">
                   {this.currencyFormat(item.tongtien.toString())} đ
                 </p>
               </div>
-              <div className="col-sm-2">
+              <div className="col-lg-2">
                 <p className="mb-3 trangthai">{item.trangthai}</p>
               </div>
             </div>
