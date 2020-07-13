@@ -600,7 +600,7 @@ export class ChiTietSanPham extends Component {
         style={{ borderBottom: "1px solid rgba(0,0,0,.1)" }}
       >
         <div
-          className="col-sm-6"
+          className="col-lg-5 mb-3"
           style={{ borderRight: "1px solid rgba(0,0,0,.1)" }}
         >
           <div className="row">
@@ -625,7 +625,7 @@ export class ChiTietSanPham extends Component {
             </div>
           </div>
         </div>
-        <div className="col-sm-6">
+        <div className="col-lg-7 pl-5">
           <h5>Gửi nhận xét của bạn</h5>
           <form>
             <div className="row form-group mb-0">
