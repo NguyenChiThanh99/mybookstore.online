@@ -27,6 +27,10 @@ export default class EditChiTietDonHang extends Component {
     };
   }
 
+  componentDidMount = () => {
+    this.getProduct();
+  }
+
   onChange = (event) => {
     var target = event.target;
     var value = target.value;
@@ -97,7 +101,7 @@ export default class EditChiTietDonHang extends Component {
           {this.state.tensp}
         </Dropdown.Toggle>
 
-        <Dropdown.Menu className="dropdowm-scroll-admin">
+        <Dropdown.Menu className="dropdowm-scroll-admin2">
           {this.showProduct()}
         </Dropdown.Menu>
       </Dropdown>

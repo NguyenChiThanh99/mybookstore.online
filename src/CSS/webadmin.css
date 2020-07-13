@@ -16,6 +16,12 @@
   overflow: auto;
 }
 
+.dropdowm-scroll-admin2 {
+  max-height: 500px;
+  width: 800px;
+  overflow: auto;
+}
+
 .link {
   text-decoration: none !important;
   color: #eb2b3f !important;
