@@ -64,11 +64,11 @@ export default class EditChiTietDonHang extends Component {
             className="mydropdown-item account_active_dropdown"
             onSelect={() => {
               this.setState({
-                thanhtoan: item,
+                tensp: item.tensp,
               });
             }}
           >
-            {item}
+            {item.tensp}
           </Dropdown.Item>
         );
       });
@@ -98,7 +98,7 @@ export default class EditChiTietDonHang extends Component {
         </Dropdown.Toggle>
 
         <Dropdown.Menu className="dropdowm-scroll-admin">
-          {this.showPayment()}
+          {this.showProduct()}
         </Dropdown.Menu>
       </Dropdown>
     );
@@ -129,15 +129,7 @@ export default class EditChiTietDonHang extends Component {
                   <form>
                     <div className="form-group">
                       <label> Tên Sách </label>
-                      <input
-                        placeholder="VD: Đừng Chết Ở Ả Rập Xê Út"
-                        type="text"
-                        className="form-control"
-                        id="tensp"
-                        name="tensp"
-                        value={this.state.tensp}
-                        onChange={this.onChange}
-                      />
+                      {ProductDropdown}
                     </div>
                     <div className="form-group">
                       <label> Giá </label>
