@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
+import Global from "../Global";
+import axios from "axios";
+import qs from "qs";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -8,6 +11,8 @@ import "../../CSS/webadmin.css";
 
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
+
+var timer9 = null;
 
 export default class EditSach extends Component {
   constructor(props) {
@@ -28,7 +33,12 @@ export default class EditSach extends Component {
       loaibia: location.state.data.loaibia,
       sotrang: location.state.data.sotrang,
       mota: location.state.data.mota,
+      err: '',
     };
+  }
+
+  componentWillUnmount() {
+    clearTimeout(timer9);
   }
 
   onChange = (event) => {
@@ -57,21 +67,55 @@ export default class EditSach extends Component {
       sotrang,
       mota,
     } = this.state;
-    console.log(
-      tensp,
-      tacgia,
-      tenurl,
-      urlloaisp,
-      nxb,
-      namxb,
-      kichthuoc,
-      nhacungcap,
-      hinhanhsanpham,
-      gia,
-      loaibia,
-      sotrang,
-      mota
-    );
+    
+    if (
+      tensp.length === 0 ||
+      tacgia.length === 0 ||
+      tenurl.length === 0 ||
+      urlloaisp.length === 0 ||
+      namxb.length === 0 ||
+      nxb.length === 0 ||
+      mota.length === 0 ||
+      kichthuoc.length === 0 ||
+      nhacungcap.length === 0 ||
+      hinhanhsanpham.length === 0 ||
+      gia === 0 ||
+      loaibia.length === 0 ||
+      sotrang === 0
+    ) {
+      this.setState({
+        err: "Vui lòng nhập tất cả thông tin.",
+      });
+      timer9 = setTimeout(() => this.setState({ err: "" }), 4000);
+    } else {
+      const data = {
+        tensp: tensp,
+        tacgia: tacgia,
+        nxb: nxb,
+        tenurl: tenurl,
+        namxb: namxb,
+        kichthuoc: kichthuoc,
+        nhacungcap: nhacungcap,
+        hinhanhsanpham: hinhanhsanpham,
+        gia: gia,
+        loaibia: loaibia,
+        sotrang: sotrang,
+        mota: mota,
+        urlloaisp: urlloaisp,
+      };
+      const url = Global.link + "webadmin/editproduct";
+      const options = {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        url,
+        data: qs.stringify(data),
+      };
+      axios(options).then((res) => {
+        if (res.data.data === "success") {
+          this.props.history.push("/admin/category/" + this.state.danhmuc);
+        }
+      });
+    }
   };
 
   showDropdown = () => {
@@ -191,6 +235,12 @@ export default class EditSach extends Component {
   };
 
   render() {
+    const errJSX = (
+      <div className="alert alert-danger alert-dismissible fade show mb-4">
+        {this.state.err}
+      </div>
+    );
+
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <a
         className="text-decoration-none"
@@ -395,6 +445,8 @@ export default class EditSach extends Component {
                         </div>
                       </div>
                     </div>
+
+                    {this.state.err === "" ? null : errJSX}
                     <NavLink
                       to={"/admin/category/" + this.state.danhmuc}
                       className="btn btn-danger mb-2"
