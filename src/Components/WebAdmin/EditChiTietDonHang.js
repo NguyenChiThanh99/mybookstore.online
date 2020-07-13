@@ -71,7 +71,7 @@ export default class EditChiTietDonHang extends Component {
                         className="form-control"
                         id="ten"
                         name="ten"
-                        value={this.state.ten}
+                        value={this.state.tensp}
                         onChange={this.onChange}
                       />
                     </div>

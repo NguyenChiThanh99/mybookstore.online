@@ -39,76 +39,65 @@ export default class ChiTietDonHAng extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      console.log(res.data.data);
+      this.setState({
+        data: res.data.data,
+      });
     });
   };
 
-  // show_data = () => {
-  //   var result = null;
-  //   if (this.state.data.length > 0) {
-  //     result = this.state.data.map((item, index) => {
-  //       return (
-  //         <tr key={index}>
-  //           <td className="p-1">
-  //             #{item._id.slice(0, 12) + " " + item._id.slice(12, 24)}
-  //           </td>
-  //           <td className="p-1">{item.email}</td>
-  //           <td className="p-1">{item.ten}</td>
-  //           <td className="p-1">{item.diachi}</td>
-  //           <td className="p-1">{item.dienthoai}</td>
-  //           <td className="p-1">{item.ghichu}</td>
-  //           <td className="p-1">{item.thanhtoan}</td>
-  //           <td className="p-1">{item.trangthai}</td>
-  //           <td className="p-1">
-  //             {this.currencyFormat(item.tongtien.toString())} đ
-  //           </td>
-  //           <td>
-  //             <NavLink
-  //               to={"/admin/orderdetail/" + item._id}
-  //               type="submit"
-  //               name="select-btn"
-  //               className="btn btn-success"
-  //             >
-  //               {" "}
-  //               Select
-  //             </NavLink>
-  //           </td>
-  //           <td>
-  //             <NavLink
-  //               to={{
-  //                 pathname: "/admin/editorder",
-  //                 state: {
-  //                   data: item,
-  //                 },
-  //               }}
-  //               type="submit"
-  //               name="edit"
-  //               className="btn btn-primary"
-  //             >
-  //               {" "}
-  //               Edit
-  //             </NavLink>
-  //           </td>
-  //           <td>
-  //             <button
-  //               onClick={() => {
-  //                 this.handleShow();
-  //                 this.setState({ idOrder: item._id });
-  //               }}
-  //               type="submit"
-  //               name="deletehanoi_btn"
-  //               className="btn btn-danger"
-  //             >
-  //               {" "}
-  //               Delete
-  //             </button>
-  //           </td>
-  //         </tr>
-  //       );
-  //     });
-  //   }
-  //   return result;
-  // };
+  show_data = () => {
+    var result = null;
+    if (this.state.data.length > 0) {
+      result = this.state.data.map((item, index) => {
+        return (
+          <tr key={index}>
+            <td className="p-1">{item.tensp}</td>
+            <td className="p-1">
+              <img
+                src={item.hinhanhsanpham}
+                className="img-fluid"
+                style={{ width: "150px" }}
+                alt={item.tensp}
+              />
+            </td>
+            <td className="p-1">
+              {this.currencyFormat(item.gia.toString())} đ
+            </td>
+            <td className="p-1">{item.soluongsanpham}</td>
+            <td>
+              <NavLink
+                to={{
+                  pathname: "/admin/editorderdetail",
+                  state: {
+                    data: item,
+                    order: this.state.order,
+                  },
+                }}
+                type="submit"
+                name="edit"
+                className="btn btn-primary"
+              >
+                {" "}
+                Edit
+              </NavLink>
+            </td>
+            <td>
+              <button
+                onClick={this.handleShow}
+                type="submit"
+                name="deletehanoi_btn"
+                className="btn btn-danger"
+              >
+                {" "}
+                Delete
+              </button>
+            </td>
+          </tr>
+        );
+      });
+    }
+    return result;
+  };
 
   handleClose = () => {
     this.setState({ showModal: false });
@@ -192,49 +181,7 @@ export default class ChiTietDonHAng extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td className="p-1">{item.ten}</td>
-                          <td className="p-1">
-                            <img
-                              src={item.hinhanhsanpham}
-                              className="img-fluid"
-                              style={{ width: "150px" }}
-                              alt={item.tensp}
-                            />
-                          </td>
-                          <td className="p-1">
-                            {this.currencyFormat(item.gia.toString())} đ
-                          </td>
-                          <td className="p-1">{item.soluongsanpham}</td>
-                          <td>
-                            <NavLink
-                              to={{
-                                pathname: "/admin/editorderdetail",
-                                state: {
-                                  data: item,
-                                  order: this.state.order,
-                                },
-                              }}
-                              type="submit"
-                              name="edit"
-                              className="btn btn-primary"
-                            >
-                              {" "}
-                              Edit
-                            </NavLink>
-                          </td>
-                          <td>
-                            <button
-                              onClick={this.handleShow}
-                              type="submit"
-                              name="deletehanoi_btn"
-                              className="btn btn-danger"
-                            >
-                              {" "}
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
+                        {this.show_data}
                       </tbody>
                     </table>
                   </div>
