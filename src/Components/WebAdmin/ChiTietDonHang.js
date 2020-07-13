@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Global from "../Global";
 import axios from "axios";
 import qs from "qs";
@@ -12,7 +12,7 @@ import "../../CSS/webadmin.css";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-export default class ChiTietDonHAng extends Component {
+export class ChiTietDonHang extends Component {
   constructor(props) {
     super(props)
     var { match } = this.props;
@@ -20,6 +20,8 @@ export default class ChiTietDonHAng extends Component {
       showModal: false,
       order: match.params.order,
       data: [],
+      title: '',
+      id: '',
     };
   }
 
@@ -83,7 +85,7 @@ export default class ChiTietDonHAng extends Component {
             </td>
             <td>
               <button
-                onClick={this.handleShow}
+                onClick={() => this.handleShow(item._id, item.tensp)}
                 type="submit"
                 name="deletehanoi_btn"
                 className="btn btn-danger"
@@ -103,11 +105,29 @@ export default class ChiTietDonHAng extends Component {
     this.setState({ showModal: false });
   };
 
-  handleShow = () => {
-    this.setState({ showModal: true });
+  handleShow = (id, title) => {
+    this.setState({ showModal: true, title: title, id: id });
   };
 
-  delete = () => {}
+  delete = () => {
+    const data = {
+      id: this.state.order,
+      idsanpham: this.state.id
+    };
+    const url = Global.link + "webadmin/deletechitietdonhang";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      if (res.data.data === 'success') {
+        this.handleClose();
+        this.props.history.push("/admin/order");
+      }
+    });
+  }
 
   currencyFormat = (num) => {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
@@ -134,7 +154,7 @@ export default class ChiTietDonHAng extends Component {
                   <Modal.Title>Xác nhận xóa chi tiết đơn hàng</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Bạn có chắc muốn xóa cuốn A khỏi đơn hàng ?
+                  Bạn có chắc muốn xóa cuốn {this.state.title} khỏi đơn hàng ?
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.handleClose}>
@@ -187,3 +207,5 @@ export default class ChiTietDonHAng extends Component {
     );
   }
 }
+
+export default withRouter(ChiTietDonHang);
