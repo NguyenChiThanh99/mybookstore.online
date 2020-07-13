@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import Global from "../Global";
 import axios from "axios";
@@ -12,7 +12,9 @@ import "../../CSS/webadmin.css";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-export default class EditChiTietDonHang extends Component {
+var timer10 = null;
+
+export class EditChiTietDonHang extends Component {
   constructor(props) {
     super(props);
     var { location } = this.props;
@@ -20,15 +22,19 @@ export default class EditChiTietDonHang extends Component {
       order: location.state.order,
       _id: location.state.data._id,
       tensp: location.state.data.tensp,
-      gia: location.state.data.gia,
       soluongsanpham: location.state.data.soluongsanpham,
       iscomment: location.state.data.iscomment,
       allProduct: [],
+      err: '',
     };
   }
 
   componentDidMount = () => {
     this.getProduct();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(timer10);
   }
 
   onChange = (event) => {
@@ -42,8 +48,45 @@ export default class EditChiTietDonHang extends Component {
 
   update = (event) => {
     event.preventDefault();
-    const { order, _id, ten, hinhanhsanpham, gia, soluongsanpham } = this.state;
-    console.log(order, _id, ten, hinhanhsanpham, gia, soluongsanpham);
+    const { order, _id, soluongsanpham, iscomment } = this.state;
+    if (
+      soluongsanpham === 0
+    ) {
+      this.setState({
+        err: "Vui lòng nhập số lượng sản phẩm.",
+      });
+      timer10 = setTimeout(() => this.setState({ err: "" }), 4000);
+    } else {
+      var data = null;
+      if (_id !== this.props.location.state.data._id) {
+        data = {
+          id: order,
+          idsanpham: this.props.location.state.data._id,
+          idsanphamnew: _id,
+          soluongsanpham: soluongsanpham,
+          iscomment: false,
+        };
+      } else {
+        data = {
+          id: order,
+          idsanpham: this.props.location.state.data._id,
+          soluongsanpham: soluongsanpham,
+          iscomment: iscomment,
+        };
+      }
+      const url = Global.link + "webadmin/editchitietdonhang";
+      const options = {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        url,
+        data: qs.stringify(data),
+      };
+      axios(options).then((res) => {
+        if (res.data.data === "success") {
+          this.props.history.push("/admin/orderdetail/" + this.state.order);
+        }
+      });
+    }
   };
 
   getProduct = () => {
@@ -69,6 +112,7 @@ export default class EditChiTietDonHang extends Component {
             onSelect={() => {
               this.setState({
                 tensp: item.tensp,
+                _id: item._id,
               });
             }}
           >
@@ -107,6 +151,12 @@ export default class EditChiTietDonHang extends Component {
       </Dropdown>
     );
 
+    const errJSX = (
+      <div className="alert alert-danger alert-dismissible fade show mb-4">
+        {this.state.err}
+      </div>
+    );
+
     return (
       <div id="wrapper">
         {/* Sidebar */}
@@ -136,19 +186,6 @@ export default class EditChiTietDonHang extends Component {
                       {ProductDropdown}
                     </div>
                     <div className="form-group">
-                      <label> Giá </label>
-                      <input
-                        placeholder="VD: 99000"
-                        type="number"
-                        className="form-control"
-                        id="gia"
-                        name="gia"
-                        value={this.state.gia}
-                        onChange={this.onChange}
-                        readOnly
-                      />
-                    </div>
-                    <div className="form-group">
                       <label> Số Lượng </label>
                       <input
                         placeholder="VD: 1"
@@ -160,6 +197,8 @@ export default class EditChiTietDonHang extends Component {
                         onChange={this.onChange}
                       />
                     </div>
+
+                    {this.state.err === "" ? null : errJSX}
                     <NavLink
                       to={"/admin/orderdetail/" + this.state.order}
                       className="btn btn-danger mb-2"
@@ -187,3 +226,5 @@ export default class EditChiTietDonHang extends Component {
     );
   }
 }
+
+export default withRouter(EditChiTietDonHang);
