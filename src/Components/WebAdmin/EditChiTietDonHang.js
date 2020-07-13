@@ -50,7 +50,7 @@ export class EditChiTietDonHang extends Component {
     event.preventDefault();
     const { order, _id, soluongsanpham, iscomment } = this.state;
     if (
-      soluongsanpham === 0
+      soluongsanpham <= 0
     ) {
       this.setState({
         err: "Vui lòng nhập số lượng sản phẩm.",
