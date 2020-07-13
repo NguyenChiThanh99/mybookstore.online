@@ -53,7 +53,7 @@ export default class DonHang extends Component {
             <td className="p-1">{item.dienthoai}</td>
             <td className="p-1">{item.ghichu}</td>
             <td className="p-1">{item.thanhtoan}</td>
-            <td className="p-1">Tiếp nhận đơn hàng</td>
+            <td className="p-1">{item.trangthai}</td>
             <td className="p-1">
               {this.currencyFormat(item.tongtien.toString())} đ
             </td>

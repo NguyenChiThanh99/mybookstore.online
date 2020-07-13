@@ -53,7 +53,6 @@ export class HoaDon extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      console.log(res.data.datainfo);
       this.setState({
         loading: false,
         info: res.data.datainfo,
@@ -286,7 +285,7 @@ export class HoaDon extends Component {
                         <td className="text-nowrap align-top">
                           Trạng thái đơn hàng
                         </td>
-                        <td className="pl-4 ">Giao hàng thành công</td>
+                        <td className="pl-4 ">{info.trangthai}</td>
                       </tr>
                     </tbody>
                   </table>

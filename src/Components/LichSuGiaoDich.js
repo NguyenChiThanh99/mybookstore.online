@@ -38,7 +38,6 @@ export class LichSuGiaoDich extends Component {
     };
     axios(options).then((res) => {
       if (res.data.data.length !== 0) {
-        console.log(res.data.data);
         this.setState({
           data: res.data.data,
           loading: false,
@@ -80,7 +79,7 @@ export class LichSuGiaoDich extends Component {
                 </p>
               </div>
               <div className="col-sm-2">
-                <p className="mb-3 trangthai">Giao hàng thành công</p>
+                <p className="mb-3 trangthai">{item.trangthai}</p>
               </div>
             </div>
             <hr />
