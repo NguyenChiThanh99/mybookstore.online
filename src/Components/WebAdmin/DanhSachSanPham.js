@@ -103,7 +103,7 @@ export class DanhSachSanPham extends Component {
             </td>
             <td>
               <button
-                onClick={
+                onClick={() =>
                   item.isnotsell ? null : this.handleShow(item._id, item.tensp)
                 }
                 type="submit"
