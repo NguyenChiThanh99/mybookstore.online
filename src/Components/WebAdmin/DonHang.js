@@ -126,6 +126,7 @@ export default class DonHang extends Component {
     };
     axios(options).then((res) => {
       if (res.data.data === "success") {
+        this.handleClose();
         window.location.reload();
       }
     });

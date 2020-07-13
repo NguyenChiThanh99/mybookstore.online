@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Global from "../Global";
 import axios from "axios";
 import qs from "qs";
@@ -12,7 +12,7 @@ import "../../CSS/webadmin.css";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-export default class DanhSachSanPham extends Component {
+export class DanhSachSanPham extends Component {
   constructor(props) {
     super(props);
     var { match } = this.props;
@@ -20,6 +20,8 @@ export default class DanhSachSanPham extends Component {
       showModal: false,
       danhmuc: match.params.danhmuc,
       data: [],
+      title: '',
+      id: '',
     };
   }
 
@@ -93,7 +95,7 @@ export default class DanhSachSanPham extends Component {
             </td>
             <td>
               <button
-                onClick={item.isnotsell ? null : this.handleShow}
+                onClick={item.isnotsell ? null : this.handleShow(item._id, item.tensp,)}
                 type="submit"
                 name="deletehanoi_btn"
                 className={
@@ -114,11 +116,27 @@ export default class DanhSachSanPham extends Component {
     this.setState({ showModal: false });
   };
 
-  handleShow = () => {
-    this.setState({ showModal: true });
+  handleShow = (id, title) => {
+    this.setState({ title: title, showModal: true, id: id });
   };
 
-  delete = () => {};
+  notsell = () => {
+    const data = {
+      id: this.state.id,
+    };
+    const url = Global.link + "webadmin/product_notsell";
+    const options = {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      url,
+      data: qs.stringify(data),
+    };
+    axios(options).then((res) => {
+      if (res.data.data === 'success') {
+        window.location.reload();
+      }
+    });
+  };
 
   currencyFormat = (num) => {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
@@ -145,14 +163,13 @@ export default class DanhSachSanPham extends Component {
                   <Modal.Title>Xác nhận ngừng kinh doanh sản phẩm</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Bạn có chắc muốn ngừng kinh doanh cuốn Nhà Lãnh Đạo Không Chức
-                  Danh ?
+                  Bạn có chắc muốn ngừng kinh doanh cuốn {this.state.title} ?
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.handleClose}>
                     Cancel
                   </Button>
-                  <Button variant="danger" onClick={this.delete}>
+                  <Button variant="danger" onClick={this.notsell}>
                     Ngừng Kinh Doanh
                   </Button>
                 </Modal.Footer>
@@ -213,3 +230,5 @@ export default class DanhSachSanPham extends Component {
     );
   }
 }
+
+export default withRouter(DanhSachSanPham);
