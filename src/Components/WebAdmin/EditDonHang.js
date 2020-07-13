@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
+import Global from "../Global";
+import axios from "axios";
+import qs from "qs";
 
 import "../../CSS/sb-admin-2.min.css";
 import "../../fontawesome-free-5.13.0-web/css/all.min.css";
@@ -9,7 +12,9 @@ import "../../CSS/webadmin.css";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
-export default class EditDonHang extends Component {
+var timer8 = null;
+
+export class EditDonHang extends Component {
   constructor(props) {
     super(props);
     var { location } = this.props;
@@ -23,7 +28,12 @@ export default class EditDonHang extends Component {
       thanhtoan: location.state.data.thanhtoan,
       tongtien: location.state.data.tongtien,
       trangthai: location.state.data.trangthai,
+      err: "",
     };
+  }
+
+  componentWillUnmount() {
+    clearTimeout(timer8);
   }
 
   onChange = (event) => {
@@ -48,17 +58,36 @@ export default class EditDonHang extends Component {
       tongtien,
       trangthai,
     } = this.state;
-    console.log(
-      _id,
-      email,
-      ten,
-      diachi,
-      dienthoai,
-      ghichu,
-      thanhtoan,
-      tongtien,
-      trangthai
-    );
+    if (email.length === 0 || ten.length === 0 || diachi.length === 0 || dienthoai.length === 0) {
+      this.setState({
+        err: "Vui lòng nhập tất cả thông tin.",
+      });
+      timer8 = setTimeout(() => this.setState({ err: "" }), 4000);
+    } else {
+      const data = {
+        id: _id,
+        email: email,
+        ten: ten,
+        diachi: diachi,
+        dienthoai: dienthoai,
+        ghichu: ghichu,
+        thanhtoan: thanhtoan,
+        trangthai: trangthai,
+        tongtien: tongtien,
+      };
+      const url = Global.link + "/webadmin/editorder";
+      const options = {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        url,
+        data: qs.stringify(data),
+      };
+      axios(options).then((res) => {
+        if (res.data.data === 'success') {
+          this.props.history.push("/admin/order");
+        }
+      });
+    }
   };
 
   showPayment = () => {
@@ -113,6 +142,12 @@ export default class EditDonHang extends Component {
   };
 
   render() {
+    const errJSX = (
+      <div className="alert alert-danger alert-dismissible fade show mb-4">
+        {this.state.err}
+      </div>
+    );
+
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       <a
         className="text-decoration-none"
@@ -257,10 +292,13 @@ export default class EditDonHang extends Component {
                             name="tongtien"
                             value={this.state.tongtien}
                             onChange={this.onChange}
+                            readOnly
                           />
                         </div>
                       </div>
                     </div>
+
+                    {this.state.err === '' ? null : errJSX}
                     <NavLink
                       to="/admin/order"
                       className="btn btn-danger mb-2"
@@ -288,3 +326,5 @@ export default class EditDonHang extends Component {
     );
   }
 }
+
+export default withRouter(EditDonHang);
