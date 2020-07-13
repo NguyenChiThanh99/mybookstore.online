@@ -45,6 +45,14 @@ export class DanhSachSanPham extends Component {
     });
   };
 
+  handleClose = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleShow = (id, title) => {
+    this.setState({ title: title, showModal: true, id: id });
+  };
+
   show_data = () => {
     var result = null;
     if (this.state.data.length > 0) {
@@ -114,14 +122,6 @@ export class DanhSachSanPham extends Component {
     return result;
   };
 
-  handleClose = () => {
-    this.setState({ showModal: false });
-  };
-
-  handleShow = (id, title) => {
-    this.setState({ title: title, showModal: true, id: id });
-  };
-
   notsell = () => {
     const data = {
       id: this.state.id,
@@ -135,6 +135,7 @@ export class DanhSachSanPham extends Component {
     };
     axios(options).then((res) => {
       if (res.data.data === "success") {
+        this.handleClose();
         window.location.reload();
       }
     });
