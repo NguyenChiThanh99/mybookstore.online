@@ -38,6 +38,7 @@ export class LichSuGiaoDich extends Component {
     };
     axios(options).then((res) => {
       if (res.data.data.length !== 0) {
+        console.log(res.data.data);
         this.setState({
           data: res.data.data,
           loading: false,

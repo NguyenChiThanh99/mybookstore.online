@@ -53,6 +53,7 @@ export class HoaDon extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
+      console.log(res.data.datainfo);
       this.setState({
         loading: false,
         info: res.data.datainfo,
