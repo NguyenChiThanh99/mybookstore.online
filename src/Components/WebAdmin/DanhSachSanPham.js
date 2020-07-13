@@ -20,8 +20,8 @@ export class DanhSachSanPham extends Component {
       showModal: false,
       danhmuc: match.params.danhmuc,
       data: [],
-      title: '',
-      id: '',
+      title: "",
+      id: "",
     };
   }
 
@@ -95,7 +95,9 @@ export class DanhSachSanPham extends Component {
             </td>
             <td>
               <button
-                onClick={item.isnotsell ? null : this.handleShow(item._id, item.tensp,)}
+                onClick={
+                  item.isnotsell ? null : this.handleShow(item.id, item.tensp)
+                }
                 type="submit"
                 name="deletehanoi_btn"
                 className={
@@ -132,7 +134,7 @@ export class DanhSachSanPham extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      if (res.data.data === 'success') {
+      if (res.data.data === "success") {
         window.location.reload();
       }
     });
