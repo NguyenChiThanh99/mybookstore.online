@@ -75,7 +75,7 @@ export class EditDonHang extends Component {
         trangthai: trangthai,
         tongtien: tongtien,
       };
-      const url = Global.link + "/webadmin/editorder";
+      const url = Global.link + "webadmin/editorder";
       const options = {
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
