@@ -20,6 +20,7 @@ export default class EditSach extends Component {
     var { location } = this.props;
     this.state = {
       danhmuc: location.state.danhmuc,
+      id: location.state.data._id,
       tensp: location.state.data.tensp,
       tacgia: location.state.data.tacgia,
       tenurl: location.state.data.tenurl,
@@ -33,7 +34,7 @@ export default class EditSach extends Component {
       loaibia: location.state.data.loaibia,
       sotrang: location.state.data.sotrang,
       mota: location.state.data.mota,
-      err: '',
+      err: "",
     };
   }
 
@@ -53,6 +54,7 @@ export default class EditSach extends Component {
   update = (event) => {
     event.preventDefault();
     const {
+      id,
       tensp,
       tacgia,
       tenurl,
@@ -89,6 +91,7 @@ export default class EditSach extends Component {
       timer9 = setTimeout(() => this.setState({ err: "" }), 4000);
     } else {
       const data = {
+        id: id,
         tensp: tensp,
         tacgia: tacgia,
         nxb: nxb,
