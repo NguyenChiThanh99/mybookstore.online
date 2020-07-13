@@ -52,6 +52,7 @@ export class ChiTietSanPham extends Component {
       percentRating: [0, 0, 0, 0, 0],
       AVGRating: 0,
       like: false,
+      isnotsell: false,
     };
   }
 
@@ -100,6 +101,7 @@ export class ChiTietSanPham extends Component {
         suggest: res.data.datalienquan,
         dataRate: res.data.datarate,
         like: res.data.islike,
+        isnotsell: res.data.isnotsell,
       });
       if (this.state.isComment !== undefined) {
         this.scrollToMyRef();
@@ -527,6 +529,12 @@ export class ChiTietSanPham extends Component {
       </div>
     );
 
+    const notsellJSX = (
+      <div className="alert alert-danger alert-dismissible fade show mt-3 mb-0">
+        NGỪNG KINH DOANH
+      </div>
+    );
+
     const errCommentJSX = (
       <div className="alert alert-danger alert-dismissible fade show mt-3 mb-0">
         {this.state.errCmt}
@@ -903,27 +911,32 @@ export class ChiTietSanPham extends Component {
               </div>
               {this.state.err === "" ? null : errJSX}
               {this.state.noti === "" ? null : notiJSX}
-              <div className="row py-4 pl-3">
-                <div
-                  className="btn btn-danger mybtn mb-0 text-nowrap"
-                  onClick={() => this.addToCart(data._id)}
-                >
-                  Thêm vào giỏ hàng
-                </div>
 
-                <p className="mb-0 pl-4">
+              {this.state.isnotsell ? (
+                notsellJSX
+              ) : (
+                <div className="row py-4 pl-3">
                   <div
-                    className="btn btn-danger mybtn text-nowrap"
-                    onClick={() => {
-                      if (this.addToCart(data._id)) {
-                        this.props.history.push("/cart");
-                      }
-                    }}
+                    className="btn btn-danger mybtn mb-0 text-nowrap"
+                    onClick={() => this.addToCart(data._id)}
                   >
-                    Mua ngay
+                    Thêm vào giỏ hàng
                   </div>
-                </p>
-              </div>
+
+                  <p className="mb-0 pl-4">
+                    <div
+                      className="btn btn-danger mybtn text-nowrap"
+                      onClick={() => {
+                        if (this.addToCart(data._id)) {
+                          this.props.history.push("/cart");
+                        }
+                      }}
+                    >
+                      Mua ngay
+                    </div>
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>

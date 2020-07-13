@@ -14,7 +14,7 @@ import Topbar from "./Topbar";
 
 export default class DanhSachSanPham extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     var { match } = this.props;
     this.state = {
       showModal: false,
@@ -25,7 +25,7 @@ export default class DanhSachSanPham extends Component {
 
   componentDidMount = () => {
     this.getData();
-  }
+  };
 
   getData = () => {
     const data = {
@@ -39,9 +39,9 @@ export default class DanhSachSanPham extends Component {
       data: qs.stringify(data),
     };
     axios(options).then((res) => {
-      this.setState({data: res.data.data});
+      this.setState({ data: res.data.data });
     });
-  }
+  };
 
   show_data = () => {
     var result = null;
@@ -88,7 +88,6 @@ export default class DanhSachSanPham extends Component {
                 name="edithanoi_btn"
                 className="btn btn-primary"
               >
-                {" "}
                 Edit
               </NavLink>
             </td>
@@ -97,10 +96,11 @@ export default class DanhSachSanPham extends Component {
                 onClick={this.handleShow}
                 type="submit"
                 name="deletehanoi_btn"
-                className="btn btn-danger"
+                className={
+                  item.isnotsell ? "btn btn-secondary" : "btn btn-danger"
+                }
               >
-                {" "}
-                Yes
+                {item.isnotsell ? "Yes" : "No"}
               </button>
             </td>
           </tr>
@@ -118,7 +118,7 @@ export default class DanhSachSanPham extends Component {
     this.setState({ showModal: true });
   };
 
-  delete = () => {}
+  delete = () => {};
 
   currencyFormat = (num) => {
     return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
@@ -196,7 +196,7 @@ export default class DanhSachSanPham extends Component {
                           <th>Số Trang</th>
                           <th>Mô Tả</th>
                           <th>Edit</th>
-                          <th>Ngừng Kinh Doanh?</th>
+                          <th>Ngừng Kinh Doanh</th>
                         </tr>
                       </thead>
                       <tbody>{this.show_data()}</tbody>
