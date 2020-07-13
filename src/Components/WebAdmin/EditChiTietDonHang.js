@@ -17,7 +17,6 @@ export default class EditChiTietDonHang extends Component {
       order: location.state.order,
       _id: location.state.data._id,
       tensp: location.state.data.tensp,
-      hinhanhsanpham: location.state.data.hinhanhsanpham,
       gia: location.state.data.gia,
       soluongsanpham: location.state.data.soluongsanpham,
     };
@@ -39,6 +38,7 @@ export default class EditChiTietDonHang extends Component {
   };
 
   render() {
+    console.log(this.props.location.state.data);
     return (
       <div id="wrapper">
         {/* Sidebar */}
@@ -76,18 +76,6 @@ export default class EditChiTietDonHang extends Component {
                       />
                     </div>
                     <div className="form-group">
-                      <label> Hình Ảnh </label>
-                      <input
-                        placeholder="VD: https://salt.tikicdn.com/cache/280x280/ts/product/49/3b/7b/53b204d12d9579fa628aed08d10033de.jpg"
-                        type="text"
-                        className="form-control"
-                        id="hinhanhsanpham"
-                        name="hinhanhsanpham"
-                        value={this.state.hinhanhsanpham}
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
                       <label> Giá </label>
                       <input
                         placeholder="VD: 99000"
@@ -97,6 +85,7 @@ export default class EditChiTietDonHang extends Component {
                         name="gia"
                         value={this.state.gia}
                         onChange={this.onChange}
+                        readOnly
                       />
                     </div>
                     <div className="form-group">
