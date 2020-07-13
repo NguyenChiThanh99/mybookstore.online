@@ -93,7 +93,7 @@ export default class DanhSachSanPham extends Component {
             </td>
             <td>
               <button
-                onClick={this.handleShow}
+                onClick={item.isnotsell ? null : this.handleShow}
                 type="submit"
                 name="deletehanoi_btn"
                 className={
