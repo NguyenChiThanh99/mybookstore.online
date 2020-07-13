@@ -16,7 +16,7 @@ export default class EditChiTietDonHang extends Component {
     this.state = {
       order: location.state.order,
       _id: location.state.data._id,
-      ten: location.state.data.ten,
+      tensp: location.state.data.tensp,
       hinhanhsanpham: location.state.data.hinhanhsanpham,
       gia: location.state.data.gia,
       soluongsanpham: location.state.data.soluongsanpham,
@@ -69,8 +69,8 @@ export default class EditChiTietDonHang extends Component {
                         placeholder="VD: Đừng Chết Ở Ả Rập Xê Út"
                         type="text"
                         className="form-control"
-                        id="ten"
-                        name="ten"
+                        id="tensp"
+                        name="tensp"
                         value={this.state.tensp}
                         onChange={this.onChange}
                       />

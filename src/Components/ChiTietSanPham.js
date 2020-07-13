@@ -164,7 +164,7 @@ export class ChiTietSanPham extends Component {
       newPrice = Math.round(newPrice / 1000) * 1000;
       return (
         <div
-          className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
+          className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
           key={index}
           onClick={() => this.reloadPage(product.tenurl)}
         >
@@ -823,13 +823,13 @@ export class ChiTietSanPham extends Component {
                 />
               )}
               <div className="row pl-3">
-                <div className="col-sm-6">
+                <div className="col-lg-6">
                   <div className="row">
                     <p className="mb-0">Nhà xuất bản: &nbsp;</p>
                     <p className="textColor mb-0">{data.nxb}</p>
                   </div>
                 </div>
-                <div className="col-sm-6">
+                <div className="col-lg-6">
                   <div className="row">
                     <p className="mb-0">Tác giả: &nbsp;</p>
                     <p className="textColor mb-0">{data.tacgia}</p>
