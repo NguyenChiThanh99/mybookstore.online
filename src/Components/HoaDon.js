@@ -79,7 +79,7 @@ export class HoaDon extends Component {
       result = this.state.products.map((product, index) => {
         return (
           <div className="row pb-3" key={index}>
-            <div className="col-sm-1 col-3">
+            <div className="col-lg-1 col-md-2 col-3">
               <img
                 src={product.hinhanhsanpham}
                 className="img-fluid"
@@ -87,12 +87,12 @@ export class HoaDon extends Component {
                 alt={product.tensp}
               />
             </div>
-            <div className="col-sm-11 col-9">
+            <div className="col-lg-11 col-md-10 col-9">
               <div className="row">
-                <NavLink to={"/product/" + product.tenurl} className="col-sm-7">
+                <NavLink to={"/product/" + product.tenurl} className="col-md-7">
                   <span>{product.tensp}</span>
                 </NavLink>
-                <div className="col-sm-5">
+                <div className="col-md-5">
                   <div className="row">
                     <div className="col-sm-4 col-6">
                       <span>
@@ -158,7 +158,7 @@ export class HoaDon extends Component {
       <div>
         {/* tiêu đề */}
         <div className="row pb-3 an-thongtin">
-          <div className="col-sm-1">
+          <div className="col-sm-1 text-nowrap">
             <h6 style={{ fontWeight: "bold" }}>Tên sách</h6>
           </div>
           <div className="col-sm-11">
@@ -257,7 +257,7 @@ export class HoaDon extends Component {
               Chi tiết đơn hàng <span>#{this.state.id}</span>
             </h5>
             <div className="row">
-              <div className="col-12 col-sm-6">
+              <div className="col-12 col-lg-6">
                 <h5 className="pt-3 pl-2">Thông tin đơn hàng</h5>
                 <div className="pl-4">
                   <table className="table-sm table-borderless">
@@ -292,7 +292,7 @@ export class HoaDon extends Component {
                   </table>
                 </div>
               </div>
-              <div className="col-12 col-sm-6">
+              <div className="col-12 col-lg-6">
                 <h5 className="pt-3 pl-2">Hình thức thanh toán</h5>
                 <p className="pl-4">{info.thanhtoan}</p>
               </div>

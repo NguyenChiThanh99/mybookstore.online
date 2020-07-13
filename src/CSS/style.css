@@ -270,7 +270,7 @@ a {
 .dropright-mobile {
   width: max-content;
 }
-@media all and (max-width: 576px) {
+@media all and (max-width: 992px) {
   .dropright-mobile {
     width: auto;
     font-size: small;

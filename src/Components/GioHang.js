@@ -221,7 +221,7 @@ export class GioHang extends Component {
         newPrice = Math.round(newPrice / 1000) * 1000;
         return (
           <div
-            className="col-lg-2 col-md-3 col-sm-4 col-6 product_shadow my-2"
+            className="col-lg-2 col-md-4 col-sm-4 col-6 product_shadow my-2"
             key={index}
           >
             <NavLink to={"/product/" + product.tenurl}>
@@ -323,7 +323,7 @@ export class GioHang extends Component {
           {/* tiêu đề */}
           <div className="an-thongtin">
             <div className="row pb-2">
-              <div className="col-sm-1">
+              <div className="col-sm-1 text-nowrap">
                 <h6 style={{ fontWeight: "bold" }}>Tên sách</h6>
               </div>
               <div className="col-sm-10 px-0">
@@ -351,7 +351,7 @@ export class GioHang extends Component {
 
           {/* buttons */}
           <div className="row pb-3">
-            <div className="col-sm-4 pt-2">
+            <div className="col-lg-4 pt-2">
               <div className="row">
                 <div className="col-5 pr-0">
                   <button
@@ -377,8 +377,8 @@ export class GioHang extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-sm-4 pt-2" />
-            <div className="col-sm-2 align-self-center pt-2">
+            <div className="col-lg-4 pt-2" />
+            <div className="col-lg-2 align-self-center pt-2">
               <div className="row">
                 <div className="col-6">
                   <p className="mb-0 text-nowrap">Tổng cộng: </p>
@@ -394,7 +394,7 @@ export class GioHang extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-sm-2 pt-2">
+            <div className="col-lg-2 pt-2">
               <NavLink
                 to="/pay"
                 type="button"

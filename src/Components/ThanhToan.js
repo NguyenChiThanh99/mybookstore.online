@@ -560,7 +560,7 @@ export class ThanhToan extends Component {
         {/*Main*/}
         <div className="container">
           <div className="row">
-            <div className="col-sm-5 pl-3">
+            <div className="col-lg-5 pl-3">
               {/*Thong tin dia chi*/}
               <div className="bg-white">
                 <div className="text-center text-light background1 p-1">
@@ -725,7 +725,7 @@ export class ThanhToan extends Component {
               </div>
             </div>
             {/*Kiem tra don hang*/}
-            <div className="col-sm-7 mb-3 bg-white p-0">
+            <div className="col-lg-7 mb-3 bg-white p-0">
               {/*Header Kiem tra don hang*/}
               <div className="text-center text-light background1 p-1">
                 <p className="header">KIỂM TRA ĐƠN HÀNG</p>

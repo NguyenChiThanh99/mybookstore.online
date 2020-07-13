@@ -56,7 +56,7 @@ export default class ItemCart extends Component {
     return (
       <div>
         <div className="row pb-3">
-          <div className="col-sm-1 col-3">
+          <div className="col-lg-1 col-md-2 col-3">
             <img
               src={item.hinhanhsanpham}
               className="img-fluid"
@@ -64,19 +64,19 @@ export default class ItemCart extends Component {
               alt={item.tensp}
             />
           </div>
-          <div className="col-sm-10 col-7 align-self-center px-0">
+          <div className="col-lg-10 col-7 col-md-8 align-self-center px-0">
             <div className="row">
-              <div className="col-sm-9 align-self-center">
+              <div className="col-lg-9 align-self-center">
                 <NavLink to={"/product/" + item.slug}>
                   <span>{item.tensp}</span>
                 </NavLink>
               </div>
-              <div className="col-sm-3">
+              <div className="col-lg-3">
                 <div className="row align-self-center">
-                  <div className="col-sm-6 align-self-center">
+                  <div className="col-lg-6 align-self-center">
                     <span>{this.currencyFormat(item.gia.toString())} đ</span>
                   </div>
-                  <div className="col-sm-6 pt-2">
+                  <div className="col-lg-6 pt-2">
                     <div
                       className="btn-group btn-group-sm"
                       role="group"
@@ -108,7 +108,7 @@ export default class ItemCart extends Component {
               </div>
             </div>
           </div>
-          <div className="col-sm-1 col-1 align-self-center">
+          <div className="col-lg-1 col-1 col-md-1 align-self-center">
             <button
               type="button"
               className="btn btn-link mybtn-link"
