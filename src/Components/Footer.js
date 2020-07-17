@@ -8,7 +8,7 @@ export default class Footer extends Component {
       <div className="container-fluid background1 mt-3 py-4">
         <div className="container">
           <div className="row">
-            <div className="col-12 col-sm-4 pt-2 d-flex justify-content-center flex-column">
+            <div className="col-12 col-lg-4 pt-2 d-flex justify-content-center flex-column">
               <img
                 src={require("../images/logo2.png")}
                 className="img-fluid p-2 w-75"
@@ -16,18 +16,13 @@ export default class Footer extends Component {
               />
               <p className="textFooter pl-2">Website phục vụ Đồ án môn học</p>
               <p className="textFooter pl-2">
-                Nhóm 3 - Thương mại điện tử và Triển khai ứng dụng NT210.K21 -
-                ThS. Trần Tuấn Dũng
+                Nhóm 6 - Lập trình ứng dụng mạng NT109.K21 - ThS. Đỗ Thị Hương Lan
               </p>
               <p className="textFooter pl-2">
                 Trường Đại học Công nghệ Thông tin, Đại học Quốc gia Tp.HCM
               </p>
-              {/* <p className="textFooter pl-2">
-                Nhóm 6 - Lập trình ứng dụng mạng NT109.K21 - ThS. Đỗ Thị Hương
-                Lan
-              </p> */}
             </div>
-            <div className="col-12 col-sm-8">
+            <div className="col-12 col-lg-8">
               <div className="row">
                 <div className="col-12 col-sm-4 pt-3">
                   <h5 className="mb-2">DỊCH VỤ</h5>
