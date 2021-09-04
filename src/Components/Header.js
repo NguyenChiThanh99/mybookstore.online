@@ -159,7 +159,6 @@ export class Header extends Component {
   };
 
   loginSocialNetwork = (id, name, email, picture) => {
-    console.log(name)
     const data = {
       id: id,
       name: name,
@@ -236,7 +235,7 @@ export class Header extends Component {
 
   responseFacebook = (response) => {
     if (response.status !== "unknown") {
-      console.log(response);
+      // console.log(response);
       this.setState({
         isLoggedInF: true,
         userIDS: response.userID,
@@ -254,7 +253,7 @@ export class Header extends Component {
   };
 
   responseGoogle = (response) => {
-    console.log(response);
+    // console.log(response);
     this.setState({
       isLoggedInG: true,
       userIDS: response.profileObj.googleId,
