@@ -886,7 +886,7 @@ export class ChiTietSanPham extends Component {
               </div>
               <SocialShare
                 shareUrl={
-                  "https://mybookstore.online/product/" + this.state.slug
+                  "https://www.mybookstore.online/product/" + this.state.slug
                 }
                 title={data.tensp + " | mybookstore.online"}
               />
